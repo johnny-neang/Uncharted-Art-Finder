@@ -1,0 +1,10 @@
+# Outputs of the local-photo workflow
+sacramento-artist-directory-with-photos.LOCAL.html
+local_files/*
+!local_files/.gitkeep
+
+# Fetcher artifacts
+fetch.log
+__pycache__/
+*.pyc
+.DS_Store
