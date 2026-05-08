@@ -42,19 +42,30 @@ def merge_artist_images(artists: list[dict], images: dict) -> list[dict]:
     return out
 
 
+def effective_rec(c: dict) -> str:
+    """manual_override > score.proceed_recommendation > 'pending'."""
+    if c.get("manual_override"):
+        return c["manual_override"]
+    score = c.get("score") or {}
+    return score.get("proceed_recommendation") or "pending"
+
+
 def filter_discoveries_for_display(discoveries: list[dict]) -> list[dict]:
-    """Show only candidates we'd actually surface to the user."""
+    """Show only candidates we'd actually surface to the user.
+
+    Hides 'reject' (off-fit) and 'existing' (already in roster); both stay in
+    the JSON so the override sticks across runs.
+    """
+    REC_ORDER = {"add": 0, "watch": 1, "pending": 2}
     keepers = []
     for c in discoveries:
-        score = c.get("score") or {}
-        # Reject suggestions filtered out by Claude
-        if score.get("proceed_recommendation") == "reject":
+        rec = effective_rec(c)
+        if rec in ("reject", "existing"):
             continue
         keepers.append(c)
-    # Recently scored / unscored first; cap to a reasonable number
     keepers.sort(key=lambda c: (
-        0 if c.get("score") else 1,
-        -(c.get("score", {}).get("family_fit", 0) or 0),
+        REC_ORDER.get(effective_rec(c), 3),
+        -((c.get("score") or {}).get("family_fit", 0) or 0),
         c.get("first_seen", ""),
     ))
     return keepers[:24]
