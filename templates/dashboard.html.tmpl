@@ -5,137 +5,135 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sacramento Artist Directory — Arden Fair UnchARTed · UpperCloud Studio</title>
 <meta name="description" content="A curated directory of 21 Sacramento-area artists and art agencies, evaluated for the Arden Fair UnchARTed program by UpperCloud Studio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Sans:wght@300;400;500;600&family=Unbounded:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-/* ---------- UpperCloud Brand System ---------- */
+/* ---------- UpperCloud Brand System (BG—2026.001) ---------- */
 :root {
-  --bg-cream: #F5F1EA;
-  --bg-paper: #FBF8F2;
-  --bg-white: #FFFFFF;
-  --ink: #1A1D24;
-  --ink-soft: #565A66;
-  --ink-faint: #8B8E96;
-  --rule: #DAD4C7;
-  --rule-soft: #ECE7DC;
-  --sky-50: #EAF1F7;
-  --sky-100: #D6E2EE;
-  --sky-300: #88A8C7;
-  --sky-500: #466F95;
-  --sky-700: #2C4A68;
-  --sky-900: #142838;
-  --gold: #B68A3F;
-  --gold-soft: #E0C588;
-  --sun: #E0904A;
-  --terra: #B45A3F;
-  --moss: #6B7B4E;
+  /* Surfaces */
+  --paper: #F5F3EE;
+  --paper-2: #EBE7DF;
+  --paper-3: #FBF8F2;
+  --ink: #1A1A1A;
+  --ink-2: #4A4A4A;
+  --ink-3: #8A8A8A;
+  --rule: rgba(26,26,26,0.15);
+  --rule-soft: rgba(26,26,26,0.08);
 
-  --tier1: #B68A3F;
-  --tier2: #466F95;
-  --tier3: #6B7B4E;
+  /* Inverse */
+  --obsidian: #161310;
+  --obsidian-2: #2A2522;
 
-  --shadow-card: 0 1px 0 rgba(20,40,56,.04), 0 8px 24px -10px rgba(20,40,56,.10);
-  --shadow-thumb: inset 0 0 0 1px rgba(20,40,56,.06);
+  /* Accents — landmarks, not decoration */
+  --marigold: #E89A1C;
+  --marigold-soft: rgba(232,154,28,0.12);
+  --jade: #1F8A76;
+  --jade-soft: rgba(31,138,118,0.10);
+  --cyan: #23B4D8;
 
-  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, ui-serif, serif;
-  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  --mono: "JetBrains Mono", "SF Mono", ui-monospace, "Cascadia Mono", Menlo, monospace;
+  /* Type families */
+  --font-display: "DM Serif Display", "Iowan Old Style", Georgia, serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --font-label: "Unbounded", system-ui, sans-serif;
+
+  /* Spacing scale (multiples of 4) */
+  --s1: 4px;  --s2: 8px;  --s3: 12px; --s4: 18px;
+  --s5: 24px; --s6: 28px; --s7: 36px; --s8: 48px;
+  --s9: 64px; --s10: 72px;
+
+  --shadow-card: 0 1px 0 rgba(26,26,26,0.04), 0 8px 24px -10px rgba(26,26,26,0.10);
+  --shadow-thumb: inset 0 0 0 1px rgba(26,26,26,0.06);
 }
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
 body {
-  font-family: var(--sans);
-  font-size: 15px;
+  font-family: var(--font-body);
+  font-size: 14px;
   line-height: 1.55;
-  color: var(--ink);
-  background: var(--bg-cream);
+  color: var(--ink-2);
+  background: var(--paper);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
 }
 
 /* ---------- Layout ---------- */
-.shell { max-width: 1320px; margin: 0 auto; padding: 0 28px; }
+.shell { max-width: 1320px; margin: 0 auto; padding: 0 var(--s6); }
 
-/* ---------- Top bar (UpperCloud mark) ---------- */
+/* ---------- Top bar (header chrome — wordmark left, meta right) ---------- */
 .topbar {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 18px 0;
+  padding: var(--s6) 0 var(--s5);
   border-bottom: 1px solid var(--rule-soft);
-  font-size: 12px; letter-spacing: .04em;
 }
-.mark {
-  display: flex; align-items: center; gap: 10px;
-  font-family: var(--serif); font-size: 17px; font-style: italic; font-weight: 500;
-  color: var(--ink); text-decoration: none;
+.wm img { height: 28px; display: block; }
+.topbar-meta {
+  display: flex; gap: var(--s7); align-items: baseline;
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-3);
 }
-.mark-glyph { width: 32px; height: 24px; flex: 0 0 32px; }
-.mark-meta { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: .08em; }
-.topbar-right { display: flex; gap: 28px; color: var(--ink-soft); font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
-.topbar-right span b { color: var(--ink); font-weight: 500; }
+.topbar-meta b { color: var(--ink); font-weight: 500; }
 
-/* ---------- Hero ---------- */
+/* ---------- Hero (cover-style) ---------- */
 .hero {
-  padding: 72px 0 56px;
-  border-bottom: 1px solid var(--rule);
+  padding: var(--s10) 0 var(--s8);
+  border-bottom: 1px solid var(--ink);
   position: relative;
+}
+.hero-figno {
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--marigold);
+  margin-bottom: var(--s2);
+}
+.hero-doctype {
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-2);
+  margin-bottom: var(--s7);
 }
 .hero-grid {
   display: grid;
   grid-template-columns: 1fr 360px;
-  gap: 48px;
+  gap: var(--s8);
   align-items: end;
 }
-.eyebrow {
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 22px;
-  display: flex; align-items: center; gap: 14px;
-}
-.eyebrow::before {
-  content: ""; width: 32px; height: 1px; background: var(--gold);
-}
-.eyebrow-num { color: var(--ink-faint); }
 .hero h1 {
-  font-family: var(--serif);
+  font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(44px, 6vw, 78px);
-  line-height: 1.02;
-  letter-spacing: -0.012em;
-  margin: 0 0 18px;
+  font-size: clamp(48px, 7vw, 96px);
+  line-height: 0.96;
+  letter-spacing: -0.025em;
+  margin: 0 0 var(--s4);
   color: var(--ink);
   max-width: 14ch;
 }
 .hero h1 em {
-  font-style: italic; color: var(--sky-700);
+  font-style: italic; color: var(--jade);
 }
 .hero-lede {
-  font-size: 17px; line-height: 1.55; color: var(--ink-soft);
+  font-family: var(--font-body); font-weight: 300;
+  font-size: 18px; line-height: 1.5; color: var(--ink);
   max-width: 56ch;
   margin: 0;
 }
 .hero-meta {
-  border: 1px solid var(--rule);
-  background: var(--bg-paper);
-  padding: 24px 24px 22px;
-  font-family: var(--mono);
-  font-size: 11px;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
+  border-top: 1px solid var(--ink);
+  padding-top: var(--s5);
+  display: grid; grid-template-columns: 1fr; gap: var(--s4);
 }
-.hero-meta dl { margin: 0; display: grid; grid-template-columns: 1fr; gap: 14px; }
-.hero-meta dt { color: var(--ink-faint); margin-bottom: 4px; }
+.hero-meta dl { margin: 0; display: grid; grid-template-columns: 1fr; gap: var(--s4); }
+.hero-meta dt {
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-3); margin-bottom: var(--s1);
+}
 .hero-meta dd {
   margin: 0;
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 18px;
-  color: var(--ink);
-  text-transform: none;
-  letter-spacing: 0;
+  font-family: var(--font-body); font-size: 16px; color: var(--ink);
 }
 
 /* ---------- Stats strip ---------- */
@@ -145,98 +143,120 @@ body {
   border-bottom: 1px solid var(--rule);
 }
 .stat {
-  padding: 24px 24px 22px;
+  padding: var(--s5) var(--s5) var(--s4);
   border-right: 1px solid var(--rule-soft);
 }
 .stat:last-child { border-right: 0; }
 .stat-num {
-  font-family: var(--serif);
-  font-size: 38px;
+  font-family: var(--font-display);
+  font-size: 48px;
   line-height: 1;
   color: var(--ink);
-  margin-bottom: 6px;
-  letter-spacing: -0.01em;
+  margin-bottom: var(--s1);
+  letter-spacing: -0.02em;
 }
-.stat-num em { font-style: italic; color: var(--gold); }
+.stat-num em { font-style: italic; color: var(--marigold); }
 .stat-lbl {
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-  color: var(--ink-soft);
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-3);
 }
 
-/* ---------- Filters ---------- */
+/* ---------- Filters / toolbar ---------- */
 .toolbar {
   display: flex;
   align-items: center;
-  gap: 18px;
-  padding: 22px 0 18px;
+  gap: var(--s4);
+  padding: var(--s5) 0 var(--s4);
   border-bottom: 1px solid var(--rule-soft);
   flex-wrap: wrap;
 }
 .toolbar-label {
-  font-family: var(--mono); font-size: 11px; letter-spacing: .08em;
-  text-transform: uppercase; color: var(--ink-faint);
-  margin-right: 4px;
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-3);
+  margin-right: var(--s1);
 }
 .chip {
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 6px 14px;
+  display: inline-flex; align-items: center; gap: var(--s2);
+  padding: 6px var(--s3);
   border: 1px solid var(--rule);
-  background: var(--bg-paper);
-  border-radius: 100px;
-  font-size: 13px;
-  color: var(--ink-soft);
+  background: transparent;
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-2);
   cursor: pointer;
-  font-family: var(--sans);
-  font-weight: 500;
-  transition: all .15s;
+  transition: all 0.15s;
   user-select: none;
+  line-height: 1.6;
 }
-.chip:hover { background: var(--bg-white); color: var(--ink); border-color: var(--ink-faint); }
+.chip:hover { color: var(--ink); border-color: var(--ink); }
 .chip[aria-pressed="true"] {
-  background: var(--ink); color: var(--bg-cream); border-color: var(--ink);
+  background: var(--ink); color: var(--paper); border-color: var(--ink);
 }
 .chip .chip-count {
-  font-family: var(--mono); font-size: 10px; opacity: .6; font-weight: 400;
+  font-size: 9px; opacity: 0.6; font-weight: 400; letter-spacing: 0.1em;
 }
 .search-wrap { margin-left: auto; }
 .search {
   border: 1px solid var(--rule);
-  background: var(--bg-paper);
-  border-radius: 100px;
-  padding: 7px 16px;
+  background: transparent;
+  padding: 7px var(--s3);
   font-size: 13px;
-  font-family: var(--sans);
+  font-family: var(--font-body);
   color: var(--ink);
   width: 240px;
 }
-.search:focus { outline: none; border-color: var(--ink); background: var(--bg-white); }
+.search:focus { outline: none; border-color: var(--ink); }
+.search::placeholder {
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-3);
+}
 
-/* ---------- Section title ---------- */
+/* ---------- Section eyebrow (NN — LABEL — JADE RULE) ---------- */
 .section-head {
-  display: flex; align-items: baseline; justify-content: space-between;
-  padding: 56px 0 28px;
-  border-bottom: 1px solid var(--rule);
-  margin-bottom: 32px;
+  padding: var(--s8) 0 var(--s5);
+  margin-bottom: var(--s6);
+}
+.eyebrow {
+  display: flex; align-items: center; gap: var(--s4);
+  margin-bottom: var(--s4);
+}
+.eyebrow .num {
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--marigold);
+}
+.eyebrow .lbl {
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink);
+}
+.eyebrow .line { flex: 1; height: 1px; background: var(--jade); }
+.eyebrow .meta {
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-3);
 }
 .section-title {
-  font-family: var(--serif);
-  font-size: 32px;
+  font-family: var(--font-display);
+  font-size: 38px;
   font-weight: 400;
-  letter-spacing: -.01em;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
   margin: 0;
+  color: var(--ink);
 }
-.section-title em { font-style: italic; color: var(--sky-700); }
-.section-meta { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: .08em; text-transform: uppercase; }
+.section-title em { font-style: italic; color: var(--jade); }
+.section-meta { font-family: var(--font-label); font-weight: 500; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-3); }
 
 /* ---------- Card grid ---------- */
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 28px;
-  padding-bottom: 80px;
+  gap: var(--s6);
+  padding-bottom: var(--s10);
 }
 @media (max-width: 920px) {
   .grid { grid-template-columns: 1fr; }
@@ -245,256 +265,268 @@ body {
 }
 
 .card {
-  background: var(--bg-white);
+  background: var(--paper);
   border: 1px solid var(--rule);
-  border-radius: 4px;
-  padding: 22px 22px 20px;
+  padding: var(--s5);
   display: flex; flex-direction: column;
   position: relative;
-  transition: border-color .15s, transform .15s;
+  transition: border-color 0.15s;
   box-shadow: var(--shadow-card);
 }
-.card:hover { border-color: var(--ink-faint); }
+.card:hover { border-color: var(--ink); }
 .card.is-hidden { display: none; }
 
 .card-head {
   display: flex; align-items: flex-start; justify-content: space-between;
-  gap: 16px;
-  margin-bottom: 14px;
+  gap: var(--s4);
+  margin-bottom: var(--s3);
 }
 .card-num {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--ink-faint);
-  letter-spacing: .08em;
-  margin-bottom: 6px;
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--marigold);
+  margin-bottom: var(--s1);
 }
 .card-name {
-  font-family: var(--serif);
-  font-size: 26px;
-  line-height: 1.1;
-  font-weight: 500;
-  margin: 0 0 6px;
-  letter-spacing: -.005em;
+  font-family: var(--font-display);
+  font-size: 28px;
+  line-height: 1.05;
+  font-weight: 400;
+  margin: 0 0 var(--s1);
+  letter-spacing: -0.015em;
+  color: var(--ink);
 }
-.card-name em { font-style: italic; color: var(--sky-700); }
+.card-name em { font-style: italic; color: var(--jade); }
 .card-sub {
-  font-size: 13px; color: var(--ink-soft);
-  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  font-size: 12px; color: var(--ink-2);
+  display: flex; gap: var(--s2); align-items: center; flex-wrap: wrap;
 }
 
 .tier-badge {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-family: var(--mono);
-  font-size: 10px;
-  letter-spacing: .08em;
+  display: inline-flex; align-items: center; gap: var(--s1);
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 9px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 100px;
+  padding: 4px var(--s2);
   white-space: nowrap;
   flex-shrink: 0;
   border: 1px solid;
 }
-.tier-1 { color: var(--gold); border-color: var(--gold-soft); background: #FBF6E9; }
-.tier-2 { color: var(--sky-700); border-color: var(--sky-100); background: var(--sky-50); }
-.tier-3 { color: var(--moss); border-color: #D6DCC4; background: #F2F4E9; }
+.tier-1 { color: var(--marigold); border-color: var(--marigold); background: var(--marigold-soft); }
+.tier-2 { color: var(--jade); border-color: var(--jade); background: var(--jade-soft); }
+.tier-3 { color: var(--ink-2); border-color: var(--rule); background: transparent; }
 
 .kind-pill {
-  font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
-  color: var(--ink-faint); padding: 3px 0;
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-3); padding: 3px 0;
 }
 
 /* ---------- Thumb grid ---------- */
 .thumb-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
-  margin: 4px 0 16px;
+  gap: var(--s2);
+  margin: var(--s1) 0 var(--s4);
 }
 .thumb {
   position: relative;
   aspect-ratio: 4 / 3;
-  background: var(--bg-cream);
-  border-radius: 3px;
+  background: var(--paper-2);
   overflow: hidden;
   box-shadow: var(--shadow-thumb);
 }
 .thumb svg, .thumb img { width: 100%; height: 100%; display: block; }
 .thumb-label {
   position: absolute;
-  left: 8px; bottom: 8px;
-  font-family: var(--mono);
-  font-size: 9px;
-  letter-spacing: .06em;
+  left: var(--s2); bottom: var(--s2);
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 8px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  background: rgba(20, 29, 36, .82);
-  color: var(--bg-cream);
+  background: rgba(26, 26, 26, 0.82);
+  color: var(--paper);
   padding: 3px 7px;
-  border-radius: 2px;
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
 }
 
 /* ---------- Card body ---------- */
 .card-summary {
-  font-size: 13.5px;
-  line-height: 1.5;
-  color: var(--ink-soft);
-  margin: 0 0 14px;
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--ink-2);
+  margin: 0 0 var(--s4);
 }
 .card-meta-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: var(--s3);
   font-size: 12px;
   margin-top: auto;
-  padding-top: 14px;
-  border-top: 1px dashed var(--rule);
+  padding-top: var(--s3);
+  border-top: 1px solid var(--rule-soft);
 }
-.card-meta-cell { display: flex; flex-direction: column; gap: 2px; }
+.card-meta-cell { display: flex; flex-direction: column; gap: var(--s1); }
 .card-meta-cell dt {
-  font-family: var(--mono); font-size: 9px; letter-spacing: .08em;
-  text-transform: uppercase; color: var(--ink-faint);
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-3);
 }
 .card-meta-cell dd {
-  font-family: var(--sans); font-size: 12.5px; color: var(--ink); margin: 0;
+  font-family: var(--font-body); font-size: 12px; color: var(--ink); margin: 0;
 }
 
 .fit-bar {
-  display: flex; align-items: center; gap: 8px;
+  display: flex; align-items: center; gap: var(--s2);
 }
 .fit-dots { display: flex; gap: 2px; }
 .fit-dot {
-  width: 8px; height: 8px; border-radius: 50%; background: var(--rule);
+  width: 6px; height: 6px; background: var(--rule);
 }
-.fit-dot.on { background: var(--gold); }
-.fit-num { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); }
+.fit-dot.on { background: var(--marigold); }
+.fit-num { font-family: var(--font-label); font-weight: 500; font-size: 9px; letter-spacing: 0.18em; color: var(--ink-3); text-transform: uppercase; }
 
 .card-foot {
   display: flex; justify-content: space-between; align-items: center;
-  padding-top: 14px;
-  font-size: 12.5px;
+  padding-top: var(--s3);
+  font-size: 12px;
 }
 .card-link {
   color: var(--ink); text-decoration: none;
   border-bottom: 1px solid var(--ink);
   padding-bottom: 1px;
-  font-weight: 500;
-  font-size: 12.5px;
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
 }
-.card-link:hover { color: var(--sky-700); border-bottom-color: var(--sky-700); }
+.card-link:hover { color: var(--jade); border-bottom-color: var(--jade); }
 .card-link::after { content: " →"; }
-.card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.card-tags { display: flex; gap: var(--s1); flex-wrap: wrap; }
 .tag {
-  font-family: var(--mono); font-size: 10px; letter-spacing: .04em;
-  color: var(--ink-soft); padding: 2px 8px;
-  background: var(--bg-cream); border-radius: 100px;
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-2); padding: 2px var(--s2);
+  border: 1px solid var(--rule);
 }
 
 /* ---------- Footer ---------- */
 .footer {
-  border-top: 1px solid var(--rule);
-  padding: 36px 0 56px;
-  margin-top: 24px;
+  border-top: 1px solid var(--ink);
+  padding: var(--s8) 0 var(--s9);
+  margin-top: var(--s5);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  gap: 48px;
+  gap: var(--s8);
   font-size: 13px;
-  color: var(--ink-soft);
+  color: var(--ink-2);
 }
 .footer h4 {
-  font-family: var(--mono); font-size: 11px; letter-spacing: .08em;
-  text-transform: uppercase; color: var(--ink); margin: 0 0 10px;
-  font-weight: 600;
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink); margin: 0 0 var(--s3);
 }
-.footer p { margin: 0 0 8px; line-height: 1.5; }
+.footer p { margin: 0 0 var(--s2); line-height: 1.55; }
 .footer-meta {
-  font-family: var(--mono); font-size: 10px; letter-spacing: .06em;
-  color: var(--ink-faint);
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-3);
 }
-.footer-meta b { color: var(--ink-soft); font-weight: 500; }
+.footer-meta b { color: var(--ink); font-weight: 500; }
+.footer .pg {
+  font-family: var(--font-display); font-size: 22px;
+  letter-spacing: 0; text-transform: none; color: var(--ink);
+}
 
 
 /* ---------- Discoveries ---------- */
-.discoveries-section { padding: 56px 0 0; }
+.discoveries-section { padding: var(--s8) 0 0; }
 .discovery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 18px;
-  margin-bottom: 24px;
+  gap: var(--s4);
+  margin-bottom: var(--s5);
 }
 .discovery-card {
-  background: var(--bg-paper);
+  background: var(--paper);
   border: 1px solid var(--rule);
-  border-radius: 4px;
-  padding: 12px;
+  padding: var(--s3);
   display: flex; flex-direction: column;
 }
 .discovery-thumb {
-  aspect-ratio: 4 / 3; background: var(--bg-cream);
-  border-radius: 3px; overflow: hidden;
-  position: relative; margin-bottom: 10px;
+  aspect-ratio: 4 / 3; background: var(--paper-2);
+  overflow: hidden;
+  position: relative; margin-bottom: var(--s3);
   box-shadow: var(--shadow-thumb);
 }
 .discovery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .discovery-thumb-fallback {
   position: absolute; inset: 0; display: grid; place-items: center;
-  font-family: var(--serif); font-style: italic; font-size: 14px;
-  color: var(--ink-faint);
+  font-family: var(--font-display); font-style: italic; font-size: 14px;
+  color: var(--ink-3);
 }
 .discovery-name {
-  font-family: var(--serif); font-size: 17px; font-weight: 500;
-  margin: 0 0 4px; line-height: 1.15;
+  font-family: var(--font-display); font-size: 22px; font-weight: 400;
+  margin: 0 0 var(--s1); line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
 }
-.discovery-name em { font-style: italic; color: var(--sky-700); }
+.discovery-name em { font-style: italic; color: var(--jade); }
 .discovery-source {
-  font-family: var(--mono); font-size: 10px; letter-spacing: .04em;
-  color: var(--ink-faint); text-transform: uppercase;
-  margin-bottom: 6px;
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: var(--s2);
 }
-.discovery-summary { font-size: 12.5px; color: var(--ink-soft); margin: 0 0 10px; line-height: 1.45; }
+.discovery-summary { font-size: 12px; color: var(--ink-2); margin: 0 0 var(--s3); line-height: 1.5; }
 .discovery-actions {
-  display: flex; gap: 8px; align-items: center; margin-top: auto;
-  padding-top: 8px; border-top: 1px dashed var(--rule);
-  font-size: 11.5px;
+  display: flex; gap: var(--s2); align-items: center; margin-top: auto;
+  padding-top: var(--s2); border-top: 1px solid var(--rule-soft);
+  font-size: 11px;
 }
 .discovery-rec {
-  font-family: var(--mono); font-size: 9.5px; letter-spacing: .08em;
-  text-transform: uppercase; padding: 3px 8px; border-radius: 100px;
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 9px; letter-spacing: 0.18em;
+  text-transform: uppercase; padding: 3px var(--s2);
   border: 1px solid;
 }
-.rec-add    { color: var(--gold);   background: #FBF6E9; border-color: var(--gold-soft); }
-.rec-watch  { color: var(--sky-700); background: var(--sky-50); border-color: var(--sky-100); }
-.rec-reject { color: var(--ink-faint); background: var(--bg-cream); border-color: var(--rule); }
-.rec-pending{ color: var(--ink-faint); background: var(--bg-cream); border-color: var(--rule); font-style: italic; }
+.rec-add    { color: var(--marigold); background: var(--marigold-soft); border-color: var(--marigold); }
+.rec-watch  { color: var(--jade); background: var(--jade-soft); border-color: var(--jade); }
+.rec-reject { color: var(--ink-3); background: transparent; border-color: var(--rule); }
+.rec-pending{ color: var(--ink-3); background: transparent; border-color: var(--rule); font-style: italic; }
 .discovery-link {
   margin-left: auto; color: var(--ink); text-decoration: none;
   border-bottom: 1px solid var(--ink); padding-bottom: 1px;
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
 }
-.discovery-link:hover { color: var(--sky-700); border-bottom-color: var(--sky-700); }
+.discovery-link:hover { color: var(--jade); border-bottom-color: var(--jade); }
 
 /* ---------- Events ---------- */
-.events-section { padding: 56px 0 0; }
+.events-section { padding: var(--s8) 0 0; }
 .event-list { list-style: none; padding: 0; margin: 0; }
 .event-item {
   display: grid;
-  grid-template-columns: 120px 1fr auto;
-  gap: 18px; align-items: baseline;
-  padding: 14px 0;
+  grid-template-columns: 140px 1fr auto;
+  gap: var(--s4); align-items: baseline;
+  padding: var(--s4) 0;
   border-bottom: 1px solid var(--rule-soft);
 }
 .event-date {
-  font-family: var(--mono); font-size: 11px; letter-spacing: .06em;
-  text-transform: uppercase; color: var(--gold);
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--marigold);
 }
 .event-title {
-  font-family: var(--serif); font-size: 16px; font-weight: 500;
-  color: var(--ink); margin: 0 0 2px;
+  font-family: var(--font-display); font-size: 22px; font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--ink); margin: 0 0 var(--s1);
 }
-.event-snippet { font-size: 12px; color: var(--ink-soft); margin: 0; }
+.event-snippet { font-size: 12px; color: var(--ink-2); margin: 0; }
 .event-source {
-  font-family: var(--mono); font-size: 10px; letter-spacing: .04em;
-  text-transform: uppercase; color: var(--ink-faint);
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-3);
   text-align: right;
 }
 .event-source a { color: inherit; text-decoration: none; border-bottom: 1px solid currentColor; }
@@ -504,79 +536,48 @@ body {
 @media print {
   body { background: white; }
   .toolbar, .topbar { display: none; }
-  .grid { gap: 16px; grid-template-columns: 1fr 1fr; }
+  .grid { gap: var(--s3); grid-template-columns: 1fr 1fr; }
   .card { box-shadow: none; break-inside: avoid; page-break-inside: avoid; }
-  .hero { padding: 24px 0; }
+  .hero { padding: var(--s5) 0; }
 }
 
 /* ---------- Empty state ---------- */
 .empty {
-  text-align: center; padding: 80px 24px;
-  font-family: var(--serif); font-style: italic; font-size: 22px;
-  color: var(--ink-soft);
+  text-align: center; padding: var(--s10) var(--s5);
+  font-family: var(--font-display); font-style: italic; font-size: 22px;
+  color: var(--ink-3);
   display: none;
 }
 .empty.is-on { display: block; }
-
-/* ---------- Subtle cloud watermark ---------- */
-.cloud-bg {
-  position: fixed;
-  top: 60px; right: -120px;
-  width: 480px; height: 320px;
-  pointer-events: none;
-  opacity: .35;
-  z-index: 0;
-}
-.shell { position: relative; z-index: 1; }
 </style>
 </head>
 <body>
 
-<!-- Subtle cloud watermark -->
-<svg class="cloud-bg" viewBox="0 0 480 320" aria-hidden="true">
-  <defs>
-    <radialGradient id="cloudGlow" cx="0.5" cy="0.5" r="0.6">
-      <stop offset="0%" stop-color="#88A8C7" stop-opacity="0.22"/>
-      <stop offset="100%" stop-color="#88A8C7" stop-opacity="0"/>
-    </radialGradient>
-  </defs>
-  <ellipse cx="280" cy="170" rx="220" ry="120" fill="url(#cloudGlow)"/>
-  <path d="M120 200 Q120 150 170 150 Q180 110 230 115 Q270 90 310 120 Q360 115 365 160 Q400 165 395 200 Q400 240 350 240 L150 240 Q105 240 120 200Z"
-        fill="#88A8C7" opacity="0.10"/>
-</svg>
-
 <div class="shell">
 
-  <!-- Topbar -->
+  <!-- Topbar — wordmark left, meta right -->
   <header class="topbar">
-    <a class="mark" href="#" aria-label="UpperCloud Studio">
-      <svg class="mark-glyph" viewBox="0 0 32 24" aria-hidden="true">
-        <path d="M5 16 Q5 10 10 10 Q11 6 16 6 Q22 4 24 10 Q29 10 28 16 Q29 20 23 20 L9 20 Q4 20 5 16Z"
-              fill="none" stroke="#1A1D24" stroke-width="1.2"/>
-        <circle cx="22" cy="9" r="1.5" fill="#B68A3F"/>
-      </svg>
-      <span>UpperCloud<span style="opacity:.5">·</span>Studio</span>
+    <a class="wm" href="#" aria-label="UpperCloud Media">
+      <img src="assets/uppercloud-logo.png" alt="UpperCloud" />
     </a>
-    <div class="topbar-right">
+    <div class="topbar-meta">
       <span><b>Field Brief</b> · No. 014</span>
       <span>Sacramento <b>·</b> CA</span>
       <span id="lastReviewed">Reviewed {{LAST_REVIEWED}}</span>
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- Hero (cover) -->
   <section class="hero">
+    <div class="hero-figno">FIG. 01 / DIRECTORY</div>
+    <div class="hero-doctype">Field Brief — No. 014 · Public Art</div>
     <div class="hero-grid">
       <div>
-        <div class="eyebrow">
-          <span class="eyebrow-num">No. 014</span>
-          <span>Field Brief · Public Art</span>
-        </div>
-        <h1>Sacramento <em>Artist</em><br>Directory</h1>
+        <h1>Sacramento <em>artist</em><br>directory.</h1>
         <p class="hero-lede">
           A working catalog of twenty-one Sacramento-area artists and art agencies,
-          shortlisted and assessed for the <strong>Arden Fair UnchARTed</strong> program.
-          Curated, sequenced, and graded by UpperCloud Studio for client use.
+          shortlisted and assessed for the Arden Fair UnchARTed program. Curated,
+          sequenced, and graded by UpperCloud Studio for client use.
         </p>
       </div>
       <aside class="hero-meta">
@@ -604,11 +605,11 @@ body {
 
   <!-- Stats -->
   <section class="stats">
-    <div class="stat"><div class="stat-num">21</div><div class="stat-lbl">Total Entries</div></div>
-    <div class="stat"><div class="stat-num"><em>7</em></div><div class="stat-lbl">Tier-One Priorities</div></div>
-    <div class="stat"><div class="stat-num">11</div><div class="stat-lbl">Tier-Two Established</div></div>
-    <div class="stat"><div class="stat-num">3</div><div class="stat-lbl">Agencies / Curators</div></div>
-    <div class="stat"><div class="stat-num">42</div><div class="stat-lbl">Visual References</div></div>
+    <div class="stat"><div class="stat-num">21</div><div class="stat-lbl">Total entries</div></div>
+    <div class="stat"><div class="stat-num"><em>7</em></div><div class="stat-lbl">Tier-one priorities</div></div>
+    <div class="stat"><div class="stat-num">11</div><div class="stat-lbl">Tier-two established</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-lbl">Agencies / curators</div></div>
+    <div class="stat"><div class="stat-num">42</div><div class="stat-lbl">Visual references</div></div>
   </section>
 
   <!-- Filter toolbar -->
@@ -619,24 +620,34 @@ body {
     <button class="chip" data-filter="tier-2" aria-pressed="false">Tier 2 <span class="chip-count">11</span></button>
     <button class="chip" data-filter="tier-3" aria-pressed="false">Agencies <span class="chip-count">3</span></button>
     <button class="chip" data-filter="mural" aria-pressed="false">Murals</button>
-    <button class="chip" data-filter="studio" aria-pressed="false">Studio &amp; Canvas</button>
-    <button class="chip" data-filter="best-fit" aria-pressed="false">Best fit ★★★★+</button>
-    <span class="search-wrap"><input class="search" type="search" id="searchInput" placeholder="Search by name, medium, work…"></span>
+    <button class="chip" data-filter="studio" aria-pressed="false">Studio &amp; canvas</button>
+    <button class="chip" data-filter="best-fit" aria-pressed="false">Best fit · 4+</button>
+    <span class="search-wrap"><input class="search" type="search" id="searchInput" placeholder="Search · name, medium, work"></span>
   </div>
 
   <!-- Discoveries section -->
   <section id="discoveries-section" class="discoveries-section" hidden>
     <div class="section-head">
-      <h2 class="section-title">Recent <em>Discoveries</em></h2>
-      <span class="section-meta" id="discoveries-meta">Surfaced today by the daily scanner</span>
+      <div class="eyebrow">
+        <span class="num">02</span>
+        <span class="lbl">Discoveries</span>
+        <span class="line"></span>
+        <span class="meta" id="discoveries-meta">Surfaced today by the daily scanner</span>
+      </div>
+      <h2 class="section-title">Recent <em>candidates</em>.</h2>
     </div>
     <div class="discovery-grid" id="discoveryGrid"></div>
   </section>
 
-  <!-- Section header -->
+  <!-- Directory section header -->
   <div class="section-head">
-    <h2 class="section-title">The <em>Directory</em></h2>
-    <span class="section-meta">Sequenced by tier &amp; fit · 21 entries</span>
+    <div class="eyebrow">
+      <span class="num">02</span>
+      <span class="lbl">The Directory</span>
+      <span class="line"></span>
+      <span class="meta">Sequenced by tier &amp; fit · 21 entries</span>
+    </div>
+    <h2 class="section-title">The <em>directory</em>.</h2>
   </div>
 
   <!-- Cards grid -->
@@ -647,8 +658,13 @@ body {
   <!-- Events section -->
   <section id="events-section" class="events-section" hidden>
     <div class="section-head">
-      <h2 class="section-title">Upcoming <em>Events</em></h2>
-      <span class="section-meta">Sacramento art calendar — refreshed daily</span>
+      <div class="eyebrow">
+        <span class="num">03</span>
+        <span class="lbl">Upcoming Events</span>
+        <span class="line"></span>
+        <span class="meta">Sacramento art calendar · refreshed daily</span>
+      </div>
+      <h2 class="section-title">What's <em>on</em>.</h2>
     </div>
     <ul class="event-list" id="eventList"></ul>
   </section>
@@ -657,18 +673,18 @@ body {
   <footer class="footer">
     <div>
       <h4>About this brief</h4>
-      <p>Compiled by UpperCloud Studio for Johnny &amp; the Arden Fair UnchARTed program. Each entry is graded on a four-axis fit score (style, scale, audience, availability) and accompanied by two visual references from the artist's recent portfolio.</p>
+      <p>Compiled by UpperCloud Studio for the Arden Fair UnchARTed program. Each entry is graded on a four-axis fit score — style, scale, audience, availability — and accompanied by two visual references from the artist's recent portfolio.</p>
       <p class="footer-meta">Field Brief · No. 014 · Cycle 2026</p>
     </div>
     <div>
       <h4>How to use this</h4>
-      <p>Filter by tier or medium to narrow shortlists. Each card links out to the artist's primary portfolio. The directory is fully self-contained — open it offline, print it, or share the file.</p>
-      <p class="footer-meta">Visual references are stylized previews. Replace with real photographs by running <code>python inject_images.py</code> with images placed in <code>local_files/</code>.</p>
+      <p>Filter by tier or medium to narrow shortlists. Each card links out to the artist's primary portfolio. The directory is self-contained — open offline, print, or share the file.</p>
+      <p class="footer-meta">Visual references regenerated by the <code>/refresh</code> pipeline. Real photos populate as the daily scrape resolves them.</p>
     </div>
     <div>
       <h4>Contact</h4>
       <p>UpperCloud Studio<br>Sacramento, California<br>hello@uppercloud.studio</p>
-      <p class="footer-meta"><b>Brief authored</b> · 2026·05·07<br><b>Doc version</b> · 1.0.0</p>
+      <p class="footer-meta"><b>Authored</b> · {{LAST_REVIEWED}} &nbsp;·&nbsp; <b>Version</b> · 1.0.0</p>
     </div>
   </footer>
 
@@ -742,7 +758,7 @@ function renderCard(a) {
           </dd>
         </div>
       </dl>
-      <p class="card-summary" style="font-size:12.5px;margin:10px 0 0;color:var(--ink-soft);font-style:italic">${a.suitability}</p>
+      <p class="card-summary" style="font-size:12px;margin:10px 0 0;color:var(--ink-2);font-style:italic">${a.suitability}</p>
       <div class="card-foot">
         <a class="card-link" href="${a.primaryUrl}" target="_blank" rel="noopener">${a.primaryHost}</a>
         <div class="card-tags">${tags}</div>
