@@ -201,3 +201,70 @@ def extract_image_candidates(html: str, base_url: str, max_count: int = 12) -> l
 
 def polite_delay(seconds: float = 0.5) -> None:
     time.sleep(seconds)
+
+
+_MONTH_MAP = {
+    "jan": 1, "january": 1, "feb": 2, "february": 2, "mar": 3, "march": 3,
+    "apr": 4, "april": 4, "may": 5, "jun": 6, "june": 6, "jul": 7, "july": 7,
+    "aug": 8, "august": 8, "sep": 9, "sept": 9, "september": 9,
+    "oct": 10, "october": 10, "nov": 11, "november": 11, "dec": 12, "december": 12,
+}
+
+
+def parse_event_date(date_raw: str, today=None) -> str | None:
+    """Parse a scraped date string to ISO YYYY-MM-DD.
+
+    Handles: "May 9", "May 09, 2026", "5/15", "5/15/2026", "2026-06-01".
+    For dates without a year, assumes current year; if that puts the date
+    in the past, bumps to next year (calendars surface upcoming events).
+    Returns None for strings it can't parse.
+    """
+    if not date_raw:
+        return None
+    from datetime import date
+    today = today or date.today()
+    s = date_raw.strip()
+
+    # ISO: 2026-05-15
+    m = re.match(r"^(\d{4})-(\d{2})-(\d{2})", s)
+    if m:
+        try:
+            return date(int(m.group(1)), int(m.group(2)), int(m.group(3))).isoformat()
+        except ValueError:
+            return None
+
+    # MM/DD or MM/DD/YYYY (or YY)
+    m = re.match(r"^(\d{1,2})/(\d{1,2})(?:/(\d{2,4}))?\b", s)
+    if m:
+        try:
+            month, day = int(m.group(1)), int(m.group(2))
+            year_str = m.group(3)
+            year = int(year_str) if year_str else today.year
+            if year < 100:
+                year += 2000
+            d = date(year, month, day)
+            if not year_str and d < today:
+                d = date(today.year + 1, month, day)
+            return d.isoformat()
+        except ValueError:
+            return None
+
+    # "May 9" / "May 09, 2026" / "September 1"
+    m = re.match(r"^([A-Za-z]+)\.?\s+(\d{1,2})(?:,\s*(\d{4}))?", s)
+    if m:
+        month_str = m.group(1).lower()
+        if month_str not in _MONTH_MAP:
+            return None
+        try:
+            month = _MONTH_MAP[month_str]
+            day = int(m.group(2))
+            year_str = m.group(3)
+            year = int(year_str) if year_str else today.year
+            d = date(year, month, day)
+            if not year_str and d < today:
+                d = date(today.year + 1, month, day)
+            return d.isoformat()
+        except ValueError:
+            return None
+
+    return None

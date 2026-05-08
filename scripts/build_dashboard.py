@@ -17,7 +17,7 @@ import argparse
 import json
 from datetime import date
 
-from .common import ROOT, TEMPLATES, DATA, load_json, logger, setup_logging
+from .common import ROOT, TEMPLATES, DATA, load_json, logger, parse_event_date, setup_logging
 
 
 def merge_artist_images(artists: list[dict], images: dict) -> list[dict]:
@@ -42,19 +42,50 @@ def merge_artist_images(artists: list[dict], images: dict) -> list[dict]:
     return out
 
 
+def effective_rec(c: dict) -> str:
+    """manual_override > score.proceed_recommendation > 'pending'."""
+    if c.get("manual_override"):
+        return c["manual_override"]
+    score = c.get("score") or {}
+    return score.get("proceed_recommendation") or "pending"
+
+
+def filter_and_sort_events(events: list[dict]) -> list[dict]:
+    """Drop events whose parsed date is in the past; sort upcoming first.
+
+    Backfills `date_iso` from `date_raw` on the fly for older events.json
+    entries that were scraped before the parser existed. Events whose date
+    can't be parsed are dropped — they're usually calendar-widget noise.
+    """
+    today_iso = str(date.today())
+    upcoming = []
+    for e in events:
+        iso = e.get("date_iso") or parse_event_date(e.get("date_raw") or "")
+        if not iso or iso < today_iso:
+            continue
+        e = dict(e)
+        e["date_iso"] = iso
+        upcoming.append(e)
+    upcoming.sort(key=lambda e: e["date_iso"])
+    return upcoming
+
+
 def filter_discoveries_for_display(discoveries: list[dict]) -> list[dict]:
-    """Show only candidates we'd actually surface to the user."""
+    """Show only candidates we'd actually surface to the user.
+
+    Hides 'reject' (off-fit) and 'existing' (already in roster); both stay in
+    the JSON so the override sticks across runs.
+    """
+    REC_ORDER = {"add": 0, "watch": 1, "pending": 2}
     keepers = []
     for c in discoveries:
-        score = c.get("score") or {}
-        # Reject suggestions filtered out by Claude
-        if score.get("proceed_recommendation") == "reject":
+        rec = effective_rec(c)
+        if rec in ("reject", "existing"):
             continue
         keepers.append(c)
-    # Recently scored / unscored first; cap to a reasonable number
     keepers.sort(key=lambda c: (
-        0 if c.get("score") else 1,
-        -(c.get("score", {}).get("family_fit", 0) or 0),
+        REC_ORDER.get(effective_rec(c), 3),
+        -((c.get("score") or {}).get("family_fit", 0) or 0),
         c.get("first_seen", ""),
     ))
     return keepers[:24]
@@ -77,7 +108,7 @@ def main():
 
     artists = merge_artist_images(artists_raw, images)
     discoveries = filter_discoveries_for_display(discoveries_blob.get("candidates", []))
-    events = events_blob.get("events", [])
+    events = filter_and_sort_events(events_blob.get("events", []))
 
     # Render the JS data blocks
     artists_js = f"const ARTISTS = {json.dumps(artists, indent=2, ensure_ascii=False)};"
