@@ -142,10 +142,21 @@ def main():
         logger.info("no candidates to score")
         return
 
+    # Honor manual overrides — never re-score these, and add reject/existing
+    # to rejected_slugs so future discovery passes skip them.
+    rejected = set(discoveries.get("rejected_slugs", []))
+    for c in candidates:
+        if c.get("manual_override") in ("reject", "existing"):
+            rejected.add(c["slug"])
+    discoveries["rejected_slugs"] = sorted(rejected)
+
     scored_count = 0
     for c in candidates:
         if scored_count >= args.max:
             break
+        if c.get("manual_override"):
+            logger.info("[skip] %s (manual_override=%s)", c["name"], c["manual_override"])
+            continue
         if c.get("score") and not args.rescore:
             continue
 
@@ -161,6 +172,7 @@ def main():
         save_json(DATA / "discoveries.json", discoveries)
         time.sleep(0.4)
 
+    save_json(DATA / "discoveries.json", discoveries)  # persist rejected_slugs even if 0 scored
     logger.info("[done] scored %d candidate(s)", scored_count)
 
 
