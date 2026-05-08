@@ -457,3 +457,68 @@ def parse_event_date(date_raw: str, today=None) -> str | None:
             return None
 
     return None
+
+
+# QC: scraped headings often pick up calendar widgets, UI chrome, or help text
+# instead of real event titles. These rules reject the obvious non-events so
+# they never reach the dashboard.
+
+_JUNK_TITLE_LITERALS = {
+    "recurring", "featured", "upcoming", "today", "tomorrow", "tonight",
+    "this week", "this weekend", "next week", "all events", "all-events",
+    "calendar", "events calendar", "view all", "see all events", "see more",
+    "more events", "load more", "next", "previous", "prev",
+    "no events", "no results",
+}
+
+_DOW_TOKENS = {
+    "su", "mo", "tu", "we", "th", "fr", "sa",
+    "sun", "mon", "tue", "tues", "wed", "thu", "thur", "thurs", "fri", "sat",
+    "sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday",
+}
+
+_INSTRUCTION_PHRASES = re.compile(
+    r"\b(?:best navigated|if one types|please (?:click|select|enter|use)|"
+    r"click here|use the (?:arrows|calendar|filter)|enter the date|"
+    r"select a date|navigate the calendar)\b",
+    re.I,
+)
+
+
+def is_quality_event_title(title: str) -> bool:
+    """Return True iff ``title`` looks like a real event name.
+
+    Rejects pure date/time strings ("May 9 @ 11:00 am - 2:00 pm"), UI labels
+    ("Recurring"), calendar widget headers ("December 2020"), day-of-week
+    grids ("Su Mo Tu We Th Fr Sa"), and instruction/help text.
+    """
+    if not title:
+        return False
+    t = title.strip()
+    if len(t) < 6:
+        return False
+    low = t.lower()
+    if low in _JUNK_TITLE_LITERALS:
+        return False
+    if _INSTRUCTION_PHRASES.search(low):
+        return False
+
+    # Strip every date/time/month/dow token, then check what real words remain.
+    stripped = low
+    stripped = re.sub(r"\d{4}-\d{2}-\d{2}", " ", stripped)
+    stripped = re.sub(r"\d{1,2}/\d{1,2}(?:/\d{2,4})?", " ", stripped)
+    stripped = re.sub(r"\d{1,2}:\d{2}\s*(?:am|pm)?", " ", stripped)
+    months = "|".join(_MONTH_MAP.keys())
+    stripped = re.sub(rf"\b(?:{months})\b\.?", " ", stripped)
+    stripped = re.sub(r"\b(?:am|pm)\b", " ", stripped)
+    stripped = re.sub(r"[\d@:,\-–—]+", " ", stripped)
+    words = [w for w in re.findall(r"[a-z][a-z']+", stripped) if w not in _DOW_TOKENS]
+    if len(words) < 2:
+        return False
+
+    return True
+
+
+def is_quality_event(event: dict) -> bool:
+    """Top-level QC for a scraped event dict. Currently delegates to title QC."""
+    return is_quality_event_title(event.get("title", ""))
