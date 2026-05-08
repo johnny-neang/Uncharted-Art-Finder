@@ -1,0 +1,90 @@
+# Sacramento Artist Directory — UpperCloud Studio
+
+A self-updating dashboard cataloging Sacramento-area artists and art agencies for the Arden Fair UnchARTed program. The pipeline runs **in Claude Code** when you ask for it; the dashboard lives at a public **GitHub Pages URL** so you can show it to anyone, anywhere.
+
+## How you use it
+
+When you want fresh data, open this repo in Claude Code and type:
+
+```
+/refresh
+```
+
+That kicks off the pipeline — re-scrape rosters, score new candidates against your Claude subscription, scrape upcoming events, rebuild the dashboard, push to the repo. GitHub Pages auto-deploys within ~30 seconds.
+
+Then visit:
+
+**<https://johnny-neang.github.io/Uncharted-Art-Finder/>**
+
+That's it. No cron, no Mac setup, no API keys. You only run `/refresh` when you actually want fresh data — before a client meeting, when you remember, every couple weeks.
+
+## What the pipeline does
+
+1. **Refreshes roster images** for the 21 canonical artists (re-scrapes their primary site / gallery rep / press page for two representative work photos)
+2. **Discovers new artist candidates** from Wide Open Walls, Branded Arts, Groundswell, and Kevin Barry rosters — anyone not already in the canon
+3. **Scores each new candidate** by calling Claude headlessly via the `claude` CLI: structured output covering Sacramento connection, family-mall fit, mural capacity, suggested tier, and an `add` / `watch` / `reject` recommendation. **Auth is your existing Pro/Max subscription — no API key, no per-token cost.**
+4. **Scrapes upcoming events** from Sacramento365, Wide Open Walls, Crocker Art Museum, Verge
+5. **Generates a daily markdown digest** at `data/digests/YYYY-MM-DD.md`
+6. **Rebuilds `index.html`** from data files
+7. **Commits + pushes** the updated data and dashboard. GitHub Actions takes over from there and deploys to Pages.
+
+## What's here
+
+```
+.claude/commands/
+  refresh.md                     /refresh slash command — the only thing you invoke
+.github/workflows/
+  deploy-pages.yml               auto-publishes index.html to GH Pages on every push
+scripts/                         pipeline modules
+  common.py                      shared HTTP / image / path helpers
+  refresh_images.py              re-fetches photos for the canonical roster
+  discover_artists.py            scans rosters for new artist candidates
+  scrape_events.py               scrapes Sacramento art-event calendars
+  score_with_claude.py           Claude Code CLI scoring (subscription auth)
+  build_dashboard.py             renders index.html from data/
+  build_digest.py                daily markdown digest
+  run_daily.py                   orchestrator
+data/
+  artists.json                   canonical roster (21 artists/agencies)
+  artist_images.json             cached photos (base64 data URIs)
+  discoveries.json               queue of new candidates with Claude scores
+  events.json                    upcoming events
+  sources.json                   config: which URLs to scan
+  digests/YYYY-MM-DD.md          daily digest archive
+templates/
+  dashboard.html.tmpl            HTML template with {{...}} markers
+  svg_library.js                 hand-tuned SVG illustrations (fallback art)
+index.html                       generated dashboard, served by Pages
+requirements.txt                 Python deps (auto-installed in Claude Code sandbox)
+```
+
+## One-time setup
+
+In repo settings (one-time, ~30 seconds):
+
+**Settings → Pages → Build and deployment → Source: GitHub Actions**
+
+That's the entire setup. After that, every push to `main` triggers the `deploy-pages` workflow which publishes `index.html` to your Pages URL.
+
+## Promoting a discovery to the canonical roster
+
+Each `/refresh` run produces a digest summarizing what surfaced — new candidates with `add` / `watch` / `reject` recommendations from Claude. To promote one to the canonical 21-artist roster:
+
+Just ask in Claude Code: *"Promote Maya Vu from discoveries to the roster, tier 2."*
+
+I'll edit `data/artists.json`, remove them from `data/discoveries.json`, and run `/refresh` again. Or you can edit by hand using the existing entries as templates (`slug`, `name`, `tier`, `kind`, `medium`, `tags`, `summary`, `fit`, `suitability`, `primaryUrl`, `primaryHost`, `thumbs`).
+
+## Why this works
+
+- **Claude Code on the web uses your Pro/Max subscription** — same auth as anywhere else you use Claude. The `claude -p` headless invocation in `score_with_claude.py` is just shelling out to the same authenticated CLI.
+- **The pipeline is git-native** — all state lives in `data/*.json`. Each run produces a clean diff. History is in the commit log.
+- **GitHub Pages is free and fast** — and gives you a real URL to share with clients.
+- **No infra to maintain** — no Anthropic API key, no Vercel project, no cron job, no Supabase, no Mac launchd. The only moving piece is GitHub Actions for the Pages deploy, which is a 25-line YAML.
+
+## Brand
+
+UpperCloud Studio editorial style — warm cream paper (#F5F1EA), Iowan Old Style serif headlines, Inter for UI, JetBrains Mono for metadata, with a deep gold (#B68A3F) and atmospheric sky-blue (#466F95) accent system.
+
+---
+
+UpperCloud Studio · Field Brief No. 014

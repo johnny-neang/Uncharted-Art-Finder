@@ -1,0 +1,68 @@
+{
+  "discovery_sources": [
+    {
+      "name": "Wide Open Walls roster",
+      "url": "https://www.wideopenwalls.com/artists/",
+      "kind": "roster",
+      "selector_hint": "links to /artists/<slug>/"
+    },
+    {
+      "name": "Branded Arts roster",
+      "url": "https://brandedarts.com/artists/",
+      "kind": "roster",
+      "selector_hint": "links to /art/<slug>/"
+    },
+    {
+      "name": "Groundswell Art roster",
+      "url": "https://www.groundswellart.com/artists",
+      "kind": "roster",
+      "selector_hint": "artist cards"
+    },
+    {
+      "name": "Kevin Barry Art Advisory",
+      "url": "https://kevinbarry.com/artists/",
+      "kind": "roster",
+      "selector_hint": "artist directory"
+    },
+    {
+      "name": "Sactown Magazine — Arts",
+      "url": "https://sactownmag.com/category/arts/",
+      "kind": "press",
+      "selector_hint": "article tag pages"
+    },
+    {
+      "name": "Comstock's Magazine — Arts",
+      "url": "https://comstocksmag.com/category/arts",
+      "kind": "press",
+      "selector_hint": "article tag pages"
+    },
+    {
+      "name": "Sacramento News & Review — Arts",
+      "url": "https://sacramento.newsreview.com/category/arts/",
+      "kind": "press",
+      "selector_hint": "article tag pages"
+    }
+  ],
+  "event_sources": [
+    {
+      "name": "Sacramento365 — Arts events",
+      "url": "https://www.sacramento365.com/events/?category=arts-culture",
+      "kind": "calendar"
+    },
+    {
+      "name": "Wide Open Walls events",
+      "url": "https://www.wideopenwalls.com/events/",
+      "kind": "calendar"
+    },
+    {
+      "name": "Crocker Art Museum",
+      "url": "https://www.crockerart.org/calendar",
+      "kind": "calendar"
+    },
+    {
+      "name": "Verge Center for the Arts",
+      "url": "https://www.vergeart.com/exhibitions",
+      "kind": "calendar"
+    }
+  ]
+}

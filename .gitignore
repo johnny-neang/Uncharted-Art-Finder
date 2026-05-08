@@ -1,0 +1,16 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.venv/
+venv/
+
+# Pipeline scratch
+fetch.log
+data/_*.json
+.DS_Store
+
+# Local Claude Code settings (user-specific permissions, etc.)
+# but DO commit project-level slash commands
+.claude/settings.local.json

@@ -1,0 +1,644 @@
+[
+  {
+    "n": 1,
+    "slug": "valenzuela",
+    "name": "Bryan Valenzuela",
+    "tier": 1,
+    "kind": "Artist · Sacramento",
+    "medium": "Mural · Mixed-media on canvas · Glass installation",
+    "tags": [
+      "mural",
+      "studio",
+      "figurative",
+      "editorial"
+    ],
+    "summary": "Figurative-text artist whose work weaves dense passages of handwritten language into the contours of a human figure. Created the Arden Fair UnchARTed flagship piece in 2021.",
+    "fit": 5,
+    "suitability": "Native to the program. Returning artist would anchor any 2026 cycle.",
+    "primaryUrl": "http://www.bryanvalenzuela.com/murals",
+    "primaryHost": "bryanvalenzuela.com",
+    "thumbs": [
+      {
+        "svg": "valenzuela_text",
+        "label": "Text-figure"
+      },
+      {
+        "svg": "valenzuela_orbs",
+        "label": "G1C glass"
+      }
+    ],
+    "addedAt": "2026-05-07",
+    "status": "active"
+  },
+  {
+    "n": 2,
+    "slug": "conrad",
+    "name": "Maren Conrad",
+    "tier": 1,
+    "kind": "Artist · Sacramento",
+    "medium": "Mural · Resin · Encaustic",
+    "tags": [
+      "mural",
+      "studio",
+      "figurative",
+      "botanical"
+    ],
+    "summary": "Painterly muralist working at architectural scale; signature pieces include the MARRS koi mural and a Lady Bird portrait. Strong civic-minded brand visibility.",
+    "fit": 5,
+    "suitability": "Naturalistic motifs and warm palette read well in family-retail. Proven scale.",
+    "primaryUrl": "https://www.marenconrad.com/marrs",
+    "primaryHost": "marenconrad.com",
+    "thumbs": [
+      {
+        "svg": "conrad_koi",
+        "label": "Koi (MARRS)"
+      },
+      {
+        "svg": "conrad_ladybird",
+        "label": "Lady Bird"
+      }
+    ],
+    "addedAt": "2026-05-07",
+    "status": "active"
+  },
+  {
+    "n": 3,
+    "slug": "lc_studio",
+    "name": "LC Studio Tutto",
+    "tier": 1,
+    "kind": "Studio · Sacramento + Yountville",
+    "medium": "Mural · Site-specific · Public art",
+    "tags": [
+      "mural",
+      "public",
+      "environmental"
+    ],
+    "summary": "Husband-and-wife studio (Lin-Fei Fei + Cody) producing painterly, place-attentive commissions. Bright Underbelly underpass and Memory of a Tree are signature wins.",
+    "fit": 5,
+    "suitability": "Place-conscious approach is a strong fit for a Sacramento-anchored mall identity.",
+    "primaryUrl": "https://www.studio-tutto.com",
+    "primaryHost": "studio-tutto.com",
+    "thumbs": [
+      {
+        "svg": "lc_underbelly",
+        "label": "Bright Underbelly"
+      },
+      {
+        "svg": "lc_treememory",
+        "label": "Memory of Tree"
+      }
+    ],
+    "addedAt": "2026-05-07",
+    "status": "active"
+  },
+  {
+    "n": 4,
+    "slug": "delgado",
+    "name": "Raphael Delgado",
+    "tier": 1,
+    "kind": "Artist · Sacramento",
+    "medium": "Mural · Painting · Cubist figurative",
+    "tags": [
+      "mural",
+      "studio",
+      "figurative",
+      "cubist"
+    ],
+    "summary": "Geometric figurative painter; California Bear at 1413 21st Street is the most recognizable single image in his catalog. Fast turn-around, clear visual identity.",
+    "fit": 4,
+    "suitability": "Iconic shapes translate well to wayfinding-adjacent murals.",
+    "primaryUrl": "https://artbyraphael.com",
+    "primaryHost": "artbyraphael.com",
+    "thumbs": [
+      {
+        "svg": "delgado_bear",
+        "label": "California Bear"
+      },
+      {
+        "svg": "delgado_cubist",
+        "label": "Cubist abstract"
+      }
+    ],
+    "addedAt": "2026-05-07",
+    "status": "active"
+  },
+  {
+    "n": 5,
+    "slug": "garibaldi",
+    "name": "David Garibaldi",
+    "tier": 1,
+    "kind": "Artist · Sacramento",
+    "medium": "Live-performance painting · Pop portraiture",
+    "tags": [
+      "live",
+      "studio",
+      "performance",
+      "portrait"
+    ],
+    "summary": "Internationally known performance painter — the kind of name that draws crowds. Pop-portrait canvases (KISS, Mick Jagger, etc.) carry his commercial brand.",
+    "fit": 4,
+    "suitability": "Live activation potential is a major asset for retail programming.",
+    "primaryUrl": "https://garibaldiarts.com",
+    "primaryHost": "garibaldiarts.com",
+    "thumbs": [
+      {
+        "svg": "garibaldi_live",
+        "label": "Live paint"
+      },
+      {
+        "svg": "garibaldi_pop",
+        "label": "Pop portrait"
+      }
+    ],
+    "addedAt": "2026-05-07",
+    "status": "active"
+  },
+  {
+    "n": 6,
+    "slug": "king",
+    "name": "Jaya King",
+    "tier": 1,
+    "kind": "Artist · Sacramento",
+    "medium": "Mural · Encaustic painting",
+    "tags": [
+      "mural",
+      "studio",
+      "abstract",
+      "encaustic"
+    ],
+    "summary": "Quilted-pattern muralist (21st Tapestry, Franklin NDC) and exhibiting encaustic painter. Pattern work has a refined, design-savvy feel.",
+    "fit": 5,
+    "suitability": "Pattern-led abstraction suits a non-figurative anchor wall well.",
+    "primaryUrl": "https://www.jayasart.com/muralsbyjaya",
+    "primaryHost": "jayasart.com",
+    "thumbs": [
+      {
+        "svg": "king_tapestry",
+        "label": "21st Tapestry"
+      },
+      {
+        "svg": "king_encaustic",
+        "label": "Encaustic"
+      }
+    ],
+    "addedAt": "2026-05-07",
+    "status": "active"
+  },
+  {
+    "n": 7,
+    "slug": "grigio",
+    "name": "Grigio Art Consulting",
+    "tier": 1,
+    "kind": "Agency · Sacramento",
+    "medium": "Curation · Procurement · Installation",
+    "tags": [
+      "agency",
+      "curation",
+      "studio"
+    ],
+    "summary": "Art-consulting agency with a Sacramento footprint (Kaiser DOCO, KPSSAC). Best fit if Arden Fair wants a managed multi-artist rollout instead of single commissions.",
+    "fit": 4,
+    "suitability": "Right partner if program needs end-to-end curation rather than artist-by-artist.",
+    "primaryUrl": "https://www.grigioart.com/portfolio",
+    "primaryHost": "grigioart.com",
+    "thumbs": [
+      {
+        "svg": "grigio_curated",
+        "label": "Curated wall"
+      },
+      {
+        "svg": "grigio_healthcare",
+        "label": "Healthcare"
+      }
+    ],
+    "addedAt": "2026-05-07",
+    "status": "active"
+  },
+  {
+    "n": 8,
+    "slug": "di_gregorio",
+    "name": "Jose Di Gregorio",
+    "tier": 2,
+    "kind": "Artist · Sacramento",
+    "medium": "Mural · Painting on panel",
+    "tags": [
+      "mural",
+      "studio",
+      "abstract",
+      "geometric"
+    ],
+    "summary": "Geometric & celestial abstraction; kaleidoscopic patterns and night-sky motifs. Refined edge-on-edge color work.",
+    "fit": 4,
+    "suitability": "Strong for ceilings, columns, or wayfinding accents.",
+    "primaryUrl": "https://www.josedigregorio.com",
+    "primaryHost": "josedigregorio.com",
+    "thumbs": [
+      {
+        "svg": "digregorio_kaleido",
+        "label": "Kaleidoscope"
+      },
+      {
+        "svg": "digregorio_celestial",
+        "label": "Geometric"
+      }
+    ],
+    "addedAt": "2026-05-07",
+    "status": "active"
+  },
+  {
+    "n": 9,
+    "slug": "crandall_bear",
+    "name": "Micah Crandall-Bear",
+    "tier": 2,
+    "kind": "Artist · Sacramento",
+    "medium": "Acrylic on canvas",
+    "tags": [
+      "studio",
+      "abstract",
+      "color-field"
+    ],
+    "summary": "Color-field horizon abstractions — atmospheric, gallery-grade canvases. Less mural-oriented but highly purchasable.",
+    "fit": 4,
+    "suitability": "Better for rotating gallery walls or hospitality-tier interiors than for permanent murals.",
+    "primaryUrl": "http://www.micahcrandallbear.com",
+    "primaryHost": "micahcrandallbear.com",
+    "thumbs": [
+      {
+        "svg": "crandall_field",
+        "label": "Color field"
+      },
+      {
+        "svg": "crandall_horizon",
+        "label": "Horizon"
+      }
+    ],
+    "addedAt": "2026-05-07",
+    "status": "active"
+  },
+  {
+    "n": 10,
+    "slug": "hart",
+    "name": "Gale Hart",
+    "tier": 2,
+    "kind": "Artist · Sacramento",
+    "medium": "Sculpture · Painting",
+    "tags": [
+      "studio",
+      "sculpture",
+      "pop",
+      "conceptual"
+    ],
+    "summary": "Multidisciplinary; Missing the Mark (Golden 1 Center darts) sets the tone — pop-conceptual with a sharp wit.",
+    "fit": 3,
+    "suitability": "Conceptual edge may be too sharp for a family mall — selective use only.",
+    "primaryUrl": "https://galehart.com",
+    "primaryHost": "galehart.com",
+    "thumbs": [
+      {
+        "svg": "hart_missingmark",
+        "label": "Missing Mark"
+      },
+      {
+        "svg": "hart_popsculpt",
+        "label": "Pop sculpt"
+      }
+    ],
+    "addedAt": "2026-05-07",
+    "status": "active"
+  },
+  {
+    "n": 11,
+    "slug": "taylor",
+    "name": "Stephanie Taylor",
+    "tier": 2,
+    "kind": "Artist · Sacramento",
+    "medium": "Mural · Public commission",
+    "tags": [
+      "mural",
+      "historical",
+      "figurative",
+      "civic"
+    ],
+    "summary": "Long-time Sacramento public-mural artist; Dance: A Tribute and a roster of city-historical pieces.",
+    "fit": 4,
+    "suitability": "Civic-leaning storytelling — a heritage-tone counterweight to the contemporary roster.",
+    "primaryUrl": "https://stephanietaylorart.com/portfolio/sacramento/",
+    "primaryHost": "stephanietaylorart.com",
+    "thumbs": [
+      {
+        "svg": "taylor_dance",
+        "label": "Dance tribute"
+      },
+      {
+        "svg": "taylor_historic",
+        "label": "Historic scene"
+      }
+    ],
+    "addedAt": "2026-05-07",
+    "status": "active"
+  },
+  {
+    "n": 12,
+    "slug": "gamez",
+    "name": "Franceska Gamez",
+    "tier": 2,
+    "kind": "Artist · Sacramento",
+    "medium": "Mural · Painting",
+    "tags": [
+      "mural",
+      "studio",
+      "figurative",
+      "botanical"
+    ],
+    "summary": "Floral-portraiture and phoenix iconography; Wide Open Walls and Branded Arts roster artist.",
+    "fit": 4,
+    "suitability": "Lush palette translates well to high-traffic walls; Branded Arts rep simplifies booking.",
+    "primaryUrl": "https://brandedarts.com/art/franceska-gamez/",
+    "primaryHost": "brandedarts.com",
+    "thumbs": [
+      {
+        "svg": "gamez_phoenix",
+        "label": "Phoenix"
+      },
+      {
+        "svg": "gamez_floral",
+        "label": "Floral portrait"
+      }
+    ],
+    "addedAt": "2026-05-07",
+    "status": "active"
+  },
+  {
+    "n": 13,
+    "slug": "burner",
+    "name": "Shaun Burner",
+    "tier": 2,
+    "kind": "Artist · Sacramento",
+    "medium": "Mural · Symbolist painting",
+    "tags": [
+      "mural",
+      "studio",
+      "figurative",
+      "symbolist"
+    ],
+    "summary": "Surrealist / symbolist painter; Betty Inada jazz mural is the public landmark. Branded Arts rep.",
+    "fit": 3,
+    "suitability": "Strong portraiture but darker symbolist work needs careful curation for a mall context.",
+    "primaryUrl": "https://brandedarts.com/art/shaun-burner/",
+    "primaryHost": "brandedarts.com",
+    "thumbs": [
+      {
+        "svg": "burner_jazz",
+        "label": "Jazz portrait"
+      },
+      {
+        "svg": "burner_symbolist",
+        "label": "Symbolist"
+      }
+    ],
+    "addedAt": "2026-05-07",
+    "status": "active"
+  },
+  {
+    "n": 14,
+    "slug": "kille",
+    "name": "Jeremiah Kille",
+    "tier": 2,
+    "kind": "Artist · Santa Cruz / Groundswell roster",
+    "medium": "Painting on panel",
+    "tags": [
+      "studio",
+      "figurative",
+      "surreal"
+    ],
+    "summary": "Surreal painter — elephants, hot-air-balloon landscapes — represented through Groundswell's Fort Sutter gallery.",
+    "fit": 4,
+    "suitability": "Whimsical surrealism — works well as conversation pieces in interior wayfinding.",
+    "primaryUrl": "https://www.groundswellart.com/groundswell-gallery-at-fort-sutter-hotel-jeremiah-kille",
+    "primaryHost": "groundswellart.com",
+    "thumbs": [
+      {
+        "svg": "kille_elephant",
+        "label": "Elephant"
+      },
+      {
+        "svg": "kille_balloons",
+        "label": "Balloons"
+      }
+    ],
+    "addedAt": "2026-05-07",
+    "status": "active"
+  },
+  {
+    "n": 15,
+    "slug": "padilla",
+    "name": "Anthony Padilla",
+    "tier": 2,
+    "kind": "Artist · Sacramento (Kinetik Ideas)",
+    "medium": "Aerosol mural · Character work",
+    "tags": [
+      "mural",
+      "aerosol",
+      "character"
+    ],
+    "summary": "Aerosol-trained character & abstract muralist; vibrant, kid-friendly when leveraged that way.",
+    "fit": 4,
+    "suitability": "Character work is family-mall friendly; can scale to corridor-length pieces.",
+    "primaryUrl": "http://www.kinetikideas.com",
+    "primaryHost": "kinetikideas.com",
+    "thumbs": [
+      {
+        "svg": "padilla_character",
+        "label": "Character"
+      },
+      {
+        "svg": "padilla_color",
+        "label": "Color horizon"
+      }
+    ],
+    "addedAt": "2026-05-07",
+    "status": "active"
+  },
+  {
+    "n": 16,
+    "slug": "huerta",
+    "name": "John S. Huerta",
+    "tier": 2,
+    "kind": "Artist · Sacramento",
+    "medium": "Mural · Día de los Muertos imagery",
+    "tags": [
+      "mural",
+      "cultural",
+      "portrait"
+    ],
+    "summary": "Frida Kahlo mural at 24th & K is the calling-card piece; broad Día de los Muertos and Latin-cultural visual vocabulary.",
+    "fit": 4,
+    "suitability": "Strong cultural-moment programming — pair with a fall / Día de los Muertos activation.",
+    "primaryUrl": "https://viva-frida.com",
+    "primaryHost": "viva-frida.com",
+    "thumbs": [
+      {
+        "svg": "huerta_frida",
+        "label": "Frida"
+      },
+      {
+        "svg": "huerta_diamuertos",
+        "label": "Día Muertos"
+      }
+    ],
+    "addedAt": "2026-05-07",
+    "status": "active"
+  },
+  {
+    "n": 17,
+    "slug": "horner",
+    "name": "Waylon Horner",
+    "tier": 2,
+    "kind": "Artist · Sacramento (Branded Arts)",
+    "medium": "Mural · Cartoon · Surreal",
+    "tags": [
+      "mural",
+      "cartoon",
+      "surreal",
+      "family"
+    ],
+    "summary": "Cartoonish, dream-logic mural work — has the brightness of a Saturday-morning aesthetic with adult composition.",
+    "fit": 4,
+    "suitability": "High family-readability; great fit for entrance murals or food-court anchors.",
+    "primaryUrl": "https://brandedarts.com/portfolio_page/waylon-horner/",
+    "primaryHost": "brandedarts.com",
+    "thumbs": [
+      {
+        "svg": "horner_cartoon",
+        "label": "Cartoon"
+      },
+      {
+        "svg": "horner_surreal",
+        "label": "Surreal"
+      }
+    ],
+    "addedAt": "2026-05-07",
+    "status": "active"
+  },
+  {
+    "n": 18,
+    "slug": "skinner",
+    "name": "Skinner",
+    "tier": 2,
+    "kind": "Artist · Sacramento",
+    "medium": "Mural · Painting · Pop bright",
+    "tags": [
+      "mural",
+      "studio",
+      "pop",
+      "character"
+    ],
+    "summary": "Best known for dense mythological imagery; we curate to his lighter, pop-bright work for a family-mall audience. Avoid the heavier metal-adjacent pieces.",
+    "fit": 3,
+    "suitability": "Curate carefully — strong fit if focused on pop-creature pieces, weak if dark mythology surfaces.",
+    "primaryUrl": "https://www.theartofskinner.com/murals",
+    "primaryHost": "theartofskinner.com",
+    "thumbs": [
+      {
+        "svg": "skinner_creature",
+        "label": "Creature"
+      },
+      {
+        "svg": "skinner_pop",
+        "label": "Pop bright"
+      }
+    ],
+    "addedAt": "2026-05-07",
+    "status": "active"
+  },
+  {
+    "n": 19,
+    "slug": "groundswell",
+    "name": "Groundswell Art",
+    "tier": 3,
+    "kind": "Agency · Sacramento",
+    "medium": "Gallery curation · Hospitality + multifamily art programs",
+    "tags": [
+      "agency",
+      "gallery",
+      "curation"
+    ],
+    "summary": "Art consultancy + gallery (Eleanor Apartments install, Fort Sutter Hotel gallery). Strong roster reach across the Sacramento-rooted artist pool.",
+    "fit": 5,
+    "suitability": "Best-in-region curator for a mall-scale program — consider as a primary partner.",
+    "primaryUrl": "https://www.groundswellart.com/eleanor",
+    "primaryHost": "groundswellart.com",
+    "thumbs": [
+      {
+        "svg": "groundswell_gallery",
+        "label": "Gallery"
+      },
+      {
+        "svg": "groundswell_clean",
+        "label": "Clean install"
+      }
+    ],
+    "addedAt": "2026-05-07",
+    "status": "active"
+  },
+  {
+    "n": 20,
+    "slug": "wow",
+    "name": "Wide Open Walls",
+    "tier": 3,
+    "kind": "Festival / Agency · Sacramento",
+    "medium": "Festival production · Mural commissioning",
+    "tags": [
+      "agency",
+      "festival",
+      "mural"
+    ],
+    "summary": "Sacramento's annual mural festival; managed many of the best-known downtown murals. Strong artist pipeline and event-marketing engine.",
+    "fit": 4,
+    "suitability": "Excellent if program is event-led; can deliver multi-artist mural week tied to a festival cycle.",
+    "primaryUrl": "https://www.wideopenwalls.com",
+    "primaryHost": "wideopenwalls.com",
+    "thumbs": [
+      {
+        "svg": "wow_muralcity",
+        "label": "Mural city"
+      },
+      {
+        "svg": "wow_festival",
+        "label": "Festival"
+      }
+    ],
+    "addedAt": "2026-05-07",
+    "status": "active"
+  },
+  {
+    "n": 21,
+    "slug": "ninedot",
+    "name": "NINE dot ARTS",
+    "tier": 3,
+    "kind": "Agency · Denver / national",
+    "medium": "Placemaking · Hospitality + commercial programs",
+    "tags": [
+      "agency",
+      "placemaking",
+      "national"
+    ],
+    "summary": "National art-consulting agency with deep hospitality/multifamily/corporate experience. Bigger budgets and longer timelines than local agencies.",
+    "fit": 3,
+    "suitability": "Use only if scope expands beyond Sacramento-local artists — national reach but lower local rooting.",
+    "primaryUrl": "https://ninedotarts.com",
+    "primaryHost": "ninedotarts.com",
+    "thumbs": [
+      {
+        "svg": "ninedot_logo",
+        "label": "9 dots"
+      },
+      {
+        "svg": "ninedot_placemaking",
+        "label": "Placemaking"
+      }
+    ],
+    "addedAt": "2026-05-07",
+    "status": "active"
+  }
+]

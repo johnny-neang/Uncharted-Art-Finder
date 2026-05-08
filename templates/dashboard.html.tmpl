@@ -1,0 +1,869 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sacramento Artist Directory — Arden Fair UnchARTed · UpperCloud Studio</title>
+<meta name="description" content="A curated directory of 21 Sacramento-area artists and art agencies, evaluated for the Arden Fair UnchARTed program by UpperCloud Studio.">
+<style>
+/* ---------- UpperCloud Brand System ---------- */
+:root {
+  --bg-cream: #F5F1EA;
+  --bg-paper: #FBF8F2;
+  --bg-white: #FFFFFF;
+  --ink: #1A1D24;
+  --ink-soft: #565A66;
+  --ink-faint: #8B8E96;
+  --rule: #DAD4C7;
+  --rule-soft: #ECE7DC;
+  --sky-50: #EAF1F7;
+  --sky-100: #D6E2EE;
+  --sky-300: #88A8C7;
+  --sky-500: #466F95;
+  --sky-700: #2C4A68;
+  --sky-900: #142838;
+  --gold: #B68A3F;
+  --gold-soft: #E0C588;
+  --sun: #E0904A;
+  --terra: #B45A3F;
+  --moss: #6B7B4E;
+
+  --tier1: #B68A3F;
+  --tier2: #466F95;
+  --tier3: #6B7B4E;
+
+  --shadow-card: 0 1px 0 rgba(20,40,56,.04), 0 8px 24px -10px rgba(20,40,56,.10);
+  --shadow-thumb: inset 0 0 0 1px rgba(20,40,56,.06);
+
+  --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, ui-serif, serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: "JetBrains Mono", "SF Mono", ui-monospace, "Cascadia Mono", Menlo, monospace;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--ink);
+  background: var(--bg-cream);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ---------- Layout ---------- */
+.shell { max-width: 1320px; margin: 0 auto; padding: 0 28px; }
+
+/* ---------- Top bar (UpperCloud mark) ---------- */
+.topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: 12px; letter-spacing: .04em;
+}
+.mark {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--serif); font-size: 17px; font-style: italic; font-weight: 500;
+  color: var(--ink); text-decoration: none;
+}
+.mark-glyph { width: 32px; height: 24px; flex: 0 0 32px; }
+.mark-meta { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: .08em; }
+.topbar-right { display: flex; gap: 28px; color: var(--ink-soft); font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+.topbar-right span b { color: var(--ink); font-weight: 500; }
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: 72px 0 56px;
+  border-bottom: 1px solid var(--rule);
+  position: relative;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 48px;
+  align-items: end;
+}
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 22px;
+  display: flex; align-items: center; gap: 14px;
+}
+.eyebrow::before {
+  content: ""; width: 32px; height: 1px; background: var(--gold);
+}
+.eyebrow-num { color: var(--ink-faint); }
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(44px, 6vw, 78px);
+  line-height: 1.02;
+  letter-spacing: -0.012em;
+  margin: 0 0 18px;
+  color: var(--ink);
+  max-width: 14ch;
+}
+.hero h1 em {
+  font-style: italic; color: var(--sky-700);
+}
+.hero-lede {
+  font-size: 17px; line-height: 1.55; color: var(--ink-soft);
+  max-width: 56ch;
+  margin: 0;
+}
+.hero-meta {
+  border: 1px solid var(--rule);
+  background: var(--bg-paper);
+  padding: 24px 24px 22px;
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.hero-meta dl { margin: 0; display: grid; grid-template-columns: 1fr; gap: 14px; }
+.hero-meta dt { color: var(--ink-faint); margin-bottom: 4px; }
+.hero-meta dd {
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--ink);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ---------- Stats strip ---------- */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border-bottom: 1px solid var(--rule);
+}
+.stat {
+  padding: 24px 24px 22px;
+  border-right: 1px solid var(--rule-soft);
+}
+.stat:last-child { border-right: 0; }
+.stat-num {
+  font-family: var(--serif);
+  font-size: 38px;
+  line-height: 1;
+  color: var(--ink);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+.stat-num em { font-style: italic; color: var(--gold); }
+.stat-lbl {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+/* ---------- Filters ---------- */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 22px 0 18px;
+  border-bottom: 1px solid var(--rule-soft);
+  flex-wrap: wrap;
+}
+.toolbar-label {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink-faint);
+  margin-right: 4px;
+}
+.chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px;
+  border: 1px solid var(--rule);
+  background: var(--bg-paper);
+  border-radius: 100px;
+  font-size: 13px;
+  color: var(--ink-soft);
+  cursor: pointer;
+  font-family: var(--sans);
+  font-weight: 500;
+  transition: all .15s;
+  user-select: none;
+}
+.chip:hover { background: var(--bg-white); color: var(--ink); border-color: var(--ink-faint); }
+.chip[aria-pressed="true"] {
+  background: var(--ink); color: var(--bg-cream); border-color: var(--ink);
+}
+.chip .chip-count {
+  font-family: var(--mono); font-size: 10px; opacity: .6; font-weight: 400;
+}
+.search-wrap { margin-left: auto; }
+.search {
+  border: 1px solid var(--rule);
+  background: var(--bg-paper);
+  border-radius: 100px;
+  padding: 7px 16px;
+  font-size: 13px;
+  font-family: var(--sans);
+  color: var(--ink);
+  width: 240px;
+}
+.search:focus { outline: none; border-color: var(--ink); background: var(--bg-white); }
+
+/* ---------- Section title ---------- */
+.section-head {
+  display: flex; align-items: baseline; justify-content: space-between;
+  padding: 56px 0 28px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 32px;
+}
+.section-title {
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: -.01em;
+  margin: 0;
+}
+.section-title em { font-style: italic; color: var(--sky-700); }
+.section-meta { font-family: var(--mono); font-size: 11px; color: var(--ink-faint); letter-spacing: .08em; text-transform: uppercase; }
+
+/* ---------- Card grid ---------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  padding-bottom: 80px;
+}
+@media (max-width: 920px) {
+  .grid { grid-template-columns: 1fr; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .stats { grid-template-columns: repeat(2, 1fr); }
+}
+
+.card {
+  background: var(--bg-white);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 22px 22px 20px;
+  display: flex; flex-direction: column;
+  position: relative;
+  transition: border-color .15s, transform .15s;
+  box-shadow: var(--shadow-card);
+}
+.card:hover { border-color: var(--ink-faint); }
+.card.is-hidden { display: none; }
+
+.card-head {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+.card-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-faint);
+  letter-spacing: .08em;
+  margin-bottom: 6px;
+}
+.card-name {
+  font-family: var(--serif);
+  font-size: 26px;
+  line-height: 1.1;
+  font-weight: 500;
+  margin: 0 0 6px;
+  letter-spacing: -.005em;
+}
+.card-name em { font-style: italic; color: var(--sky-700); }
+.card-sub {
+  font-size: 13px; color: var(--ink-soft);
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+}
+
+.tier-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 100px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  border: 1px solid;
+}
+.tier-1 { color: var(--gold); border-color: var(--gold-soft); background: #FBF6E9; }
+.tier-2 { color: var(--sky-700); border-color: var(--sky-100); background: var(--sky-50); }
+.tier-3 { color: var(--moss); border-color: #D6DCC4; background: #F2F4E9; }
+
+.kind-pill {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--ink-faint); padding: 3px 0;
+}
+
+/* ---------- Thumb grid ---------- */
+.thumb-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 4px 0 16px;
+}
+.thumb {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  background: var(--bg-cream);
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: var(--shadow-thumb);
+}
+.thumb svg, .thumb img { width: 100%; height: 100%; display: block; }
+.thumb-label {
+  position: absolute;
+  left: 8px; bottom: 8px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  background: rgba(20, 29, 36, .82);
+  color: var(--bg-cream);
+  padding: 3px 7px;
+  border-radius: 2px;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+/* ---------- Card body ---------- */
+.card-summary {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  margin: 0 0 14px;
+}
+.card-meta-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  font-size: 12px;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px dashed var(--rule);
+}
+.card-meta-cell { display: flex; flex-direction: column; gap: 2px; }
+.card-meta-cell dt {
+  font-family: var(--mono); font-size: 9px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink-faint);
+}
+.card-meta-cell dd {
+  font-family: var(--sans); font-size: 12.5px; color: var(--ink); margin: 0;
+}
+
+.fit-bar {
+  display: flex; align-items: center; gap: 8px;
+}
+.fit-dots { display: flex; gap: 2px; }
+.fit-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: var(--rule);
+}
+.fit-dot.on { background: var(--gold); }
+.fit-num { font-family: var(--mono); font-size: 11px; color: var(--ink-soft); }
+
+.card-foot {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 14px;
+  font-size: 12.5px;
+}
+.card-link {
+  color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 1px;
+  font-weight: 500;
+  font-size: 12.5px;
+}
+.card-link:hover { color: var(--sky-700); border-bottom-color: var(--sky-700); }
+.card-link::after { content: " →"; }
+.card-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.tag {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .04em;
+  color: var(--ink-soft); padding: 2px 8px;
+  background: var(--bg-cream); border-radius: 100px;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  border-top: 1px solid var(--rule);
+  padding: 36px 0 56px;
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 48px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+.footer h4 {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .08em;
+  text-transform: uppercase; color: var(--ink); margin: 0 0 10px;
+  font-weight: 600;
+}
+.footer p { margin: 0 0 8px; line-height: 1.5; }
+.footer-meta {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .06em;
+  color: var(--ink-faint);
+}
+.footer-meta b { color: var(--ink-soft); font-weight: 500; }
+
+
+/* ---------- Discoveries ---------- */
+.discoveries-section { padding: 56px 0 0; }
+.discovery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+  margin-bottom: 24px;
+}
+.discovery-card {
+  background: var(--bg-paper);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 12px;
+  display: flex; flex-direction: column;
+}
+.discovery-thumb {
+  aspect-ratio: 4 / 3; background: var(--bg-cream);
+  border-radius: 3px; overflow: hidden;
+  position: relative; margin-bottom: 10px;
+  box-shadow: var(--shadow-thumb);
+}
+.discovery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.discovery-thumb-fallback {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  font-family: var(--serif); font-style: italic; font-size: 14px;
+  color: var(--ink-faint);
+}
+.discovery-name {
+  font-family: var(--serif); font-size: 17px; font-weight: 500;
+  margin: 0 0 4px; line-height: 1.15;
+}
+.discovery-name em { font-style: italic; color: var(--sky-700); }
+.discovery-source {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .04em;
+  color: var(--ink-faint); text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.discovery-summary { font-size: 12.5px; color: var(--ink-soft); margin: 0 0 10px; line-height: 1.45; }
+.discovery-actions {
+  display: flex; gap: 8px; align-items: center; margin-top: auto;
+  padding-top: 8px; border-top: 1px dashed var(--rule);
+  font-size: 11.5px;
+}
+.discovery-rec {
+  font-family: var(--mono); font-size: 9.5px; letter-spacing: .08em;
+  text-transform: uppercase; padding: 3px 8px; border-radius: 100px;
+  border: 1px solid;
+}
+.rec-add    { color: var(--gold);   background: #FBF6E9; border-color: var(--gold-soft); }
+.rec-watch  { color: var(--sky-700); background: var(--sky-50); border-color: var(--sky-100); }
+.rec-reject { color: var(--ink-faint); background: var(--bg-cream); border-color: var(--rule); }
+.rec-pending{ color: var(--ink-faint); background: var(--bg-cream); border-color: var(--rule); font-style: italic; }
+.discovery-link {
+  margin-left: auto; color: var(--ink); text-decoration: none;
+  border-bottom: 1px solid var(--ink); padding-bottom: 1px;
+}
+.discovery-link:hover { color: var(--sky-700); border-bottom-color: var(--sky-700); }
+
+/* ---------- Events ---------- */
+.events-section { padding: 56px 0 0; }
+.event-list { list-style: none; padding: 0; margin: 0; }
+.event-item {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  gap: 18px; align-items: baseline;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.event-date {
+  font-family: var(--mono); font-size: 11px; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--gold);
+}
+.event-title {
+  font-family: var(--serif); font-size: 16px; font-weight: 500;
+  color: var(--ink); margin: 0 0 2px;
+}
+.event-snippet { font-size: 12px; color: var(--ink-soft); margin: 0; }
+.event-source {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .04em;
+  text-transform: uppercase; color: var(--ink-faint);
+  text-align: right;
+}
+.event-source a { color: inherit; text-decoration: none; border-bottom: 1px solid currentColor; }
+.event-source a:hover { color: var(--ink); }
+
+/* ---------- Print ---------- */
+@media print {
+  body { background: white; }
+  .toolbar, .topbar { display: none; }
+  .grid { gap: 16px; grid-template-columns: 1fr 1fr; }
+  .card { box-shadow: none; break-inside: avoid; page-break-inside: avoid; }
+  .hero { padding: 24px 0; }
+}
+
+/* ---------- Empty state ---------- */
+.empty {
+  text-align: center; padding: 80px 24px;
+  font-family: var(--serif); font-style: italic; font-size: 22px;
+  color: var(--ink-soft);
+  display: none;
+}
+.empty.is-on { display: block; }
+
+/* ---------- Subtle cloud watermark ---------- */
+.cloud-bg {
+  position: fixed;
+  top: 60px; right: -120px;
+  width: 480px; height: 320px;
+  pointer-events: none;
+  opacity: .35;
+  z-index: 0;
+}
+.shell { position: relative; z-index: 1; }
+</style>
+</head>
+<body>
+
+<!-- Subtle cloud watermark -->
+<svg class="cloud-bg" viewBox="0 0 480 320" aria-hidden="true">
+  <defs>
+    <radialGradient id="cloudGlow" cx="0.5" cy="0.5" r="0.6">
+      <stop offset="0%" stop-color="#88A8C7" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#88A8C7" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="280" cy="170" rx="220" ry="120" fill="url(#cloudGlow)"/>
+  <path d="M120 200 Q120 150 170 150 Q180 110 230 115 Q270 90 310 120 Q360 115 365 160 Q400 165 395 200 Q400 240 350 240 L150 240 Q105 240 120 200Z"
+        fill="#88A8C7" opacity="0.10"/>
+</svg>
+
+<div class="shell">
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <a class="mark" href="#" aria-label="UpperCloud Studio">
+      <svg class="mark-glyph" viewBox="0 0 32 24" aria-hidden="true">
+        <path d="M5 16 Q5 10 10 10 Q11 6 16 6 Q22 4 24 10 Q29 10 28 16 Q29 20 23 20 L9 20 Q4 20 5 16Z"
+              fill="none" stroke="#1A1D24" stroke-width="1.2"/>
+        <circle cx="22" cy="9" r="1.5" fill="#B68A3F"/>
+      </svg>
+      <span>UpperCloud<span style="opacity:.5">·</span>Studio</span>
+    </a>
+    <div class="topbar-right">
+      <span><b>Field Brief</b> · No. 014</span>
+      <span>Sacramento <b>·</b> CA</span>
+      <span id="lastReviewed">Reviewed {{LAST_REVIEWED}}</span>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">
+          <span class="eyebrow-num">No. 014</span>
+          <span>Field Brief · Public Art</span>
+        </div>
+        <h1>Sacramento <em>Artist</em><br>Directory</h1>
+        <p class="hero-lede">
+          A working catalog of twenty-one Sacramento-area artists and art agencies,
+          shortlisted and assessed for the <strong>Arden Fair UnchARTed</strong> program.
+          Curated, sequenced, and graded by UpperCloud Studio for client use.
+        </p>
+      </div>
+      <aside class="hero-meta">
+        <dl>
+          <div>
+            <dt>Client</dt>
+            <dd>Arden Fair · Sacramento</dd>
+          </div>
+          <div>
+            <dt>Program</dt>
+            <dd>UnchARTed · 2026 cycle</dd>
+          </div>
+          <div>
+            <dt>Brief</dt>
+            <dd>Indoor mural &amp; rotating installs</dd>
+          </div>
+          <div>
+            <dt>Curator</dt>
+            <dd>UpperCloud Studio</dd>
+          </div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="stat"><div class="stat-num">21</div><div class="stat-lbl">Total Entries</div></div>
+    <div class="stat"><div class="stat-num"><em>7</em></div><div class="stat-lbl">Tier-One Priorities</div></div>
+    <div class="stat"><div class="stat-num">11</div><div class="stat-lbl">Tier-Two Established</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-lbl">Agencies / Curators</div></div>
+    <div class="stat"><div class="stat-num">42</div><div class="stat-lbl">Visual References</div></div>
+  </section>
+
+  <!-- Filter toolbar -->
+  <div class="toolbar" role="toolbar" aria-label="Filter directory">
+    <span class="toolbar-label">Filter</span>
+    <button class="chip" data-filter="all" aria-pressed="true">All <span class="chip-count">21</span></button>
+    <button class="chip" data-filter="tier-1" aria-pressed="false">Tier 1 <span class="chip-count">7</span></button>
+    <button class="chip" data-filter="tier-2" aria-pressed="false">Tier 2 <span class="chip-count">11</span></button>
+    <button class="chip" data-filter="tier-3" aria-pressed="false">Agencies <span class="chip-count">3</span></button>
+    <button class="chip" data-filter="mural" aria-pressed="false">Murals</button>
+    <button class="chip" data-filter="studio" aria-pressed="false">Studio &amp; Canvas</button>
+    <button class="chip" data-filter="best-fit" aria-pressed="false">Best fit ★★★★+</button>
+    <span class="search-wrap"><input class="search" type="search" id="searchInput" placeholder="Search by name, medium, work…"></span>
+  </div>
+
+  <!-- Discoveries section -->
+  <section id="discoveries-section" class="discoveries-section" hidden>
+    <div class="section-head">
+      <h2 class="section-title">Recent <em>Discoveries</em></h2>
+      <span class="section-meta" id="discoveries-meta">Surfaced today by the daily scanner</span>
+    </div>
+    <div class="discovery-grid" id="discoveryGrid"></div>
+  </section>
+
+  <!-- Section header -->
+  <div class="section-head">
+    <h2 class="section-title">The <em>Directory</em></h2>
+    <span class="section-meta">Sequenced by tier &amp; fit · 21 entries</span>
+  </div>
+
+  <!-- Cards grid -->
+  <main class="grid" id="cardGrid"></main>
+
+  <div class="empty" id="empty">Nothing matches that filter.</div>
+
+  <!-- Events section -->
+  <section id="events-section" class="events-section" hidden>
+    <div class="section-head">
+      <h2 class="section-title">Upcoming <em>Events</em></h2>
+      <span class="section-meta">Sacramento art calendar — refreshed daily</span>
+    </div>
+    <ul class="event-list" id="eventList"></ul>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div>
+      <h4>About this brief</h4>
+      <p>Compiled by UpperCloud Studio for Johnny &amp; the Arden Fair UnchARTed program. Each entry is graded on a four-axis fit score (style, scale, audience, availability) and accompanied by two visual references from the artist's recent portfolio.</p>
+      <p class="footer-meta">Field Brief · No. 014 · Cycle 2026</p>
+    </div>
+    <div>
+      <h4>How to use this</h4>
+      <p>Filter by tier or medium to narrow shortlists. Each card links out to the artist's primary portfolio. The directory is fully self-contained — open it offline, print it, or share the file.</p>
+      <p class="footer-meta">Visual references are stylized previews. Replace with real photographs by running <code>python inject_images.py</code> with images placed in <code>local_files/</code>.</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>UpperCloud Studio<br>Sacramento, California<br>hello@uppercloud.studio</p>
+      <p class="footer-meta"><b>Brief authored</b> · 2026·05·07<br><b>Doc version</b> · 1.0.0</p>
+    </div>
+  </footer>
+
+</div>
+
+<!-- ============================================================ -->
+<!-- ARTIST DATA + SVG LIBRARY + RENDERER                         -->
+<!-- ============================================================ -->
+<script>
+/* SVG art library — each artwork is a hand-tuned vector that
+   reflects the artist's actual signature style based on portfolio research.
+   Replace any of these with a real <img src="data:..."> via inject_images.py. */
+
+/* {{SVG_LIBRARY}} */
+
+/* ============================================================
+   ARTIST DATA TABLE
+   ============================================================ */
+
+/* {{ARTISTS_DATA}} */
+
+
+/* {{DISCOVERIES_DATA}} */
+/* {{EVENTS_DATA}} */
+
+/* ============================================================
+   RENDER
+   ============================================================ */
+
+const grid = document.getElementById("cardGrid");
+
+function renderCard(a) {
+  const tierClass = `tier-${a.tier}`;
+  const tierLabel = a.tier === 1 ? "Tier 1 · Priority" : a.tier === 2 ? "Tier 2 · Established" : "Tier 3 · Agency";
+
+  const thumbs = a.thumbs.map(t => {
+    const art = SVG[t.svg] || `<svg viewBox="0 0 400 300"><rect width="400" height="300" fill="#EAE3D2"/></svg>`;
+    return `<div class="thumb">${art}<div class="thumb-label">${t.label}</div></div>`;
+  }).join("");
+
+  const fitDots = Array.from({length: 5}, (_, i) =>
+    `<span class="fit-dot${i < a.fit ? ' on' : ''}"></span>`
+  ).join("");
+
+  const tags = a.tags.map(t => `<span class="tag">${t}</span>`).join("");
+
+  return `
+    <article class="card" data-tier="tier-${a.tier}" data-tags="${a.tags.join(' ')}" data-search="${(a.name+' '+a.medium+' '+a.summary+' '+a.tags.join(' ')).toLowerCase()}" data-fit="${a.fit}">
+      <header class="card-head">
+        <div>
+          <div class="card-num">No. ${String(a.n).padStart(2,'0')}</div>
+          <h3 class="card-name">${a.name}</h3>
+          <div class="card-sub">
+            <span class="kind-pill">${a.kind}</span>
+          </div>
+        </div>
+        <span class="tier-badge ${tierClass}">${tierLabel}</span>
+      </header>
+      <div class="thumb-grid">${thumbs}</div>
+      <p class="card-summary">${a.summary}</p>
+      <dl class="card-meta-row">
+        <div class="card-meta-cell">
+          <dt>Medium</dt>
+          <dd>${a.medium}</dd>
+        </div>
+        <div class="card-meta-cell">
+          <dt>Arden Fair fit</dt>
+          <dd class="fit-bar">
+            <span class="fit-dots">${fitDots}</span>
+            <span class="fit-num">${a.fit}/5</span>
+          </dd>
+        </div>
+      </dl>
+      <p class="card-summary" style="font-size:12.5px;margin:10px 0 0;color:var(--ink-soft);font-style:italic">${a.suitability}</p>
+      <div class="card-foot">
+        <a class="card-link" href="${a.primaryUrl}" target="_blank" rel="noopener">${a.primaryHost}</a>
+        <div class="card-tags">${tags}</div>
+      </div>
+    </article>
+  `;
+}
+
+grid.innerHTML = ARTISTS.map(renderCard).join("");
+
+/* ============================================================
+   FILTERS + SEARCH
+   ============================================================ */
+
+const chips = document.querySelectorAll(".chip");
+const cards = document.querySelectorAll(".card");
+const empty = document.getElementById("empty");
+const searchInput = document.getElementById("searchInput");
+
+let activeFilter = "all";
+let searchTerm = "";
+
+function applyFilters() {
+  let visible = 0;
+  cards.forEach(c => {
+    const tier = c.dataset.tier;
+    const tags = c.dataset.tags;
+    const fit = parseInt(c.dataset.fit, 10);
+    const text = c.dataset.search;
+
+    let matchFilter = true;
+    if (activeFilter === "tier-1") matchFilter = tier === "tier-1";
+    else if (activeFilter === "tier-2") matchFilter = tier === "tier-2";
+    else if (activeFilter === "tier-3") matchFilter = tier === "tier-3";
+    else if (activeFilter === "mural") matchFilter = tags.includes("mural");
+    else if (activeFilter === "studio") matchFilter = tags.includes("studio");
+    else if (activeFilter === "best-fit") matchFilter = fit >= 4;
+
+    const matchSearch = !searchTerm || text.includes(searchTerm);
+    const visibleNow = matchFilter && matchSearch;
+    c.classList.toggle("is-hidden", !visibleNow);
+    if (visibleNow) visible++;
+  });
+  empty.classList.toggle("is-on", visible === 0);
+}
+
+chips.forEach(c => c.addEventListener("click", () => {
+  chips.forEach(x => x.setAttribute("aria-pressed", "false"));
+  c.setAttribute("aria-pressed", "true");
+  activeFilter = c.dataset.filter;
+  applyFilters();
+}));
+
+searchInput.addEventListener("input", e => {
+  searchTerm = e.target.value.trim().toLowerCase();
+  applyFilters();
+});
+
+/* ============================================================
+   DISCOVERIES + EVENTS (data-driven sections)
+   ============================================================ */
+
+const DISCOVERIES = (typeof window.DISCOVERIES !== "undefined") ? window.DISCOVERIES : [];
+const EVENTS = (typeof window.EVENTS !== "undefined") ? window.EVENTS : [];
+
+function renderDiscoveryCard(d) {
+  const score = d.score || {};
+  const recClass = score.proceed_recommendation
+    ? `rec-${score.proceed_recommendation}`
+    : "rec-pending";
+  const recLabel = score.proceed_recommendation || "pending";
+  const summary = score.one_line_summary || `Surfaced from ${d.source_name}. Awaiting score.`;
+  const img = d.image && d.image.data_uri
+    ? `<img src="${d.image.data_uri}" alt="${d.name}">`
+    : `<div class="discovery-thumb-fallback">No image</div>`;
+  return `
+    <article class="discovery-card">
+      <div class="discovery-thumb">${img}</div>
+      <h4 class="discovery-name">${d.name}</h4>
+      <div class="discovery-source">via ${d.source_name} · ${d.first_seen || ""}</div>
+      <p class="discovery-summary">${summary}</p>
+      <div class="discovery-actions">
+        <span class="discovery-rec ${recClass}">${recLabel}</span>
+        <a class="discovery-link" href="${d.url}" target="_blank" rel="noopener">View →</a>
+      </div>
+    </article>
+  `;
+}
+
+function renderEventItem(e) {
+  return `
+    <li class="event-item">
+      <div class="event-date">${e.date_raw || ""}</div>
+      <div>
+        <h4 class="event-title">${e.title}</h4>
+        <p class="event-snippet">${(e.snippet || "").slice(0, 200)}</p>
+      </div>
+      <div class="event-source">
+        <a href="${e.url}" target="_blank" rel="noopener">${e.source}</a>
+      </div>
+    </li>
+  `;
+}
+
+(function mountDiscoveriesAndEvents() {
+  const dGrid = document.getElementById("discoveryGrid");
+  const dSection = document.getElementById("discoveries-section");
+  if (DISCOVERIES.length > 0) {
+    dGrid.innerHTML = DISCOVERIES.map(renderDiscoveryCard).join("");
+    dSection.hidden = false;
+    document.getElementById("discoveries-meta").textContent =
+      `${DISCOVERIES.length} candidate${DISCOVERIES.length === 1 ? "" : "s"} awaiting review`;
+  }
+  const eList = document.getElementById("eventList");
+  const eSection = document.getElementById("events-section");
+  if (EVENTS.length > 0) {
+    eList.innerHTML = EVENTS.slice(0, 12).map(renderEventItem).join("");
+    eSection.hidden = false;
+  }
+})();
+
+</script>
+</body>
+</html>
