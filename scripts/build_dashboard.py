@@ -17,7 +17,10 @@ import argparse
 import json
 from datetime import date
 
-from .common import ROOT, TEMPLATES, DATA, load_json, logger, parse_event_date, setup_logging
+from .common import (
+    DATA, ROOT, TEMPLATES, is_quality_event, load_json, logger,
+    parse_event_date, setup_logging,
+)
 
 
 def merge_artist_images(artists: list[dict], images: dict) -> list[dict]:
@@ -51,21 +54,30 @@ def effective_rec(c: dict) -> str:
 
 
 def filter_and_sort_events(events: list[dict]) -> list[dict]:
-    """Drop events whose parsed date is in the past; sort upcoming first.
+    """Drop past + low-quality events; sort upcoming first.
 
     Backfills `date_iso` from `date_raw` on the fly for older events.json
     entries that were scraped before the parser existed. Events whose date
     can't be parsed are dropped — they're usually calendar-widget noise.
+    Title QC (`is_quality_event`) catches calendar headers, UI labels,
+    date-only "titles" and help text that slipped past the scraper.
     """
     today_iso = str(date.today())
     upcoming = []
+    dropped_qc = 0
     for e in events:
         iso = e.get("date_iso") or parse_event_date(e.get("date_raw") or "")
         if not iso or iso < today_iso:
             continue
+        if not is_quality_event(e):
+            dropped_qc += 1
+            logger.info("       qc-drop: %r", (e.get("title") or "")[:60])
+            continue
         e = dict(e)
         e["date_iso"] = iso
         upcoming.append(e)
+    if dropped_qc:
+        logger.info("       qc-dropped %d low-quality events", dropped_qc)
     upcoming.sort(key=lambda e: e["date_iso"])
     return upcoming
 

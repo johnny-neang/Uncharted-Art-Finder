@@ -1,20 +1,6 @@
 {
   "events": [
     {
-      "title": "December 2020",
-      "date_raw": "11/08/2024",
-      "snippet": "The date pickers are best navigated if one types the dates as: mm/dd/yyyy (example: 11/08/2024) instead of trying to use the arrows to move around the calendar dates. December 2020 Su Mo Tu We Th Fr Sa 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29",
-      "url": "https://www.sacramento365.com/events/?category=arts-culture",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
-      "title": "The date pickers are best navigated if one types the dates as: mm/dd/yyyy (examp",
-      "date_raw": "11/08/2024",
-      "snippet": "The date pickers are best navigated if one types the dates as: mm/dd/yyyy (example: 11/08/2024) instead of trying to use the arrows to move around the calendar dates.",
-      "url": "https://www.sacramento365.com/events/?category=arts-culture",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
       "title": "Midtown Second Saturday Art Market x Silent Disco with H.E.R.E.",
       "date_raw": "May 09, 2026",
       "snippet": "Midtown Second Saturday Art Market x Silent Disco with H.E.R.E. Presented by Midtown Association and Sutter Health at Fremont Park May 09, 2026",
@@ -85,24 +71,10 @@
       "source": "Atrium 916 — events"
     },
     {
-      "title": "Recurring",
-      "date_raw": "May 8",
-      "snippet": "Featured May 8 @ 10:30 am - 5:00 pm Recurring",
-      "url": "https://atrium916.com/event/spring-eco-art-sip-paint-and-sculpt-with-clay/all/",
-      "source": "Atrium 916 — events"
-    },
-    {
       "title": "May Marketplace Small Business Pop-Up Fair",
       "date_raw": "May 9",
       "snippet": "Sat 9 May Marketplace Small Business Pop-Up Fair May 9 @ 11:00 am - 2:00 pm Join us in celebrating the entrepreneurial spirit by shopping small from various local vendors! Peruse local businesses selling skincare, toffee,artisan spices, vintage clothing, honey, homegoods and more",
       "url": "https://atrium916.com/event/may-marketplace-small-business-pop-up-fair/",
-      "source": "Atrium 916 — events"
-    },
-    {
-      "title": "May 9 @ 11:00 am - 2:00 pm",
-      "date_raw": "May 9",
-      "snippet": "May 9 @ 11:00 am - 2:00 pm",
-      "url": "https://atrium916.com/events",
       "source": "Atrium 916 — events"
     }
   ],
