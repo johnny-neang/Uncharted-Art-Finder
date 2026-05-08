@@ -144,6 +144,71 @@
       "name": "Second Saturday Sacramento",
       "url": "https://2ndsatsac.com/",
       "kind": "calendar"
+    },
+    {
+      "name": "UC Davis Manetti Shrem Museum",
+      "url": "https://manettishremmuseum.ucdavis.edu/calendar",
+      "kind": "calendar"
+    },
+    {
+      "name": "California Museum",
+      "url": "https://www.californiamuseum.org/events",
+      "kind": "calendar"
+    },
+    {
+      "name": "Sacramento Fine Arts Center — exhibitions",
+      "url": "https://sacfinearts.org/exhibitions/",
+      "kind": "calendar"
+    },
+    {
+      "name": "Beatnik Studios — events",
+      "url": "https://beatnikstudios.com/events/",
+      "kind": "calendar"
+    },
+    {
+      "name": "Blue Line Arts — exhibitions",
+      "url": "https://bluelinearts.org/exhibitions/",
+      "kind": "calendar"
+    },
+    {
+      "name": "Axis Gallery — exhibitions",
+      "url": "https://axisgallery.org/exhibitions/",
+      "kind": "calendar"
+    },
+    {
+      "name": "JAYJAY Gallery — exhibitions",
+      "url": "https://jayjayart.com/exhibitions/",
+      "kind": "calendar"
+    },
+    {
+      "name": "Visit Sacramento — Arts & Culture",
+      "url": "https://www.visitsacramento.com/things-to-do/arts-culture/",
+      "kind": "calendar"
+    },
+    {
+      "name": "Sac State Witt Gallery",
+      "url": "https://www.csus.edu/college/arts-letters/art/galleries/witt-gallery.html",
+      "kind": "calendar"
+    },
+    {
+      "name": "City of Sacramento Office of Arts & Culture",
+      "url": "https://www.cityofsacramento.gov/officeofartsandculture/programs-events",
+      "kind": "calendar"
+    },
+    {
+      "name": "Sacramento News & Review — Arts events",
+      "url": "https://sacramento.newsreview.com/calendar/?cat=art",
+      "kind": "calendar"
+    },
+    {
+      "name": "CapRadio Arts events",
+      "url": "https://www.capradio.org/news/arts-and-culture/",
+      "kind": "calendar"
+    },
+    {
+      "name": "Sactown Magazine — events",
+      "url": "https://sactownmag.com/events/",
+      "kind": "calendar"
     }
   ]
 }
