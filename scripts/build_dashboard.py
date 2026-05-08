@@ -17,7 +17,7 @@ import argparse
 import json
 from datetime import date
 
-from .common import ROOT, TEMPLATES, DATA, load_json, logger, setup_logging
+from .common import ROOT, TEMPLATES, DATA, load_json, logger, parse_event_date, setup_logging
 
 
 def merge_artist_images(artists: list[dict], images: dict) -> list[dict]:
@@ -48,6 +48,26 @@ def effective_rec(c: dict) -> str:
         return c["manual_override"]
     score = c.get("score") or {}
     return score.get("proceed_recommendation") or "pending"
+
+
+def filter_and_sort_events(events: list[dict]) -> list[dict]:
+    """Drop events whose parsed date is in the past; sort upcoming first.
+
+    Backfills `date_iso` from `date_raw` on the fly for older events.json
+    entries that were scraped before the parser existed. Events whose date
+    can't be parsed are dropped — they're usually calendar-widget noise.
+    """
+    today_iso = str(date.today())
+    upcoming = []
+    for e in events:
+        iso = e.get("date_iso") or parse_event_date(e.get("date_raw") or "")
+        if not iso or iso < today_iso:
+            continue
+        e = dict(e)
+        e["date_iso"] = iso
+        upcoming.append(e)
+    upcoming.sort(key=lambda e: e["date_iso"])
+    return upcoming
 
 
 def filter_discoveries_for_display(discoveries: list[dict]) -> list[dict]:
@@ -88,7 +108,7 @@ def main():
 
     artists = merge_artist_images(artists_raw, images)
     discoveries = filter_discoveries_for_display(discoveries_blob.get("candidates", []))
-    events = events_blob.get("events", [])
+    events = filter_and_sort_events(events_blob.get("events", []))
 
     # Render the JS data blocks
     artists_js = f"const ARTISTS = {json.dumps(artists, indent=2, ensure_ascii=False)};"
