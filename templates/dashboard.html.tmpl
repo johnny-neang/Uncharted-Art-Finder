@@ -490,10 +490,25 @@ body {
   text-transform: uppercase; padding: 3px var(--s2);
   border: 1px solid;
 }
-.rec-add    { color: var(--marigold); background: var(--marigold-soft); border-color: var(--marigold); }
-.rec-watch  { color: var(--jade); background: var(--jade-soft); border-color: var(--jade); }
-.rec-reject { color: var(--ink-3); background: transparent; border-color: var(--rule); }
-.rec-pending{ color: var(--ink-3); background: transparent; border-color: var(--rule); font-style: italic; }
+.rec-add      { color: var(--marigold); background: var(--marigold-soft); border-color: var(--marigold); }
+.rec-watch    { color: var(--jade);     background: var(--jade-soft);     border-color: var(--jade); }
+.rec-reject   { color: var(--ink-3);    background: transparent;          border-color: var(--rule); }
+.rec-pending  { color: var(--ink-3);    background: transparent;          border-color: var(--rule); font-style: italic; }
+.rec-existing { color: var(--ink);      background: var(--paper-2);       border-color: var(--ink); }
+.discovery-rec-select {
+  appearance: none; -webkit-appearance: none; -moz-appearance: none;
+  border: 1px solid currentColor; background: transparent;
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 3px 18px 3px var(--s2); margin: 0;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 5'><path d='M0 0L4 5L8 0Z' fill='currentColor'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+  background-size: 7px 4px;
+}
+.discovery-rec-select:focus { outline: 1px dashed var(--ink); outline-offset: 2px; }
+.discovery-rec-select option { font-family: var(--font-body); letter-spacing: 0; text-transform: none; color: var(--ink); }
 .discovery-link {
   margin-left: auto; color: var(--ink); text-decoration: none;
   border-bottom: 1px solid var(--ink); padding-bottom: 1px;
@@ -625,20 +640,6 @@ body {
     <span class="search-wrap"><input class="search" type="search" id="searchInput" placeholder="Search · name, medium, work"></span>
   </div>
 
-  <!-- Discoveries section -->
-  <section id="discoveries-section" class="discoveries-section" hidden>
-    <div class="section-head">
-      <div class="eyebrow">
-        <span class="num">02</span>
-        <span class="lbl">Discoveries</span>
-        <span class="line"></span>
-        <span class="meta" id="discoveries-meta">Surfaced today by the daily scanner</span>
-      </div>
-      <h2 class="section-title">Recent <em>candidates</em>.</h2>
-    </div>
-    <div class="discovery-grid" id="discoveryGrid"></div>
-  </section>
-
   <!-- Directory section header -->
   <div class="section-head">
     <div class="eyebrow">
@@ -655,11 +656,25 @@ body {
 
   <div class="empty" id="empty">Nothing matches that filter.</div>
 
+  <!-- Discoveries section -->
+  <section id="discoveries-section" class="discoveries-section" hidden>
+    <div class="section-head">
+      <div class="eyebrow">
+        <span class="num">03</span>
+        <span class="lbl">Discoveries</span>
+        <span class="line"></span>
+        <span class="meta" id="discoveries-meta">Surfaced today by the daily scanner</span>
+      </div>
+      <h2 class="section-title">Recent <em>candidates</em>.</h2>
+    </div>
+    <div class="discovery-grid" id="discoveryGrid"></div>
+  </section>
+
   <!-- Events section -->
   <section id="events-section" class="events-section" hidden>
     <div class="section-head">
       <div class="eyebrow">
-        <span class="num">03</span>
+        <span class="num">04</span>
         <span class="lbl">Upcoming Events</span>
         <span class="line"></span>
         <span class="meta">Sacramento art calendar · refreshed daily</span>
@@ -824,28 +839,52 @@ searchInput.addEventListener("input", e => {
 const DISCOVERIES = (typeof window.DISCOVERIES !== "undefined") ? window.DISCOVERIES : [];
 const EVENTS = (typeof window.EVENTS !== "undefined") ? window.EVENTS : [];
 
+const REC_OPTIONS = ["pending", "add", "watch", "existing", "reject"];
+
+function effectiveRec(d) {
+  // Local override (browser only) wins; then durable manual_override; then Claude score; else pending.
+  let local = null;
+  try { local = localStorage.getItem("override:" + d.slug); } catch (_) { /* private/opaque */ }
+  if (local) return local;
+  if (d.manual_override) return d.manual_override;
+  if (d.score && d.score.proceed_recommendation) return d.score.proceed_recommendation;
+  return "pending";
+}
+
 function renderDiscoveryCard(d) {
   const score = d.score || {};
-  const recClass = score.proceed_recommendation
-    ? `rec-${score.proceed_recommendation}`
-    : "rec-pending";
-  const recLabel = score.proceed_recommendation || "pending";
+  const rec = effectiveRec(d);
   const summary = score.one_line_summary || `Surfaced from ${d.source_name}. Awaiting score.`;
   const img = d.image && d.image.data_uri
     ? `<img src="${d.image.data_uri}" alt="${d.name}">`
     : `<div class="discovery-thumb-fallback">No image</div>`;
+  const options = REC_OPTIONS.map(o =>
+    `<option value="${o}"${o === rec ? " selected" : ""}>${o}</option>`
+  ).join("");
   return `
-    <article class="discovery-card">
+    <article class="discovery-card" data-slug="${d.slug}">
       <div class="discovery-thumb">${img}</div>
       <h4 class="discovery-name">${d.name}</h4>
       <div class="discovery-source">via ${d.source_name} · ${d.first_seen || ""}</div>
       <p class="discovery-summary">${summary}</p>
       <div class="discovery-actions">
-        <span class="discovery-rec ${recClass}">${recLabel}</span>
+        <select class="discovery-rec discovery-rec-select rec-${rec}" data-slug="${d.slug}" aria-label="Override recommendation for ${d.name}">${options}</select>
         <a class="discovery-link" href="${d.url}" target="_blank" rel="noopener">View →</a>
       </div>
     </article>
   `;
+}
+
+function wireDiscoveryDropdowns() {
+  document.querySelectorAll(".discovery-rec-select").forEach(sel => {
+    sel.addEventListener("change", e => {
+      const slug = e.target.dataset.slug;
+      const value = e.target.value;
+      try { localStorage.setItem("override:" + slug, value); } catch (_) { /* private mode */ }
+      // Update the badge color class to reflect the new state
+      e.target.className = `discovery-rec discovery-rec-select rec-${value}`;
+    });
+  });
 }
 
 function renderEventItem(e) {
@@ -869,6 +908,7 @@ function renderEventItem(e) {
   if (DISCOVERIES.length > 0) {
     dGrid.innerHTML = DISCOVERIES.map(renderDiscoveryCard).join("");
     dSection.hidden = false;
+    wireDiscoveryDropdowns();
     document.getElementById("discoveries-meta").textContent =
       `${DISCOVERIES.length} candidate${DISCOVERIES.length === 1 ? "" : "s"} awaiting review`;
   }
