@@ -25,6 +25,60 @@
       "selector_hint": "artist directory"
     },
     {
+      "name": "Atrium 916",
+      "url": "https://atrium916.com/",
+      "kind": "roster",
+      "selector_hint": "downtown gallery + retail; rosters local artists"
+    },
+    {
+      "name": "B. Sakata Garo Gallery",
+      "url": "https://bsakatagaro.com/",
+      "kind": "roster",
+      "selector_hint": "long-running Sacramento contemporary gallery"
+    },
+    {
+      "name": "JAYJAY Gallery",
+      "url": "https://jayjayart.com/",
+      "kind": "roster",
+      "selector_hint": "Crocker Park gallery; decades of local representation"
+    },
+    {
+      "name": "Axis Gallery",
+      "url": "https://axisgallery.org/",
+      "kind": "roster",
+      "selector_hint": "Midtown co-op; deeply local artist roster"
+    },
+    {
+      "name": "Blue Line Arts (Roseville)",
+      "url": "https://bluelinearts.org/",
+      "kind": "roster",
+      "selector_hint": "regional reach in greater Sacramento"
+    },
+    {
+      "name": "Sacramento Fine Arts Center",
+      "url": "https://sacfinearts.org/",
+      "kind": "roster",
+      "selector_hint": "member exhibitions; broad local pool"
+    },
+    {
+      "name": "Beatnik Studios",
+      "url": "https://beatnikstudios.com/",
+      "kind": "roster",
+      "selector_hint": "studio + gallery space, R Street corridor"
+    },
+    {
+      "name": "Verge Center for the Arts — artists",
+      "url": "https://www.vergeart.com/artists/",
+      "kind": "roster",
+      "selector_hint": "Verge resident + featured artists"
+    },
+    {
+      "name": "Crocker Art Museum — exhibitions",
+      "url": "https://www.crockerart.org/exhibitions",
+      "kind": "roster",
+      "selector_hint": "museum-tier exhibitions surface local feature artists"
+    },
+    {
       "name": "Sactown Magazine — Arts",
       "url": "https://sactownmag.com/category/arts/",
       "kind": "press",
@@ -41,6 +95,18 @@
       "url": "https://sacramento.newsreview.com/category/arts/",
       "kind": "press",
       "selector_hint": "article tag pages"
+    },
+    {
+      "name": "CapRadio — Arts & Culture",
+      "url": "https://www.capradio.org/news/arts-and-culture/",
+      "kind": "press",
+      "selector_hint": "public-radio coverage of local exhibitions"
+    },
+    {
+      "name": "Submerge Magazine",
+      "url": "https://submergemag.com/",
+      "kind": "press",
+      "selector_hint": "local culture / arts press"
     }
   ],
   "event_sources": [
@@ -62,6 +128,21 @@
     {
       "name": "Verge Center for the Arts",
       "url": "https://www.vergeart.com/exhibitions",
+      "kind": "calendar"
+    },
+    {
+      "name": "Atrium 916 — events",
+      "url": "https://atrium916.com/events",
+      "kind": "calendar"
+    },
+    {
+      "name": "Sacramento Mural Festival",
+      "url": "https://www.sacmuralfest.com/",
+      "kind": "calendar"
+    },
+    {
+      "name": "Second Saturday Sacramento",
+      "url": "https://2ndsatsac.com/",
       "kind": "calendar"
     }
   ]
