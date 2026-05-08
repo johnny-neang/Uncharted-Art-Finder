@@ -1,118 +1,136 @@
 # Sacramento Artist Directory — UpperCloud Studio
 
-A self-updating, Pages-served dashboard cataloging Sacramento-area artists and art agencies for the Arden Fair UnchARTed program. Refreshes itself daily via GitHub Actions: re-fetches artist images, scans local rosters and press for new candidates, scores each with the Claude API, scrapes upcoming events, and posts a digest issue.
+A self-updating dashboard cataloging Sacramento-area artists and art agencies for the Arden Fair UnchARTed program. The pipeline runs **locally on your Mac**, scoring new candidates against your **Claude Pro/Max subscription** (no API key required), and pushes updated data + a regenerated dashboard to GitHub on each run.
+
+## What it does daily
+
+1. **Refreshes roster images** for the 21 canonical artists (re-scrapes their primary site / gallery rep / press page for two representative work photos)
+2. **Discovers new artist candidates** from Wide Open Walls, Branded Arts, Groundswell, and Kevin Barry rosters — anyone not already in the canon
+3. **Scores each new candidate** by calling Claude headlessly via the `claude` CLI: structured output covering Sacramento connection, family-mall fit, mural capacity, suggested tier, and an `add` / `watch` / `reject` recommendation
+4. **Scrapes upcoming events** from Sacramento365, Wide Open Walls, Crocker Art Museum, Verge
+5. **Generates a daily markdown digest** at `data/digests/YYYY-MM-DD.md`
+6. **Rebuilds `index.html`** from data files
+7. **Commits + pushes** the updated data and dashboard to your repo (GitHub Pages serves it)
 
 ## What's here
 
 ```
-.github/workflows/daily-digest.yml   the cron job (08:00 UTC daily)
-scripts/                             the pipeline
-  common.py                          shared HTTP / image / path helpers
-  refresh_images.py                  re-fetches photos for the canonical roster
-  discover_artists.py                scans rosters for new artist candidates
-  scrape_events.py                   scrapes Sacramento art-event calendars
-  score_with_claude.py               Claude API scoring of new candidates
-  build_dashboard.py                 renders index.html from data/
-  build_digest.py                    daily markdown digest
-  post_digest_issue.py               posts digest as a GitHub Issue
-  run_daily.py                       orchestrator that calls every step
+scripts/                         pipeline modules
+  common.py                      shared HTTP / image / path helpers
+  refresh_images.py              re-fetches photos for the canonical roster
+  discover_artists.py            scans rosters for new artist candidates
+  scrape_events.py               scrapes Sacramento art-event calendars
+  score_with_claude.py           Claude Code CLI scoring (subscription auth)
+  build_dashboard.py             renders index.html from data/
+  build_digest.py                daily markdown digest
+  run_daily.py                   orchestrator
 data/
-  artists.json                       canonical roster (21 artists/agencies)
-  artist_images.json                 cached photos (base64 data URIs)
-  discoveries.json                   queue of new candidates with Claude scores
-  events.json                        upcoming events
-  sources.json                       config: which URLs to scan
-  digests/YYYY-MM-DD.md              daily digest archive
+  artists.json                   canonical roster (21 artists/agencies)
+  artist_images.json             cached photos (base64 data URIs)
+  discoveries.json               queue of new candidates with Claude scores
+  events.json                    upcoming events
+  sources.json                   config: which URLs to scan
+  digests/YYYY-MM-DD.md          daily digest archive
 templates/
-  dashboard.html.tmpl                HTML template with {{...}} markers
-  svg_library.js                     42 hand-tuned SVG illustrations (fallback art)
-index.html                           generated dashboard, served by GitHub Pages
-requirements.txt                     Python deps
+  dashboard.html.tmpl            HTML template with {{...}} markers
+  svg_library.js                 hand-tuned SVG illustrations (fallback art)
+  launchagent.plist.tmpl         launchd schedule template
+index.html                       generated dashboard
+run-daily.sh                     wrapper invoked by launchd or you
+setup.sh                         one-time local install
+requirements.txt                 Python deps
 ```
 
 ## One-time setup
 
-The pipeline runs entirely on GitHub's runners — you don't need anything installed locally. Two clicks in repo settings:
+Prerequisites:
 
-### 1. Add the Anthropic API key
+- macOS
+- **Python 3.11+** (`brew install python` if missing)
+- **Claude Code** with you logged in via `claude login` — the pipeline uses your existing Pro/Max subscription, no API key required. Install: <https://claude.ai/code>
+- **git** with push access to this repo (you already have this)
 
-**Settings → Secrets and variables → Actions → New repository secret**
-
-| Name | Value |
-|---|---|
-| `ANTHROPIC_API_KEY` | your API key from console.anthropic.com |
-
-The default model is **`claude-opus-4-7`**. To use a cheaper model, add a repo *variable* (not a secret):
-
-**Settings → Secrets and variables → Actions → Variables → New repository variable**
-
-| Name | Value |
-|---|---|
-| `CLAUDE_MODEL` | `claude-haiku-4-5` (or `claude-sonnet-4-6`) |
-
-Cost note: at default settings (10 candidates/day × ~500 tokens) the daily Claude spend is on the order of pennies on Opus 4.7 and fractions of a cent on Haiku 4.5.
-
-### 2. Enable GitHub Pages
-
-**Settings → Pages → Build and deployment → Source: GitHub Actions**
-
-The workflow handles the deployment itself. After the first run, the dashboard is live at:
-
-```
-https://<your-username>.github.io/<repo-name>/
-```
-
-## What runs daily
-
-08:00 UTC every day (midnight Pacific PDT, 1am Pacific PST). The workflow:
-
-1. **Refreshes roster images** — for each of the 21 canonical artists, scrapes their primary site / gallery rep / press page for two representative work photos, downloads, resizes to ~480px, base64-embeds.
-2. **Discovers new artists** — scans Wide Open Walls / Branded Arts / Groundswell / Kevin Barry's roster pages, extracts candidate names + URLs, dedupes against the canonical roster, queues new ones with one image each.
-3. **Scores discoveries with Claude** — every new candidate gets passed through Claude (Opus 4.7 by default) for a structured fit score: Sacramento connection, family-mall fit (1-5), mural capacity, suggested tier, suggested tags, one-line summary, and an `add` / `watch` / `reject` recommendation.
-4. **Scrapes events** — pulls upcoming arts events from Sacramento365, Wide Open Walls, Crocker Art Museum, and Verge.
-5. **Builds the daily digest** — markdown summary at `data/digests/YYYY-MM-DD.md`, posted as a GitHub Issue tagged `digest`.
-6. **Rebuilds `index.html`** from data files.
-7. **Commits + pushes** — workflow runs as `github-actions[bot]`. Then re-deploys Pages.
-
-You wake up; you have a notification on a `digest` issue summarizing what surfaced. If a new candidate looks worth adding to the roster, edit `data/artists.json` and push — the next daily run will re-render the dashboard with them included.
-
-## Manual trigger
-
-You can also trigger the workflow on demand:
-
-**Actions → Daily artist digest → Run workflow**
-
-## Local development
-
-If you want to run the pipeline locally:
+Then:
 
 ```bash
-pip install -r requirements.txt
-export ANTHROPIC_API_KEY=sk-ant-...
-python -m scripts.run_daily
+git clone <your-repo-url>
+cd Uncharted-Art-Finder
+./setup.sh
 ```
 
-To skip steps (helpful when iterating):
+The setup script will:
+
+1. Verify `python3` is available
+2. Create a `.venv/` and install dependencies
+3. Make `run-daily.sh` executable
+4. Check that `claude` is on PATH
+5. Optionally install a **launchd agent** that runs `run-daily.sh` daily at 9am
+
+If launchd is enabled, the pipeline runs every morning. If your Mac is asleep at 9am, launchd runs it as soon as the Mac wakes.
+
+## Running it manually
+
+Any time:
 
 ```bash
-python -m scripts.run_daily --skip-discover --skip-scoring --skip-events --skip-issue
+./run-daily.sh
 ```
 
-To rebuild the dashboard from existing data files only:
+To skip steps while iterating:
 
 ```bash
-python -m scripts.build_dashboard
+./run-daily.sh --skip-discover --skip-events --skip-scoring --skip-push
 ```
+
+To rebuild just `index.html` from existing data:
+
+```bash
+.venv/bin/python -m scripts.build_dashboard
+```
+
+To score the discovery queue without doing anything else:
+
+```bash
+.venv/bin/python -m scripts.score_with_claude
+```
+
+## Logs
+
+If the launchd agent is running, output goes to:
+
+```
+~/Library/Logs/uppercloud-daily-digest.log
+```
+
+Tail it with `tail -f ~/Library/Logs/uppercloud-daily-digest.log`.
 
 ## Promoting a discovery to the roster
 
-When a `digest` issue surfaces a candidate worth adding:
+Every morning the pipeline writes `data/digests/YYYY-MM-DD.md` summarizing what surfaced — new candidates, scored, with `add` / `watch` / `reject` recs. To promote one to the canonical roster:
 
 1. Open `data/artists.json`
-2. Add a new entry (use the existing entries as templates — you'll need `slug`, `name`, `tier`, `kind`, `medium`, `tags`, `summary`, `fit`, `suitability`, `primaryUrl`, `primaryHost`, `thumbs`)
+2. Add a new entry (use the existing entries as templates — `slug`, `name`, `tier`, `kind`, `medium`, `tags`, `summary`, `fit`, `suitability`, `primaryUrl`, `primaryHost`, `thumbs`)
 3. Optionally remove the matching entry from `data/discoveries.json`
 4. Optionally add the artist's slug to `PAGES_BY_SLUG` in `scripts/refresh_images.py` so future runs refresh their images
-5. Commit + push. The next daily run rebuilds the dashboard with them.
+5. The next run rebuilds the dashboard with them included.
+
+## How scoring works
+
+`scripts/score_with_claude.py` invokes:
+
+```bash
+claude -p "<artist info>" \
+  --system-prompt "<curation rubric, JSON-only output instruction>" \
+  --tools "" \
+  --no-session-persistence \
+  --output-format json
+```
+
+`--tools ""` disables all of Claude Code's built-in tools so the call is pure text-in / JSON-out — no shell, no edits, no MCP. The response goes into the wrapped JSON envelope; the script parses the inner JSON, validates against a Pydantic schema, and stores it on the candidate. Failures (parse errors, timeout, refusals) leave the candidate unscored — the next run retries.
+
+Each scoring call costs whatever your subscription contract specifies — typically a few tenths of a cent — but is fully covered by your Pro/Max plan, with no per-token API charges.
+
+If `claude` isn't on your PATH, scoring is skipped and the rest of the pipeline still runs. Other steps (image refresh, discovery, events, digest, dashboard) don't depend on it.
 
 ## Brand
 

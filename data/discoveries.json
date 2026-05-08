@@ -1,3 +1,5 @@
 {
-  "candidates": []
+  "candidates": [],
+  "rejected_slugs": [],
+  "last_run": null
 }
