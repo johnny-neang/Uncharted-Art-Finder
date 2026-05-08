@@ -1,20 +1,40 @@
 # Sacramento Artist Directory — UpperCloud Studio
 
-A self-updating dashboard cataloging Sacramento-area artists and art agencies for the Arden Fair UnchARTed program. The pipeline runs **locally on your Mac**, scoring new candidates against your **Claude Pro/Max subscription** (no API key required), and pushes updated data + a regenerated dashboard to GitHub on each run.
+A self-updating dashboard cataloging Sacramento-area artists and art agencies for the Arden Fair UnchARTed program. The pipeline runs **in Claude Code** when you ask for it; the dashboard lives at a public **GitHub Pages URL** so you can show it to anyone, anywhere.
 
-## What it does daily
+## How you use it
+
+When you want fresh data, open this repo in Claude Code and type:
+
+```
+/refresh
+```
+
+That kicks off the pipeline — re-scrape rosters, score new candidates against your Claude subscription, scrape upcoming events, rebuild the dashboard, push to the repo. GitHub Pages auto-deploys within ~30 seconds.
+
+Then visit:
+
+**<https://johnny-neang.github.io/Uncharted-Art-Finder/>**
+
+That's it. No cron, no Mac setup, no API keys. You only run `/refresh` when you actually want fresh data — before a client meeting, when you remember, every couple weeks.
+
+## What the pipeline does
 
 1. **Refreshes roster images** for the 21 canonical artists (re-scrapes their primary site / gallery rep / press page for two representative work photos)
 2. **Discovers new artist candidates** from Wide Open Walls, Branded Arts, Groundswell, and Kevin Barry rosters — anyone not already in the canon
-3. **Scores each new candidate** by calling Claude headlessly via the `claude` CLI: structured output covering Sacramento connection, family-mall fit, mural capacity, suggested tier, and an `add` / `watch` / `reject` recommendation
+3. **Scores each new candidate** by calling Claude headlessly via the `claude` CLI: structured output covering Sacramento connection, family-mall fit, mural capacity, suggested tier, and an `add` / `watch` / `reject` recommendation. **Auth is your existing Pro/Max subscription — no API key, no per-token cost.**
 4. **Scrapes upcoming events** from Sacramento365, Wide Open Walls, Crocker Art Museum, Verge
 5. **Generates a daily markdown digest** at `data/digests/YYYY-MM-DD.md`
 6. **Rebuilds `index.html`** from data files
-7. **Commits + pushes** the updated data and dashboard to your repo (GitHub Pages serves it)
+7. **Commits + pushes** the updated data and dashboard. GitHub Actions takes over from there and deploys to Pages.
 
 ## What's here
 
 ```
+.claude/commands/
+  refresh.md                     /refresh slash command — the only thing you invoke
+.github/workflows/
+  deploy-pages.yml               auto-publishes index.html to GH Pages on every push
 scripts/                         pipeline modules
   common.py                      shared HTTP / image / path helpers
   refresh_images.py              re-fetches photos for the canonical roster
@@ -34,103 +54,32 @@ data/
 templates/
   dashboard.html.tmpl            HTML template with {{...}} markers
   svg_library.js                 hand-tuned SVG illustrations (fallback art)
-  launchagent.plist.tmpl         launchd schedule template
-index.html                       generated dashboard
-run-daily.sh                     wrapper invoked by launchd or you
-setup.sh                         one-time local install
-requirements.txt                 Python deps
+index.html                       generated dashboard, served by Pages
+requirements.txt                 Python deps (auto-installed in Claude Code sandbox)
 ```
 
 ## One-time setup
 
-Prerequisites:
+In repo settings (one-time, ~30 seconds):
 
-- macOS
-- **Python 3.11+** (`brew install python` if missing)
-- **Claude Code** with you logged in via `claude login` — the pipeline uses your existing Pro/Max subscription, no API key required. Install: <https://claude.ai/code>
-- **git** with push access to this repo (you already have this)
+**Settings → Pages → Build and deployment → Source: GitHub Actions**
 
-Then:
+That's the entire setup. After that, every push to `main` triggers the `deploy-pages` workflow which publishes `index.html` to your Pages URL.
 
-```bash
-git clone <your-repo-url>
-cd Uncharted-Art-Finder
-./setup.sh
-```
+## Promoting a discovery to the canonical roster
 
-The setup script will:
+Each `/refresh` run produces a digest summarizing what surfaced — new candidates with `add` / `watch` / `reject` recommendations from Claude. To promote one to the canonical 21-artist roster:
 
-1. Verify `python3` is available
-2. Create a `.venv/` and install dependencies
-3. Make `run-daily.sh` executable
-4. Check that `claude` is on PATH
-5. Optionally install a **launchd agent** that runs `run-daily.sh` daily at 9am
+Just ask in Claude Code: *"Promote Maya Vu from discoveries to the roster, tier 2."*
 
-If launchd is enabled, the pipeline runs every morning. If your Mac is asleep at 9am, launchd runs it as soon as the Mac wakes.
+I'll edit `data/artists.json`, remove them from `data/discoveries.json`, and run `/refresh` again. Or you can edit by hand using the existing entries as templates (`slug`, `name`, `tier`, `kind`, `medium`, `tags`, `summary`, `fit`, `suitability`, `primaryUrl`, `primaryHost`, `thumbs`).
 
-## Running it manually
+## Why this works
 
-Any time:
-
-```bash
-./run-daily.sh
-```
-
-To skip steps while iterating:
-
-```bash
-./run-daily.sh --skip-discover --skip-events --skip-scoring --skip-push
-```
-
-To rebuild just `index.html` from existing data:
-
-```bash
-.venv/bin/python -m scripts.build_dashboard
-```
-
-To score the discovery queue without doing anything else:
-
-```bash
-.venv/bin/python -m scripts.score_with_claude
-```
-
-## Logs
-
-If the launchd agent is running, output goes to:
-
-```
-~/Library/Logs/uppercloud-daily-digest.log
-```
-
-Tail it with `tail -f ~/Library/Logs/uppercloud-daily-digest.log`.
-
-## Promoting a discovery to the roster
-
-Every morning the pipeline writes `data/digests/YYYY-MM-DD.md` summarizing what surfaced — new candidates, scored, with `add` / `watch` / `reject` recs. To promote one to the canonical roster:
-
-1. Open `data/artists.json`
-2. Add a new entry (use the existing entries as templates — `slug`, `name`, `tier`, `kind`, `medium`, `tags`, `summary`, `fit`, `suitability`, `primaryUrl`, `primaryHost`, `thumbs`)
-3. Optionally remove the matching entry from `data/discoveries.json`
-4. Optionally add the artist's slug to `PAGES_BY_SLUG` in `scripts/refresh_images.py` so future runs refresh their images
-5. The next run rebuilds the dashboard with them included.
-
-## How scoring works
-
-`scripts/score_with_claude.py` invokes:
-
-```bash
-claude -p "<artist info>" \
-  --system-prompt "<curation rubric, JSON-only output instruction>" \
-  --tools "" \
-  --no-session-persistence \
-  --output-format json
-```
-
-`--tools ""` disables all of Claude Code's built-in tools so the call is pure text-in / JSON-out — no shell, no edits, no MCP. The response goes into the wrapped JSON envelope; the script parses the inner JSON, validates against a Pydantic schema, and stores it on the candidate. Failures (parse errors, timeout, refusals) leave the candidate unscored — the next run retries.
-
-Each scoring call costs whatever your subscription contract specifies — typically a few tenths of a cent — but is fully covered by your Pro/Max plan, with no per-token API charges.
-
-If `claude` isn't on your PATH, scoring is skipped and the rest of the pipeline still runs. Other steps (image refresh, discovery, events, digest, dashboard) don't depend on it.
+- **Claude Code on the web uses your Pro/Max subscription** — same auth as anywhere else you use Claude. The `claude -p` headless invocation in `score_with_claude.py` is just shelling out to the same authenticated CLI.
+- **The pipeline is git-native** — all state lives in `data/*.json`. Each run produces a clean diff. History is in the commit log.
+- **GitHub Pages is free and fast** — and gives you a real URL to share with clients.
+- **No infra to maintain** — no Anthropic API key, no Vercel project, no cron job, no Supabase, no Mac launchd. The only moving piece is GitHub Actions for the Pages deploy, which is a 25-line YAML.
 
 ## Brand
 
@@ -138,4 +87,4 @@ UpperCloud Studio editorial style — warm cream paper (#F5F1EA), Iowan Old Styl
 
 ---
 
-UpperCloud Studio · Field Brief No. 014 · Self-updating since 2026
+UpperCloud Studio · Field Brief No. 014
