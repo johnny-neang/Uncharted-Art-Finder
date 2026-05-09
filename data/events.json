@@ -1,4 +1,325 @@
 {
-  "events": [],
+  "events": [
+    {
+      "title": "December 2020",
+      "date_raw": "11/08/2024",
+      "date_iso": "2024-11-08",
+      "snippet": "The date pickers are best navigated if one types the dates as: mm/dd/yyyy (example: 11/08/2024) instead of trying to use the arrows to move around the calendar dates. December 2020 Su Mo Tu We Th Fr Sa 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29",
+      "url": "https://www.sacramento365.com/events/?category=arts-culture",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "The date pickers are best navigated if one types the dates as: mm/dd/yyyy (examp",
+      "date_raw": "11/08/2024",
+      "date_iso": "2024-11-08",
+      "snippet": "The date pickers are best navigated if one types the dates as: mm/dd/yyyy (example: 11/08/2024) instead of trying to use the arrows to move around the calendar dates.",
+      "url": "https://www.sacramento365.com/events/?category=arts-culture",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Midtown Second Saturday Art Market x Silent Disco with H.E.R.E.",
+      "date_raw": "May 09, 2026",
+      "date_iso": "2026-05-09",
+      "snippet": "Midtown Second Saturday Art Market x Silent Disco with H.E.R.E. Presented by Midtown Association and Sutter Health at Fremont Park May 09, 2026",
+      "url": "https://sacramento365.com/event/midtown-second-saturday-art-market-x-silent-disco-with-h-e-r-e/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "BerryFest Strawberry Festival",
+      "date_raw": "May 09 - May 10, 2026",
+      "date_iso": "2026-05-09",
+      "snippet": "BerryFest Strawberry Festival Presented by Johny 5 Productions at  Yolo County Fairgrounds May 09 - May 10, 2026",
+      "url": "https://sacramento365.com/event/berryfest-strawberry-festival/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Mother's Day Blossom and Brunch",
+      "date_raw": "May 10, 2026",
+      "date_iso": "2026-05-10",
+      "snippet": "Mother's Day Blossom and Brunch Presented by River Fox Train at River Fox Train May 10, 2026",
+      "url": "https://sacramento365.com/event/mothers-day-blossom-and-brunch/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "International Kids Festival 2026",
+      "date_raw": "May 23, 2026",
+      "date_iso": "2026-05-23",
+      "snippet": "International Kids Festival 2026 Presented by Russian American Media, Inc. at William A Carroll Amphitheatre May 23, 2026",
+      "url": "https://sacramento365.com/event/international-kids-festival-2026/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Back to the Future The Musical",
+      "date_raw": "May 13 - May 24, 2026",
+      "date_iso": "2026-05-13",
+      "snippet": "Back to the Future The Musical Presented by Broadway Sacramento at SAFE Credit Union Performing Arts Center May 13 - May 24, 2026",
+      "url": "https://sacramento365.com/event/back-to-the-future-the-musical/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "2026 Sacramento Valley Korean Culture Festival",
+      "date_raw": "May 30, 2026",
+      "date_iso": "2026-05-30",
+      "snippet": "2026 Sacramento Valley Korean Culture Festival Presented by Sacramento Valley Korean American Community(SVKAC) at  KP INTERNATIONAL MARKET PARKING LOT May 30, 2026",
+      "url": "https://sacramento365.com/event/2026-sacramento-valley-korean-culture-festival/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Orangevale Summer Palooza",
+      "date_raw": "May 29 - May 31, 2026",
+      "date_iso": "2026-05-29",
+      "snippet": "Orangevale Summer Palooza Presented by All Events Management Group, Inc. at Orangevale Community Park May 29 - May 31, 2026",
+      "url": "https://sacramento365.com/event/orangevale-summer-palooza-3/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Picnic in the Poppies Series",
+      "date_raw": "May 13 - Jun 10, 2026",
+      "date_iso": "2026-05-13",
+      "snippet": "Picnic in the Poppies Series Presented by Midtown Association and Kaiser Permanente at Fremont Park May 13 - Jun 10, 2026",
+      "url": "https://sacramento365.com/event/poppies-picnic-series/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Whose Live Anyway?",
+      "date_raw": "Jun 13, 2026",
+      "date_iso": "2026-06-13",
+      "snippet": "Whose Live Anyway? Presented by Color of Nine at SAFE Credit Union Performing Arts Center Jun 13, 2026",
+      "url": "https://sacramento365.com/event/whose-live-anwyay/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Spring Eco-Art & Sip: Paint and Sculpt with Clay",
+      "date_raw": "May 9",
+      "date_iso": "2026-05-09",
+      "snippet": "Sat 9 Spring Eco-Art & Sip: Paint and Sculpt with Clay Featured May 9 @ 10:30 am - 5:00 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Visit the Atrium to shop local art or create your own. Sculpt a clay ma",
+      "url": "https://atrium916.com/event/spring-eco-art-sip-paint-and-sculpt-with-clay/2026-05-09/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "Recurring",
+      "date_raw": "May 9",
+      "date_iso": "2026-05-09",
+      "snippet": "Featured May 9 @ 10:30 am - 5:00 pm Recurring",
+      "url": "https://atrium916.com/event/spring-eco-art-sip-paint-and-sculpt-with-clay/all/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "May Marketplace Small Business Pop-Up Fair",
+      "date_raw": "May 9",
+      "date_iso": "2026-05-09",
+      "snippet": "Sat 9 May Marketplace Small Business Pop-Up Fair May 9 @ 11:00 am - 2:00 pm Join us in celebrating the entrepreneurial spirit by shopping small from various local vendors! Peruse local businesses selling skincare, toffee,artisan spices, vintage clothing, honey, homegoods and more",
+      "url": "https://atrium916.com/event/may-marketplace-small-business-pop-up-fair/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "May 9 @ 11:00 am - 2:00 pm",
+      "date_raw": "May 9",
+      "date_iso": "2026-05-09",
+      "snippet": "May 9 @ 11:00 am - 2:00 pm",
+      "url": "https://atrium916.com/events",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "The Great Escape: Turning Back the Clock in Old Sacramento",
+      "date_raw": "April 21, 2026",
+      "date_iso": "2026-04-21",
+      "snippet": "The Great Escape: Turning Back the Clock in Old Sacramento April 21, 2026 April 21, 2026 – Salinas Valley Tribune – Down the way we ran into the Old Town Trainstop. There we discovered several people partaking in art projects at Atrium 916 community space, which was wonderful to",
+      "url": "https://atrium916.com/2026/04/21/the-great-escape-turning-back-the-clock-in-old-sacramento/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "April 21, 2026 – Salinas Valley Tribune – Down the way we ran into the Old Town",
+      "date_raw": "April 21, 2026",
+      "date_iso": "2026-04-21",
+      "snippet": "April 21, 2026 – Salinas Valley Tribune – Down the way we ran into the Old Town Trainstop. There we discovered several people partaking in art projects at Atrium 916 community space, which was wonderful to see. Within the area was Old Sacramento State Historic Park featuring an o",
+      "url": "https://atrium916.com/events",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "Like Friends, Like Foes: A Conversation on Nikkei History and RedressWednesday, May 20, 2026Learn More",
+      "date_raw": "May 20, 2026",
+      "date_iso": "2026-05-20",
+      "snippet": "Like Friends, Like Foes: A Conversation on Nikkei History and Redress Wednesday, May 20, 2026 Learn More California Time Traveler Camp June 22-26, 2026 & July 6-10, 2026 | SOLD OUT Learn More Docent on Duty in “Uprooted” Ongoing Learn More Black History Self-Guided Tour February",
+      "url": "https://californiamuseum.org/visit/events-public-programs/like-friends-like-foes/",
+      "source": "California Museum"
+    },
+    {
+      "title": "Like Friends, Like Foes: A Conversation on Nikkei History and Redress",
+      "date_raw": "May 20, 2026",
+      "date_iso": "2026-05-20",
+      "snippet": "Like Friends, Like Foes: A Conversation on Nikkei History and Redress Wednesday, May 20, 2026 Learn More",
+      "url": "https://www.californiamuseum.org/events",
+      "source": "California Museum"
+    },
+    {
+      "title": "California Time Traveler Camp",
+      "date_raw": "June 22-26, 2026",
+      "date_iso": "2026-06-22",
+      "snippet": "California Time Traveler Camp June 22-26, 2026 & July 6-10, 2026 | SOLD OUT Learn More",
+      "url": "https://www.californiamuseum.org/events",
+      "source": "California Museum"
+    },
+    {
+      "title": "Black History Self-Guided Tour",
+      "date_raw": "February 1 – 28, 2026",
+      "date_iso": "2027-02-01",
+      "snippet": "Black History Self-Guided Tour February 1 – 28, 2026 Learn More",
+      "url": "https://www.californiamuseum.org/events",
+      "source": "California Museum"
+    },
+    {
+      "title": "On View in the Gallery",
+      "date_raw": "May 9",
+      "date_iso": "2026-05-09",
+      "snippet": "On View in the Gallery Knowledge We Carry // Chroma Project // We Gather May 9th - June 20th, 2026",
+      "url": "https://bluelinearts.org/exhibitions/",
+      "source": "Blue Line Arts — exhibitions"
+    },
+    {
+      "title": "May 9th - June 20th, 2026",
+      "date_raw": "May 9",
+      "date_iso": "2026-05-09",
+      "snippet": "May 9th - June 20th, 2026",
+      "url": "https://bluelinearts.org/exhibitions/",
+      "source": "Blue Line Arts — exhibitions"
+    },
+    {
+      "title": "By Hand",
+      "date_raw": "January 10",
+      "date_iso": "2027-01-10",
+      "snippet": "By Hand January 10th - February 21st, 2026 Lottery for the Arts - Fundraiser for Art Education February 28th - March 14th, 2026 Preview Night Reception: February 28th, 2026 Event Date: March 14th, 2026 Off Center // On the Rise // Robert Gideon // SCG Art Local March 21st - May 2",
+      "url": "https://www.bluelinearts.org/the-lottery-for-the-arts",
+      "source": "Blue Line Arts — exhibitions"
+    },
+    {
+      "title": "Exhibitions",
+      "date_raw": "May 1 – May 30",
+      "date_iso": "2027-05-01",
+      "snippet": "Exhibitions On View at Axis Adding Stones to Rise  May 1 – May 30 May 1, 2026 through May 30, 2026 Second Saturday Reception: May 9, 5–8 PM Join us at Axis Gallery for Second Saturday, a monthly celebration of the newest gallery exhibition. Guests can enjoy light refreshments, li",
+      "url": "https://axisgallery.org/home-3/exhibitions/adding-stones-to-rise/",
+      "source": "Axis Gallery — exhibitions"
+    },
+    {
+      "title": "On View at Axis",
+      "date_raw": "May 1 – May 30",
+      "date_iso": "2027-05-01",
+      "snippet": "On View at Axis Adding Stones to Rise  May 1 – May 30 May 1, 2026 through May 30, 2026 Second Saturday Reception: May 9, 5–8 PM Join us at Axis Gallery for Second Saturday, a monthly celebration of the newest gallery exhibition. Guests can enjoy light refreshments, lively convers",
+      "url": "https://axisgallery.org/home-3/exhibitions/adding-stones-to-rise/",
+      "source": "Axis Gallery — exhibitions"
+    },
+    {
+      "title": "May 1, 2026 through May 30, 2026 Second Saturday Reception: May 9, 5–8 PM",
+      "date_raw": "May 1, 2026",
+      "date_iso": "2026-05-01",
+      "snippet": "May 1, 2026 through May 30, 2026 Second Saturday Reception: May 9, 5–8 PM",
+      "url": "https://axisgallery.org/exhibitions/",
+      "source": "Axis Gallery — exhibitions"
+    },
+    {
+      "title": "May 1, 2026 through May 30, 2026",
+      "date_raw": "May 1, 2026",
+      "date_iso": "2026-05-01",
+      "snippet": "May 1, 2026 through May 30, 2026",
+      "url": "https://axisgallery.org/exhibitions/",
+      "source": "Axis Gallery — exhibitions"
+    },
+    {
+      "title": "Second Saturday Reception: May 9, 5–8 PM",
+      "date_raw": "May 9",
+      "date_iso": "2026-05-09",
+      "snippet": "Second Saturday Reception: May 9, 5–8 PM",
+      "url": "https://axisgallery.org/exhibitions/",
+      "source": "Axis Gallery — exhibitions"
+    },
+    {
+      "title": "In the East Room",
+      "date_raw": "May 1, 2026",
+      "date_iso": "2026-05-01",
+      "snippet": "In the East Room AXIS Gallery to Host Youth Art Showcase May 1, 2026 through May 31, 2026 Second Saturday Reception: May 9, 5–8 PM Join us at Axis Gallery for Second Saturday, a monthly celebration of the newest gallery exhibition. Guests can enjoy light refreshments, lively conv",
+      "url": "https://axisgallery.org/home-3/exhibitions/youth-art-exhibition2/",
+      "source": "Axis Gallery — exhibitions"
+    },
+    {
+      "title": "May 1, 2026 through May 31, 2026 Second Saturday Reception: May 9, 5–8 PM",
+      "date_raw": "May 1, 2026",
+      "date_iso": "2026-05-01",
+      "snippet": "May 1, 2026 through May 31, 2026 Second Saturday Reception: May 9, 5–8 PM",
+      "url": "https://axisgallery.org/exhibitions/",
+      "source": "Axis Gallery — exhibitions"
+    },
+    {
+      "title": "May 1, 2026 through May 31, 2026",
+      "date_raw": "May 1, 2026",
+      "date_iso": "2026-05-01",
+      "snippet": "May 1, 2026 through May 31, 2026",
+      "url": "https://axisgallery.org/exhibitions/",
+      "source": "Axis Gallery — exhibitions"
+    },
+    {
+      "title": "About Us",
+      "date_raw": "June 19, 2017",
+      "date_iso": "2017-06-19",
+      "snippet": "Site navigation About Us Artists Contact Us Exhibitions Home News Recent News June 19, 2017 Art Review: She adopted a persona and unleashed her inner artist March 7, 2016 Art Review: Shifting gears at JayJay gallery Contact Us JAYJAY 5524 B Elvas Ave. Sacramento, CA 95819 phone:",
+      "url": "https://jayjayart.com/about-us/",
+      "source": "JAYJAY Gallery — exhibitions"
+    },
+    {
+      "title": "Art Review: She adopted a persona and unleashed her inner artist",
+      "date_raw": "June 19, 2017",
+      "date_iso": "2017-06-19",
+      "snippet": "June 19, 2017 Art Review: She adopted a persona and unleashed her inner artist",
+      "url": "https://jayjayart.com/art-review-she-adopted-a-persona-and-unleashed-her-inner-artist/",
+      "source": "JAYJAY Gallery — exhibitions"
+    },
+    {
+      "title": "Art Review: Shifting gears at JayJay gallery",
+      "date_raw": "March 7, 2016",
+      "date_iso": "2016-03-07",
+      "snippet": "March 7, 2016 Art Review: Shifting gears at JayJay gallery",
+      "url": "https://jayjayart.com/art-review-shifting-gears-at-jayjay-gallery/",
+      "source": "JAYJAY Gallery — exhibitions"
+    },
+    {
+      "title": "May 8, 2026|Gavin Newsom, Early Champion of Single-Payer, Moderates in the Face of Fiscal Limits",
+      "date_raw": "May 8, 2026",
+      "date_iso": "2026-05-08",
+      "snippet": "Hot Topics May 8, 2026 | Gavin Newsom, Early Champion of Single-Payer, Moderates in the Face of Fiscal Limits May 7, 2026 | Who wants to be California’s insurance commissioner? Your guide to the candidates May 7, 2026 | In the six-way race to be California’s treasurer, it likely",
+      "url": "https://sacramento.newsreview.com/2026/05/08/gavin-newsom-early-champion-of-single-payer-moderates-in-the-face-of-fiscal-limits/",
+      "source": "Sacramento News & Review — Arts events"
+    },
+    {
+      "title": "May 7, 2026|Who wants to be California’s insurance commissioner? Your guide to the candidates",
+      "date_raw": "May 7, 2026",
+      "date_iso": "2026-05-07",
+      "snippet": "May 7, 2026 | Who wants to be California’s insurance commissioner? Your guide to the candidates",
+      "url": "https://sacramento.newsreview.com/2026/05/07/who-wants-to-be-californias-insurance-commissioner-your-guide-to-the-candidates/",
+      "source": "Sacramento News & Review — Arts events"
+    },
+    {
+      "title": "May 7, 2026|In the six-way race to be California’s treasurer, it likely comes down to two Democrats",
+      "date_raw": "May 7, 2026",
+      "date_iso": "2026-05-07",
+      "snippet": "May 7, 2026 | In the six-way race to be California’s treasurer, it likely comes down to two Democrats",
+      "url": "https://sacramento.newsreview.com/2026/05/07/in-the-six-way-race-to-be-californias-treasurer-it-likely-comes-down-to-two-democrats/",
+      "source": "Sacramento News & Review — Arts events"
+    },
+    {
+      "title": "May 7, 2026|Will California ever build the Delta tunnel? Major battles ahead as Newsom era nears end",
+      "date_raw": "May 7, 2026",
+      "date_iso": "2026-05-07",
+      "snippet": "May 7, 2026 | Will California ever build the Delta tunnel? Major battles ahead as Newsom era nears end",
+      "url": "https://sacramento.newsreview.com/2026/05/07/will-california-ever-build-the-delta-tunnel-major-battles-ahead-as-newsom-era-nears-end/",
+      "source": "Sacramento News & Review — Arts events"
+    },
+    {
+      "title": "May 5, 2026|More bad behavior: ‘Beef: Season 2’ doesn’t reach the highs of the first season—but it’s still very good",
+      "date_raw": "May 5, 2026",
+      "date_iso": "2026-05-05",
+      "snippet": "May 5, 2026 | More bad behavior: ‘Beef: Season 2’ doesn’t reach the highs of the first season—but it’s still very good",
+      "url": "https://sacramento.newsreview.com/2026/05/05/steven-yeun-and-ali-wong-dont-return-for-netflixs-beef-season-2-with-creator-and-sometimes-director-lee-sung-jin-opting-for-a-completely-new-storyline-and-cast-for-his-multiple-emm/",
+      "source": "Sacramento News & Review — Arts events"
+    }
+  ],
   "last_run": "2026-05-09"
 }
