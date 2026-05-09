@@ -25,9 +25,11 @@ TIMEOUT_S = int(os.environ.get("CLAUDE_TIMEOUT", "120"))
 
 
 class CandidateScore(BaseModel):
-    sacramento_connection: Literal["yes", "no", "unclear"]
+    regional_connection: Literal["local", "regional", "out_of_region", "unclear"]
     family_fit: int = Field(ge=1, le=5)
     mural_capacity: Literal["proven", "likely", "studio_only", "unknown"]
+    immersive_capacity: int = Field(ge=1, le=5)
+    indoor_commercial_fit: Literal["proven", "likely", "unproven", "unsuited"]
     suggested_tier: Literal[1, 2, 3]
     suggested_tags: list[str] = Field(max_length=6)
     one_line_summary: str = Field(max_length=240)
@@ -37,15 +39,30 @@ class CandidateScore(BaseModel):
 
 SYSTEM_PROMPT = """You are an evaluation tool for UpperCloud Studio's Sacramento Artist Directory — the curation pipeline for Arden Fair UnchARTed, a public-art program at a family-friendly Sacramento mall.
 
+The directory has TWO product lines:
+1. Mural commissions (the existing roster's primary output).
+2. Immersive / installation commissions — teamLab-lite style indoor light & sensory environments for the mall interior. This is additive, not a replacement.
+
+Geographic scope is BOUNDED to Sacramento metro + greater Bay Area only. Reno/Tahoe and out-of-state artists are not eligible regardless of style — they fail the practicality test for travel, install, and maintenance. Reference figures like Jen Lewin (Brooklyn) and Leo Villareal (NYC) inspire the brief but are NOT eligible candidates; score them "out_of_region" even when their style is a perfect fit.
+
 Score each candidate on these axes:
 
-- sacramento_connection: "yes" (Sacramento area = Sacramento, Davis, Roseville, Folsom, Elk Grove, Yolo/Placer counties) | "unclear" | "no"
+- regional_connection:
+  - "local"          = Sacramento metro (Sacramento, Davis, Roseville, Folsom, Elk Grove, Yolo/Placer counties)
+  - "regional"       = greater Bay Area (SF, Oakland, San Jose, peninsula, North Bay, East Bay)
+  - "out_of_region"  = anywhere else (Reno/Tahoe, LA, NYC, etc.) — these MUST be rejected
+  - "unclear"
 - family_fit: integer 1-5. 5 = vibrant, narrative, family-bright. 1 = dark/macabre/explicit/politically heated/drug-themed. The mall is family-friendly, not edgy.
-- mural_capacity: "proven" (large public work in portfolio) | "likely" | "studio_only" | "unknown"
+- mural_capacity: "proven" (large public mural in portfolio) | "likely" | "studio_only" | "unknown"
+- immersive_capacity: integer 1-5 for indoor light / projection / sensory installation chops.
+  - 5 = proven indoor immersive portfolio (e.g. Future Cities Lab's Lightswarm, Numina Studio's Nocturne X)
+  - 3 = mixed-media or sculpture practice with plausible immersive lift
+  - 1 = walls-only muralist, no installation work
+- indoor_commercial_fit: "proven" (has done indoor commercial / retail / mall work) | "likely" | "unproven" | "unsuited" (work is wholly outdoor, gallery-only, or scale-incompatible)
 - suggested_tier: 1 (priority — proven, brand-recognized, ideal fit) | 2 (established) | 3 (agency/curator, not a single artist)
-- suggested_tags: 3-5 short lowercase hyphenated tags (e.g. "mural", "abstract", "encaustic", "figurative", "botanical")
+- suggested_tags: 3-5 short lowercase hyphenated tags (e.g. "mural", "abstract", "encaustic", "figurative", "botanical", "light-installation", "interactive")
 - one_line_summary: dry editorial sentence, max 200 chars
-- proceed_recommendation: "add" (strong roster fit) | "watch" (interesting, queue) | "reject" (off-fit)
+- proceed_recommendation: "add" (strong roster fit) | "watch" (interesting, queue) | "reject" (off-fit). If regional_connection is "out_of_region", you MUST output "reject" regardless of any other axis.
 - confidence: "low" | "medium" | "high"
 
 Respond with EXACTLY ONE JSON object matching this schema and nothing else — no prose, no preamble, no markdown fences. Use only the literal values listed above."""
@@ -115,9 +132,10 @@ def score_candidate(c: dict) -> CandidateScore | None:
         inner = json.loads(inner_text)
         score = CandidateScore.model_validate(inner)
         cost = envelope.get("total_cost_usd", 0) or 0
-        logger.info("  %s -> %s (fit %d, tier %d) [$%.4f]",
+        logger.info("  %s -> %s (fit %d, tier %d, region %s, immersive %d) [$%.4f]",
                     c["name"], score.proceed_recommendation, score.family_fit,
-                    score.suggested_tier, cost)
+                    score.suggested_tier, score.regional_connection,
+                    score.immersive_capacity, cost)
         return score
     except (json.JSONDecodeError, ValidationError) as e:
         logger.warning("[%s] inner JSON parse failed: %s | text=%r", c["name"], e, inner_text[:200])

@@ -107,6 +107,66 @@
       "url": "https://submergemag.com/",
       "kind": "press",
       "selector_hint": "local culture / arts press"
+    },
+    {
+      "name": "Senses 916 (CADA Come to Your Senses)",
+      "url": "https://www.senses916.com/",
+      "kind": "roster",
+      "selector_hint": "Sacramento immersive cohort — Kodama, Ulep, Lopez, Kearns, Holden, etc."
+    },
+    {
+      "name": "Midtown Association — Urban Dreams",
+      "url": "https://exploremidtown.org/urbandreams/",
+      "kind": "roster",
+      "selector_hint": "16 large-scale immersive installations by local artists; alumni roster"
+    },
+    {
+      "name": "ILU Innovations",
+      "url": "https://www.iluinnovations.com/",
+      "kind": "roster",
+      "selector_hint": "Sacramento interactive/sensory tech studio (Micah Kearns)"
+    },
+    {
+      "name": "Sacramento Office of Arts & Culture — Public Art",
+      "url": "https://www.cityofsacramento.gov/ccs/oac/public-art/public-art-projects",
+      "kind": "roster",
+      "selector_hint": "city public-art commissions; non-standard structure, may yield zero"
+    },
+    {
+      "name": "Future Cities Lab — projects",
+      "url": "http://www.future-cities-lab.net/projects",
+      "kind": "roster",
+      "selector_hint": "SF studio; Lightswarm at YBCA — 430 sound-responsive light modules"
+    },
+    {
+      "name": "Charles Gadeken — projects",
+      "url": "https://www.charlesgadeken.com/projects/",
+      "kind": "roster",
+      "selector_hint": "SF light artist; SQUARED LED tree at Patricia's Green, Entwined Meadow"
+    },
+    {
+      "name": "Gray Area / Numina Studio",
+      "url": "https://grayarea.org/people/",
+      "kind": "roster",
+      "selector_hint": "SF creative-tech incubator; Numina Studio (Nocturne X) cohort"
+    },
+    {
+      "name": "Illuminate SF",
+      "url": "https://illuminate.org/",
+      "kind": "roster",
+      "selector_hint": "SF nonprofit producing large-scale immersive light projects (Tier 3 agency)"
+    },
+    {
+      "name": "GlowFidelity (Joshua Hubert)",
+      "url": "https://www.glowfidelity.com/",
+      "kind": "roster",
+      "selector_hint": "Oakland light artist; ongoing Bay Area public-art commissions"
+    },
+    {
+      "name": "YBCA artists",
+      "url": "https://ybca.org/artists/",
+      "kind": "roster",
+      "selector_hint": "Yerba Buena Center for the Arts roster — SF immersive practitioners"
     }
   ],
   "event_sources": [
