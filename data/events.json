@@ -17,35 +17,27 @@
       "source": "Sacramento365 — Arts events"
     },
     {
-      "title": "BerryFest Strawberry Festival",
-      "date_raw": "May 09 - May 10, 2026",
-      "date_iso": "2026-05-09",
-      "snippet": "BerryFest Strawberry Festival Presented by Johny 5 Productions at  Yolo County Fairgrounds May 09 - May 10, 2026",
-      "url": "https://sacramento365.com/event/berryfest-strawberry-festival/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
-      "title": "Mother's Day Blossom and Brunch",
-      "date_raw": "May 10, 2026",
-      "date_iso": "2026-05-10",
-      "snippet": "Mother's Day Blossom and Brunch Presented by River Fox Train at River Fox Train May 10, 2026",
-      "url": "https://sacramento365.com/event/mothers-day-blossom-and-brunch/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
-      "title": "Mother's Day Brunch at Hyatt Regency Sacramento",
-      "date_raw": "May 10, 2026",
-      "date_iso": "2026-05-10",
-      "snippet": "Mother's Day Brunch at Hyatt Regency Sacramento Presented by Hyatt Regency Sacramento and Vines Cafe at Hyatt Regency Sacramento May 10, 2026",
-      "url": "https://sacramento365.com/event/mothers-day-brunch-at-hyatt-regency-sacramento/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
       "title": "AAPI Night Market",
       "date_raw": "May 15, 2026",
       "date_iso": "2026-05-15",
       "snippet": "AAPI Night Market Presented by Sacramento Asian Pacific Chamber of Commerce (SACC) at Capitol Mall Greens May 15, 2026",
       "url": "https://sacramento365.com/event/aapi-night-market-2/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "TNA Wrestling",
+      "date_raw": "May 14 - May 15, 2026",
+      "date_iso": "2026-05-14",
+      "snippet": "TNA Wrestling Presented by TNA Wrestling at Memorial Auditorium May 14 - May 15, 2026",
+      "url": "https://sacramento365.com/event/tna-wrestling/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "American River Burger Battle",
+      "date_raw": "May 16, 2026",
+      "date_iso": "2026-05-16",
+      "snippet": "American River Burger Battle Presented by American River Parkway Foundation at Discovery Park May 16, 2026",
+      "url": "https://sacramento365.com/event/american-river-burger-battle-2/",
       "source": "Sacramento365 — Arts events"
     },
     {
@@ -81,6 +73,14 @@
       "source": "Sacramento365 — Arts events"
     },
     {
+      "title": "Beethoven Symphony No. 9",
+      "date_raw": "May 30 - May 31, 2026",
+      "date_iso": "2026-05-30",
+      "snippet": "Beethoven Symphony No. 9 Presented by Sacramento Philharmonic & Opera at SAFE Credit Union Performing Arts Center May 30 - May 31, 2026",
+      "url": "https://sacramento365.com/event/beethoven-symphony-no-9/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
       "title": "Picnic in the Poppies Series",
       "date_raw": "May 13 - Jun 10, 2026",
       "date_iso": "2026-05-13",
@@ -98,34 +98,18 @@
     },
     {
       "title": "Spring Eco-Art & Sip: Paint and Sculpt with Clay",
-      "date_raw": "May 9",
-      "date_iso": "2026-05-09",
-      "snippet": "Sat 9 Spring Eco-Art & Sip: Paint and Sculpt with Clay Featured May 9 @ 10:30 am - 5:00 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Visit the Atrium to shop local art or create your own. Sculpt a clay ma",
-      "url": "https://atrium916.com/event/spring-eco-art-sip-paint-and-sculpt-with-clay/2026-05-09/",
+      "date_raw": "May 10",
+      "date_iso": "2026-05-10",
+      "snippet": "Sun 10 Spring Eco-Art & Sip: Paint and Sculpt with Clay Featured May 10 @ 10:30 am - 5:00 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Visit the Atrium to shop local art or create your own. Sculpt a clay",
+      "url": "https://atrium916.com/event/spring-eco-art-sip-paint-and-sculpt-with-clay/2026-05-10/",
       "source": "Atrium 916 — events"
     },
     {
       "title": "Recurring",
-      "date_raw": "May 9",
-      "date_iso": "2026-05-09",
-      "snippet": "Featured May 9 @ 10:30 am - 5:00 pm Recurring",
+      "date_raw": "May 10",
+      "date_iso": "2026-05-10",
+      "snippet": "Featured May 10 @ 10:30 am - 5:00 pm Recurring",
       "url": "https://atrium916.com/event/spring-eco-art-sip-paint-and-sculpt-with-clay/all/",
-      "source": "Atrium 916 — events"
-    },
-    {
-      "title": "May Marketplace Small Business Pop-Up Fair",
-      "date_raw": "May 9",
-      "date_iso": "2026-05-09",
-      "snippet": "Sat 9 May Marketplace Small Business Pop-Up Fair May 9 @ 11:00 am - 2:00 pm Join us in celebrating the entrepreneurial spirit by shopping small from various local vendors! Peruse local businesses selling skincare, toffee,artisan spices, vintage clothing, honey, homegoods and more",
-      "url": "https://atrium916.com/event/may-marketplace-small-business-pop-up-fair/",
-      "source": "Atrium 916 — events"
-    },
-    {
-      "title": "May 9 @ 11:00 am - 2:00 pm",
-      "date_raw": "May 9",
-      "date_iso": "2026-05-09",
-      "snippet": "May 9 @ 11:00 am - 2:00 pm",
-      "url": "https://atrium916.com/events",
       "source": "Atrium 916 — events"
     },
     {
@@ -179,7 +163,7 @@
     {
       "title": "On View in the Gallery",
       "date_raw": "May 9",
-      "date_iso": "2026-05-09",
+      "date_iso": "2027-05-09",
       "snippet": "On View in the Gallery Knowledge We Carry // Chroma Project // We Gather May 9th - June 20th, 2026",
       "url": "https://bluelinearts.org/exhibitions/",
       "source": "Blue Line Arts — exhibitions"
@@ -187,7 +171,7 @@
     {
       "title": "May 9th - June 20th, 2026",
       "date_raw": "May 9",
-      "date_iso": "2026-05-09",
+      "date_iso": "2027-05-09",
       "snippet": "May 9th - June 20th, 2026",
       "url": "https://bluelinearts.org/exhibitions/",
       "source": "Blue Line Arts — exhibitions"
@@ -235,7 +219,7 @@
     {
       "title": "Second Saturday Reception: May 9, 5–8 PM",
       "date_raw": "May 9",
-      "date_iso": "2026-05-09",
+      "date_iso": "2027-05-09",
       "snippet": "Second Saturday Reception: May 9, 5–8 PM",
       "url": "https://axisgallery.org/exhibitions/",
       "source": "Axis Gallery — exhibitions"
@@ -289,10 +273,26 @@
       "source": "JAYJAY Gallery — exhibitions"
     },
     {
+      "title": "May 9, 2026|Bad building: Zazie Beetz proves she’s great at bloody action in ‘They Will Kill You’",
+      "date_raw": "May 9, 2026",
+      "date_iso": "2026-05-09",
+      "snippet": "Hot Topics May 9, 2026 | Bad building: Zazie Beetz proves she’s great at bloody action in ‘They Will Kill You’ May 9, 2026 | Bad pasts: Robert Pattinson and Zendaya are a fantastic onscreen couple—who will make you very uncomfortable in ‘The Drama’ May 8, 2026 | Gavin Newsom, Ear",
+      "url": "https://sacramento.newsreview.com/2026/05/09/bad-building-zazie-beetz-proves-shes-great-at-bloody-action-in-they-will-kill-you/",
+      "source": "Sacramento News & Review — Arts events"
+    },
+    {
+      "title": "May 9, 2026|Bad pasts: Robert Pattinson and Zendaya are a fantastic onscreen couple—who will make you very uncomfortable in ‘The Drama’",
+      "date_raw": "May 9, 2026",
+      "date_iso": "2026-05-09",
+      "snippet": "May 9, 2026 | Bad pasts: Robert Pattinson and Zendaya are a fantastic onscreen couple—who will make you very uncomfortable in ‘The Drama’",
+      "url": "https://sacramento.newsreview.com/2026/05/09/bad-pasts-robert-pattinson-and-zendaya-are-a-fantastic-onscreen-couple-who-will-make-you-very-uncomfortable-in-the-drama/",
+      "source": "Sacramento News & Review — Arts events"
+    },
+    {
       "title": "May 8, 2026|Gavin Newsom, Early Champion of Single-Payer, Moderates in the Face of Fiscal Limits",
       "date_raw": "May 8, 2026",
       "date_iso": "2026-05-08",
-      "snippet": "Hot Topics May 8, 2026 | Gavin Newsom, Early Champion of Single-Payer, Moderates in the Face of Fiscal Limits May 7, 2026 | Who wants to be California’s insurance commissioner? Your guide to the candidates May 7, 2026 | In the six-way race to be California’s treasurer, it likely",
+      "snippet": "May 8, 2026 | Gavin Newsom, Early Champion of Single-Payer, Moderates in the Face of Fiscal Limits",
       "url": "https://sacramento.newsreview.com/2026/05/08/gavin-newsom-early-champion-of-single-payer-moderates-in-the-face-of-fiscal-limits/",
       "source": "Sacramento News & Review — Arts events"
     },
@@ -311,23 +311,7 @@
       "snippet": "May 7, 2026 | In the six-way race to be California’s treasurer, it likely comes down to two Democrats",
       "url": "https://sacramento.newsreview.com/2026/05/07/in-the-six-way-race-to-be-californias-treasurer-it-likely-comes-down-to-two-democrats/",
       "source": "Sacramento News & Review — Arts events"
-    },
-    {
-      "title": "May 7, 2026|Will California ever build the Delta tunnel? Major battles ahead as Newsom era nears end",
-      "date_raw": "May 7, 2026",
-      "date_iso": "2026-05-07",
-      "snippet": "May 7, 2026 | Will California ever build the Delta tunnel? Major battles ahead as Newsom era nears end",
-      "url": "https://sacramento.newsreview.com/2026/05/07/will-california-ever-build-the-delta-tunnel-major-battles-ahead-as-newsom-era-nears-end/",
-      "source": "Sacramento News & Review — Arts events"
-    },
-    {
-      "title": "May 5, 2026|More bad behavior: ‘Beef: Season 2’ doesn’t reach the highs of the first season—but it’s still very good",
-      "date_raw": "May 5, 2026",
-      "date_iso": "2026-05-05",
-      "snippet": "May 5, 2026 | More bad behavior: ‘Beef: Season 2’ doesn’t reach the highs of the first season—but it’s still very good",
-      "url": "https://sacramento.newsreview.com/2026/05/05/steven-yeun-and-ali-wong-dont-return-for-netflixs-beef-season-2-with-creator-and-sometimes-director-lee-sung-jin-opting-for-a-completely-new-storyline-and-cast-for-his-multiple-emm/",
-      "source": "Sacramento News & Review — Arts events"
     }
   ],
-  "last_run": "2026-05-09"
+  "last_run": "2026-05-10"
 }
