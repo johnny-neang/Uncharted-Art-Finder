@@ -9,7 +9,8 @@ from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 
 from .common import (
-    DATA, get, load_json, logger, parse_event_date, polite_delay, save_json, setup_logging,
+    DATA, get, is_quality_event, load_json, logger, parse_event_date,
+    polite_delay, save_json, setup_logging,
 )
 
 
@@ -50,14 +51,18 @@ def extract_events_from_page(html: str, base: str, source_name: str) -> list[dic
         url = urljoin(base, link["href"]) if link else base
 
         date_raw = m.group(0)
-        events.append({
+        candidate = {
             "title": title.strip(),
             "date_raw": date_raw,
             "date_iso": parse_event_date(date_raw),
             "snippet": text[:280].strip(),
             "url": url,
             "source": source_name,
-        })
+        }
+        if not is_quality_event(candidate):
+            logger.debug("  qc-drop: %r", candidate["title"][:60])
+            continue
+        events.append(candidate)
 
     return events[:30]
 

@@ -45,13 +45,15 @@ def build_digest(today: str) -> str:
             score = c.get("score") or {}
             rec = score.get("proceed_recommendation", "pending")
             fit = score.get("family_fit")
-            sac = score.get("sacramento_connection", "?")
+            region = score.get("regional_connection", "?")
+            immersive = score.get("immersive_capacity")
             tier = score.get("suggested_tier")
             summary = score.get("one_line_summary") or "(awaiting score)"
             lines.append(f"### {c['name']}")
             lines.append(f"- **Source:** [{c['source_name']}]({c['url']})")
             if score:
-                lines.append(f"- **Claude rec:** `{rec}` · fit {fit}/5 · sacramento: {sac} · tier {tier}")
+                immersive_str = f" · immersive {immersive}/5" if immersive is not None else ""
+                lines.append(f"- **Claude rec:** `{rec}` · fit {fit}/5 · region: {region}{immersive_str} · tier {tier}")
             lines.append(f"- {summary}")
             lines.append("")
 
