@@ -17,11 +17,19 @@
       "source": "Sacramento365 — Arts events"
     },
     {
-      "title": "Trending Events",
+      "title": "Milk IMAX screening",
+      "date_raw": "May 14, 2026",
+      "date_iso": "2026-05-14",
+      "snippet": "Milk IMAX screening Presented by Esquire IMAX Theatre at Esquire IMAX Theatre May 14, 2026",
+      "url": "https://sacramento365.com/event/milk-imax-screening/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Concerts in the Park: Andrea Bejar",
       "date_raw": "May 15, 2026",
       "date_iso": "2026-05-15",
-      "snippet": "Trending Events AAPI Night Market Presented by Sacramento Asian Pacific Chamber of Commerce (SACC) at Capitol Mall Greens May 15, 2026 Ian Levy Presented by Laughs Unlimited at Laughs Unlimited Comedy Club & Lounge May 15 - May 16, 2026 La Disco: Chavorrucos Fest 2026 Presented b",
-      "url": "https://sacramento365.com/event/aapi-night-market-2/",
+      "snippet": "Concerts in the Park: Andrea Bejar Presented by Downtown Sacramento Partnership at  910 I Street May 15, 2026",
+      "url": "https://sacramento365.com/event/concerts-in-the-park-andrea-bejar/",
       "source": "Sacramento365 — Arts events"
     },
     {
@@ -33,35 +41,59 @@
       "source": "Sacramento365 — Arts events"
     },
     {
-      "title": "Ian Levy",
-      "date_raw": "May 15 - May 16, 2026",
+      "title": "The California Mermaid Convention",
+      "date_raw": "May 15 - May 17, 2026",
       "date_iso": "2026-05-15",
-      "snippet": "Ian Levy Presented by Laughs Unlimited at Laughs Unlimited Comedy Club & Lounge May 15 - May 16, 2026",
-      "url": "https://sacramento365.com/event/ian-levy/",
+      "snippet": "The California Mermaid Convention Presented by Mermaid and Mom LLC DBA The California Mermaid Convention at Hagan Community Center May 15 - May 17, 2026",
+      "url": "https://sacramento365.com/event/the-california-mermaid-convention/",
       "source": "Sacramento365 — Arts events"
     },
     {
-      "title": "La Disco: Chavorrucos Fest 2026",
-      "date_raw": "May 16, 2026",
-      "date_iso": "2026-05-16",
-      "snippet": "La Disco: Chavorrucos Fest 2026 Presented by Rock & Brews Restaurant at Rock & Brews May 16, 2026",
-      "url": "https://sacramento365.com/event/la-disco-chavorrucos-fest-2026/",
+      "title": "International Kids Festival 2026",
+      "date_raw": "May 23, 2026",
+      "date_iso": "2026-05-23",
+      "snippet": "International Kids Festival 2026 Presented by Russian American Media, Inc. at William A Carroll Amphitheatre May 23, 2026",
+      "url": "https://sacramento365.com/event/international-kids-festival-2026/",
       "source": "Sacramento365 — Arts events"
     },
     {
-      "title": "A New Hope: The Future of Alzheimer's Care",
-      "date_raw": "May 19, 2026",
-      "date_iso": "2026-05-19",
-      "snippet": "A New Hope: The Future of Alzheimer's Care Presented by Eli Lilly at The Citizen Hotel May 19, 2026",
-      "url": "https://sacramento365.com/event/a-new-hope-the-future-of-alzheimers-care/",
+      "title": "Back to the Future The Musical",
+      "date_raw": "May 13 - May 24, 2026",
+      "date_iso": "2026-05-13",
+      "snippet": "Back to the Future The Musical Presented by Broadway Sacramento at SAFE Credit Union Performing Arts Center May 13 - May 24, 2026",
+      "url": "https://sacramento365.com/event/back-to-the-future-the-musical/",
       "source": "Sacramento365 — Arts events"
     },
     {
-      "title": "Westlake Charter High School",
-      "date_raw": "Jun 09, 2026",
-      "date_iso": "2026-06-09",
-      "snippet": "Westlake Charter High School Presented by Westlake Charter High School at Memorial Auditorium Jun 09, 2026",
-      "url": "https://sacramento365.com/event/westlake-charter-high-school-2/",
+      "title": "Sacramento County Fair",
+      "date_raw": "May 21 - May 25, 2026",
+      "date_iso": "2026-05-21",
+      "snippet": "Sacramento County Fair Presented by Sacramento County Fair at Cal Expo May 21 - May 25, 2026",
+      "url": "https://sacramento365.com/event/sacramento-county-fair-2/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Orangevale Summer Palooza",
+      "date_raw": "May 29 - May 31, 2026",
+      "date_iso": "2026-05-29",
+      "snippet": "Orangevale Summer Palooza Presented by All Events Management Group, Inc. at Orangevale Community Park May 29 - May 31, 2026",
+      "url": "https://sacramento365.com/event/orangevale-summer-palooza-3/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Maifest 2026",
+      "date_raw": "May 31, 2026",
+      "date_iso": "2026-05-31",
+      "snippet": "Maifest 2026 Presented by Sacramento Turn Verein German Language School at Sacramento Turn Verein May 31, 2026",
+      "url": "https://sacramento365.com/event/maifest-2026/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Picnic in the Poppies Series",
+      "date_raw": "May 13 - Jun 10, 2026",
+      "date_iso": "2026-05-13",
+      "snippet": "Picnic in the Poppies Series Presented by Midtown Association and Kaiser Permanente at Fremont Park May 13 - Jun 10, 2026",
+      "url": "https://sacramento365.com/event/poppies-picnic-series/",
       "source": "Sacramento365 — Arts events"
     },
     {
@@ -241,10 +273,26 @@
       "source": "JAYJAY Gallery — exhibitions"
     },
     {
+      "title": "May 12, 2026|The race for Supervisor in District One",
+      "date_raw": "May 12, 2026",
+      "date_iso": "2026-05-12",
+      "snippet": "Hot Topics May 12, 2026 | The race for Supervisor in District One May 12, 2026 | In California Governor Race, Single-Payer Is a Litmus Test. There’s Still No Way To Pay for It. May 11, 2026 | California lawmaker proposes fix to blunt loss of food and health aid May 10, 2026 | Mal",
+      "url": "https://sacramento.newsreview.com/2026/05/12/the-race-for-supervisor-in-district-one/",
+      "source": "Sacramento News & Review — Arts events"
+    },
+    {
+      "title": "May 12, 2026|In California Governor Race, Single-Payer Is a Litmus Test. There’s Still No Way To Pay for It.",
+      "date_raw": "May 12, 2026",
+      "date_iso": "2026-05-12",
+      "snippet": "May 12, 2026 | In California Governor Race, Single-Payer Is a Litmus Test. There’s Still No Way To Pay for It.",
+      "url": "https://sacramento.newsreview.com/2026/05/12/in-california-governor-race-single-payer-is-a-litmus-test-theres-still-no-way-to-pay-for-it/",
+      "source": "Sacramento News & Review — Arts events"
+    },
+    {
       "title": "May 11, 2026|California lawmaker proposes fix to blunt loss of food and health aid",
       "date_raw": "May 11, 2026",
       "date_iso": "2026-05-11",
-      "snippet": "Hot Topics May 11, 2026 | California lawmaker proposes fix to blunt loss of food and health aid May 10, 2026 | Malcolm’s back! ‘Life’s Still Unfair’ captures some, but not all, of the original’s greatness May 9, 2026 | Bad building: Zazie Beetz proves she’s great at bloody action",
+      "snippet": "May 11, 2026 | California lawmaker proposes fix to blunt loss of food and health aid",
       "url": "https://sacramento.newsreview.com/2026/05/11/california-lawmaker-proposes-fix-to-blunt-loss-of-food-and-health-aid/",
       "source": "Sacramento News & Review — Arts events"
     },
@@ -263,23 +311,7 @@
       "snippet": "May 9, 2026 | Bad building: Zazie Beetz proves she’s great at bloody action in ‘They Will Kill You’",
       "url": "https://sacramento.newsreview.com/2026/05/09/bad-building-zazie-beetz-proves-shes-great-at-bloody-action-in-they-will-kill-you/",
       "source": "Sacramento News & Review — Arts events"
-    },
-    {
-      "title": "May 9, 2026|Bad pasts: Robert Pattinson and Zendaya are a fantastic onscreen couple—who will make you very uncomfortable in ‘The Drama’",
-      "date_raw": "May 9, 2026",
-      "date_iso": "2026-05-09",
-      "snippet": "May 9, 2026 | Bad pasts: Robert Pattinson and Zendaya are a fantastic onscreen couple—who will make you very uncomfortable in ‘The Drama’",
-      "url": "https://sacramento.newsreview.com/2026/05/09/bad-pasts-robert-pattinson-and-zendaya-are-a-fantastic-onscreen-couple-who-will-make-you-very-uncomfortable-in-the-drama/",
-      "source": "Sacramento News & Review — Arts events"
-    },
-    {
-      "title": "May 8, 2026|Gavin Newsom, Early Champion of Single-Payer, Moderates in the Face of Fiscal Limits",
-      "date_raw": "May 8, 2026",
-      "date_iso": "2026-05-08",
-      "snippet": "May 8, 2026 | Gavin Newsom, Early Champion of Single-Payer, Moderates in the Face of Fiscal Limits",
-      "url": "https://sacramento.newsreview.com/2026/05/08/gavin-newsom-early-champion-of-single-payer-moderates-in-the-face-of-fiscal-limits/",
-      "source": "Sacramento News & Review — Arts events"
     }
   ],
-  "last_run": "2026-05-12"
+  "last_run": "2026-05-13"
 }
