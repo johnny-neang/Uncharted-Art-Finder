@@ -1,6 +1,150 @@
 {
   "events": [
     {
+      "title": "December 2020",
+      "date_raw": "11/08/2024",
+      "date_iso": "2024-11-08",
+      "snippet": "The date pickers are best navigated if one types the dates as: mm/dd/yyyy (example: 11/08/2024) instead of trying to use the arrows to move around the calendar dates. December 2020 Su Mo Tu We Th Fr Sa 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29",
+      "url": "https://www.sacramento365.com/events/?category=arts-culture",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "The date pickers are best navigated if one types the dates as: mm/dd/yyyy (examp",
+      "date_raw": "11/08/2024",
+      "date_iso": "2024-11-08",
+      "snippet": "The date pickers are best navigated if one types the dates as: mm/dd/yyyy (example: 11/08/2024) instead of trying to use the arrows to move around the calendar dates.",
+      "url": "https://www.sacramento365.com/events/?category=arts-culture",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Safari on the River at the Sacramento Zoo",
+      "date_raw": "May 16, 2026",
+      "date_iso": "2026-05-16",
+      "snippet": "Safari on the River at the Sacramento Zoo Presented by The Africa Hope Fund at Sacramento Zoo May 16, 2026",
+      "url": "https://sacramento365.com/event/safari-on-the-river-at-the-sacramento-zoo/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "American River Burger Battle",
+      "date_raw": "May 16, 2026",
+      "date_iso": "2026-05-16",
+      "snippet": "American River Burger Battle Presented by American River Parkway Foundation at Discovery Park May 16, 2026",
+      "url": "https://sacramento365.com/event/american-river-burger-battle-2/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Farm and Tractor Days in Rio Linda",
+      "date_raw": "May 15 - May 16, 2026",
+      "date_iso": "2026-05-15",
+      "snippet": "Farm and Tractor Days in Rio Linda Presented by Rio Linda/Elverta Historical Society at  Unknown May 15 - May 16, 2026",
+      "url": "https://sacramento365.com/event/farm-and-tractor-days-in-rio-linda/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "5th Annual Asian Pacific CultureFest",
+      "date_raw": "May 17, 2026",
+      "date_iso": "2026-05-17",
+      "snippet": "5th Annual Asian Pacific CultureFest Presented by The Creative Space, Asian Pacific Cultural Village at District 56 May 17, 2026",
+      "url": "https://sacramento365.com/event/5th-annual-asian-pacific-culturefest/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "The California Mermaid Convention",
+      "date_raw": "May 15 - May 17, 2026",
+      "date_iso": "2026-05-15",
+      "snippet": "The California Mermaid Convention Presented by Mermaid and Mom LLC DBA The California Mermaid Convention at Hagan Community Center May 15 - May 17, 2026",
+      "url": "https://sacramento365.com/event/the-california-mermaid-convention/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Curtis Fest Artisan Fair",
+      "date_raw": "May 17, 2026",
+      "date_iso": "2026-05-17",
+      "snippet": "Curtis Fest Artisan Fair Presented by Sierra Curtis Neighborhood Association at William Curtis Park May 17, 2026",
+      "url": "https://sacramento365.com/event/curtis-fest-artisan-fair-2/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Back to the Future The Musical",
+      "date_raw": "May 13 - May 24, 2026",
+      "date_iso": "2027-05-13",
+      "snippet": "Back to the Future The Musical Presented by Broadway Sacramento at SAFE Credit Union Performing Arts Center May 13 - May 24, 2026",
+      "url": "https://sacramento365.com/event/back-to-the-future-the-musical/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Sacramento County Fair",
+      "date_raw": "May 21 - May 25, 2026",
+      "date_iso": "2026-05-21",
+      "snippet": "Sacramento County Fair Presented by Sacramento County Fair at Cal Expo May 21 - May 25, 2026",
+      "url": "https://sacramento365.com/event/sacramento-county-fair-2/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "2026 Sacramento Valley Korean Culture Festival",
+      "date_raw": "May 30, 2026",
+      "date_iso": "2026-05-30",
+      "snippet": "2026 Sacramento Valley Korean Culture Festival Presented by Sacramento Valley Korean American Community(SVKAC) at  KP INTERNATIONAL MARKET PARKING LOT May 30, 2026",
+      "url": "https://sacramento365.com/event/2026-sacramento-valley-korean-culture-festival/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Picnic in the Poppies Series",
+      "date_raw": "May 13 - Jun 10, 2026",
+      "date_iso": "2027-05-13",
+      "snippet": "Picnic in the Poppies Series Presented by Midtown Association and Kaiser Permanente at Fremont Park May 13 - Jun 10, 2026",
+      "url": "https://sacramento365.com/event/poppies-picnic-series/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Spring Eco-Art & Sip: Paint and Sculpt with Clay",
+      "date_raw": "May 14",
+      "date_iso": "2027-05-14",
+      "snippet": "Thu 14 Spring Eco-Art & Sip: Paint and Sculpt with Clay Featured May 14 @ 10:30 am - 5:00 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Visit the Atrium to shop local art or create your own. Sculpt a clay",
+      "url": "https://atrium916.com/event/spring-eco-art-sip-paint-and-sculpt-with-clay/2026-05-14/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "Recurring",
+      "date_raw": "May 14",
+      "date_iso": "2027-05-14",
+      "snippet": "Featured May 14 @ 10:30 am - 5:00 pm Recurring",
+      "url": "https://atrium916.com/event/spring-eco-art-sip-paint-and-sculpt-with-clay/all/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "Community Clean Up Clowns",
+      "date_raw": "May 30",
+      "date_iso": "2026-05-30",
+      "snippet": "Sat 30 Community Clean Up Clowns Featured May 30 @ 11:00 am - 1:00 pm The Atrium- Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Clown around and serve your community at this fun performance art litter pick-up event. Calling all clo",
+      "url": "https://atrium916.com/event/community-clean-up-clowns/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "Featured May 30 @ 11:00 am - 1:00 pm",
+      "date_raw": "May 30",
+      "date_iso": "2026-05-30",
+      "snippet": "Featured May 30 @ 11:00 am - 1:00 pm",
+      "url": "https://atrium916.com/events",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "The Great Escape: Turning Back the Clock in Old Sacramento",
+      "date_raw": "April 21, 2026",
+      "date_iso": "2026-04-21",
+      "snippet": "The Great Escape: Turning Back the Clock in Old Sacramento April 21, 2026 April 21, 2026 – Salinas Valley Tribune – Down the way we ran into the Old Town Trainstop. There we discovered several people partaking in art projects at Atrium 916 community space, which was wonderful to",
+      "url": "https://atrium916.com/2026/04/21/the-great-escape-turning-back-the-clock-in-old-sacramento/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "April 21, 2026 – Salinas Valley Tribune – Down the way we ran into the Old Town",
+      "date_raw": "April 21, 2026",
+      "date_iso": "2026-04-21",
+      "snippet": "April 21, 2026 – Salinas Valley Tribune – Down the way we ran into the Old Town Trainstop. There we discovered several people partaking in art projects at Atrium 916 community space, which was wonderful to see. Within the area was Old Sacramento State Historic Park featuring an o",
+      "url": "https://atrium916.com/events",
+      "source": "Atrium 916 — events"
+    },
+    {
       "title": "Like Friends, Like Foes: A Conversation on Nikkei History and RedressWednesday, May 20, 2026Learn More",
       "date_raw": "May 20, 2026",
       "date_iso": "2026-05-20",
@@ -145,10 +289,26 @@
       "source": "JAYJAY Gallery — exhibitions"
     },
     {
+      "title": "May 14, 2026|“Espejos: Clean” holds a mirror up to two souls struggling with their pasts and presents, with hopes for the future",
+      "date_raw": "May 14, 2026",
+      "date_iso": "2026-05-14",
+      "snippet": "Hot Topics May 14, 2026 | “Espejos: Clean” holds a mirror up to two souls struggling with their pasts and presents, with hopes for the future May 14, 2026 | CalMatters 2026 Voter Guide May 13, 2026 | They answer the call for Californians in mental distress. The money is running o",
+      "url": "https://sacramento.newsreview.com/2026/05/14/espejos-clean-holds-a-mirror-up-to-two-souls-struggling-with-their-pasts-and-presents-with-hopes-for-the-future/",
+      "source": "Sacramento News & Review — Arts events"
+    },
+    {
+      "title": "May 14, 2026|CalMatters 2026 Voter Guide",
+      "date_raw": "May 14, 2026",
+      "date_iso": "2026-05-14",
+      "snippet": "May 14, 2026 | CalMatters 2026 Voter Guide",
+      "url": "https://sacramento.newsreview.com/2026/05/14/calmatters-2026-voter-guide/",
+      "source": "Sacramento News & Review — Arts events"
+    },
+    {
       "title": "May 13, 2026|They answer the call for Californians in mental distress. The money is running out",
       "date_raw": "May 13, 2026",
       "date_iso": "2026-05-13",
-      "snippet": "Hot Topics May 13, 2026 | They answer the call for Californians in mental distress. The money is running out May 12, 2026 | The race for Supervisor in District One May 12, 2026 | In California Governor Race, Single-Payer Is a Litmus Test. There’s Still No Way To Pay for It. May 1",
+      "snippet": "May 13, 2026 | They answer the call for Californians in mental distress. The money is running out",
       "url": "https://sacramento.newsreview.com/2026/05/13/they-answer-the-call-for-californians-in-mental-distress-the-money-is-running-out/",
       "source": "Sacramento News & Review — Arts events"
     },
@@ -167,23 +327,7 @@
       "snippet": "May 12, 2026 | In California Governor Race, Single-Payer Is a Litmus Test. There’s Still No Way To Pay for It.",
       "url": "https://sacramento.newsreview.com/2026/05/12/in-california-governor-race-single-payer-is-a-litmus-test-theres-still-no-way-to-pay-for-it/",
       "source": "Sacramento News & Review — Arts events"
-    },
-    {
-      "title": "May 11, 2026|California lawmaker proposes fix to blunt loss of food and health aid",
-      "date_raw": "May 11, 2026",
-      "date_iso": "2026-05-11",
-      "snippet": "May 11, 2026 | California lawmaker proposes fix to blunt loss of food and health aid",
-      "url": "https://sacramento.newsreview.com/2026/05/11/california-lawmaker-proposes-fix-to-blunt-loss-of-food-and-health-aid/",
-      "source": "Sacramento News & Review — Arts events"
-    },
-    {
-      "title": "May 10, 2026|Malcolm’s back! ‘Life’s Still Unfair’ captures some, but not all, of the original’s greatness",
-      "date_raw": "May 10, 2026",
-      "date_iso": "2026-05-10",
-      "snippet": "May 10, 2026 | Malcolm’s back! ‘Life’s Still Unfair’ captures some, but not all, of the original’s greatness",
-      "url": "https://sacramento.newsreview.com/2026/05/10/malcolms-back-lifes-still-unfair-captures-some-but-not-all-of-the-originals-greatness/",
-      "source": "Sacramento News & Review — Arts events"
     }
   ],
-  "last_run": "2026-05-14"
+  "last_run": "2026-05-15"
 }
