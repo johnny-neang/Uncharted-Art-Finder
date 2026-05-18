@@ -97,22 +97,6 @@
       "source": "Sacramento365 — Arts events"
     },
     {
-      "title": "Spring Eco-Art & Sip: Paint and Sculpt with Clay",
-      "date_raw": "May 17",
-      "date_iso": "2026-05-17",
-      "snippet": "Sun 17 Spring Eco-Art & Sip: Paint and Sculpt with Clay Featured May 17 @ 10:30 am - 5:00 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Visit the Atrium to shop local art or create your own. Sculpt a clay",
-      "url": "https://atrium916.com/event/spring-eco-art-sip-paint-and-sculpt-with-clay/2026-05-17/",
-      "source": "Atrium 916 — events"
-    },
-    {
-      "title": "Recurring",
-      "date_raw": "May 17",
-      "date_iso": "2026-05-17",
-      "snippet": "Featured May 17 @ 10:30 am - 5:00 pm Recurring",
-      "url": "https://atrium916.com/event/spring-eco-art-sip-paint-and-sculpt-with-clay/all/",
-      "source": "Atrium 916 — events"
-    },
-    {
       "title": "Atrium Art Gallery & Art Cafe CLOSED",
       "date_raw": "May 21",
       "date_iso": "2026-05-21",
@@ -166,6 +150,22 @@
       "date_iso": "2026-05-24",
       "snippet": "Featured May 24",
       "url": "https://atrium916.com/events",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "Spring Eco-Art & Sip: Paint and Sculpt with Clay",
+      "date_raw": "May 28",
+      "date_iso": "2026-05-28",
+      "snippet": "Thu 28 Spring Eco-Art & Sip: Paint and Sculpt with Clay Featured May 28 @ 10:30 am - 5:00 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Visit the Atrium to shop local art or create your own. Sculpt a clay",
+      "url": "https://atrium916.com/event/spring-eco-art-sip-paint-and-sculpt-with-clay/2026-05-28/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "Recurring",
+      "date_raw": "May 28",
+      "date_iso": "2026-05-28",
+      "snippet": "Featured May 28 @ 10:30 am - 5:00 pm Recurring",
+      "url": "https://atrium916.com/event/spring-eco-art-sip-paint-and-sculpt-with-clay/all/",
       "source": "Atrium 916 — events"
     },
     {
@@ -348,8 +348,24 @@
       "title": "May 14, 2026|“Espejos: Clean” holds a mirror up to two souls struggling with their pasts and presents, with hopes for the future",
       "date_raw": "May 14, 2026",
       "date_iso": "2026-05-14",
-      "snippet": "Hot Topics May 14, 2026 | “Espejos: Clean” holds a mirror up to two souls struggling with their pasts and presents, with hopes for the future May 16, 2026 | A look at the top candidates vying to be California’s controller May 14, 2026 | CalMatters 2026 Voter Guide May 13, 2026 |",
+      "snippet": "Hot Topics May 14, 2026 | “Espejos: Clean” holds a mirror up to two souls struggling with their pasts and presents, with hopes for the future May 17, 2026 | Societal collapse: The new ‘Lord of the Flies’ miniseries is a masterpiece, offering deeper looks at the main characters Ma",
       "url": "https://sacramento.newsreview.com/2026/05/14/espejos-clean-holds-a-mirror-up-to-two-souls-struggling-with-their-pasts-and-presents-with-hopes-for-the-future/",
+      "source": "Sacramento News & Review — Arts events"
+    },
+    {
+      "title": "May 17, 2026|Societal collapse: The new ‘Lord of the Flies’ miniseries is a masterpiece, offering deeper looks at the main characters",
+      "date_raw": "May 17, 2026",
+      "date_iso": "2026-05-17",
+      "snippet": "May 17, 2026 | Societal collapse: The new ‘Lord of the Flies’ miniseries is a masterpiece, offering deeper looks at the main characters",
+      "url": "https://sacramento.newsreview.com/2026/05/17/societal-collapse-the-new-lord-of-the-flies-miniseries-is-a-masterpiece-offering-deeper-looks-at-the-main-characters/",
+      "source": "Sacramento News & Review — Arts events"
+    },
+    {
+      "title": "May 17, 2026|California colleges went big on online learning tools. Then the worst happened",
+      "date_raw": "May 17, 2026",
+      "date_iso": "2026-05-17",
+      "snippet": "May 17, 2026 | California colleges went big on online learning tools. Then the worst happened",
+      "url": "https://sacramento.newsreview.com/2026/05/17/california-colleges-went-big-on-online-learning-tools-then-the-worst-happened/",
       "source": "Sacramento News & Review — Arts events"
     },
     {
@@ -367,23 +383,7 @@
       "snippet": "May 14, 2026 | CalMatters 2026 Voter Guide",
       "url": "https://sacramento.newsreview.com/2026/05/14/calmatters-2026-voter-guide/",
       "source": "Sacramento News & Review — Arts events"
-    },
-    {
-      "title": "May 13, 2026|They answer the call for Californians in mental distress. The money is running out",
-      "date_raw": "May 13, 2026",
-      "date_iso": "2026-05-13",
-      "snippet": "May 13, 2026 | They answer the call for Californians in mental distress. The money is running out",
-      "url": "https://sacramento.newsreview.com/2026/05/13/they-answer-the-call-for-californians-in-mental-distress-the-money-is-running-out/",
-      "source": "Sacramento News & Review — Arts events"
-    },
-    {
-      "title": "May 12, 2026|The race for Supervisor in District One",
-      "date_raw": "May 12, 2026",
-      "date_iso": "2026-05-12",
-      "snippet": "May 12, 2026 | The race for Supervisor in District One",
-      "url": "https://sacramento.newsreview.com/2026/05/12/the-race-for-supervisor-in-district-one/",
-      "source": "Sacramento News & Review — Arts events"
     }
   ],
-  "last_run": "2026-05-17"
+  "last_run": "2026-05-18"
 }
