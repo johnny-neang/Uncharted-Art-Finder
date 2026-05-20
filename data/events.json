@@ -17,6 +17,14 @@
       "source": "Sacramento365 — Arts events"
     },
     {
+      "title": "Concerts in the Park: In Color",
+      "date_raw": "May 22, 2026",
+      "date_iso": "2026-05-22",
+      "snippet": "Concerts in the Park: In Color Presented by Downtown Sacramento Partnership at  910 I Street May 22, 2026",
+      "url": "https://sacramento365.com/event/concerts-in-the-park-in-color/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
       "title": "International Kids Festival 2026",
       "date_raw": "May 23, 2026",
       "date_iso": "2026-05-23",
@@ -30,14 +38,6 @@
       "date_iso": "2027-05-13",
       "snippet": "Back to the Future The Musical Presented by Broadway Sacramento at SAFE Credit Union Performing Arts Center May 13 - May 24, 2026",
       "url": "https://sacramento365.com/event/back-to-the-future-the-musical/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
-      "title": "Romeo and Juliet: A Tale of Star-Crossed Lovers on the High Seas",
-      "date_raw": "May 08 - May 24, 2026",
-      "date_iso": "2027-05-08",
-      "snippet": "Romeo and Juliet: A Tale of Star-Crossed Lovers on the High Seas Presented by Hummingbird Theatre Company at  The Mineshaft May 08 - May 24, 2026",
-      "url": "https://sacramento365.com/event/romeo-and-juliet-a-tale-of-star-crossed-lovers-on-the-high-seas/",
       "source": "Sacramento365 — Arts events"
     },
     {
@@ -345,10 +345,26 @@
       "source": "JAYJAY Gallery — exhibitions"
     },
     {
+      "title": "May 19, 2026|Proposed Sac budget guts police oversight, reduces youth services",
+      "date_raw": "May 19, 2026",
+      "date_iso": "2026-05-19",
+      "snippet": "Hot Topics May 19, 2026 | Proposed Sac budget guts police oversight, reduces youth services May 19, 2026 | Governor YIMBY: In California’s unsettled race, most candidates see eye-to-eye on housing May 18, 2026 | California voters are about to elect a new state superintendent. It’",
+      "url": "https://sacramento.newsreview.com/2026/05/19/proposed-sac-budget-guts-police-oversight-reduces-youth-services/",
+      "source": "Sacramento News & Review — Arts events"
+    },
+    {
+      "title": "May 19, 2026|Governor YIMBY: In California’s unsettled race, most candidates see eye-to-eye on housing",
+      "date_raw": "May 19, 2026",
+      "date_iso": "2026-05-19",
+      "snippet": "May 19, 2026 | Governor YIMBY: In California’s unsettled race, most candidates see eye-to-eye on housing",
+      "url": "https://sacramento.newsreview.com/2026/05/19/governor-yimby-in-californias-unsettled-race-most-candidates-see-eye-to-eye-on-housing/",
+      "source": "Sacramento News & Review — Arts events"
+    },
+    {
       "title": "May 18, 2026|California voters are about to elect a new state superintendent. It’s barely on the radar",
       "date_raw": "May 18, 2026",
       "date_iso": "2026-05-18",
-      "snippet": "Hot Topics May 18, 2026 | California voters are about to elect a new state superintendent. It’s barely on the radar May 18, 2026 | Essay: A handful of soil, a lifetime of lessons May 17, 2026 | Societal collapse: The new ‘Lord of the Flies’ miniseries is a masterpiece, offering d",
+      "snippet": "May 18, 2026 | California voters are about to elect a new state superintendent. It’s barely on the radar",
       "url": "https://sacramento.newsreview.com/2026/05/18/california-voters-are-about-to-elect-a-new-state-superintendent-its-barely-on-the-radar/",
       "source": "Sacramento News & Review — Arts events"
     },
@@ -367,23 +383,7 @@
       "snippet": "May 17, 2026 | Societal collapse: The new ‘Lord of the Flies’ miniseries is a masterpiece, offering deeper looks at the main characters",
       "url": "https://sacramento.newsreview.com/2026/05/17/societal-collapse-the-new-lord-of-the-flies-miniseries-is-a-masterpiece-offering-deeper-looks-at-the-main-characters/",
       "source": "Sacramento News & Review — Arts events"
-    },
-    {
-      "title": "May 17, 2026|California colleges went big on online learning tools. Then the worst happened",
-      "date_raw": "May 17, 2026",
-      "date_iso": "2026-05-17",
-      "snippet": "May 17, 2026 | California colleges went big on online learning tools. Then the worst happened",
-      "url": "https://sacramento.newsreview.com/2026/05/17/california-colleges-went-big-on-online-learning-tools-then-the-worst-happened/",
-      "source": "Sacramento News & Review — Arts events"
-    },
-    {
-      "title": "May 16, 2026|A look at the top candidates vying to be California’s controller",
-      "date_raw": "May 16, 2026",
-      "date_iso": "2026-05-16",
-      "snippet": "May 16, 2026 | A look at the top candidates vying to be California’s controller",
-      "url": "https://sacramento.newsreview.com/2026/05/16/a-look-at-the-top-candidates-vying-to-be-californias-controller/",
-      "source": "Sacramento News & Review — Arts events"
     }
   ],
-  "last_run": "2026-05-19"
+  "last_run": "2026-05-20"
 }
