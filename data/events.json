@@ -57,6 +57,14 @@
       "source": "Sacramento365 — Arts events"
     },
     {
+      "title": "Memorial Day Community Event",
+      "date_raw": "May 25, 2026",
+      "date_iso": "2026-05-25",
+      "snippet": "Memorial Day Community Event Presented by City of Sacramento at Memorial Auditorium May 25, 2026",
+      "url": "https://sacramento365.com/event/memorial-day-community-event-3/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
       "title": "2026 Sacramento Valley Korean Culture Festival",
       "date_raw": "May 30, 2026",
       "date_iso": "2026-05-30",
@@ -70,14 +78,6 @@
       "date_iso": "2026-05-29",
       "snippet": "Orangevale Summer Palooza Presented by All Events Management Group, Inc. at Orangevale Community Park May 29 - May 31, 2026",
       "url": "https://sacramento365.com/event/orangevale-summer-palooza-3/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
-      "title": "Concerts in the Park: Souls of Mischief",
-      "date_raw": "Jun 05, 2026",
-      "date_iso": "2026-06-05",
-      "snippet": "Concerts in the Park: Souls of Mischief Presented by Downtown Sacramento Partnership at  910 I Street Jun 05, 2026",
-      "url": "https://sacramento365.com/event/concerts-in-the-park-souls-of-mischief/",
       "source": "Sacramento365 — Arts events"
     },
     {
@@ -345,10 +345,26 @@
       "source": "JAYJAY Gallery — exhibitions"
     },
     {
+      "title": "May 20, 2026|Cal State may soon offer degrees that take just 3 years to finish. Work experience counts, too",
+      "date_raw": "May 20, 2026",
+      "date_iso": "2026-05-20",
+      "snippet": "Hot Topics May 20, 2026 | Cal State may soon offer degrees that take just 3 years to finish. Work experience counts, too May 20, 2026 | What’s holding back California students? A new report urges stronger state oversight May 19, 2026 | Proposed Sac budget guts police oversight, r",
+      "url": "https://sacramento.newsreview.com/2026/05/20/cal-state-may-soon-offer-degrees-that-take-just-3-years-to-finish-work-experience-counts-too/",
+      "source": "Sacramento News & Review — Arts events"
+    },
+    {
+      "title": "May 20, 2026|What’s holding back California students? A new report urges stronger state oversight",
+      "date_raw": "May 20, 2026",
+      "date_iso": "2026-05-20",
+      "snippet": "May 20, 2026 | What’s holding back California students? A new report urges stronger state oversight",
+      "url": "https://sacramento.newsreview.com/2026/05/20/whats-holding-back-california-students-a-new-report-urges-stronger-state-oversight/",
+      "source": "Sacramento News & Review — Arts events"
+    },
+    {
       "title": "May 19, 2026|Proposed Sac budget guts police oversight, reduces youth services",
       "date_raw": "May 19, 2026",
       "date_iso": "2026-05-19",
-      "snippet": "Hot Topics May 19, 2026 | Proposed Sac budget guts police oversight, reduces youth services May 19, 2026 | Governor YIMBY: In California’s unsettled race, most candidates see eye-to-eye on housing May 18, 2026 | California voters are about to elect a new state superintendent. It’",
+      "snippet": "May 19, 2026 | Proposed Sac budget guts police oversight, reduces youth services",
       "url": "https://sacramento.newsreview.com/2026/05/19/proposed-sac-budget-guts-police-oversight-reduces-youth-services/",
       "source": "Sacramento News & Review — Arts events"
     },
@@ -367,23 +383,7 @@
       "snippet": "May 18, 2026 | California voters are about to elect a new state superintendent. It’s barely on the radar",
       "url": "https://sacramento.newsreview.com/2026/05/18/california-voters-are-about-to-elect-a-new-state-superintendent-its-barely-on-the-radar/",
       "source": "Sacramento News & Review — Arts events"
-    },
-    {
-      "title": "May 18, 2026|Essay: A handful of soil, a lifetime of lessons",
-      "date_raw": "May 18, 2026",
-      "date_iso": "2026-05-18",
-      "snippet": "May 18, 2026 | Essay: A handful of soil, a lifetime of lessons",
-      "url": "https://sacramento.newsreview.com/2026/05/18/essay-a-handful-of-soil-a-lifetime-of-lessons/",
-      "source": "Sacramento News & Review — Arts events"
-    },
-    {
-      "title": "May 17, 2026|Societal collapse: The new ‘Lord of the Flies’ miniseries is a masterpiece, offering deeper looks at the main characters",
-      "date_raw": "May 17, 2026",
-      "date_iso": "2026-05-17",
-      "snippet": "May 17, 2026 | Societal collapse: The new ‘Lord of the Flies’ miniseries is a masterpiece, offering deeper looks at the main characters",
-      "url": "https://sacramento.newsreview.com/2026/05/17/societal-collapse-the-new-lord-of-the-flies-miniseries-is-a-masterpiece-offering-deeper-looks-at-the-main-characters/",
-      "source": "Sacramento News & Review — Arts events"
     }
   ],
-  "last_run": "2026-05-20"
+  "last_run": "2026-05-21"
 }
