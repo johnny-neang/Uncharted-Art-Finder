@@ -289,10 +289,26 @@
       "source": "JAYJAY Gallery — exhibitions"
     },
     {
+      "title": "May 26, 2026|In California governor’s race, Xavier Becerra walks away from single-payer",
+      "date_raw": "May 26, 2026",
+      "date_iso": "2026-05-26",
+      "snippet": "Hot Topics May 26, 2026 | In California governor’s race, Xavier Becerra walks away from single-payer May 25, 2026 | Budget cuts threaten program that doubles food dollars for Californians in need May 23, 2026 | California could be the first state to ban quartz countertops May 22,",
+      "url": "https://sacramento.newsreview.com/2026/05/26/in-california-governors-race-xavier-becerra-walks-away-from-single-payer/",
+      "source": "Sacramento News & Review — Arts events"
+    },
+    {
+      "title": "May 25, 2026|Budget cuts threaten program that doubles food dollars for Californians in need",
+      "date_raw": "May 25, 2026",
+      "date_iso": "2026-05-25",
+      "snippet": "May 25, 2026 | Budget cuts threaten program that doubles food dollars for Californians in need",
+      "url": "https://sacramento.newsreview.com/2026/05/25/budget-cuts-threaten-program-that-doubles-food-dollars-for-californians-in-need/",
+      "source": "Sacramento News & Review — Arts events"
+    },
+    {
       "title": "May 23, 2026|California could be the first state to ban quartz countertops",
       "date_raw": "May 23, 2026",
       "date_iso": "2026-05-23",
-      "snippet": "Hot Topics May 23, 2026 | California could be the first state to ban quartz countertops May 22, 2026 | Did Newsom’s $3.8 billion hotels-to-housing program pay off? We filed 100 records requests to find out May 21, 2026 | With receivership visible on the horizon, what will SCUSD d",
+      "snippet": "May 23, 2026 | California could be the first state to ban quartz countertops",
       "url": "https://sacramento.newsreview.com/2026/05/23/california-could-be-the-first-state-to-ban-quartz-countertops/",
       "source": "Sacramento News & Review — Arts events"
     },
@@ -311,39 +327,7 @@
       "snippet": "May 21, 2026 | With receivership visible on the horizon, what will SCUSD do?",
       "url": "https://sacramento.newsreview.com/2026/05/21/with-receivership-visible-on-the-horizon-what-will-scusd-do/",
       "source": "Sacramento News & Review — Arts events"
-    },
-    {
-      "title": "May 21, 2026|Letters to the editor and selected comments: April, May 2026",
-      "date_raw": "May 21, 2026",
-      "date_iso": "2026-05-21",
-      "snippet": "May 21, 2026 | Letters to the editor and selected comments: April, May 2026",
-      "url": "https://sacramento.newsreview.com/2026/05/21/letters-to-the-editor-and-selected-comments-april-may-2026/",
-      "source": "Sacramento News & Review — Arts events"
-    },
-    {
-      "title": "May 21, 2026|The real stakes behind California’s billionaire tax fight: health care access",
-      "date_raw": "May 21, 2026",
-      "date_iso": "2026-05-21",
-      "snippet": "May 21, 2026 | The real stakes behind California’s billionaire tax fight: health care access",
-      "url": "https://sacramento.newsreview.com/2026/05/21/the-real-stakes-behind-californias-billionaire-tax-fight-health-care-access/",
-      "source": "Sacramento News & Review — Arts events"
-    },
-    {
-      "title": "California could be the first state to ban quartz countertops",
-      "date_raw": "May 20",
-      "date_iso": "2027-05-20",
-      "snippet": "Recent Posts California could be the first state to ban quartz countertops Did Newsom’s $3.8 billion hotels-to-housing program pay off? We filed 100 records requests to find out With receivership visible on the horizon, what will SCUSD do? Letters to the editor and selected comme",
-      "url": "https://sacramento.newsreview.com/2026/05/23/california-could-be-the-first-state-to-ban-quartz-countertops/",
-      "source": "Sacramento News & Review — Arts events"
-    },
-    {
-      "title": "Letters to the editor and selected comments: April, May 2026",
-      "date_raw": "May 20",
-      "date_iso": "2027-05-20",
-      "snippet": "Letters to the editor and selected comments: April, May 2026",
-      "url": "https://sacramento.newsreview.com/2026/05/21/letters-to-the-editor-and-selected-comments-april-may-2026/",
-      "source": "Sacramento News & Review — Arts events"
     }
   ],
-  "last_run": "2026-05-25"
+  "last_run": "2026-05-26"
 }

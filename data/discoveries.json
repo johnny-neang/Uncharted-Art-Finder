@@ -11,7 +11,25 @@
         "kb": 88
       },
       "first_seen": "2026-05-08",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "no",
+        "family_fit": 4,
+        "mural_capacity": "proven",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mural",
+          "pattern",
+          "azulejo",
+          "geometric",
+          "street-art"
+        ],
+        "one_line_summary": "Portuguese street artist known for intricate azulejo-inspired tile pattern murals; visually family-safe but lacks Sacramento ties.",
+        "proceed_recommendation": "reject",
+        "confidence": "high"
+      },
+      "scored_at": "2026-05-26",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "aec_interesni_kazki",
@@ -24,7 +42,25 @@
         "kb": 50
       },
       "first_seen": "2026-05-08",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "no",
+        "family_fit": 4,
+        "mural_capacity": "proven",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mural",
+          "surreal",
+          "narrative",
+          "figurative",
+          "large-scale"
+        ],
+        "one_line_summary": "Ukrainian muralist duo known for surreal, folkloric large-scale walls via Branded Arts; strong public-art chops but no Sacramento tie.",
+        "proceed_recommendation": "reject",
+        "confidence": "high"
+      },
+      "scored_at": "2026-05-26",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "aik_brown",
@@ -37,7 +73,25 @@
         "kb": 45
       },
       "first_seen": "2026-05-08",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "unclear",
+        "family_fit": 4,
+        "mural_capacity": "proven",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mural",
+          "figurative",
+          "portrait",
+          "street-art",
+          "public-art"
+        ],
+        "one_line_summary": "Branded Arts roster muralist with proven large-scale figurative public work; Sacramento ties not established from source.",
+        "proceed_recommendation": "watch",
+        "confidence": "low"
+      },
+      "scored_at": "2026-05-26",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "alexandria_olivia_hall",
@@ -50,7 +104,24 @@
         "kb": 33
       },
       "first_seen": "2026-05-08",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "unclear",
+        "family_fit": 4,
+        "mural_capacity": "likely",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mural",
+          "figurative",
+          "portraiture",
+          "contemporary"
+        ],
+        "one_line_summary": "Branded Arts roster artist with likely mural experience; Sacramento connection requires verification before roster inclusion.",
+        "proceed_recommendation": "watch",
+        "confidence": "low"
+      },
+      "scored_at": "2026-05-26",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "amanda_mando_marie",
@@ -63,7 +134,25 @@
         "kb": 48
       },
       "first_seen": "2026-05-08",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "unclear",
+        "family_fit": 4,
+        "mural_capacity": "proven",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mural",
+          "figurative",
+          "portraiture",
+          "street-art",
+          "colorful"
+        ],
+        "one_line_summary": "Branded Arts roster muralist known for bold figurative portrait work; Sacramento ties require verification before roster inclusion.",
+        "proceed_recommendation": "watch",
+        "confidence": "low"
+      },
+      "scored_at": "2026-05-26",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "andrew_hem",
@@ -76,7 +165,25 @@
         "kb": 27
       },
       "first_seen": "2026-05-08",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "unclear",
+        "family_fit": 4,
+        "mural_capacity": "proven",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mural",
+          "figurative",
+          "narrative",
+          "dreamlike",
+          "painting"
+        ],
+        "one_line_summary": "Cambodian-American muralist with dreamlike figurative work and major public murals via Branded Arts; Sacramento ties unconfirmed.",
+        "proceed_recommendation": "watch",
+        "confidence": "medium"
+      },
+      "scored_at": "2026-05-26",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "aniekan_udofia",
@@ -89,7 +196,25 @@
         "kb": 39
       },
       "first_seen": "2026-05-08",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "unclear",
+        "family_fit": 4,
+        "mural_capacity": "proven",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mural",
+          "figurative",
+          "portraiture",
+          "afrofuturism",
+          "large-scale"
+        ],
+        "one_line_summary": "Branded Arts roster muralist known for large-scale figurative portraits; Sacramento ties not established from source.",
+        "proceed_recommendation": "watch",
+        "confidence": "medium"
+      },
+      "scored_at": "2026-05-26",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "antonyo_marest",
@@ -102,7 +227,25 @@
         "kb": 35
       },
       "first_seen": "2026-05-08",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "no",
+        "family_fit": 4,
+        "mural_capacity": "proven",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mural",
+          "geometric",
+          "abstract",
+          "art-deco",
+          "color-blocking"
+        ],
+        "one_line_summary": "Spain-based muralist known for bold geometric, art-deco-inflected large-scale walls represented by Branded Arts; strong mural chops but no Sacramento tie.",
+        "proceed_recommendation": "watch",
+        "confidence": "medium"
+      },
+      "scored_at": "2026-05-26",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "arrington_west",
@@ -115,7 +258,25 @@
         "kb": 30
       },
       "first_seen": "2026-05-08",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "unclear",
+        "family_fit": 4,
+        "mural_capacity": "proven",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mural",
+          "figurative",
+          "portraiture",
+          "public-art",
+          "branded-arts"
+        ],
+        "one_line_summary": "Branded Arts roster muralist with proven large-scale public work; Sacramento ties unverified and require confirmation before outreach.",
+        "proceed_recommendation": "watch",
+        "confidence": "low"
+      },
+      "scored_at": "2026-05-26",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "ashley_dreyfus",
@@ -128,7 +289,25 @@
         "kb": 44
       },
       "first_seen": "2026-05-08",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "unclear",
+        "family_fit": 4,
+        "mural_capacity": "proven",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mural",
+          "figurative",
+          "portrait",
+          "color",
+          "public-art"
+        ],
+        "one_line_summary": "Branded Arts roster muralist with proven large-scale figurative public work; Sacramento ties unverified from this source.",
+        "proceed_recommendation": "watch",
+        "confidence": "low"
+      },
+      "scored_at": "2026-05-26",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "axel_void",
@@ -141,7 +320,25 @@
         "kb": 35
       },
       "first_seen": "2026-05-08",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "no",
+        "family_fit": 2,
+        "mural_capacity": "proven",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mural",
+          "figurative",
+          "realism",
+          "social-commentary",
+          "street-art"
+        ],
+        "one_line_summary": "Miami-based muralist with international reputation for large-scale figurative work, though themes skew melancholic and socially critical rather than family-bright.",
+        "proceed_recommendation": "reject",
+        "confidence": "high"
+      },
+      "scored_at": "2026-05-26",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "beau_stanton",
@@ -154,7 +351,25 @@
         "kb": 39
       },
       "first_seen": "2026-05-08",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "no",
+        "family_fit": 4,
+        "mural_capacity": "proven",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mural",
+          "figurative",
+          "ornamental",
+          "symbolic",
+          "large-scale"
+        ],
+        "one_line_summary": "Brooklyn-based muralist known for ornate, symbolist large-scale public works; strong mural pedigree but no Sacramento ties.",
+        "proceed_recommendation": "reject",
+        "confidence": "high"
+      },
+      "scored_at": "2026-05-26",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "bigshot_robot",
@@ -167,7 +382,25 @@
         "kb": 36
       },
       "first_seen": "2026-05-08",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "unclear",
+        "family_fit": 4,
+        "mural_capacity": "proven",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mural",
+          "street-art",
+          "pop-art",
+          "character",
+          "illustrative"
+        ],
+        "one_line_summary": "Branded Arts-rostered muralist working in playful pop/character-driven street art; Sacramento ties not established from source.",
+        "proceed_recommendation": "watch",
+        "confidence": "low"
+      },
+      "scored_at": "2026-05-26",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "blaine_fontana",
@@ -180,7 +413,25 @@
         "kb": 38
       },
       "first_seen": "2026-05-08",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "unclear",
+        "family_fit": 4,
+        "mural_capacity": "proven",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mural",
+          "figurative",
+          "narrative",
+          "symbolic",
+          "large-scale"
+        ],
+        "one_line_summary": "Established muralist with symbolic, narrative-driven large-scale work via Branded Arts; Sacramento ties unconfirmed.",
+        "proceed_recommendation": "watch",
+        "confidence": "medium"
+      },
+      "scored_at": "2026-05-26",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "bodeck_hernandez",
@@ -193,7 +444,25 @@
         "kb": 29
       },
       "first_seen": "2026-05-08",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "unclear",
+        "family_fit": 4,
+        "mural_capacity": "proven",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mural",
+          "figurative",
+          "portraiture",
+          "street-art",
+          "large-scale"
+        ],
+        "one_line_summary": "Branded Arts roster muralist with proven large-scale figurative portrait work; Sacramento ties not confirmed from listing.",
+        "proceed_recommendation": "watch",
+        "confidence": "medium"
+      },
+      "scored_at": "2026-05-26",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "brendan_monroe",
@@ -206,7 +475,25 @@
         "kb": 41
       },
       "first_seen": "2026-05-08",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "no",
+        "family_fit": 4,
+        "mural_capacity": "proven",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mural",
+          "abstract",
+          "biomorphic",
+          "painting",
+          "illustration"
+        ],
+        "one_line_summary": "Oakland-based painter and muralist known for biomorphic, organic abstractions; established large-scale public work via Branded Arts but lacks Sacramento ties.",
+        "proceed_recommendation": "watch",
+        "confidence": "medium"
+      },
+      "scored_at": "2026-05-26",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "brent_patten",
@@ -219,7 +506,24 @@
         "kb": 27
       },
       "first_seen": "2026-05-08",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "unclear",
+        "family_fit": 4,
+        "mural_capacity": "likely",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mural",
+          "branded-arts",
+          "contemporary",
+          "public-art"
+        ],
+        "one_line_summary": "Branded Arts roster artist with likely mural experience; Sacramento connection requires verification before roster inclusion.",
+        "proceed_recommendation": "watch",
+        "confidence": "low"
+      },
+      "scored_at": "2026-05-26",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "brett_crawford",
@@ -232,7 +536,25 @@
         "kb": 59
       },
       "first_seen": "2026-05-08",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "unclear",
+        "family_fit": 4,
+        "mural_capacity": "proven",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mural",
+          "figurative",
+          "pop-surrealism",
+          "portrait",
+          "street-art"
+        ],
+        "one_line_summary": "Branded Arts roster muralist with proven large-scale figurative work; Sacramento ties not confirmed from source.",
+        "proceed_recommendation": "watch",
+        "confidence": "low"
+      },
+      "scored_at": "2026-05-26",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "brian_holderman",
@@ -245,7 +567,25 @@
         "kb": 50
       },
       "first_seen": "2026-05-08",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "unclear",
+        "family_fit": 3,
+        "mural_capacity": "proven",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mural",
+          "figurative",
+          "illustrative",
+          "pop-surrealism",
+          "character-driven"
+        ],
+        "one_line_summary": "Branded Arts roster muralist with proven large-scale figurative work; Sacramento ties unconfirmed and some imagery skews edgier than family-bright.",
+        "proceed_recommendation": "watch",
+        "confidence": "medium"
+      },
+      "scored_at": "2026-05-26",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "rosie_emerson",
@@ -258,7 +598,25 @@
         "kb": 43
       },
       "first_seen": "2026-05-08",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "no",
+        "family_fit": 4,
+        "mural_capacity": "studio_only",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "figurative",
+          "printmaking",
+          "photography",
+          "ethereal",
+          "portraiture"
+        ],
+        "one_line_summary": "UK-based artist known for ethereal figurative prints and screenprinted portraiture, represented via Kevin Barry Art Advisory with no apparent Sacramento ties.",
+        "proceed_recommendation": "reject",
+        "confidence": "high"
+      },
+      "scored_at": "2026-05-26",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "zo_pawlak",
@@ -808,5 +1166,5 @@
     }
   ],
   "rejected_slugs": [],
-  "last_run": "2026-05-25"
+  "last_run": "2026-05-26"
 }
