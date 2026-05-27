@@ -91,7 +91,7 @@ def build_digest(today: str) -> str:
     lines.append("")
     lines.append(f"Roster: **{len(artists)} artists/agencies** · Cached photos: **{sum(len(v.get('images', [])) for v in images.values())}** · Pending discoveries: **{len(discoveries)}**")
     lines.append("")
-    lines.append("Live dashboard: ↗ `index.html` (GitHub Pages)")
+    lines.append("Live dashboard: <https://uncharted-art-finder.vercel.app>")
     lines.append("Full discovery queue: `data/discoveries.json`")
     lines.append("")
     return "\n".join(lines)

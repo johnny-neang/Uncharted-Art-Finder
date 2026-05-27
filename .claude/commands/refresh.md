@@ -1,5 +1,5 @@
 ---
-description: Refresh the Sacramento artist directory — re-scrape rosters, score new candidates, rebuild dashboard, push to GH Pages
+description: Refresh the Sacramento artist directory — re-scrape rosters, score new candidates, rebuild dashboard, push (Vercel auto-deploys)
 ---
 
 Run the daily refresh pipeline for the Sacramento artist directory.
@@ -12,7 +12,7 @@ Run the daily refresh pipeline for the Sacramento artist directory.
 4. Scrapes upcoming Sacramento art events
 5. Builds today's digest at `data/digests/YYYY-MM-DD.md`
 6. Rebuilds `index.html`
-7. Commits + pushes to the repo so GitHub Pages deploys the update
+7. Commits + pushes to the repo; Vercel's git integration auto-deploys within ~30 seconds
 
 ## Steps
 
@@ -27,7 +27,7 @@ Then read today's digest at `data/digests/$(date -u +%Y-%m-%d).md` and summarize
 - Add-worthy candidates this run, if any
 - Roster image refresh stats (refreshed vs fell back to SVG)
 - Number of upcoming events tracked
-- The live URL: https://johnny-neang.github.io/Uncharted-Art-Finder/
+- The live URL: https://uncharted-art-finder.vercel.app
 
 If any step in the pipeline errors, surface that — don't treat it as success. The orchestrator continues past per-step failures by design, so check the log output for `[err]` lines.
 

@@ -1,6 +1,6 @@
 # Sacramento Artist Directory — UpperCloud Studio
 
-A self-updating dashboard cataloging Sacramento-area artists and art agencies for the Arden Fair UnchARTed program. The pipeline runs **in Claude Code** when you ask for it; the dashboard lives at a public **GitHub Pages URL** so you can show it to anyone, anywhere.
+A self-updating dashboard cataloging Sacramento-area artists and art agencies for the Arden Fair UnchARTed program. The pipeline runs **in Claude Code** when you ask for it; the dashboard lives at a public **Vercel URL** so you can show it to anyone, anywhere.
 
 ## How you use it
 
@@ -10,11 +10,11 @@ When you want fresh data, open this repo in Claude Code and type:
 /refresh
 ```
 
-That kicks off the pipeline — re-scrape rosters, score new candidates against your Claude subscription, scrape upcoming events, rebuild the dashboard, push to the repo. GitHub Pages auto-deploys within ~30 seconds.
+That kicks off the pipeline — re-scrape rosters, score new candidates against your Claude subscription, scrape upcoming events, rebuild the dashboard, push to the repo. Vercel's git integration auto-deploys within ~30 seconds.
 
 Then visit:
 
-**<https://johnny-neang.github.io/Uncharted-Art-Finder/>**
+**<https://uncharted-art-finder.vercel.app>**
 
 That's it. No cron, no Mac setup, no API keys. You only run `/refresh` when you actually want fresh data — before a client meeting, when you remember, every couple weeks.
 
@@ -34,7 +34,7 @@ That's it. No cron, no Mac setup, no API keys. You only run `/refresh` when you 
 .claude/commands/
   refresh.md                     /refresh slash command — the only thing you invoke
 .github/workflows/
-  deploy-pages.yml               auto-publishes index.html to GH Pages on every push
+  (none — Vercel deploys from main on every push via git integration)
 scripts/                         pipeline modules
   common.py                      shared HTTP / image / path helpers
   refresh_images.py              re-fetches photos for the canonical roster
@@ -84,11 +84,7 @@ sources.json — browse them by hand and seed interesting profiles via
 
 ## One-time setup
 
-In repo settings (one-time, ~30 seconds):
-
-**Settings → Pages → Build and deployment → Source: GitHub Actions**
-
-That's the entire setup. After that, every push to `main` triggers the `deploy-pages` workflow which publishes `index.html` to your Pages URL.
+Already done — the repo is connected to a Vercel project (`uncharted-art-finder`) via git integration. Every push to `main` auto-deploys to <https://uncharted-art-finder.vercel.app>. No GitHub Actions workflow needed.
 
 ## Promoting a discovery to the canonical roster
 
@@ -102,8 +98,8 @@ I'll edit `data/artists.json`, remove them from `data/discoveries.json`, and run
 
 - **Claude Code on the web uses your Pro/Max subscription** — same auth as anywhere else you use Claude. The `claude -p` headless invocation in `score_with_claude.py` is just shelling out to the same authenticated CLI.
 - **The pipeline is git-native** — all state lives in `data/*.json`. Each run produces a clean diff. History is in the commit log.
-- **GitHub Pages is free and fast** — and gives you a real URL to share with clients.
-- **No infra to maintain** — no Anthropic API key, no Vercel project, no cron job, no Supabase, no Mac launchd. The only moving piece is GitHub Actions for the Pages deploy, which is a 25-line YAML.
+- **Vercel hosts it free** on the team plan — gives you a real URL to share with clients, auto-deploys on push via git integration.
+- **No infra to maintain** — no Anthropic API key, no cron job, no Supabase, no Mac launchd. The only moving piece is Vercel's git integration, which is configured once and runs forever.
 
 ## Brand
 
