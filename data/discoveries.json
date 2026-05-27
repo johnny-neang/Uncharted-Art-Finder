@@ -1163,6 +1163,28 @@
       },
       "first_seen": "2026-05-11",
       "status": "pending"
+    },
+    {
+      "slug": "atlas_lab",
+      "name": "Atlas Lab",
+      "url": "https://atlaslab.com/",
+      "source_name": "manual seed",
+      "image": null,
+      "first_seen": "2026-05-26",
+      "status": "pending",
+      "seed_note": "Atlas Lab — Sacramento fabrication/design studio, standalone site (not represented by any gallery in our source list)",
+      "seed_description": "Atlas Lab Inc. is a mission driven landscape architecture, urban design and public art practice based in Sacramento, California."
+    },
+    {
+      "slug": "rossi_sculpture_design",
+      "name": "Rossi Sculpture Design",
+      "url": "https://www.instagram.com/rossi_sculpture_design/",
+      "source_name": "manual seed",
+      "image": null,
+      "first_seen": "2026-05-26",
+      "status": "pending",
+      "seed_note": "Rossi Sculpture Design — surfaced via IG, sculpture in Sacramento",
+      "seed_description": null
     }
   ],
   "rejected_slugs": [],

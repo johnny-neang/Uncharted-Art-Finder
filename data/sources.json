@@ -107,6 +107,33 @@
       "url": "https://submergemag.com/",
       "kind": "press",
       "selector_hint": "local culture / arts press"
+    },
+    {
+      "name": "Sacramento Valley Spark (Facebook)",
+      "url": "https://www.facebook.com/search/top?q=sacramento%20valley%20spark",
+      "kind": "community-curator",
+      "manual": true,
+      "selector_hint": "FB page that features local Sac artists. Auto-scraping blocked by FB — review manually and add interesting profiles to data/manual_seeds.json. Verify the canonical FB page URL once located."
+    },
+    {
+      "name": "Atlas Lab",
+      "url": "https://atlaslab.com/",
+      "kind": "studio",
+      "selector_hint": "Sacramento fabrication/design studio. Standalone site = single candidate (no link-following). 200 OK as of 2026-05-26."
+    },
+    {
+      "name": "Sacramento Open Studios",
+      "url": "https://sacopenstudios.org/artists",
+      "kind": "studio-tour",
+      "manual": true,
+      "selector_hint": "Annual self-guided artist tour. /artists page returns 200 but serves a 114-byte JS-only shell to crawlers — the listing is rendered client-side. Browse manually and seed interesting profiles via data/manual_seeds.json. TODO: needs a headless-browser fetch path to auto-crawl."
+    },
+    {
+      "name": "Sac State Art Department",
+      "url": "https://www.csus.edu/college/arts-letters/art/",
+      "kind": "mfa-program",
+      "manual": true,
+      "selector_hint": "Department landing page returns global navigation, not faculty. Faculty sub-paths /faculty/, /people/, /faculty-staff/ all 404 as of 2026-05-26 — the real URL needs to be discovered. Browse manually until then."
     }
   ],
   "event_sources": [

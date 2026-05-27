@@ -203,6 +203,36 @@ def polite_delay(seconds: float = 0.5) -> None:
     time.sleep(seconds)
 
 
+def extract_og_meta(html: str, base_url: str) -> dict:
+    """Pull Open Graph + basic meta tags from a page. Returns dict with keys:
+    og_title, og_description, og_image, og_site_name, og_url, html_title.
+
+    Works without auth on Instagram, Facebook, and standard sites — these
+    platforms serve OG meta to crawlers even when the rest of the page is
+    behind a login wall. Used by the seed-by-URL ingest flow.
+    """
+    from bs4 import BeautifulSoup
+    soup = BeautifulSoup(html, "html.parser")
+
+    def meta(prop: str, attr: str = "property") -> str | None:
+        m = soup.find("meta", {attr: prop})
+        if m and m.get("content"):
+            return m["content"].strip()
+        return None
+
+    out = {
+        "og_title": meta("og:title"),
+        "og_description": meta("og:description") or meta("description", "name"),
+        "og_image": meta("og:image"),
+        "og_site_name": meta("og:site_name"),
+        "og_url": meta("og:url"),
+        "html_title": (soup.title.string.strip() if soup.title and soup.title.string else None),
+    }
+    if out["og_image"]:
+        out["og_image"] = urljoin(base_url, out["og_image"])
+    return out
+
+
 _MONTH_MAP = {
     "jan": 1, "january": 1, "feb": 2, "february": 2, "mar": 3, "march": 3,
     "apr": 4, "april": 4, "may": 5, "jun": 6, "june": 6, "jul": 7, "july": 7,

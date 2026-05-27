@@ -1,0 +1,17 @@
+{
+  "_doc": "Drop URLs here to add artists/orgs the crawler can't reach (Instagram, Facebook, standalone studios). Each entry: {url, note (optional), status (optional)}. The ingest_seeds step picks up status=pending or unset entries on the next /refresh, fetches OG meta tags, and creates a discoveries.json candidate. After processing, status flips to processed/skipped/failed and candidate_slug is written back so the seed isn't re-ingested.",
+  "seeds": [
+    {
+      "url": "https://www.instagram.com/rossi_sculpture_design/",
+      "note": "Rossi Sculpture Design — surfaced via IG, sculpture in Sacramento",
+      "status": "processed",
+      "candidate_slug": "rossi_sculpture_design"
+    },
+    {
+      "url": "https://atlaslab.com/",
+      "note": "Atlas Lab — Sacramento fabrication/design studio, standalone site (not represented by any gallery in our source list)",
+      "status": "processed",
+      "candidate_slug": "atlas_lab"
+    }
+  ]
+}
