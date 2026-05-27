@@ -1,0 +1,27 @@
+name: Submit artist URL
+description: Add an Instagram, Facebook, or website URL to the discovery queue
+title: "Seed: "
+labels: ["submission"]
+body:
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: Instagram profile, Facebook page, or any artist/studio website
+      placeholder: https://www.instagram.com/some_artist/
+    validations:
+      required: true
+  - type: textarea
+    id: note
+    attributes:
+      label: Note (optional)
+      description: Where did you find them? Why are they worth checking? (Sacramento connection, medium, style, etc.)
+      placeholder: Spotted on IG — sculpture work, looks Sac-based
+  - type: checkboxes
+    id: requires_js
+    attributes:
+      label: Site needs JavaScript to render?
+      description: Check this if the URL is a SPA (e.g. some museum sites, Wix/Squarespace artist pages). Most Instagram, Facebook, and standard sites don't need this.
+      options:
+        - label: Yes, the URL is JS-rendered
+          required: false

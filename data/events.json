@@ -1,22 +1,6 @@
 {
   "events": [
     {
-      "title": "December 2020",
-      "date_raw": "11/08/2024",
-      "date_iso": "2024-11-08",
-      "snippet": "The date pickers are best navigated if one types the dates as: mm/dd/yyyy (example: 11/08/2024) instead of trying to use the arrows to move around the calendar dates. December 2020 Su Mo Tu We Th Fr Sa 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29",
-      "url": "https://www.sacramento365.com/events/?category=arts-culture",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
-      "title": "The date pickers are best navigated if one types the dates as: mm/dd/yyyy (examp",
-      "date_raw": "11/08/2024",
-      "date_iso": "2024-11-08",
-      "snippet": "The date pickers are best navigated if one types the dates as: mm/dd/yyyy (example: 11/08/2024) instead of trying to use the arrows to move around the calendar dates.",
-      "url": "https://www.sacramento365.com/events/?category=arts-culture",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
       "title": "2026 Sacramento Valley Korean Culture Festival",
       "date_raw": "May 30, 2026",
       "date_iso": "2026-05-30",
@@ -38,14 +22,6 @@
       "date_iso": "2026-05-29",
       "snippet": "Orangevale Summer Palooza Presented by All Events Management Group, Inc. at Orangevale Community Park May 29 - May 31, 2026",
       "url": "https://sacramento365.com/event/orangevale-summer-palooza-3/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
-      "title": "Maifest 2026",
-      "date_raw": "May 31, 2026",
-      "date_iso": "2026-05-31",
-      "snippet": "Maifest 2026 Presented by Sacramento Turn Verein German Language School at Sacramento Turn Verein May 31, 2026",
-      "url": "https://sacramento365.com/event/maifest-2026/",
       "source": "Sacramento365 — Arts events"
     },
     {
@@ -105,27 +81,11 @@
       "source": "Atrium 916 — events"
     },
     {
-      "title": "Recurring",
-      "date_raw": "May 28",
-      "date_iso": "2026-05-28",
-      "snippet": "Featured May 28 @ 10:30 am - 5:00 pm Recurring",
-      "url": "https://atrium916.com/event/spring-eco-art-sip-paint-and-sculpt-with-clay/all/",
-      "source": "Atrium 916 — events"
-    },
-    {
       "title": "Community Clean Up Clowns",
       "date_raw": "May 30",
       "date_iso": "2026-05-30",
       "snippet": "Sat 30 Community Clean Up Clowns Featured May 30 @ 11:00 am - 1:00 pm The Atrium- Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Clown around and serve your community at this fun performance art litter pick-up event. Calling all clo",
       "url": "https://atrium916.com/event/community-clean-up-clowns/",
-      "source": "Atrium 916 — events"
-    },
-    {
-      "title": "Featured May 30 @ 11:00 am - 1:00 pm",
-      "date_raw": "May 30",
-      "date_iso": "2026-05-30",
-      "snippet": "Featured May 30 @ 11:00 am - 1:00 pm",
-      "url": "https://atrium916.com/events",
       "source": "Atrium 916 — events"
     },
     {
@@ -185,28 +145,12 @@
       "source": "Blue Line Arts — exhibitions"
     },
     {
-      "title": "May 9th - June 20th, 2026",
-      "date_raw": "May 9",
-      "date_iso": "2027-05-09",
-      "snippet": "May 9th - June 20th, 2026",
-      "url": "https://bluelinearts.org/exhibitions/",
-      "source": "Blue Line Arts — exhibitions"
-    },
-    {
       "title": "By Hand",
       "date_raw": "January 10",
       "date_iso": "2027-01-10",
       "snippet": "By Hand January 10th - February 21st, 2026 Lottery for the Arts - Fundraiser for Art Education February 28th - March 14th, 2026 Preview Night Reception: February 28th, 2026 Event Date: March 14th, 2026 Off Center // On the Rise // Robert Gideon // SCG Art Local March 21st - May 2",
       "url": "https://www.bluelinearts.org/the-lottery-for-the-arts",
       "source": "Blue Line Arts — exhibitions"
-    },
-    {
-      "title": "Exhibitions",
-      "date_raw": "May 1 – May 30",
-      "date_iso": "2027-05-01",
-      "snippet": "Exhibitions On View at Axis Adding Stones to Rise  May 1 – May 30 May 1, 2026 through May 30, 2026 Second Saturday Reception: May 9, 5–8 PM Join us at Axis Gallery for Second Saturday, a monthly celebration of the newest gallery exhibition. Guests can enjoy light refreshments, li",
-      "url": "https://axisgallery.org/home-3/exhibitions/adding-stones-to-rise/",
-      "source": "Axis Gallery — exhibitions"
     },
     {
       "title": "On View at Axis",
@@ -221,14 +165,6 @@
       "date_raw": "May 1, 2026",
       "date_iso": "2026-05-01",
       "snippet": "May 1, 2026 through May 30, 2026 Second Saturday Reception: May 9, 5–8 PM",
-      "url": "https://axisgallery.org/exhibitions/",
-      "source": "Axis Gallery — exhibitions"
-    },
-    {
-      "title": "May 1, 2026 through May 30, 2026",
-      "date_raw": "May 1, 2026",
-      "date_iso": "2026-05-01",
-      "snippet": "May 1, 2026 through May 30, 2026",
       "url": "https://axisgallery.org/exhibitions/",
       "source": "Axis Gallery — exhibitions"
     },
@@ -253,14 +189,6 @@
       "date_raw": "May 1, 2026",
       "date_iso": "2026-05-01",
       "snippet": "May 1, 2026 through May 31, 2026 Second Saturday Reception: May 9, 5–8 PM",
-      "url": "https://axisgallery.org/exhibitions/",
-      "source": "Axis Gallery — exhibitions"
-    },
-    {
-      "title": "May 1, 2026 through May 31, 2026",
-      "date_raw": "May 1, 2026",
-      "date_iso": "2026-05-01",
-      "snippet": "May 1, 2026 through May 31, 2026",
       "url": "https://axisgallery.org/exhibitions/",
       "source": "Axis Gallery — exhibitions"
     },
@@ -329,5 +257,5 @@
       "source": "Sacramento News & Review — Arts events"
     }
   ],
-  "last_run": "2026-05-26"
+  "last_run": "2026-05-27"
 }

@@ -441,6 +441,21 @@ body {
 
 /* ---------- Discoveries ---------- */
 .discoveries-section { padding: var(--s8) 0 0; }
+.submit-url-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: var(--s4);
+  padding: 10px 18px;
+  border: 1px solid var(--jade);
+  border-radius: 999px;
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--jade);
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.submit-url-cta:hover { background: var(--jade); color: #fff; }
+.submit-url-cta .plus { font-size: 16px; line-height: 1; margin-top: -2px; }
+.submit-url-cta .hint { color: var(--ink-3); margin-left: 12px; font-size: 10px; letter-spacing: 0.14em; }
 .discovery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
@@ -666,6 +681,13 @@ body {
         <span class="meta" id="discoveries-meta">Surfaced today by the daily scanner</span>
       </div>
       <h2 class="section-title">Recent <em>candidates</em>.</h2>
+      <a class="submit-url-cta"
+         href="https://github.com/johnny-neang/Uncharted-Art-Finder/issues/new?template=seed.yml"
+         target="_blank" rel="noopener"
+         title="Opens a GitHub Issue to submit a URL — picked up by the next /refresh">
+        <span class="plus">+</span> Submit an artist URL
+        <span class="hint">picked up on next refresh</span>
+      </a>
     </div>
     <div class="discovery-grid" id="discoveryGrid"></div>
   </section>

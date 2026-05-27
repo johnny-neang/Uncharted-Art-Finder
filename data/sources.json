@@ -130,10 +130,31 @@
     },
     {
       "name": "Sac State Art Department",
-      "url": "https://www.csus.edu/college/arts-letters/art/",
+      "url": "https://www.csus.edu/college/arts-letters/art/meet-us/",
       "kind": "mfa-program",
       "manual": true,
-      "selector_hint": "Department landing page returns global navigation, not faculty. Faculty sub-paths /faculty/, /people/, /faculty-staff/ all 404 as of 2026-05-26 — the real URL needs to be discovered. Browse manually until then."
+      "selector_hint": "Sac State Art faculty (Rachel Clarke chair, Andrew Connelly MFA coord, etc). /meet-us/ is the right CMS path — found 2026-05-27. But faculty names are in <h3> inside <div class=\"group-member\"> with NO surrounding anchor tag. Pipeline's anchor-based loose extractor surfaces only site-wide nav, not faculty. Browse manually until a CSS-selector source kind is built (TODO: add `selector: 'div.group-member h3'` support to discover_artists)."
+    },
+    {
+      "name": "Public Art Archive — Sacramento + Sacramento County",
+      "url": "https://publicartarchive.org/collections/Public-Art-in-Sacramento-and-Sacramento-County",
+      "kind": "public-art-registry",
+      "manual": true,
+      "selector_hint": "Third-party curated registry of Sac-area public art. Page is JS-rendered (works under requires_js: true) but the link text is the ARTWORK name (e.g. 'Rain Garden'), not the artist. Pipeline expects person-name links — using this as a discovery source would create artwork-named candidates that confuse Claude scoring. Browse manually; needs a two-hop crawler to follow artwork pages and extract artist info. TODO: build a public-art-registry handler that follows /art/<slug>/<id> links."
+    },
+    {
+      "name": "SacRT — Public Art at Light Rail Stations",
+      "url": "https://www.sacrt.com/public-art-at-light-rail-stations/",
+      "kind": "public-art-registry",
+      "manual": true,
+      "selector_hint": "SacRT light rail station commissions (Margo Humphrey, Jack Shafer, Rolling Art wraps by Ruby Chacón / Linda Nunes / Kerri Warner / Donine Wellman). Artists are named in PROSE text, not in anchor links — the pipeline's anchor-mining can't extract them. Browse manually and seed interesting artists. Also: page is behind Cloudflare which blocks plain requests; works under requires_js: true if we ever build prose-mining."
+    },
+    {
+      "name": "City of Sacramento — Office of Arts & Culture / Public Art",
+      "url": "https://www.cityofsacramento.gov/ccs/oac/public-art",
+      "kind": "public-art-registry",
+      "manual": true,
+      "selector_hint": "City OAC public art landing — large (3.4MB) page that likely embeds the beta GIS map (/GIS sub-path). Structure not yet probed for crawlability. Worth investigating; flip to requires_js: true and inspect if interested. Maintains Sac's official public-art commissions."
     }
   ],
   "event_sources": [

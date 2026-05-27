@@ -82,6 +82,7 @@ def commit_and_push(today: str) -> None:
 
 def main():
     p = argparse.ArgumentParser()
+    p.add_argument("--skip-issues", action="store_true")
     p.add_argument("--skip-seeds", action="store_true")
     p.add_argument("--skip-discover", action="store_true")
     p.add_argument("--skip-events", action="store_true")
@@ -94,10 +95,13 @@ def main():
     today = str(date.today())
     logger.info("[run] %s", today)
 
-    from . import refresh_images, ingest_seeds, discover_artists, scrape_events
+    from . import refresh_images, ingest_issues, ingest_seeds, discover_artists, scrape_events
     from . import score_with_claude, build_digest, build_dashboard
 
     step("refresh roster images", lambda: refresh_images.main())
+
+    if not args.skip_issues:
+        step("ingest dashboard submissions (issues)", lambda: ingest_issues.main())
 
     if not args.skip_seeds:
         step("ingest manual seeds", lambda: ingest_seeds.main())
