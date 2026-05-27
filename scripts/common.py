@@ -233,6 +233,165 @@ def extract_og_meta(html: str, base_url: str) -> dict:
     return out
 
 
+# --- Optional Playwright (headless browser) support ---
+#
+# Some sources render their content client-side and return a near-empty JS shell
+# to plain requests. Mark them `requires_js: true` in data/sources.json (or
+# data/manual_seeds.json) to opt into a headless chromium fetch via Playwright.
+#
+# Playwright is fully optional: if not installed, `rendered_session()` yields
+# None and the caller logs a `[skip-js]` line and continues. Install with:
+#     .venv/bin/pip install -r requirements-rendered.txt
+#     .venv/bin/playwright install chromium
+
+def playwright_available() -> bool:
+    """True if `playwright` is importable. Chromium binary presence is
+    checked only on first launch (in rendered_session)."""
+    try:
+        from playwright.sync_api import sync_playwright  # noqa: F401
+        return True
+    except ImportError:
+        return False
+
+
+class RenderedResponse:
+    """Minimal shape mimicking requests.Response for the subset we use
+    elsewhere — `.text`, `.content`, `.status_code`, `.url`. Keeps the
+    BeautifulSoup-based parsers in discover/ingest unchanged."""
+    __slots__ = ("text", "content", "status_code", "url")
+
+    def __init__(self, text: str, url: str, status_code: int = 200):
+        self.text = text
+        self.content = text.encode("utf-8", errors="replace")
+        self.status_code = status_code
+        self.url = url
+
+
+_ANTI_BOT_MARKERS = (
+    "cf-browser-verification",
+    "checking your browser",
+    "attention required! | cloudflare",
+    "just a moment",
+    "captcha",
+    "access denied",
+    "request blocked",
+    "automated traffic",
+    "blocked by perimeterx",
+)
+
+
+def _looks_like_block_page(html: str) -> bool:
+    """Detect anti-bot interstitials. Only flags small bodies to avoid
+    false positives on real pages that mention these phrases in passing."""
+    if len(html) >= 50_000:
+        return False
+    low = html.lower()
+    return any(m in low for m in _ANTI_BOT_MARKERS)
+
+
+class RenderedFetcher:
+    """Holds a chromium browser context open for the lifetime of a pipeline
+    step. One context, one page per fetch, page closed after each call."""
+
+    def __init__(self, pw, browser, context):
+        self._pw = pw
+        self._browser = browser
+        self._context = context
+
+    def fetch(
+        self,
+        url: str,
+        timeout_ms: int = 30000,
+        wait_until: str = "load",
+        min_bytes: int = 1500,
+        settle_ms: int = 2500,
+    ) -> RenderedResponse | None:
+        """Render `url` and return the post-JS DOM.
+
+        Defaults are tuned for SPA-heavy art-org sites:
+          wait_until="load" — networkidle is too strict; many sites keep
+            long-polling/analytics connections open and never go idle.
+          settle_ms=2500 — empirically catches React/Vue hydration on
+            sites where the load event fires before the framework renders.
+          min_bytes=1500 — JS shells are typically <1500 bytes; rendered
+            content is 20KB+. Filters out cases where settle wasn't enough.
+        """
+        page = self._context.new_page()
+        try:
+            page.goto(url, timeout=timeout_ms, wait_until=wait_until)
+            page.wait_for_timeout(settle_ms)
+            html = page.content()
+        except Exception as e:
+            logger.info("[render-err] %s: %s", url[:80], str(e)[:120])
+            return None
+        finally:
+            page.close()
+
+        if len(html) < min_bytes:
+            logger.info("[render-thin] %s: %d bytes", url[:80], len(html))
+            return None
+        if _looks_like_block_page(html):
+            logger.info("[render-block] %s: anti-bot interstitial detected", url[:80])
+            return None
+        return RenderedResponse(html, url)
+
+
+def rendered_session(headless: bool = True):
+    """Context manager yielding a RenderedFetcher or None if Playwright is
+    unavailable. Never raises — graceful degradation is the contract.
+
+    Usage:
+        with rendered_session() as rf:
+            if rf is None:
+                continue  # caller decides how to handle
+            resp = rf.fetch(url)
+    """
+    from contextlib import contextmanager
+
+    @contextmanager
+    def _impl():
+        if not playwright_available():
+            logger.warning(
+                "[playwright] not installed — requires_js sources will be skipped. "
+                "Install: .venv/bin/pip install -r requirements-rendered.txt && "
+                ".venv/bin/playwright install chromium"
+            )
+            yield None
+            return
+        from playwright.sync_api import sync_playwright
+        pw = sync_playwright().start()
+        try:
+            browser = pw.chromium.launch(headless=headless)
+        except Exception as e:
+            logger.warning(
+                "[playwright] chromium launch failed (%s). "
+                "Run: .venv/bin/playwright install chromium",
+                str(e)[:120],
+            )
+            pw.stop()
+            yield None
+            return
+        try:
+            context = browser.new_context(
+                user_agent=USER_AGENT,
+                viewport={"width": 1366, "height": 900},
+                locale="en-US",
+                extra_http_headers={"Accept-Language": HEADERS["Accept-Language"]},
+            )
+            # Light anti-detection: hide the webdriver flag before page scripts run.
+            context.add_init_script(
+                "Object.defineProperty(navigator, 'webdriver', {get: () => undefined});"
+            )
+            yield RenderedFetcher(pw, browser, context)
+        finally:
+            try:
+                browser.close()
+            finally:
+                pw.stop()
+
+    return _impl()
+
+
 _MONTH_MAP = {
     "jan": 1, "january": 1, "feb": 2, "february": 2, "mar": 3, "march": 3,
     "apr": 4, "april": 4, "may": 5, "jun": 6, "june": 6, "jul": 7, "july": 7,

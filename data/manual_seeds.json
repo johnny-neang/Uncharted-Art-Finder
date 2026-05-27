@@ -1,5 +1,5 @@
 {
-  "_doc": "Drop URLs here to add artists/orgs the crawler can't reach (Instagram, Facebook, standalone studios). Each entry: {url, note (optional), status (optional)}. The ingest_seeds step picks up status=pending or unset entries on the next /refresh, fetches OG meta tags, and creates a discoveries.json candidate. After processing, status flips to processed/skipped/failed and candidate_slug is written back so the seed isn't re-ingested.",
+  "_doc": "Drop URLs here to add artists/orgs the crawler can't reach (Instagram, Facebook, standalone studios). Each entry: {url, note (optional), status (optional), requires_js (optional)}. The ingest_seeds step picks up status=pending or unset entries on the next /refresh, fetches OG meta tags, and creates a discoveries.json candidate. After processing, status flips to processed/skipped/failed and candidate_slug is written back so the seed isn't re-ingested. Set requires_js: true for JS-rendered seed URLs (requires Playwright; see requirements-rendered.txt).",
   "seeds": [
     {
       "url": "https://www.instagram.com/rossi_sculpture_design/",

@@ -56,7 +56,31 @@ templates/
   svg_library.js                 hand-tuned SVG illustrations (fallback art)
 index.html                       generated dashboard, served by Pages
 requirements.txt                 Python deps (auto-installed in Claude Code sandbox)
+requirements-rendered.txt        optional Playwright dep for JS-rendered sources
 ```
+
+## Optional: JavaScript-rendered sources
+
+Some art sites render their listings client-side and serve a near-empty
+shell to plain HTTP fetches. To auto-crawl those, install Playwright into
+the venv:
+
+```
+.venv/bin/pip install -r requirements-rendered.txt
+.venv/bin/playwright install chromium     # ~150MB, one time
+```
+
+Sources flagged `requires_js: true` in `data/sources.json` (or per-seed in
+`data/manual_seeds.json`) will then use a headless chromium fetch
+automatically. Without Playwright the pipeline still runs — those sources
+log `[skip-js]` and the rest of the run proceeds normally.
+
+**Limitations.** Headless rendering does *not* bypass anti-bot detection.
+Sites that return "Access Denied" or "Just a moment" interstitials to
+chromium (e.g. sacopenstudios.org as of 2026-05-26) are caught by the
+`[render-block]` check and marked failed. Those stay `manual: true` in
+sources.json — browse them by hand and seed interesting profiles via
+`data/manual_seeds.json`.
 
 ## One-time setup
 

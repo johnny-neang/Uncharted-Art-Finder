@@ -25,12 +25,13 @@ from __future__ import annotations
 
 import argparse
 import re
+from contextlib import nullcontext
 from datetime import date
 from urllib.parse import urlparse
 
 from .common import (
     DATA, fetch_image, get, extract_og_meta, load_json, logger,
-    polite_delay, save_json, setup_logging, slugify,
+    polite_delay, rendered_session, save_json, setup_logging, slugify,
 )
 
 
@@ -102,11 +103,24 @@ def derive_name(og: dict, url: str) -> str:
     return head
 
 
-def ingest_one(seed: dict) -> dict | None:
-    """Fetch the seed URL and return a discoveries candidate, or None on failure."""
+def ingest_one(seed: dict, rf) -> dict | None:
+    """Fetch the seed URL and return a discoveries candidate, or None on failure.
+
+    If the seed has `requires_js: true`, uses headless render via `rf`. If
+    `requires_js` is set but Playwright isn't available, marks the seed
+    failed (the caller asked for JS; falling back to plain get() would
+    return useless content).
+    """
     url = seed["url"]
     logger.info("=== seed: %s ===", url[:90])
-    r = get(url)
+    if seed.get("requires_js"):
+        if rf is None:
+            seed["status"] = "failed"
+            seed["error"] = "requires_js but playwright unavailable"
+            return None
+        r = rf.fetch(url)
+    else:
+        r = get(url)
     if not r:
         seed["status"] = "failed"
         seed["error"] = "fetch failed (non-200 or network error)"
@@ -167,38 +181,43 @@ def main():
     existing_slugs = {c["slug"] for c in discoveries.get("candidates", [])}
 
     ingested = 0
-    for seed in seeds:
-        if ingested >= args.max:
-            break
-        if seed.get("status") not in (None, "pending"):
-            continue
+    needs_browser = any(s.get("requires_js") and s.get("status") in (None, "pending") for s in seeds)
+    browser_ctx = rendered_session() if needs_browser else nullcontext(None)
+    with browser_ctx as rf:
+        if needs_browser and rf is None:
+            logger.warning("[seeds] some seeds have requires_js but playwright is unavailable — they will fail")
+        for seed in seeds:
+            if ingested >= args.max:
+                break
+            if seed.get("status") not in (None, "pending"):
+                continue
 
-        cand = ingest_one(seed)
-        if cand is None:
-            logger.warning("[seed-fail] %s: %s", seed["url"][:80], seed.get("error", "?"))
-            continue
+            cand = ingest_one(seed, rf)
+            if cand is None:
+                logger.warning("[seed-fail] %s: %s", seed["url"][:80], seed.get("error", "?"))
+                continue
 
-        if cand["slug"] in canon_slugs:
-            seed["status"] = "skipped"
-            seed["error"] = f"already in canonical roster ({cand['slug']})"
-            logger.info("[skip] %s already in roster", cand["name"])
-            continue
-        if cand["slug"] in rejected:
-            seed["status"] = "skipped"
-            seed["error"] = "already in rejected_slugs"
-            logger.info("[skip] %s previously rejected", cand["name"])
-            continue
-        if cand["slug"] in existing_slugs:
-            seed["status"] = "skipped"
-            seed["error"] = "already in discoveries"
-            logger.info("[skip] %s already queued", cand["name"])
-            continue
+            if cand["slug"] in canon_slugs:
+                seed["status"] = "skipped"
+                seed["error"] = f"already in canonical roster ({cand['slug']})"
+                logger.info("[skip] %s already in roster", cand["name"])
+                continue
+            if cand["slug"] in rejected:
+                seed["status"] = "skipped"
+                seed["error"] = "already in rejected_slugs"
+                logger.info("[skip] %s previously rejected", cand["name"])
+                continue
+            if cand["slug"] in existing_slugs:
+                seed["status"] = "skipped"
+                seed["error"] = "already in discoveries"
+                logger.info("[skip] %s already queued", cand["name"])
+                continue
 
-        discoveries.setdefault("candidates", []).append(cand)
-        existing_slugs.add(cand["slug"])
-        ingested += 1
-        logger.info("[ingested] %s (img=%s)", cand["name"], "yes" if cand["image"] else "no")
-        polite_delay(0.5)
+            discoveries.setdefault("candidates", []).append(cand)
+            existing_slugs.add(cand["slug"])
+            ingested += 1
+            logger.info("[ingested] %s (img=%s)", cand["name"], "yes" if cand["image"] else "no")
+            polite_delay(0.5)
 
     save_json(SEEDS_PATH, seeds_blob)
     save_json(DATA / "discoveries.json", discoveries)

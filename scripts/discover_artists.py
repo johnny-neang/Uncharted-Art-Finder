@@ -16,6 +16,7 @@ Source kinds (data/sources.json `kind` field):
 from __future__ import annotations
 
 import argparse
+from contextlib import nullcontext
 from datetime import date
 from urllib.parse import urljoin, urlparse
 
@@ -23,11 +24,23 @@ from bs4 import BeautifulSoup
 
 from .common import (
     DATA, fetch_image, extract_image_candidates, extract_og_meta, get,
-    load_json, logger, polite_delay, save_json, setup_logging, slugify,
+    load_json, logger, polite_delay, rendered_session, save_json,
+    setup_logging, slugify,
 )
 
 
 LOOSE_KINDS = {"community-curator", "public-art-registry", "studio-tour", "mfa-program"}
+
+
+def _fetch_source(src: dict, rf):
+    """Dispatch a source URL to headless render or plain get() based on
+    requires_js. Returns the same shape either way (response with .text)."""
+    if src.get("requires_js"):
+        if rf is None:
+            logger.info("[skip-js] %s: requires_js but playwright unavailable", src["name"])
+            return None
+        return rf.fetch(src["url"])
+    return get(src["url"])
 
 
 def extract_artist_links_from_page(html: str, base: str, host_filter: str | None = None) -> list[dict]:
@@ -131,10 +144,10 @@ def extract_loose_links_from_page(html: str, base: str) -> list[dict]:
     return out
 
 
-def discover_from_source(src: dict) -> list[dict]:
+def discover_from_source(src: dict, rf) -> list[dict]:
     """Roster-kind discovery: strict path filter + same-host."""
     logger.info("=== source: %s ===", src["name"])
-    r = get(src["url"])
+    r = _fetch_source(src, rf)
     if not r:
         return []
     links = extract_artist_links_from_page(r.text, src["url"])
@@ -144,10 +157,10 @@ def discover_from_source(src: dict) -> list[dict]:
     return links
 
 
-def discover_from_loose(src: dict) -> list[dict]:
+def discover_from_loose(src: dict, rf) -> list[dict]:
     """community-curator / public-art-registry / studio-tour / mfa-program."""
     logger.info("=== source [%s]: %s ===", src.get("kind", "?"), src["name"])
-    r = get(src["url"])
+    r = _fetch_source(src, rf)
     if not r:
         return []
     links = extract_loose_links_from_page(r.text, src["url"])
@@ -157,13 +170,13 @@ def discover_from_loose(src: dict) -> list[dict]:
     return links
 
 
-def discover_from_studio(src: dict) -> list[dict]:
+def discover_from_studio(src: dict, rf) -> list[dict]:
     """The source URL itself is a single candidate (standalone studio/artist site).
 
     Pulls the name from OG meta or sources.json `name`. No link-following.
     """
     logger.info("=== source [studio]: %s ===", src["name"])
-    r = get(src["url"])
+    r = _fetch_source(src, rf)
     if not r:
         return []
     og = extract_og_meta(r.text, src["url"])
@@ -215,39 +228,42 @@ def main():
 
     new_candidates: list[dict] = []
     fresh_links: list[dict] = []
-    for src in sources:
-        kind = src.get("kind", "roster")
-        if src.get("manual"):
-            logger.info("[skip-manual] %s (manual:true — tracked but not auto-crawled)", src["name"])
-            continue
-        try:
-            if kind == "roster":
-                links = discover_from_source(src)[: args.max_per_source]
-            elif kind == "studio":
-                links = discover_from_studio(src)
-            elif kind in LOOSE_KINDS:
-                links = discover_from_loose(src)[: args.max_per_source]
-            else:
-                # press, unknown — not crawled here
+    needs_browser = any(s.get("requires_js") and not s.get("manual") for s in sources)
+    browser_ctx = rendered_session() if needs_browser else nullcontext(None)
+    with browser_ctx as rf:
+        for src in sources:
+            kind = src.get("kind", "roster")
+            if src.get("manual"):
+                logger.info("[skip-manual] %s (manual:true — tracked but not auto-crawled)", src["name"])
                 continue
-        except Exception as e:
-            logger.warning("source %s failed: %s", src["name"], e)
-            continue
-        for link in links:
-            slug = slugify(link["name"])
-            if slug in canon_slugs:
+            try:
+                if kind == "roster":
+                    links = discover_from_source(src, rf)[: args.max_per_source]
+                elif kind == "studio":
+                    links = discover_from_studio(src, rf)
+                elif kind in LOOSE_KINDS:
+                    links = discover_from_loose(src, rf)[: args.max_per_source]
+                else:
+                    # press, unknown — not crawled here
+                    continue
+            except Exception as e:
+                logger.warning("source %s failed: %s", src["name"], e)
                 continue
-            if link["name"].lower() in canon_names:
-                continue
-            if slug in rejected:
-                continue
-            if slug in existing_candidate_slugs:
-                continue
-            link["slug"] = slug
-            link["source_name"] = src["name"]
-            link["source_kind"] = kind
-            fresh_links.append(link)
-        polite_delay(1.0)
+            for link in links:
+                slug = slugify(link["name"])
+                if slug in canon_slugs:
+                    continue
+                if link["name"].lower() in canon_names:
+                    continue
+                if slug in rejected:
+                    continue
+                if slug in existing_candidate_slugs:
+                    continue
+                link["slug"] = slug
+                link["source_name"] = src["name"]
+                link["source_kind"] = kind
+                fresh_links.append(link)
+            polite_delay(1.0)
 
     logger.info("[discover] %d unique fresh links across all sources", len(fresh_links))
 
