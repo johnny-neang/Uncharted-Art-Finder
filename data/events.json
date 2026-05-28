@@ -9,14 +9,6 @@
       "source": "Sacramento365 — Arts events"
     },
     {
-      "title": "Press Club May Calendar",
-      "date_raw": "May 07 - May 30, 2026",
-      "date_iso": "2027-05-07",
-      "snippet": "Press Club May Calendar Presented by Press Club at Press Club May 07 - May 30, 2026",
-      "url": "https://sacramento365.com/event/press-club-may-calendar/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
       "title": "Orangevale Summer Palooza",
       "date_raw": "May 29 - May 31, 2026",
       "date_iso": "2026-05-29",
@@ -30,6 +22,14 @@
       "date_iso": "2026-05-30",
       "snippet": "Beethoven Symphony No. 9 Presented by Sacramento Philharmonic & Opera at SAFE Credit Union Performing Arts Center May 30 - May 31, 2026",
       "url": "https://sacramento365.com/event/beethoven-symphony-no-9/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Beer and Ballet",
+      "date_raw": "May 28 - May 31, 2026",
+      "date_iso": "2026-05-28",
+      "snippet": "Beer and Ballet Presented by Sacramento Ballet at The Sofia Tsakopoulos Center for the Arts May 28 - May 31, 2026",
+      "url": "https://sacramento365.com/event/beer-and-ballet-3/",
       "source": "Sacramento365 — Arts events"
     },
     {
@@ -217,10 +217,34 @@
       "source": "JAYJAY Gallery — exhibitions"
     },
     {
+      "title": "May 27, 2026|Sac County approves Sheriff’s alliance with DHS, ICE-linked task force",
+      "date_raw": "May 27, 2026",
+      "date_iso": "2026-05-27",
+      "snippet": "Hot Topics May 27, 2026 | Sac County approves Sheriff’s alliance with DHS, ICE-linked task force May 27, 2026 | In California Governor Race, Single-Payer Is a Litmus Test. There’s Still No Way To Pay for It. May 27, 2026 | After AI layoffs, Newsom orders state government to find",
+      "url": "https://sacramento.newsreview.com/2026/05/27/sac-county-approves-sheriffs-alliance-with-dhs-ice-linked-task-force/",
+      "source": "Sacramento News & Review — Arts events"
+    },
+    {
+      "title": "May 27, 2026|In California Governor Race, Single-Payer Is a Litmus Test. There’s Still No Way To Pay for It.",
+      "date_raw": "May 27, 2026",
+      "date_iso": "2026-05-27",
+      "snippet": "May 27, 2026 | In California Governor Race, Single-Payer Is a Litmus Test. There’s Still No Way To Pay for It.",
+      "url": "https://sacramento.newsreview.com/2026/05/27/in-california-governor-race-single-payer-is-a-litmus-test-theres-still-no-way-to-pay-for-it-2/",
+      "source": "Sacramento News & Review — Arts events"
+    },
+    {
+      "title": "May 27, 2026|After AI layoffs, Newsom orders state government to find ways to ease the pain",
+      "date_raw": "May 27, 2026",
+      "date_iso": "2026-05-27",
+      "snippet": "May 27, 2026 | After AI layoffs, Newsom orders state government to find ways to ease the pain",
+      "url": "https://sacramento.newsreview.com/2026/05/27/after-ai-layoffs-newsom-orders-state-government-to-find-ways-to-ease-the-pain/",
+      "source": "Sacramento News & Review — Arts events"
+    },
+    {
       "title": "May 26, 2026|In California governor’s race, Xavier Becerra walks away from single-payer",
       "date_raw": "May 26, 2026",
       "date_iso": "2026-05-26",
-      "snippet": "Hot Topics May 26, 2026 | In California governor’s race, Xavier Becerra walks away from single-payer May 25, 2026 | Budget cuts threaten program that doubles food dollars for Californians in need May 23, 2026 | California could be the first state to ban quartz countertops May 22,",
+      "snippet": "May 26, 2026 | In California governor’s race, Xavier Becerra walks away from single-payer",
       "url": "https://sacramento.newsreview.com/2026/05/26/in-california-governors-race-xavier-becerra-walks-away-from-single-payer/",
       "source": "Sacramento News & Review — Arts events"
     },
@@ -230,30 +254,6 @@
       "date_iso": "2026-05-25",
       "snippet": "May 25, 2026 | Budget cuts threaten program that doubles food dollars for Californians in need",
       "url": "https://sacramento.newsreview.com/2026/05/25/budget-cuts-threaten-program-that-doubles-food-dollars-for-californians-in-need/",
-      "source": "Sacramento News & Review — Arts events"
-    },
-    {
-      "title": "May 23, 2026|California could be the first state to ban quartz countertops",
-      "date_raw": "May 23, 2026",
-      "date_iso": "2026-05-23",
-      "snippet": "May 23, 2026 | California could be the first state to ban quartz countertops",
-      "url": "https://sacramento.newsreview.com/2026/05/23/california-could-be-the-first-state-to-ban-quartz-countertops/",
-      "source": "Sacramento News & Review — Arts events"
-    },
-    {
-      "title": "May 22, 2026|Did Newsom’s $3.8 billion hotels-to-housing program pay off? We filed 100 records requests to find out",
-      "date_raw": "May 22, 2026",
-      "date_iso": "2026-05-22",
-      "snippet": "May 22, 2026 | Did Newsom’s $3.8 billion hotels-to-housing program pay off? We filed 100 records requests to find out",
-      "url": "https://sacramento.newsreview.com/2026/05/22/did-newsoms-3-8-billion-hotels-to-housing-program-pay-off-we-filed-100-records-requests-to-find-out/",
-      "source": "Sacramento News & Review — Arts events"
-    },
-    {
-      "title": "May 21, 2026|With receivership visible on the horizon, what will SCUSD do?",
-      "date_raw": "May 21, 2026",
-      "date_iso": "2026-05-21",
-      "snippet": "May 21, 2026 | With receivership visible on the horizon, what will SCUSD do?",
-      "url": "https://sacramento.newsreview.com/2026/05/21/with-receivership-visible-on-the-horizon-what-will-scusd-do/",
       "source": "Sacramento News & Review — Arts events"
     }
   ],

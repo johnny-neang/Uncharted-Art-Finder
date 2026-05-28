@@ -633,7 +633,25 @@
         "kb": 106
       },
       "first_seen": "2026-05-09",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "unclear",
+        "family_fit": 4,
+        "mural_capacity": "unknown",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "abstract",
+          "mixed-media",
+          "contemporary",
+          "textural",
+          "gallery"
+        ],
+        "one_line_summary": "Contemporary mixed-media abstract artist represented by Kevin Barry Art Advisory; Sacramento ties and mural experience unverified from advisory roster listing.",
+        "proceed_recommendation": "watch",
+        "confidence": "low"
+      },
+      "scored_at": "2026-05-27",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "mixed_media",
@@ -646,7 +664,23 @@
         "kb": 45
       },
       "first_seen": "2026-05-09",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "unclear",
+        "family_fit": 3,
+        "mural_capacity": "unknown",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mixed-media",
+          "gallery-represented",
+          "contemporary"
+        ],
+        "one_line_summary": "JAYJAY Gallery mixed-media artist roster page; not a single artist profile, requires drill-down to individual names before evaluation.",
+        "proceed_recommendation": "watch",
+        "confidence": "low"
+      },
+      "scored_at": "2026-05-27",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "digital_media",
@@ -659,7 +693,24 @@
         "kb": 83
       },
       "first_seen": "2026-05-09",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "yes",
+        "family_fit": 4,
+        "mural_capacity": "unknown",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "digital-media",
+          "gallery-represented",
+          "contemporary",
+          "mixed-media"
+        ],
+        "one_line_summary": "JAYJAY Gallery digital media category page rather than a single artist; Sacramento gallery roster worth mining for individual candidates.",
+        "proceed_recommendation": "watch",
+        "confidence": "low"
+      },
+      "scored_at": "2026-05-27",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "delgreta_brown",
@@ -672,7 +723,25 @@
         "kb": 75
       },
       "first_seen": "2026-05-09",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "yes",
+        "family_fit": 4,
+        "mural_capacity": "likely",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mixed-media",
+          "figurative",
+          "collage",
+          "narrative",
+          "contemporary"
+        ],
+        "one_line_summary": "Sacramento-based Axis Gallery member working in mixed-media and figurative narrative work suited to family audiences.",
+        "proceed_recommendation": "watch",
+        "confidence": "low"
+      },
+      "scored_at": "2026-05-27",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "sokthea_chan",
@@ -685,7 +754,25 @@
         "kb": 29
       },
       "first_seen": "2026-05-09",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "yes",
+        "family_fit": 4,
+        "mural_capacity": "likely",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mixed-media",
+          "figurative",
+          "cambodian-american",
+          "narrative",
+          "contemporary"
+        ],
+        "one_line_summary": "Sacramento-based Cambodian American artist shown via Axis Gallery, working in narrative figurative and mixed-media modes suited to a curated mall context.",
+        "proceed_recommendation": "watch",
+        "confidence": "low"
+      },
+      "scored_at": "2026-05-27",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "adam_cochran",
@@ -698,7 +785,24 @@
         "kb": 63
       },
       "first_seen": "2026-05-09",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "yes",
+        "family_fit": 4,
+        "mural_capacity": "unknown",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "axis-gallery",
+          "sacramento",
+          "contemporary",
+          "studio-artist"
+        ],
+        "one_line_summary": "Axis Gallery member artist based in the Sacramento region; gallery affiliation confirms local ties but mural-scale public work is not established.",
+        "proceed_recommendation": "watch",
+        "confidence": "low"
+      },
+      "scored_at": "2026-05-27",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "kerry_cottle",
@@ -711,7 +815,25 @@
         "kb": 27
       },
       "first_seen": "2026-05-09",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "yes",
+        "family_fit": 4,
+        "mural_capacity": "unknown",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mixed-media",
+          "abstract",
+          "gallery-artist",
+          "axis-member",
+          "sacramento"
+        ],
+        "one_line_summary": "Axis Gallery member based in the Sacramento region; established studio practice but no clear evidence of large-scale public mural work.",
+        "proceed_recommendation": "watch",
+        "confidence": "medium"
+      },
+      "scored_at": "2026-05-27",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "raffa_ch_vez",
@@ -724,7 +846,25 @@
         "kb": 55
       },
       "first_seen": "2026-05-09",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "yes",
+        "family_fit": 4,
+        "mural_capacity": "likely",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mixed-media",
+          "figurative",
+          "latinx",
+          "contemporary",
+          "gallery-artist"
+        ],
+        "one_line_summary": "Sacramento-based Axis Gallery member working in figurative mixed-media; established local presence though large-scale mural experience is unconfirmed.",
+        "proceed_recommendation": "watch",
+        "confidence": "medium"
+      },
+      "scored_at": "2026-05-27",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "doug_dertinger",
@@ -737,7 +877,24 @@
         "kb": 78
       },
       "first_seen": "2026-05-09",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "yes",
+        "family_fit": 4,
+        "mural_capacity": "studio_only",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "printmaking",
+          "figurative",
+          "narrative",
+          "mixed-media"
+        ],
+        "one_line_summary": "Sacramento-area Axis Gallery member working in printmaking and figurative narrative imagery; established studio practice without evident large-scale public mural work.",
+        "proceed_recommendation": "watch",
+        "confidence": "medium"
+      },
+      "scored_at": "2026-05-27",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "roma_devanbu",
@@ -750,7 +907,25 @@
         "kb": 90
       },
       "first_seen": "2026-05-09",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "yes",
+        "family_fit": 4,
+        "mural_capacity": "unknown",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "painting",
+          "figurative",
+          "axis-gallery",
+          "narrative",
+          "sacramento"
+        ],
+        "one_line_summary": "Sacramento-area painter affiliated with Axis Gallery's artist roster; studio practice with narrative figurative work, mural capacity unverified.",
+        "proceed_recommendation": "watch",
+        "confidence": "low"
+      },
+      "scored_at": "2026-05-27",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "kenna_doeringer",
@@ -763,7 +938,24 @@
         "kb": 32
       },
       "first_seen": "2026-05-09",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "yes",
+        "family_fit": 4,
+        "mural_capacity": "unknown",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "axis-gallery",
+          "contemporary",
+          "sacramento",
+          "gallery-artist"
+        ],
+        "one_line_summary": "Sacramento-based Axis Gallery member artist; gallery affiliation signals local credibility but mural-scale public work is unconfirmed.",
+        "proceed_recommendation": "watch",
+        "confidence": "low"
+      },
+      "scored_at": "2026-05-27",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "peter_foucault",
@@ -776,7 +968,25 @@
         "kb": 107
       },
       "first_seen": "2026-05-09",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "yes",
+        "family_fit": 4,
+        "mural_capacity": "likely",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "abstract",
+          "drawing",
+          "installation",
+          "mixed-media",
+          "interactive"
+        ],
+        "one_line_summary": "Sacramento-based Axis Gallery artist known for abstract drawing-based installations and collaborative mark-making projects suited to public engagement.",
+        "proceed_recommendation": "add",
+        "confidence": "medium"
+      },
+      "scored_at": "2026-05-27",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "works_on_paper",
@@ -789,7 +999,24 @@
         "kb": 45
       },
       "first_seen": "2026-05-10",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "yes",
+        "family_fit": 3,
+        "mural_capacity": "unknown",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "works-on-paper",
+          "gallery-roster",
+          "mixed-media",
+          "drawing"
+        ],
+        "one_line_summary": "JAYJAY Gallery's works-on-paper roster category rather than a single artist; needs drill-down to individual makers before curation.",
+        "proceed_recommendation": "watch",
+        "confidence": "low"
+      },
+      "scored_at": "2026-05-27",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "cara_gregor",
@@ -802,7 +1029,24 @@
         "kb": 36
       },
       "first_seen": "2026-05-10",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "yes",
+        "family_fit": 4,
+        "mural_capacity": "likely",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "painting",
+          "abstract",
+          "contemporary",
+          "axis-gallery"
+        ],
+        "one_line_summary": "Sacramento-area painter affiliated with Axis Gallery, a respected local artist cooperative; studio practice with contemporary appeal.",
+        "proceed_recommendation": "watch",
+        "confidence": "low"
+      },
+      "scored_at": "2026-05-27",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "heather_hogan",
@@ -815,7 +1059,25 @@
         "kb": 52
       },
       "first_seen": "2026-05-10",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "yes",
+        "family_fit": 4,
+        "mural_capacity": "unknown",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mixed-media",
+          "abstract",
+          "gallery",
+          "sacramento",
+          "axis-gallery"
+        ],
+        "one_line_summary": "Axis Gallery member based in the Sacramento region; gallery-scale studio practice with unconfirmed large-format mural experience.",
+        "proceed_recommendation": "watch",
+        "confidence": "medium"
+      },
+      "scored_at": "2026-05-27",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "kenneth_jordan",
@@ -828,7 +1090,24 @@
         "kb": 23
       },
       "first_seen": "2026-05-10",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "yes",
+        "family_fit": 4,
+        "mural_capacity": "unknown",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "painting",
+          "figurative",
+          "narrative",
+          "axis-gallery"
+        ],
+        "one_line_summary": "Sacramento-area painter affiliated with Axis Gallery; established studio presence but mural-scale public work not evident from listing.",
+        "proceed_recommendation": "watch",
+        "confidence": "low"
+      },
+      "scored_at": "2026-05-27",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "erin_kaczkowski",
@@ -841,7 +1120,25 @@
         "kb": 21
       },
       "first_seen": "2026-05-10",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "yes",
+        "family_fit": 4,
+        "mural_capacity": "likely",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mixed-media",
+          "figurative",
+          "collage",
+          "contemporary",
+          "gallery"
+        ],
+        "one_line_summary": "Sacramento-area mixed-media artist affiliated with Axis Gallery, a respected regional cooperative; gallery practice suggests strong studio work with possible mural adaptability.",
+        "proceed_recommendation": "watch",
+        "confidence": "medium"
+      },
+      "scored_at": "2026-05-27",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "fiona_k_lau",
@@ -854,7 +1151,24 @@
         "kb": 47
       },
       "first_seen": "2026-05-10",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "yes",
+        "family_fit": 4,
+        "mural_capacity": "likely",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mixed-media",
+          "figurative",
+          "contemporary",
+          "gallery-artist"
+        ],
+        "one_line_summary": "Sacramento-area artist affiliated with Axis Gallery, a respected local cooperative; gallery practice suggests established studio work with possible mural adaptability.",
+        "proceed_recommendation": "watch",
+        "confidence": "low"
+      },
+      "scored_at": "2026-05-27",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "elise_mahan",
@@ -867,7 +1181,24 @@
         "kb": 75
       },
       "first_seen": "2026-05-10",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "yes",
+        "family_fit": 4,
+        "mural_capacity": "unknown",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "mixed-media",
+          "sculpture",
+          "figurative",
+          "gallery-artist"
+        ],
+        "one_line_summary": "Axis Gallery member based in the Sacramento region; gallery-affiliated practice with no clear large-scale mural track record on file.",
+        "proceed_recommendation": "watch",
+        "confidence": "medium"
+      },
+      "scored_at": "2026-05-27",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "taner_pa_amehmeto_lu",
@@ -880,7 +1211,25 @@
         "kb": 36
       },
       "first_seen": "2026-05-10",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "yes",
+        "family_fit": 4,
+        "mural_capacity": "likely",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "painting",
+          "figurative",
+          "mixed-media",
+          "axis-gallery",
+          "contemporary"
+        ],
+        "one_line_summary": "Sacramento-area painter affiliated with Axis Gallery; established studio practice with figurative/mixed-media work suited to a curated roster.",
+        "proceed_recommendation": "watch",
+        "confidence": "medium"
+      },
+      "scored_at": "2026-05-27",
+      "scored_with": "claude-code-cli"
     },
     {
       "slug": "sharon_tsao",
