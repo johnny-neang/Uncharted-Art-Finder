@@ -1,0 +1,148 @@
+"""Vercel function: POST /api/promote { slug } → move candidate to Directory.
+
+Writes directly to data/artists.json and data/discoveries.json on main via
+the GitHub Contents API. Requires GITHUB_PAT env var (fine-grained PAT with
+Contents:write on this repo).
+"""
+from http.server import BaseHTTPRequestHandler
+import base64
+import json
+import os
+import urllib.error
+import urllib.request
+from datetime import date, timezone, datetime
+from urllib.parse import urlparse
+
+REPO_OWNER = "johnny-neang"
+REPO_NAME = "Uncharted-Art-Finder"
+BRANCH = "main"
+API_BASE = f"https://api.github.com/repos/{REPO_OWNER}/{REPO_NAME}"
+
+
+def _gh_request(method, url, body=None):
+    pat = os.environ.get("GITHUB_PAT")
+    if not pat:
+        raise RuntimeError("GITHUB_PAT env var not configured")
+    headers = {
+        "Authorization": f"Bearer {pat}",
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "uncharted-art-finder",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
+    data = None
+    if body is not None:
+        data = json.dumps(body).encode("utf-8")
+        headers["Content-Type"] = "application/json"
+    req = urllib.request.Request(url, data=data, headers=headers, method=method)
+    try:
+        with urllib.request.urlopen(req) as resp:
+            return json.loads(resp.read())
+    except urllib.error.HTTPError as e:
+        body_text = e.read().decode("utf-8", errors="replace")
+        raise RuntimeError(f"GitHub {method} {url} -> {e.code}: {body_text[:300]}")
+
+
+def _get_file(path):
+    resp = _gh_request("GET", f"{API_BASE}/contents/{path}?ref={BRANCH}")
+    content = base64.b64decode(resp["content"]).decode("utf-8")
+    return json.loads(content), resp["sha"]
+
+
+def _put_file(path, data, sha, message):
+    content_json = json.dumps(data, indent=2, ensure_ascii=False)
+    body = {
+        "message": message,
+        "content": base64.b64encode(content_json.encode("utf-8")).decode("ascii"),
+        "sha": sha,
+        "branch": BRANCH,
+    }
+    return _gh_request("PUT", f"{API_BASE}/contents/{path}", body=body)
+
+
+def _promote(slug):
+    discoveries, disc_sha = _get_file("data/discoveries.json")
+    candidate = next((c for c in discoveries.get("candidates", []) if c.get("slug") == slug), None)
+    if not candidate:
+        return 404, {"ok": False, "error": f"slug '{slug}' not in discoveries"}
+
+    artists, art_sha = _get_file("data/artists.json")
+    if any(a.get("slug") == slug for a in artists):
+        return 409, {"ok": False, "error": f"'{slug}' already in directory"}
+
+    score = candidate.get("score") or {}
+    url = candidate.get("url") or ""
+    primary_host = urlparse(url).netloc if url else ""
+    thumbs = candidate.get("thumbs") or ([candidate["image"]] if candidate.get("image") else [])
+
+    new_entry = {
+        "n": max((a.get("n", 0) for a in artists), default=0) + 1,
+        "slug": slug,
+        "name": candidate.get("name") or slug,
+        "tier": score.get("suggested_tier") or 2,
+        "kind": score.get("kind") or "Artist",
+        "medium": score.get("medium") or "Mixed media",
+        "tags": score.get("suggested_tags") or [],
+        "summary": score.get("one_line_summary") or candidate.get("seed_description") or "",
+        "fit": score.get("family_fit") or 3,
+        "suitability": score.get("suitability") or "",
+        "primaryUrl": url,
+        "primaryHost": primary_host,
+        "thumbs": thumbs,
+        "addedAt": str(date.today()),
+        "status": "active",
+        "promoted_from": {
+            "source_name": candidate.get("source_name"),
+            "first_seen": candidate.get("first_seen"),
+            "via": "dashboard",
+            "at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        },
+    }
+    artists.append(new_entry)
+    name = candidate.get("name") or slug
+
+    # Order matters: add to artists.json first (safe — duplicate-detect handles
+    # any subsequent retry); then remove from discoveries.json.
+    _put_file("data/artists.json", artists, art_sha,
+              f"dashboard: promote {name} to directory")
+
+    discoveries["candidates"] = [c for c in discoveries["candidates"] if c.get("slug") != slug]
+    _put_file("data/discoveries.json", discoveries, disc_sha,
+              f"dashboard: remove {name} from candidates (promoted)")
+
+    return 200, {
+        "ok": True,
+        "slug": slug,
+        "n": new_entry["n"],
+        "name": name,
+        "tier": new_entry["tier"],
+    }
+
+
+class handler(BaseHTTPRequestHandler):
+    def do_POST(self):
+        try:
+            length = int(self.headers.get("Content-Length", 0))
+            payload = json.loads(self.rfile.read(length)) if length else {}
+            slug = (payload.get("slug") or "").strip()
+            if not slug:
+                self._respond(400, {"ok": False, "error": "slug required"})
+                return
+            status, result = _promote(slug)
+            self._respond(status, result)
+        except Exception as e:
+            self._respond(500, {"ok": False, "error": str(e)[:300]})
+
+    def do_OPTIONS(self):
+        # CORS preflight (same-origin in production, but useful for local dev)
+        self.send_response(204)
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "POST, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.end_headers()
+
+    def _respond(self, status, data):
+        self.send_response(status)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.end_headers()
+        self.wfile.write(json.dumps(data).encode("utf-8"))

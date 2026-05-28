@@ -95,6 +95,21 @@ def main():
     today = str(date.today())
     logger.info("[run] %s", today)
 
+    # Absorb any changes the Vercel promote/demote functions wrote to main
+    # via the GitHub API since our last push. Without this, the upcoming
+    # git push at the end would overwrite those dashboard-driven mutations
+    # to data/artists.json and data/discoveries.json.
+    if not args.skip_push and shutil.which("git"):
+        pull = subprocess.run(
+            ["git", "pull", "--rebase", "--autostash"],
+            cwd=ROOT, capture_output=True, text=True,
+        )
+        if pull.returncode == 0:
+            if "Already up to date" not in (pull.stdout or ""):
+                logger.info("[git] pulled main: %s", (pull.stdout or "").strip().split("\n")[-1][:120])
+        else:
+            logger.warning("[git] pull failed (continuing anyway): %s", (pull.stderr or "")[:200])
+
     from . import refresh_images, ingest_issues, ingest_seeds, discover_artists, scrape_events
     from . import score_with_claude, qc_images, build_digest, build_dashboard
 

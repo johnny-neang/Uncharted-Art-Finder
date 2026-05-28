@@ -798,12 +798,21 @@ function renderThumb(t) {
 }
 
 function actionButton(item) {
+  // The anchor's href is the GitHub Issue fallback. Click handlers
+  // intercept and POST to /api/promote or /api/demote first; the issue
+  // URL is only followed if the API returns an error (e.g. PAT not set,
+  // function not yet deployed, etc).
+  const nameAttr = (item.name || "").replace(/"/g, '&quot;');
   if (item.mode === "directory") {
     const url = `https://github.com/${REPO}/issues/new?template=demote.yml&title=${encodeURIComponent("Demote: " + item.name)}&slug=${encodeURIComponent(item.slug)}`;
-    return `<a class="card-action" href="${url}" target="_blank" rel="noopener" title="Open a GitHub Issue to move this entry out of the Directory">Move back to Candidates</a>`;
+    return `<a class="card-action" href="${url}" target="_blank" rel="noopener"
+      data-action="demote" data-slug="${item.slug}" data-name="${nameAttr}"
+      title="Move ${nameAttr} back to candidates">Move back to Candidates</a>`;
   }
   const url = `https://github.com/${REPO}/issues/new?template=promote.yml&title=${encodeURIComponent("Promote: " + item.name)}&slug=${encodeURIComponent(item.slug)}`;
-  return `<a class="card-action card-action-primary" href="${url}" target="_blank" rel="noopener" title="Open a GitHub Issue to promote this candidate to the Directory">Promote to Directory</a>`;
+  return `<a class="card-action card-action-primary" href="${url}" target="_blank" rel="noopener"
+    data-action="promote" data-slug="${item.slug}" data-name="${nameAttr}"
+    title="Promote ${nameAttr} to directory">Promote to Directory</a>`;
 }
 
 function recBadge(item) {
@@ -1059,6 +1068,68 @@ function renderEventItem(e) {
     eList.innerHTML = EVENTS.slice(0, 12).map(renderEventItem).join("");
     eSection.hidden = false;
   }
+})();
+
+/* ============================================================
+   ONE-CLICK PROMOTE / DEMOTE
+   Delegated handler that calls /api/promote or /api/demote.
+   Falls back to opening the prefilled GitHub Issue on any error.
+   ============================================================ */
+
+(function wireActionButtons() {
+  document.addEventListener("click", async (e) => {
+    const btn = e.target.closest("[data-action='promote'], [data-action='demote']");
+    if (!btn) return;
+    // Let modifier-clicks (cmd/ctrl/shift, middle-click) behave normally
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+    e.preventDefault();
+
+    const action = btn.dataset.action;
+    const slug = btn.dataset.slug;
+    const name = btn.dataset.name || slug;
+    const card = btn.closest(".card");
+    const originalText = btn.textContent;
+    const fallbackUrl = btn.href;
+
+    btn.textContent = "Working…";
+    btn.style.pointerEvents = "none";
+    btn.style.opacity = "0.65";
+
+    try {
+      const resp = await fetch(`/api/${action}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slug }),
+      });
+      let data = {};
+      try { data = await resp.json(); } catch (_) { /* non-JSON body */ }
+
+      if (resp.ok && data.ok) {
+        if (card) {
+          card.style.transition = "opacity 0.3s ease, transform 0.3s ease";
+          card.style.opacity = "0";
+          card.style.transform = "scale(0.96)";
+          setTimeout(() => {
+            card.remove();
+            if (action === "promote") refreshCandidateCounts();
+          }, 320);
+        }
+        return;
+      }
+
+      // API responded but with an error — fall back to GH Issue.
+      const why = (data && data.error) ? data.error : `HTTP ${resp.status}`;
+      console.warn(`[${action}] API failed: ${why} — opening GitHub Issue instead`);
+      window.open(fallbackUrl, "_blank", "noopener");
+    } catch (err) {
+      console.warn(`[${action}] network error: ${err.message} — opening GitHub Issue instead`);
+      window.open(fallbackUrl, "_blank", "noopener");
+    } finally {
+      btn.textContent = originalText;
+      btn.style.pointerEvents = "";
+      btn.style.opacity = "";
+    }
+  });
 })();
 
 </script>
