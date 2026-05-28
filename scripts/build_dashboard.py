@@ -83,20 +83,14 @@ def filter_and_sort_events(events: list[dict]) -> list[dict]:
 
 
 def filter_discoveries_for_display(discoveries: list[dict]) -> list[dict]:
-    """Show only candidates we'd actually surface to the user.
-
-    Hides 'reject' (off-fit) and 'existing' (already in roster); both stay in
-    the JSON so the override sticks across runs.
+    """Sort candidates for display. All states ship to the frontend — the
+    dashboard filter chips control which are visible (default hides reject
+    + archive). Sort by recommendation, then fit, then first_seen.
     """
-    REC_ORDER = {"add": 0, "watch": 1, "pending": 2}
-    keepers = []
-    for c in discoveries:
-        rec = effective_rec(c)
-        if rec in ("reject", "existing"):
-            continue
-        keepers.append(c)
+    REC_ORDER = {"add": 0, "watch": 1, "pending": 2, "archive": 3, "reject": 4, "existing": 3}
+    keepers = list(discoveries)
     keepers.sort(key=lambda c: (
-        REC_ORDER.get(effective_rec(c), 3),
+        REC_ORDER.get(effective_rec(c), 5),
         -((c.get("score") or {}).get("family_fit", 0) or 0),
         c.get("first_seen", ""),
     ))

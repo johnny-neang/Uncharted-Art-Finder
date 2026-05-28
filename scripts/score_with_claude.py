@@ -157,7 +157,8 @@ def main():
     # to rejected_slugs so future discovery passes skip them.
     rejected = set(discoveries.get("rejected_slugs", []))
     for c in candidates:
-        if c.get("manual_override") in ("reject", "existing"):
+        # archive is the new name for "existing"; treat both as terminal
+        if c.get("manual_override") in ("reject", "existing", "archive"):
             rejected.add(c["slug"])
     discoveries["rejected_slugs"] = sorted(rejected)
 

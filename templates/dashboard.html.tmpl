@@ -439,8 +439,53 @@ body {
 }
 
 
+/* ---------- Promoted from discoveries (sits between directory + discoveries) ---------- */
+.promoted-section { padding: var(--s7) 0 0; }
+.promoted-section[hidden] { display: none; }
+.promoted-eyebrow {
+  display: flex; align-items: baseline; gap: var(--s3);
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--marigold);
+  margin-bottom: var(--s3);
+}
+.promoted-eyebrow .line { flex: 1; height: 1px; background: var(--marigold); opacity: 0.4; }
+.promoted-eyebrow .meta { color: var(--ink-3); font-weight: 400; letter-spacing: 0.18em; }
+
 /* ---------- Discoveries ---------- */
 .discoveries-section { padding: var(--s8) 0 0; }
+.discovery-filter-row {
+  display: flex; align-items: center; flex-wrap: wrap; gap: var(--s2);
+  margin: var(--s4) 0 var(--s4);
+}
+.discovery-filter-label {
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-3); margin-right: var(--s2);
+}
+.discovery-filter-chip {
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 6px var(--s3);
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.discovery-filter-chip:hover { border-color: var(--ink); color: var(--ink); }
+.discovery-filter-chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.discovery-filter-chip .count { color: inherit; opacity: 0.55; margin-left: 6px; }
+.discovery-filter-chip[data-state="add"][aria-pressed="true"]     { background: var(--marigold); border-color: var(--marigold); color: #fff; }
+.discovery-filter-chip[data-state="watch"][aria-pressed="true"]   { background: var(--jade); border-color: var(--jade); color: #fff; }
+.discovery-filter-chip[data-state="reject"][aria-pressed="true"]  { background: var(--ink-3); border-color: var(--ink-3); color: var(--paper); }
+.discovery-filter-chip[data-state="archive"][aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.discovery-empty-state {
+  padding: var(--s6); border: 1px dashed var(--rule);
+  color: var(--ink-3); font-style: italic; text-align: center;
+  display: none;
+}
+.discovery-empty-state.is-on { display: block; }
 .submit-url-cta {
   display: inline-flex; align-items: center; gap: 8px;
   margin-top: var(--s4);
@@ -509,7 +554,7 @@ body {
 .rec-watch    { color: var(--jade);     background: var(--jade-soft);     border-color: var(--jade); }
 .rec-reject   { color: var(--ink-3);    background: transparent;          border-color: var(--rule); }
 .rec-pending  { color: var(--ink-3);    background: transparent;          border-color: var(--rule); font-style: italic; }
-.rec-existing { color: var(--ink);      background: var(--paper-2);       border-color: var(--ink); }
+.rec-archive  { color: var(--ink);      background: var(--paper-2);       border-color: var(--ink); }
 .discovery-rec-select {
   appearance: none; -webkit-appearance: none; -moz-appearance: none;
   border: 1px solid currentColor; background: transparent;
@@ -671,6 +716,16 @@ body {
 
   <div class="empty" id="empty">Nothing matches that filter.</div>
 
+  <!-- Promoted from discoveries (candidates marked `add` move here) -->
+  <section id="promoted-section" class="promoted-section" hidden>
+    <div class="promoted-eyebrow">
+      <span>Promoted from discoveries</span>
+      <span class="line"></span>
+      <span class="meta" id="promoted-meta">0 candidates promoted to the directory</span>
+    </div>
+    <div class="discovery-grid" id="promotedGrid"></div>
+  </section>
+
   <!-- Discoveries section -->
   <section id="discoveries-section" class="discoveries-section" hidden>
     <div class="section-head">
@@ -689,7 +744,17 @@ body {
         <span class="hint">picked up on next refresh</span>
       </a>
     </div>
+    <div class="discovery-filter-row" id="discoveryFilterRow" role="toolbar" aria-label="Filter discoveries by state">
+      <span class="discovery-filter-label">View</span>
+      <button class="discovery-filter-chip" data-state="all" aria-pressed="true">All <span class="count" data-count="all">0</span></button>
+      <button class="discovery-filter-chip" data-state="pending" aria-pressed="false">Pending <span class="count" data-count="pending">0</span></button>
+      <button class="discovery-filter-chip" data-state="watch" aria-pressed="false">Watch <span class="count" data-count="watch">0</span></button>
+      <button class="discovery-filter-chip" data-state="add" aria-pressed="false">Add <span class="count" data-count="add">0</span></button>
+      <button class="discovery-filter-chip" data-state="reject" aria-pressed="false">Reject <span class="count" data-count="reject">0</span></button>
+      <button class="discovery-filter-chip" data-state="archive" aria-pressed="false">Archive <span class="count" data-count="archive">0</span></button>
+    </div>
     <div class="discovery-grid" id="discoveryGrid"></div>
+    <div class="discovery-empty-state" id="discoveryEmpty">No candidates match this filter.</div>
   </section>
 
   <!-- Events section -->
@@ -861,15 +926,19 @@ searchInput.addEventListener("input", e => {
 const DISCOVERIES = (typeof window.DISCOVERIES !== "undefined") ? window.DISCOVERIES : [];
 const EVENTS = (typeof window.EVENTS !== "undefined") ? window.EVENTS : [];
 
-const REC_OPTIONS = ["pending", "add", "watch", "existing", "reject"];
+const REC_OPTIONS = ["pending", "add", "watch", "archive", "reject"];
+// Legacy "existing" → "archive" normalization on read.
+function normalizeRec(rec) {
+  return rec === "existing" ? "archive" : rec;
+}
 
 function effectiveRec(d) {
   // Local override (browser only) wins; then durable manual_override; then Claude score; else pending.
   let local = null;
   try { local = localStorage.getItem("override:" + d.slug); } catch (_) { /* private/opaque */ }
-  if (local) return local;
-  if (d.manual_override) return d.manual_override;
-  if (d.score && d.score.proceed_recommendation) return d.score.proceed_recommendation;
+  if (local) return normalizeRec(local);
+  if (d.manual_override) return normalizeRec(d.manual_override);
+  if (d.score && d.score.proceed_recommendation) return normalizeRec(d.score.proceed_recommendation);
   return "pending";
 }
 
@@ -884,7 +953,7 @@ function renderDiscoveryCard(d) {
     `<option value="${o}"${o === rec ? " selected" : ""}>${o}</option>`
   ).join("");
   return `
-    <article class="discovery-card" data-slug="${d.slug}">
+    <article class="discovery-card" data-slug="${d.slug}" data-rec="${rec}">
       <div class="discovery-thumb">${img}</div>
       <h4 class="discovery-name">${d.name}</h4>
       <div class="discovery-source">via ${d.source_name} · ${d.first_seen || ""}</div>
@@ -897,6 +966,60 @@ function renderDiscoveryCard(d) {
   `;
 }
 
+// Default state: hide reject + archive; show pending/add/watch.
+let discoveryFilter = "all";
+const VISIBLE_BY_DEFAULT = new Set(["pending", "add", "watch"]);
+
+function refreshDiscoveryCounts() {
+  const counts = { all: 0, pending: 0, add: 0, watch: 0, reject: 0, archive: 0 };
+  document.querySelectorAll("[data-slug][data-rec]").forEach(card => {
+    if (!card.classList.contains("discovery-card")) return;
+    const rec = card.dataset.rec;
+    counts.all++;
+    if (counts[rec] !== undefined) counts[rec]++;
+  });
+  Object.keys(counts).forEach(k => {
+    const el = document.querySelector(`.discovery-filter-chip [data-count="${k}"]`);
+    if (el) el.textContent = counts[k];
+  });
+}
+
+function applyDiscoveryFilter() {
+  let visibleInDiscoveries = 0;
+  document.querySelectorAll("#discoveryGrid .discovery-card").forEach(card => {
+    const rec = card.dataset.rec;
+    const show = (discoveryFilter === "all")
+      ? VISIBLE_BY_DEFAULT.has(rec)
+      : (rec === discoveryFilter);
+    card.style.display = show ? "" : "none";
+    if (show) visibleInDiscoveries++;
+  });
+  // Promoted section visibility: shown when filter is "all" or "add"
+  const promoted = document.getElementById("promoted-section");
+  const promotedCount = document.querySelectorAll("#promotedGrid .discovery-card").length;
+  const promotedVisible = promotedCount > 0 && (discoveryFilter === "all" || discoveryFilter === "add");
+  if (promoted) promoted.hidden = !promotedVisible;
+  // Empty state: show only when nothing is visible anywhere in the discoveries area
+  const empty = document.getElementById("discoveryEmpty");
+  if (empty) {
+    empty.classList.toggle("is-on", visibleInDiscoveries === 0 && !promotedVisible);
+  }
+}
+
+function moveCardToContainer(card, targetGridId) {
+  const target = document.getElementById(targetGridId);
+  if (!target || card.parentElement === target) return;
+  target.appendChild(card);
+}
+
+function updatePromotedMeta() {
+  const meta = document.getElementById("promoted-meta");
+  const n = document.querySelectorAll("#promotedGrid .discovery-card").length;
+  if (meta) meta.textContent = n === 0
+    ? "Promote a discovery candidate by setting its dropdown to “add”."
+    : `${n} candidate${n === 1 ? "" : "s"} promoted to the directory`;
+}
+
 function wireDiscoveryDropdowns() {
   document.querySelectorAll(".discovery-rec-select").forEach(sel => {
     sel.addEventListener("change", e => {
@@ -905,6 +1028,30 @@ function wireDiscoveryDropdowns() {
       try { localStorage.setItem("override:" + slug, value); } catch (_) { /* private mode */ }
       // Update the badge color class to reflect the new state
       e.target.className = `discovery-rec discovery-rec-select rec-${value}`;
+      // Update the card's data-rec for filtering + movement
+      const card = e.target.closest(".discovery-card");
+      if (!card) return;
+      card.dataset.rec = value;
+      // Move between containers based on add-status
+      if (value === "add") {
+        moveCardToContainer(card, "promotedGrid");
+      } else {
+        moveCardToContainer(card, "discoveryGrid");
+      }
+      updatePromotedMeta();
+      refreshDiscoveryCounts();
+      applyDiscoveryFilter();
+    });
+  });
+}
+
+function wireDiscoveryFilterChips() {
+  document.querySelectorAll(".discovery-filter-chip").forEach(chip => {
+    chip.addEventListener("click", () => {
+      document.querySelectorAll(".discovery-filter-chip").forEach(c => c.setAttribute("aria-pressed", "false"));
+      chip.setAttribute("aria-pressed", "true");
+      discoveryFilter = chip.dataset.state;
+      applyDiscoveryFilter();
     });
   });
 }
@@ -926,13 +1073,27 @@ function renderEventItem(e) {
 
 (function mountDiscoveriesAndEvents() {
   const dGrid = document.getElementById("discoveryGrid");
+  const pGrid = document.getElementById("promotedGrid");
   const dSection = document.getElementById("discoveries-section");
   if (DISCOVERIES.length > 0) {
-    dGrid.innerHTML = DISCOVERIES.map(renderDiscoveryCard).join("");
+    // Partition: anything with effective_rec === "add" goes to the promoted grid
+    const promoted = [];
+    const regular = [];
+    DISCOVERIES.forEach(d => {
+      (effectiveRec(d) === "add" ? promoted : regular).push(d);
+    });
+    pGrid.innerHTML = promoted.map(renderDiscoveryCard).join("");
+    dGrid.innerHTML = regular.map(renderDiscoveryCard).join("");
     dSection.hidden = false;
     wireDiscoveryDropdowns();
+    wireDiscoveryFilterChips();
+    refreshDiscoveryCounts();
+    updatePromotedMeta();
+    applyDiscoveryFilter();
+    // Visible-in-default counter (only pending/add/watch shown by default)
+    const visibleByDefault = DISCOVERIES.filter(d => VISIBLE_BY_DEFAULT.has(effectiveRec(d))).length;
     document.getElementById("discoveries-meta").textContent =
-      `${DISCOVERIES.length} candidate${DISCOVERIES.length === 1 ? "" : "s"} awaiting review`;
+      `${visibleByDefault} candidate${visibleByDefault === 1 ? "" : "s"} awaiting review · ${DISCOVERIES.length} total`;
   }
   const eList = document.getElementById("eventList");
   const eSection = document.getElementById("events-section");
