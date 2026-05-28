@@ -191,17 +191,42 @@ def discover_from_studio(src: dict, rf) -> list[dict]:
 
 
 def fetch_candidate_image(url: str) -> dict | None:
-    """Get a representative image for a candidate."""
+    """Legacy single-image helper. Returns the first usable image or None.
+    Prefer fetch_candidate_thumbs() for new code — directory-style cards
+    need two."""
+    thumbs = fetch_candidate_thumbs(url, want=1)
+    return thumbs[0] if thumbs else None
+
+
+def fetch_candidate_thumbs(url: str, want: int = 2) -> list[dict]:
+    """Fetch up to `want` usable images from a candidate URL.
+    Walks og:image first, then body images, stopping after `want` successes."""
     r = get(url)
     if not r:
-        return None
-    for img_url in extract_image_candidates(r.text, url, max_count=8):
+        return []
+    out: list[dict] = []
+    seen: set[str] = set()
+
+    def _try(img_url: str) -> None:
+        if img_url in seen or len(out) >= want:
+            return
+        seen.add(img_url)
         res = fetch_image(img_url)
         if res:
             uri, kb = res
-            return {"data_uri": uri, "source_url": img_url, "kb": kb}
-        polite_delay(0.2)
-    return None
+            label = "primary" if not out else "secondary"
+            out.append({"data_uri": uri, "source_url": img_url, "kb": kb, "label": label})
+
+    og = extract_og_meta(r.text, url)
+    if og.get("og_image"):
+        _try(og["og_image"])
+    if len(out) < want:
+        for img_url in extract_image_candidates(r.text, url, max_count=8):
+            if len(out) >= want:
+                break
+            _try(img_url)
+            polite_delay(0.2)
+    return out
 
 
 def main():
@@ -267,26 +292,31 @@ def main():
 
     logger.info("[discover] %d unique fresh links across all sources", len(fresh_links))
 
-    # Embed images for the first N
+    # Embed up to 2 thumbnails per new candidate (directory cards show 2 side by side).
     for link in fresh_links[: args.max_new]:
-        logger.info("embed image for %s", link["name"])
-        # studio kind may carry pre-extracted OG meta; use og_image as a shortcut
+        logger.info("embed image(s) for %s", link["name"])
+        # Studio kind may carry pre-extracted OG meta — seed it as the first thumb.
         og = link.get("_og") or {}
-        img = None
+        thumbs: list[dict] = []
         if og.get("og_image"):
             res = fetch_image(og["og_image"])
             if res:
                 uri, kb = res
-                img = {"data_uri": uri, "source_url": og["og_image"], "kb": kb}
-        if img is None:
-            img = fetch_candidate_image(link["url"])
+                thumbs.append({"data_uri": uri, "source_url": og["og_image"], "kb": kb, "label": "primary"})
+        # Top up to 2 by walking the page's image candidates.
+        if len(thumbs) < 2:
+            extra = fetch_candidate_thumbs(link["url"], want=2 - len(thumbs))
+            for t in extra:
+                t["label"] = "primary" if not thumbs else "secondary"
+                thumbs.append(t)
         new_candidates.append({
             "slug": link["slug"],
             "name": link["name"],
             "url": link["url"],
             "source_name": link["source_name"],
             "source_kind": link.get("source_kind"),
-            "image": img,
+            "image": thumbs[0] if thumbs else None,  # backward compat
+            "thumbs": thumbs,
             "first_seen": str(date.today()),
             "status": "pending",
         })

@@ -439,71 +439,13 @@ body {
 }
 
 
-/* ---------- Directory state filter (in-directory / returned / archived) ---------- */
-.directory-filter-row {
-  display: flex; align-items: center; flex-wrap: wrap; gap: var(--s2);
-  margin: var(--s3) 0 var(--s5);
-}
-.directory-filter-chip {
-  font-family: var(--font-label); font-weight: 500;
-  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
-  padding: 6px var(--s3);
-  border: 1px solid var(--rule);
-  background: transparent;
-  color: var(--ink-2);
-  cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
-}
-.directory-filter-chip:hover { border-color: var(--ink); color: var(--ink); }
-.directory-filter-chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-.directory-filter-chip[data-state="returned"][aria-pressed="true"] { background: var(--marigold); border-color: var(--marigold); color: #fff; }
-.directory-filter-chip[data-state="archive"][aria-pressed="true"]  { background: var(--ink-3); border-color: var(--ink-3); color: var(--paper); }
-.directory-filter-chip .count { color: inherit; opacity: 0.55; margin-left: 6px; }
-
-/* Per-card state dropdown (mirrors .discovery-rec-select but slightly smaller/right-aligned) */
-.card-state-select {
-  appearance: none; -webkit-appearance: none; -moz-appearance: none;
-  border: 1px solid var(--rule); background: transparent;
-  font-family: var(--font-label); font-weight: 500;
-  font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
-  color: var(--ink-2);
-  padding: 4px 18px 4px var(--s2); margin-left: auto;
-  cursor: pointer;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 5'><path d='M0 0L4 5L8 0Z' fill='currentColor'/></svg>");
-  background-repeat: no-repeat;
-  background-position: right 6px center;
-  background-size: 7px 4px;
-}
-.card-state-select[data-state="returned"] { color: var(--marigold); border-color: var(--marigold); }
-.card-state-select[data-state="archive"]  { color: var(--ink-3); border-color: var(--ink-3); }
-.card-state-select:focus { outline: 1px dashed var(--ink); outline-offset: 2px; }
-.card-state-select option { font-family: var(--font-body); letter-spacing: 0; text-transform: none; color: var(--ink); }
-
-/* ---------- Promoted from discoveries (sits between directory + discoveries) ---------- */
-.promoted-section { padding: var(--s7) 0 0; }
-.promoted-section[hidden] { display: none; }
-.promoted-eyebrow {
-  display: flex; align-items: baseline; gap: var(--s3);
-  font-family: var(--font-label); font-weight: 500;
-  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--marigold);
-  margin-bottom: var(--s3);
-}
-.promoted-eyebrow .line { flex: 1; height: 1px; background: var(--marigold); opacity: 0.4; }
-.promoted-eyebrow .meta { color: var(--ink-3); font-weight: 400; letter-spacing: 0.18em; }
-
-/* ---------- Discoveries ---------- */
+/* ---------- Recent Candidates (rendered with unified .card style) ---------- */
 .discoveries-section { padding: var(--s8) 0 0; }
-.discovery-filter-row {
+.candidate-filter-row {
   display: flex; align-items: center; flex-wrap: wrap; gap: var(--s2);
-  margin: var(--s4) 0 var(--s4);
+  margin: var(--s4) 0 var(--s5);
 }
-.discovery-filter-label {
-  font-family: var(--font-label); font-weight: 500;
-  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--ink-3); margin-right: var(--s2);
-}
-.discovery-filter-chip {
+.candidate-filter-chip {
   font-family: var(--font-label); font-weight: 500;
   font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
   padding: 6px var(--s3);
@@ -513,13 +455,13 @@ body {
   cursor: pointer;
   transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
 }
-.discovery-filter-chip:hover { border-color: var(--ink); color: var(--ink); }
-.discovery-filter-chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-.discovery-filter-chip .count { color: inherit; opacity: 0.55; margin-left: 6px; }
-.discovery-filter-chip[data-state="add"][aria-pressed="true"]     { background: var(--marigold); border-color: var(--marigold); color: #fff; }
-.discovery-filter-chip[data-state="watch"][aria-pressed="true"]   { background: var(--jade); border-color: var(--jade); color: #fff; }
-.discovery-filter-chip[data-state="reject"][aria-pressed="true"]  { background: var(--ink-3); border-color: var(--ink-3); color: var(--paper); }
-.discovery-filter-chip[data-state="archive"][aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.candidate-filter-chip:hover { border-color: var(--ink); color: var(--ink); }
+.candidate-filter-chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.candidate-filter-chip[data-state="add"][aria-pressed="true"]     { background: var(--marigold); border-color: var(--marigold); color: #fff; }
+.candidate-filter-chip[data-state="watch"][aria-pressed="true"]   { background: var(--jade);     border-color: var(--jade);     color: #fff; }
+.candidate-filter-chip[data-state="reject"][aria-pressed="true"]  { background: var(--ink-3);    border-color: var(--ink-3);    color: var(--paper); }
+.candidate-filter-chip[data-state="pending"][aria-pressed="true"] { background: var(--ink);      border-color: var(--ink);      color: var(--paper); }
+.candidate-filter-chip .chip-count { color: inherit; opacity: 0.55; margin-left: 6px; font-size: 9px; font-weight: 400; letter-spacing: 0.1em; }
 .discovery-empty-state {
   padding: var(--s6); border: 1px dashed var(--rule);
   color: var(--ink-3); font-style: italic; text-align: center;
@@ -541,53 +483,30 @@ body {
 .submit-url-cta:hover { background: var(--jade); color: #fff; }
 .submit-url-cta .plus { font-size: 16px; line-height: 1; margin-top: -2px; }
 .submit-url-cta .hint { color: var(--ink-3); margin-left: 12px; font-size: 10px; letter-spacing: 0.14em; }
-.discovery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: var(--s4);
-  margin-bottom: var(--s5);
-}
-.discovery-card {
-  background: var(--paper);
-  border: 1px solid var(--rule);
-  padding: var(--s3);
-  display: flex; flex-direction: column;
-}
-.discovery-thumb {
-  aspect-ratio: 4 / 3; background: var(--paper-2);
-  overflow: hidden;
-  position: relative; margin-bottom: var(--s3);
-  box-shadow: var(--shadow-thumb);
-}
-.discovery-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.discovery-thumb-fallback {
-  position: absolute; inset: 0; display: grid; place-items: center;
-  font-family: var(--font-display); font-style: italic; font-size: 14px;
-  color: var(--ink-3);
-}
-.discovery-name {
-  font-family: var(--font-display); font-size: 22px; font-weight: 400;
-  margin: 0 0 var(--s1); line-height: 1.1;
-  letter-spacing: -0.01em;
-  color: var(--ink);
-}
-.discovery-name em { font-style: italic; color: var(--jade); }
-.discovery-source {
+
+/* ---------- Card action button (Promote / Move back to Candidates) ---------- */
+.card-action {
+  display: inline-flex; align-items: center;
+  margin-left: auto;
+  padding: 5px 12px;
   font-family: var(--font-label); font-weight: 500;
-  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--ink-3);
-  margin-bottom: var(--s2);
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
 }
-.discovery-summary { font-size: 12px; color: var(--ink-2); margin: 0 0 var(--s3); line-height: 1.5; }
-.discovery-actions {
-  display: flex; gap: var(--s2); align-items: center; margin-top: auto;
-  padding-top: var(--s2); border-top: 1px solid var(--rule-soft);
-  font-size: 11px;
-}
-.discovery-rec {
+.card-action:hover { background: var(--ink); color: var(--paper); }
+.card-action-primary { background: var(--marigold); border-color: var(--marigold); color: #fff; }
+.card-action-primary:hover { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+
+/* ---------- Claude rec badge (candidate cards only) ---------- */
+.rec-badge {
+  display: inline-block;
+  margin-left: var(--s2);
   font-family: var(--font-label); font-weight: 500;
   font-size: 9px; letter-spacing: 0.18em;
-  text-transform: uppercase; padding: 3px var(--s2);
+  text-transform: uppercase; padding: 2px var(--s2);
   border: 1px solid;
 }
 .rec-add      { color: var(--marigold); background: var(--marigold-soft); border-color: var(--marigold); }
@@ -595,27 +514,7 @@ body {
 .rec-reject   { color: var(--ink-3);    background: transparent;          border-color: var(--rule); }
 .rec-pending  { color: var(--ink-3);    background: transparent;          border-color: var(--rule); font-style: italic; }
 .rec-archive  { color: var(--ink);      background: var(--paper-2);       border-color: var(--ink); }
-.discovery-rec-select {
-  appearance: none; -webkit-appearance: none; -moz-appearance: none;
-  border: 1px solid currentColor; background: transparent;
-  font-family: var(--font-label); font-weight: 500;
-  font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
-  padding: 3px 18px 3px var(--s2); margin: 0;
-  cursor: pointer;
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 5'><path d='M0 0L4 5L8 0Z' fill='currentColor'/></svg>");
-  background-repeat: no-repeat;
-  background-position: right 6px center;
-  background-size: 7px 4px;
-}
-.discovery-rec-select:focus { outline: 1px dashed var(--ink); outline-offset: 2px; }
-.discovery-rec-select option { font-family: var(--font-body); letter-spacing: 0; text-transform: none; color: var(--ink); }
-.discovery-link {
-  margin-left: auto; color: var(--ink); text-decoration: none;
-  border-bottom: 1px solid var(--ink); padding-bottom: 1px;
-  font-family: var(--font-label); font-weight: 500;
-  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
-}
-.discovery-link:hover { color: var(--jade); border-bottom-color: var(--jade); }
+.tier-unscored { background: var(--paper-2); color: var(--ink-3); }
 
 /* ---------- Events ---------- */
 .events-section { padding: var(--s8) 0 0; }
@@ -751,41 +650,19 @@ body {
     <h2 class="section-title">The <em>directory</em>.</h2>
   </div>
 
-  <!-- State filter chips: parallel to discoveries section's filter row -->
-  <div class="directory-filter-row" role="toolbar" aria-label="Filter directory by state">
-    <span class="discovery-filter-label">View</span>
-    <button class="directory-filter-chip" data-state="directory" aria-pressed="true">In directory <span class="count" data-dir-count="directory">0</span></button>
-    <button class="directory-filter-chip" data-state="returned" aria-pressed="false">Returned <span class="count" data-dir-count="returned">0</span></button>
-    <button class="directory-filter-chip" data-state="archive" aria-pressed="false">Archived <span class="count" data-dir-count="archive">0</span></button>
-  </div>
-
   <!-- Cards grid -->
   <main class="grid" id="cardGrid"></main>
-  <!-- Returned from directory (cards demoted back to discoveries via dropdown) -->
-  <main class="grid" id="returnedGrid" hidden></main>
-  <!-- Archived directory cards -->
-  <main class="grid" id="archivedGrid" hidden></main>
 
   <div class="empty" id="empty">Nothing matches that filter.</div>
 
-  <!-- Promoted from discoveries (candidates marked `add` move here) -->
-  <section id="promoted-section" class="promoted-section" hidden>
-    <div class="promoted-eyebrow">
-      <span>Promoted from discoveries</span>
-      <span class="line"></span>
-      <span class="meta" id="promoted-meta">0 candidates promoted to the directory</span>
-    </div>
-    <div class="discovery-grid" id="promotedGrid"></div>
-  </section>
-
-  <!-- Discoveries section -->
+  <!-- Recent Candidates section (everything not yet promoted to the Directory) -->
   <section id="discoveries-section" class="discoveries-section" hidden>
     <div class="section-head">
       <div class="eyebrow">
         <span class="num">03</span>
-        <span class="lbl">Discoveries</span>
+        <span class="lbl">Recent Candidates</span>
         <span class="line"></span>
-        <span class="meta" id="discoveries-meta">Surfaced today by the daily scanner</span>
+        <span class="meta" id="discoveries-meta">Surfaced by the daily scanner · scored for reference · you decide</span>
       </div>
       <h2 class="section-title">Recent <em>candidates</em>.</h2>
       <a class="submit-url-cta"
@@ -796,16 +673,15 @@ body {
         <span class="hint">picked up on next refresh</span>
       </a>
     </div>
-    <div class="discovery-filter-row" id="discoveryFilterRow" role="toolbar" aria-label="Filter discoveries by state">
-      <span class="discovery-filter-label">View</span>
-      <button class="discovery-filter-chip" data-state="all" aria-pressed="true">All <span class="count" data-count="all">0</span></button>
-      <button class="discovery-filter-chip" data-state="pending" aria-pressed="false">Pending <span class="count" data-count="pending">0</span></button>
-      <button class="discovery-filter-chip" data-state="watch" aria-pressed="false">Watch <span class="count" data-count="watch">0</span></button>
-      <button class="discovery-filter-chip" data-state="add" aria-pressed="false">Add <span class="count" data-count="add">0</span></button>
-      <button class="discovery-filter-chip" data-state="reject" aria-pressed="false">Reject <span class="count" data-count="reject">0</span></button>
-      <button class="discovery-filter-chip" data-state="archive" aria-pressed="false">Archive <span class="count" data-count="archive">0</span></button>
+    <div class="candidate-filter-row" role="toolbar" aria-label="Filter candidates by Claude recommendation">
+      <span class="toolbar-label">Filter by Claude rec</span>
+      <button class="candidate-filter-chip" data-state="all" aria-pressed="true">All <span class="chip-count" data-cand-count="all">0</span></button>
+      <button class="candidate-filter-chip" data-state="add" aria-pressed="false">Add <span class="chip-count" data-cand-count="add">0</span></button>
+      <button class="candidate-filter-chip" data-state="watch" aria-pressed="false">Watch <span class="chip-count" data-cand-count="watch">0</span></button>
+      <button class="candidate-filter-chip" data-state="reject" aria-pressed="false">Reject <span class="chip-count" data-cand-count="reject">0</span></button>
+      <button class="candidate-filter-chip" data-state="pending" aria-pressed="false">Pending <span class="chip-count" data-cand-count="pending">0</span></button>
     </div>
-    <div class="discovery-grid" id="discoveryGrid"></div>
+    <div class="grid" id="discoveryGrid"></div>
     <div class="discovery-empty-state" id="discoveryEmpty">No candidates match this filter.</div>
   </section>
 
@@ -870,87 +746,144 @@ body {
 
 const grid = document.getElementById("cardGrid");
 
-function renderCard(a) {
-  const tierClass = `tier-${a.tier}`;
-  const tierLabel = a.tier === 1 ? "Tier 1 · Priority" : a.tier === 2 ? "Tier 2 · Established" : "Tier 3 · Agency";
+const REPO = "johnny-neang/Uncharted-Art-Finder";
 
-  const thumbs = a.thumbs.map(t => {
-    const art = SVG[t.svg] || `<svg viewBox="0 0 400 300"><rect width="400" height="300" fill="#EAE3D2"/></svg>`;
-    return `<div class="thumb">${art}<div class="thumb-label">${t.label}</div></div>`;
-  }).join("");
+// ----- Unified card renderer (used for both Directory and Recent Candidates) -----
 
-  const fitDots = Array.from({length: 5}, (_, i) =>
-    `<span class="fit-dot${i < a.fit ? ' on' : ''}"></span>`
+function renderThumb(t) {
+  // Directory thumbs use `svg` (SVG-library key); candidate thumbs use `data_uri`.
+  if (t && t.data_uri) {
+    return `<img src="${t.data_uri}" alt="${(t.label || '').replace(/"/g, '&quot;')}">`;
+  }
+  if (t && t.svg) {
+    return SVG[t.svg] || `<svg viewBox="0 0 400 300"><rect width="400" height="300" fill="#EAE3D2"/></svg>`;
+  }
+  return `<svg viewBox="0 0 400 300"><rect width="400" height="300" fill="#EAE3D2"/></svg>`;
+}
+
+function actionButton(item) {
+  if (item.mode === "directory") {
+    const url = `https://github.com/${REPO}/issues/new?template=demote.yml&title=${encodeURIComponent("Demote: " + item.name)}&slug=${encodeURIComponent(item.slug)}`;
+    return `<a class="card-action" href="${url}" target="_blank" rel="noopener" title="Open a GitHub Issue to move this entry out of the Directory">Move back to Candidates ↗</a>`;
+  }
+  const url = `https://github.com/${REPO}/issues/new?template=promote.yml&title=${encodeURIComponent("Promote: " + item.name)}&slug=${encodeURIComponent(item.slug)}`;
+  return `<a class="card-action card-action-primary" href="${url}" target="_blank" rel="noopener" title="Open a GitHub Issue to promote this candidate to the Directory">Promote to Directory ↗</a>`;
+}
+
+function recBadge(item) {
+  if (item.mode !== "candidate") return "";
+  const rec = item.rec || "pending";
+  return `<span class="rec-badge rec-${rec}">${rec}</span>`;
+}
+
+function renderArtCard(item) {
+  const tierClass = item.tier ? `tier-${item.tier}` : "tier-unscored";
+  const tierLabel = item.tier === 1 ? "Tier 1 · Priority"
+                   : item.tier === 2 ? "Tier 2 · Established"
+                   : item.tier === 3 ? "Tier 3 · Agency"
+                   : "Unscored";
+
+  const thumbsHtml = (item.thumbs || []).map(t =>
+    `<div class="thumb">${renderThumb(t)}<div class="thumb-label">${(t.label || '').replace(/</g, '&lt;')}</div></div>`
   ).join("");
 
-  const tags = a.tags.map(t => `<span class="tag">${t}</span>`).join("");
+  const fitDots = Array.from({length: 5}, (_, i) =>
+    `<span class="fit-dot${i < (item.fit || 0) ? ' on' : ''}"></span>`
+  ).join("");
+
+  const tagsHtml = (item.tags || []).map(t => `<span class="tag">${t}</span>`).join("");
+
+  const searchBlob = [
+    item.name || '', item.medium || '', item.summary || '', (item.tags || []).join(' ')
+  ].join(' ').toLowerCase().replace(/"/g, '');
 
   return `
-    <article class="card" data-tier="tier-${a.tier}" data-tags="${a.tags.join(' ')}" data-search="${(a.name+' '+a.medium+' '+a.summary+' '+a.tags.join(' ')).toLowerCase()}" data-fit="${a.fit}">
+    <article class="card" data-mode="${item.mode}" data-slug="${item.slug}" data-tier="tier-${item.tier || 0}" data-tags="${(item.tags || []).join(' ')}" data-search="${searchBlob}" data-fit="${item.fit || 0}" data-rec="${item.rec || ''}">
       <header class="card-head">
         <div>
-          <div class="card-num">No. ${String(a.n).padStart(2,'0')}</div>
-          <h3 class="card-name">${a.name}</h3>
+          <div class="card-num">No. ${String(item.n || 0).padStart(2,'0')}</div>
+          <h3 class="card-name">${item.name}</h3>
           <div class="card-sub">
-            <span class="kind-pill">${a.kind}</span>
+            <span class="kind-pill">${item.kind || '—'}</span>
+            ${recBadge(item)}
           </div>
         </div>
         <span class="tier-badge ${tierClass}">${tierLabel}</span>
       </header>
-      <div class="thumb-grid">${thumbs}</div>
-      <p class="card-summary">${a.summary}</p>
+      <div class="thumb-grid">${thumbsHtml}</div>
+      <p class="card-summary">${item.summary || ''}</p>
       <dl class="card-meta-row">
         <div class="card-meta-cell">
           <dt>Medium</dt>
-          <dd>${a.medium}</dd>
+          <dd>${item.medium || '—'}</dd>
         </div>
         <div class="card-meta-cell">
           <dt>Arden Fair fit</dt>
           <dd class="fit-bar">
             <span class="fit-dots">${fitDots}</span>
-            <span class="fit-num">${a.fit}/5</span>
+            <span class="fit-num">${item.fit || 0}/5</span>
           </dd>
         </div>
       </dl>
-      <p class="card-summary" style="font-size:12px;margin:10px 0 0;color:var(--ink-2);font-style:italic">${a.suitability}</p>
+      <p class="card-summary" style="font-size:12px;margin:10px 0 0;color:var(--ink-2);font-style:italic">${item.suitability || ''}</p>
       <div class="card-foot">
-        <a class="card-link" href="${a.primaryUrl}" target="_blank" rel="noopener">${a.primaryHost}</a>
-        <div class="card-tags">${tags}</div>
-        <select class="card-state-select" data-slug="${a.slug}" data-state="${directoryState(a)}" aria-label="Move ${a.name} between directory / returned / archive">
-          <option value="directory"${directoryState(a) === "directory" ? " selected" : ""}>in directory</option>
-          <option value="returned"${directoryState(a) === "returned" ? " selected" : ""}>returned to discoveries</option>
-          <option value="archive"${directoryState(a) === "archive" ? " selected" : ""}>archived</option>
-        </select>
+        <a class="card-link" href="${item.primaryUrl}" target="_blank" rel="noopener">${item.primaryHost || item.primaryUrl}</a>
+        ${actionButton(item)}
+        <div class="card-tags">${tagsHtml}</div>
       </div>
     </article>
   `;
 }
 
-// ----- Directory state (per-card override stored in localStorage) -----
-function directoryState(a) {
-  let v = null;
-  try { v = localStorage.getItem("dir-state:" + a.slug); } catch (_) { /* private mode */ }
-  return (v === "returned" || v === "archive") ? v : "directory";
+// ----- Adapters: shape ARTISTS / DISCOVERIES into the unified interface -----
+
+function artistToUnified(a) {
+  return {
+    n: a.n,
+    slug: a.slug,
+    name: a.name,
+    tier: a.tier,
+    kind: a.kind,
+    medium: a.medium,
+    tags: a.tags || [],
+    summary: a.summary,
+    fit: a.fit,
+    suitability: a.suitability,
+    primaryUrl: a.primaryUrl,
+    primaryHost: a.primaryHost,
+    thumbs: a.thumbs || [],
+    addedAt: a.addedAt,
+    mode: "directory",
+  };
 }
 
-function partitionArtists() {
-  const buckets = { directory: [], returned: [], archive: [] };
-  ARTISTS.forEach(a => buckets[directoryState(a)].push(a));
-  return buckets;
+function candidateToUnified(c, idx) {
+  const s = c.score || {};
+  let host = "";
+  try { host = new URL(c.url).hostname; } catch (_) { /* malformed URL */ }
+  return {
+    n: idx + 1,
+    slug: c.slug,
+    name: c.name,
+    tier: s.suggested_tier || 0,
+    kind: s.kind || c.source_name || "Candidate",
+    medium: s.medium || "—",
+    tags: s.suggested_tags || [],
+    summary: s.one_line_summary || c.seed_description || `Surfaced from ${c.source_name}. Awaiting score.`,
+    fit: s.family_fit || 0,
+    suitability: s.suitability || "",
+    primaryUrl: c.url,
+    primaryHost: host,
+    thumbs: c.thumbs || (c.image ? [c.image] : []),
+    addedAt: c.first_seen,
+    mode: "candidate",
+    rec: s.proceed_recommendation || "pending",
+    confidence: s.confidence,
+    sacramento: s.sacramento_connection,
+  };
 }
 
-function renderDirectoryBuckets() {
-  const buckets = partitionArtists();
-  document.getElementById("cardGrid").innerHTML     = buckets.directory.map(renderCard).join("");
-  document.getElementById("returnedGrid").innerHTML = buckets.returned.map(renderCard).join("");
-  document.getElementById("archivedGrid").innerHTML = buckets.archive.map(renderCard).join("");
-  Object.keys(buckets).forEach(k => {
-    const el = document.querySelector(`[data-dir-count="${k}"]`);
-    if (el) el.textContent = buckets[k].length;
-  });
-}
-
-renderDirectoryBuckets();
+grid.innerHTML = ARTISTS.map(a => renderArtCard(artistToUnified(a))).join("");
 
 /* ============================================================
    FILTERS + SEARCH
@@ -964,9 +897,9 @@ let activeFilter = "all";
 let searchTerm = "";
 
 function applyFilters() {
-  // Re-query each call: cards are rebuilt by renderDirectoryBuckets() on state changes,
-  // so a cached NodeList would point at orphaned DOM nodes.
-  const cards = document.querySelectorAll(".card");
+  // Scope to the directory grid — candidate cards use the same .card class
+  // but have their own filter chip row.
+  const cards = document.querySelectorAll("#cardGrid .card");
   let visible = 0;
   cards.forEach(c => {
     const tier = c.dataset.tier;
@@ -1003,187 +936,54 @@ searchInput.addEventListener("input", e => {
 });
 
 /* ============================================================
-   DIRECTORY STATE (per-card dropdown + state filter chips)
-   ============================================================ */
-
-let directoryViewState = "directory"; // "directory" | "returned" | "archive"
-
-function applyDirectoryStateFilter() {
-  document.getElementById("cardGrid").hidden     = (directoryViewState !== "directory");
-  document.getElementById("returnedGrid").hidden = (directoryViewState !== "returned");
-  document.getElementById("archivedGrid").hidden = (directoryViewState !== "archive");
-  // Tier/medium filter visibility — only relevant when in the directory view.
-  // Other views show whatever's in their bucket regardless.
-  const toolbar = document.querySelector(".toolbar");
-  if (toolbar) toolbar.style.opacity = (directoryViewState === "directory") ? "1" : "0.5";
-}
-
-function wireDirectoryStateChips() {
-  document.querySelectorAll(".directory-filter-chip").forEach(chip => {
-    chip.addEventListener("click", () => {
-      document.querySelectorAll(".directory-filter-chip").forEach(c => c.setAttribute("aria-pressed", "false"));
-      chip.setAttribute("aria-pressed", "true");
-      directoryViewState = chip.dataset.state;
-      applyDirectoryStateFilter();
-    });
-  });
-}
-
-function wireDirectoryStateSelects() {
-  document.querySelectorAll(".card-state-select").forEach(sel => {
-    sel.addEventListener("change", e => {
-      const slug = e.target.dataset.slug;
-      const value = e.target.value;
-      try {
-        if (value === "directory") localStorage.removeItem("dir-state:" + slug);
-        else localStorage.setItem("dir-state:" + slug, value);
-      } catch (_) { /* private mode */ }
-      // Re-render all three buckets so the moved card lands in the right container
-      // and counts update. Then re-wire (the new card has new event listeners).
-      renderDirectoryBuckets();
-      wireDirectoryStateSelects();
-      applyDirectoryStateFilter();
-    });
-  });
-}
-
-wireDirectoryStateChips();
-wireDirectoryStateSelects();
-applyDirectoryStateFilter();
-
-/* ============================================================
-   DISCOVERIES + EVENTS (data-driven sections)
+   CANDIDATES + EVENTS (data-driven sections)
    ============================================================ */
 
 const DISCOVERIES = (typeof window.DISCOVERIES !== "undefined") ? window.DISCOVERIES : [];
 const EVENTS = (typeof window.EVENTS !== "undefined") ? window.EVENTS : [];
 
-const REC_OPTIONS = ["pending", "add", "watch", "archive", "reject"];
-// Legacy "existing" → "archive" normalization on read.
-function normalizeRec(rec) {
-  return rec === "existing" ? "archive" : rec;
-}
-
+// Effective Claude recommendation, with `existing` legacy normalized to `archive`.
 function effectiveRec(d) {
-  // Local override (browser only) wins; then durable manual_override; then Claude score; else pending.
-  let local = null;
-  try { local = localStorage.getItem("override:" + d.slug); } catch (_) { /* private/opaque */ }
-  if (local) return normalizeRec(local);
-  if (d.manual_override) return normalizeRec(d.manual_override);
-  if (d.score && d.score.proceed_recommendation) return normalizeRec(d.score.proceed_recommendation);
-  return "pending";
+  const raw = (d.manual_override || (d.score && d.score.proceed_recommendation) || "pending");
+  return raw === "existing" ? "archive" : raw;
 }
 
-function renderDiscoveryCard(d) {
-  const score = d.score || {};
-  const rec = effectiveRec(d);
-  const summary = score.one_line_summary || `Surfaced from ${d.source_name}. Awaiting score.`;
-  const img = d.image && d.image.data_uri
-    ? `<img src="${d.image.data_uri}" alt="${d.name}">`
-    : `<div class="discovery-thumb-fallback">No image</div>`;
-  const options = REC_OPTIONS.map(o =>
-    `<option value="${o}"${o === rec ? " selected" : ""}>${o}</option>`
-  ).join("");
-  return `
-    <article class="discovery-card" data-slug="${d.slug}" data-rec="${rec}">
-      <div class="discovery-thumb">${img}</div>
-      <h4 class="discovery-name">${d.name}</h4>
-      <div class="discovery-source">via ${d.source_name} · ${d.first_seen || ""}</div>
-      <p class="discovery-summary">${summary}</p>
-      <div class="discovery-actions">
-        <select class="discovery-rec discovery-rec-select rec-${rec}" data-slug="${d.slug}" aria-label="Override recommendation for ${d.name}">${options}</select>
-        <a class="discovery-link" href="${d.url}" target="_blank" rel="noopener">View →</a>
-      </div>
-    </article>
-  `;
-}
+// ----- Candidate filter chips (Claude rec subsets) -----
 
-// Default state: hide reject + archive; show pending/add/watch.
-let discoveryFilter = "all";
-const VISIBLE_BY_DEFAULT = new Set(["pending", "add", "watch"]);
+let candidateFilter = "all";
 
-function refreshDiscoveryCounts() {
+function refreshCandidateCounts() {
   const counts = { all: 0, pending: 0, add: 0, watch: 0, reject: 0, archive: 0 };
-  document.querySelectorAll("[data-slug][data-rec]").forEach(card => {
-    if (!card.classList.contains("discovery-card")) return;
-    const rec = card.dataset.rec;
+  document.querySelectorAll("#discoveryGrid .card").forEach(card => {
     counts.all++;
+    const rec = card.dataset.rec || "pending";
     if (counts[rec] !== undefined) counts[rec]++;
   });
   Object.keys(counts).forEach(k => {
-    const el = document.querySelector(`.discovery-filter-chip [data-count="${k}"]`);
+    const el = document.querySelector(`.candidate-filter-chip [data-cand-count="${k}"]`);
     if (el) el.textContent = counts[k];
   });
 }
 
-function applyDiscoveryFilter() {
-  let visibleInDiscoveries = 0;
-  document.querySelectorAll("#discoveryGrid .discovery-card").forEach(card => {
-    const rec = card.dataset.rec;
-    const show = (discoveryFilter === "all")
-      ? VISIBLE_BY_DEFAULT.has(rec)
-      : (rec === discoveryFilter);
+function applyCandidateFilter() {
+  let visible = 0;
+  document.querySelectorAll("#discoveryGrid .card").forEach(card => {
+    const rec = card.dataset.rec || "pending";
+    const show = (candidateFilter === "all") ? true : (rec === candidateFilter);
     card.style.display = show ? "" : "none";
-    if (show) visibleInDiscoveries++;
+    if (show) visible++;
   });
-  // Promoted section visibility: shown when filter is "all" or "add"
-  const promoted = document.getElementById("promoted-section");
-  const promotedCount = document.querySelectorAll("#promotedGrid .discovery-card").length;
-  const promotedVisible = promotedCount > 0 && (discoveryFilter === "all" || discoveryFilter === "add");
-  if (promoted) promoted.hidden = !promotedVisible;
-  // Empty state: show only when nothing is visible anywhere in the discoveries area
   const empty = document.getElementById("discoveryEmpty");
-  if (empty) {
-    empty.classList.toggle("is-on", visibleInDiscoveries === 0 && !promotedVisible);
-  }
+  if (empty) empty.classList.toggle("is-on", visible === 0);
 }
 
-function moveCardToContainer(card, targetGridId) {
-  const target = document.getElementById(targetGridId);
-  if (!target || card.parentElement === target) return;
-  target.appendChild(card);
-}
-
-function updatePromotedMeta() {
-  const meta = document.getElementById("promoted-meta");
-  const n = document.querySelectorAll("#promotedGrid .discovery-card").length;
-  if (meta) meta.textContent = n === 0
-    ? "Promote a discovery candidate by setting its dropdown to “add”."
-    : `${n} candidate${n === 1 ? "" : "s"} promoted to the directory`;
-}
-
-function wireDiscoveryDropdowns() {
-  document.querySelectorAll(".discovery-rec-select").forEach(sel => {
-    sel.addEventListener("change", e => {
-      const slug = e.target.dataset.slug;
-      const value = e.target.value;
-      try { localStorage.setItem("override:" + slug, value); } catch (_) { /* private mode */ }
-      // Update the badge color class to reflect the new state
-      e.target.className = `discovery-rec discovery-rec-select rec-${value}`;
-      // Update the card's data-rec for filtering + movement
-      const card = e.target.closest(".discovery-card");
-      if (!card) return;
-      card.dataset.rec = value;
-      // Move between containers based on add-status
-      if (value === "add") {
-        moveCardToContainer(card, "promotedGrid");
-      } else {
-        moveCardToContainer(card, "discoveryGrid");
-      }
-      updatePromotedMeta();
-      refreshDiscoveryCounts();
-      applyDiscoveryFilter();
-    });
-  });
-}
-
-function wireDiscoveryFilterChips() {
-  document.querySelectorAll(".discovery-filter-chip").forEach(chip => {
+function wireCandidateFilterChips() {
+  document.querySelectorAll(".candidate-filter-chip").forEach(chip => {
     chip.addEventListener("click", () => {
-      document.querySelectorAll(".discovery-filter-chip").forEach(c => c.setAttribute("aria-pressed", "false"));
+      document.querySelectorAll(".candidate-filter-chip").forEach(c => c.setAttribute("aria-pressed", "false"));
       chip.setAttribute("aria-pressed", "true");
-      discoveryFilter = chip.dataset.state;
-      applyDiscoveryFilter();
+      candidateFilter = chip.dataset.state;
+      applyCandidateFilter();
     });
   });
 }
@@ -1203,29 +1003,17 @@ function renderEventItem(e) {
   `;
 }
 
-(function mountDiscoveriesAndEvents() {
+(function mountCandidatesAndEvents() {
   const dGrid = document.getElementById("discoveryGrid");
-  const pGrid = document.getElementById("promotedGrid");
   const dSection = document.getElementById("discoveries-section");
   if (DISCOVERIES.length > 0) {
-    // Partition: anything with effective_rec === "add" goes to the promoted grid
-    const promoted = [];
-    const regular = [];
-    DISCOVERIES.forEach(d => {
-      (effectiveRec(d) === "add" ? promoted : regular).push(d);
-    });
-    pGrid.innerHTML = promoted.map(renderDiscoveryCard).join("");
-    dGrid.innerHTML = regular.map(renderDiscoveryCard).join("");
+    dGrid.innerHTML = DISCOVERIES.map((c, i) => renderArtCard(candidateToUnified(c, i))).join("");
     dSection.hidden = false;
-    wireDiscoveryDropdowns();
-    wireDiscoveryFilterChips();
-    refreshDiscoveryCounts();
-    updatePromotedMeta();
-    applyDiscoveryFilter();
-    // Visible-in-default counter (only pending/add/watch shown by default)
-    const visibleByDefault = DISCOVERIES.filter(d => VISIBLE_BY_DEFAULT.has(effectiveRec(d))).length;
+    wireCandidateFilterChips();
+    refreshCandidateCounts();
+    applyCandidateFilter();
     document.getElementById("discoveries-meta").textContent =
-      `${visibleByDefault} candidate${visibleByDefault === 1 ? "" : "s"} awaiting review · ${DISCOVERIES.length} total`;
+      `${DISCOVERIES.length} candidate${DISCOVERIES.length === 1 ? "" : "s"} · ranked by Claude · you decide what joins the Directory`;
   }
   const eList = document.getElementById("eventList");
   const eSection = document.getElementById("events-section");

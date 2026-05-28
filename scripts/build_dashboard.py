@@ -82,19 +82,18 @@ def filter_and_sort_events(events: list[dict]) -> list[dict]:
     return upcoming
 
 
-def filter_discoveries_for_display(discoveries: list[dict]) -> list[dict]:
-    """Sort candidates for display. All states ship to the frontend — the
-    dashboard filter chips control which are visible (default hides reject
-    + archive). Sort by recommendation, then fit, then first_seen.
+def sort_discoveries_for_display(discoveries: list[dict]) -> list[dict]:
+    """Sort candidates for the dashboard's Recent Candidates section.
+    All states ship; the frontend filter chips control which are visible.
+    Sort order: Claude recommendation (add → watch → pending → archive → reject),
+    then family_fit descending, then first_seen ascending.
     """
-    REC_ORDER = {"add": 0, "watch": 1, "pending": 2, "archive": 3, "reject": 4, "existing": 3}
-    keepers = list(discoveries)
-    keepers.sort(key=lambda c: (
+    REC_ORDER = {"add": 0, "watch": 1, "pending": 2, "archive": 3, "existing": 3, "reject": 4}
+    return sorted(discoveries, key=lambda c: (
         REC_ORDER.get(effective_rec(c), 5),
         -((c.get("score") or {}).get("family_fit", 0) or 0),
         c.get("first_seen", ""),
     ))
-    return keepers
 
 
 def main():
@@ -113,7 +112,7 @@ def main():
     events_blob = load_json(DATA / "events.json", {"events": []}) or {}
 
     artists = merge_artist_images(artists_raw, images)
-    discoveries = filter_discoveries_for_display(discoveries_blob.get("candidates", []))
+    discoveries = sort_discoveries_for_display(discoveries_blob.get("candidates", []))
     events = filter_and_sort_events(events_blob.get("events", []))
 
     # Render the JS data blocks
@@ -128,25 +127,6 @@ def main():
     out = out.replace("/* {{DISCOVERIES_DATA}} */", discoveries_js)
     out = out.replace("/* {{EVENTS_DATA}} */", events_js)
     out = out.replace("{{LAST_REVIEWED}}", str(date.today()).replace("-", "·"))
-
-    # Update the renderCard function to handle thumbs that are either svg-keyed or img data URIs.
-    # The template's renderCard uses SVG[t.svg]; we extend it to also handle t.img.
-    # Find the existing thumb-rendering line and replace with a richer one.
-    needle = (
-        'const art = SVG[t.svg] || `<svg viewBox="0 0 400 300">'
-        '<rect width="400" height="300" fill="#EAE3D2"/></svg>`;'
-    )
-    if needle not in out:
-        # The template may have been re-formatted by editors; do a more lenient replacement
-        logger.warning("Could not locate exact thumb-render line; falling back to regex")
-    replacement = (
-        'const art = t.img\n'
-        '      ? `<img src="${t.img}" alt="${t.label}" '
-        'style="width:100%;height:100%;object-fit:cover;display:block;">`\n'
-        '      : (SVG[t.svg] || `<svg viewBox="0 0 400 300">'
-        '<rect width="400" height="300" fill="#EAE3D2"/></svg>`);'
-    )
-    out = out.replace(needle, replacement)
 
     # Write
     out_path = ROOT / args.out if not args.out.startswith("/") else type(ROOT)(args.out)

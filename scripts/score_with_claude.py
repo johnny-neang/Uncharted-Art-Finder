@@ -33,6 +33,11 @@ class CandidateScore(BaseModel):
     one_line_summary: str = Field(max_length=240)
     proceed_recommendation: Literal["add", "watch", "reject"]
     confidence: Literal["low", "medium", "high"]
+    # New fields (added 2026-05-27) — populate the directory-style rich card
+    # when a candidate is rendered alongside canonical roster entries.
+    kind: str = Field(max_length=80)
+    medium: str = Field(max_length=120)
+    suitability: str = Field(max_length=240)
 
 
 SYSTEM_PROMPT = """You are an evaluation tool for UpperCloud Studio's Sacramento Artist Directory — the curation pipeline for Arden Fair UnchARTed, a public-art program at a family-friendly Sacramento mall.
@@ -47,6 +52,12 @@ Score each candidate on these axes:
 - one_line_summary: dry editorial sentence, max 200 chars
 - proceed_recommendation: "add" (strong roster fit) | "watch" (interesting, queue) | "reject" (off-fit)
 - confidence: "low" | "medium" | "high"
+
+Three additional fields render the candidate alongside the canonical directory entries — use the same editorial idiom as these existing examples from the roster:
+
+- kind: a short noun phrase classifying the entity. Pattern: "<Role> · <Locale>". Examples from the roster: "Artist · Sacramento", "Studio · Sacramento + Yountville", "Agency · Public Art Sacramento". Use the inferred locale; if unknown, write "Artist" or "Studio" alone. Max 80 chars.
+- medium: a short ` · `-separated list of primary working media, max 3-4 items. Examples: "Mural · Mixed-media on canvas · Glass installation", "Mural · Resin · Encaustic", "Public art · Sculpture". Title-case each term. Max 120 chars.
+- suitability: a 1-2 sentence editorial paragraph (dry, declarative, no marketing language) explaining how this artist fits or doesn't fit the Arden Fair UnchARTed program. Examples: "Native to the program. Returning artist would anchor any 2026 cycle.", "Naturalistic motifs and warm palette read well in family-retail. Proven scale.", "Studio-scale practice; would need a commission liaison for mall-scale public work." Max 240 chars.
 
 Respond with EXACTLY ONE JSON object matching this schema and nothing else — no prose, no preamble, no markdown fences. Use only the literal values listed above."""
 

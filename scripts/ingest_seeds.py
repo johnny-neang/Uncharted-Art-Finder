@@ -135,24 +135,30 @@ def ingest_one(seed: dict, rf) -> dict | None:
         return None
 
     slug = slugify(name)
-    img_obj = None
-    # 1) Prefer og:image if present and non-empty
-    if og.get("og_image"):
-        res = fetch_image(og["og_image"])
+    # Gather up to 2 thumbs: try og:image first, then body images.
+    # The directory cards display 2 side-by-side, so candidate cards should too.
+    thumbs: list[dict] = []
+    seen_sources: set[str] = set()
+
+    def _try(img_url: str) -> None:
+        if img_url in seen_sources or len(thumbs) >= 2:
+            return
+        seen_sources.add(img_url)
+        res = fetch_image(img_url)
         if res:
             uri, kb = res
-            img_obj = {"data_uri": uri, "source_url": og["og_image"], "kb": kb}
-    # 2) Fall back to body-image extraction (hero images, srcset, etc.).
-    # Many sites either omit og:image entirely or leave it empty (common
-    # WordPress oversight), but expose perfectly good hero images in the body.
-    if img_obj is None:
-        for img_url in extract_image_candidates(r.text, url, max_count=6):
-            res = fetch_image(img_url)
-            if res:
-                uri, kb = res
-                img_obj = {"data_uri": uri, "source_url": img_url, "kb": kb}
+            label = "primary" if not thumbs else "secondary"
+            thumbs.append({"data_uri": uri, "source_url": img_url, "kb": kb, "label": label})
+
+    if og.get("og_image"):
+        _try(og["og_image"])
+    if len(thumbs) < 2:
+        for img_url in extract_image_candidates(r.text, url, max_count=8):
+            if len(thumbs) >= 2:
                 break
+            _try(img_url)
             polite_delay(0.2)
+    img_obj = thumbs[0] if thumbs else None
 
     desc = (og.get("og_description") or "")[:280]
 
@@ -161,7 +167,8 @@ def ingest_one(seed: dict, rf) -> dict | None:
         "name": name,
         "url": url,
         "source_name": seed.get("source_name") or "manual seed",
-        "image": img_obj,
+        "image": img_obj,         # backward compat — first thumb or None
+        "thumbs": thumbs,         # 0-2 real images; qc_images pads to 2 with initials variants
         "first_seen": str(date.today()),
         "status": "pending",
         "seed_note": seed.get("note"),

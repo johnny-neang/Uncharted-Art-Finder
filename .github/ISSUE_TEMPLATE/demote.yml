@@ -1,0 +1,19 @@
+name: Demote from Directory
+description: Move a Directory entry back into Recent Candidates for re-review.
+title: "Demote: "
+labels: ["demote"]
+body:
+  - type: input
+    id: slug
+    attributes:
+      label: Directory slug
+      description: The slug of the artist in data/artists.json (e.g. `valenzuela`, `conrad`). The dashboard's "Move back to Candidates" button prefills this.
+      placeholder: valenzuela
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason (optional)
+      description: A short note on why this entry is being moved out of the Directory. Recorded in the audit trail.
+      placeholder: Re-evaluating fit for the 2026 cycle — moving to candidates pending review.

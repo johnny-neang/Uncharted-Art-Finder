@@ -1,0 +1,31 @@
+name: Promote candidate to Directory
+description: Move a Recent Candidate into The Directory (canonical roster).
+title: "Promote: "
+labels: ["promote"]
+body:
+  - type: input
+    id: slug
+    attributes:
+      label: Candidate slug
+      description: The slug of the candidate in data/discoveries.json (e.g. `atlas_lab`, `peter_foucault`). The dashboard's Promote button prefills this.
+      placeholder: atlas_lab
+    validations:
+      required: true
+  - type: dropdown
+    id: tier
+    attributes:
+      label: Tier
+      description: 1 = priority / proven · 2 = established · 3 = agency or curator
+      options:
+        - "1"
+        - "2"
+        - "3"
+      default: 1
+    validations:
+      required: true
+  - type: textarea
+    id: note
+    attributes:
+      label: Why promote (optional)
+      description: A line or two on why this candidate deserves to be in the Directory. Will land in the audit trail.
+      placeholder: Saw the work in person — fits the Arden Fair scale and tone.
