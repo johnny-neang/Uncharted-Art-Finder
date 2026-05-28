@@ -38,7 +38,12 @@
       "name": "Rossi Sculpture Design",
       "url": "https://www.instagram.com/rossi_sculpture_design/",
       "source_name": "manual seed",
-      "image": null,
+      "image": {
+        "data_uri": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0ODAgNDgwIiB3aWR0aD0iNDgwIiBoZWlnaHQ9IjQ4MCI+PHJlY3Qgd2lkdGg9IjQ4MCIgaGVpZ2h0PSI0ODAiIGZpbGw9IiM1QzdBNTUiLz48dGV4dCB4PSIyNDAiIHk9IjI0MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9ImNlbnRyYWwiIGZvbnQtZmFtaWx5PSInRE0gU2VyaWYgRGlzcGxheScsIEdlb3JnaWEsIHNlcmlmIiBmb250LXNpemU9IjIwMCIgZm9udC13ZWlnaHQ9IjQwMCIgZmlsbD0iI0ZBRjZGMSI+UkQ8L3RleHQ+PC9zdmc+",
+        "source_url": "generated:initials",
+        "kb": 0,
+        "placeholder": true
+      },
       "first_seen": "2026-05-26",
       "status": "pending",
       "seed_note": "Rossi Sculpture Design — surfaced via IG, sculpture in Sacramento",

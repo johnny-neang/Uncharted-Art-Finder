@@ -96,7 +96,7 @@ def main():
     logger.info("[run] %s", today)
 
     from . import refresh_images, ingest_issues, ingest_seeds, discover_artists, scrape_events
-    from . import score_with_claude, build_digest, build_dashboard
+    from . import score_with_claude, qc_images, build_digest, build_dashboard
 
     step("refresh roster images", lambda: refresh_images.main())
 
@@ -115,6 +115,7 @@ def main():
     if not args.skip_events:
         step("scrape upcoming events", lambda: scrape_events.main())
 
+    step("qc thumbnails (refetch + initials fallback)", lambda: qc_images.main())
     step("build daily digest", lambda: build_digest.main())
     step("rebuild dashboard", lambda: build_dashboard.main())
 
