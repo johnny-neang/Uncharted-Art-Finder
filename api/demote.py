@@ -113,8 +113,24 @@ def _demote(slug):
 class handler(BaseHTTPRequestHandler):
     def do_POST(self):
         try:
-            length = int(self.headers.get("Content-Length", 0))
-            payload = json.loads(self.rfile.read(length)) if length else {}
+            length_hdr = self.headers.get("Content-Length")
+            length = int(length_hdr) if length_hdr and length_hdr.isdigit() else 0
+            body_bytes = self.rfile.read(length) if length > 0 else b""
+            if not body_bytes:
+                self._respond(400, {
+                    "ok": False,
+                    "error": f"empty request body (Content-Length={length_hdr!r})",
+                })
+                return
+            try:
+                payload = json.loads(body_bytes)
+            except json.JSONDecodeError as je:
+                preview = body_bytes[:200].decode("utf-8", errors="replace")
+                self._respond(400, {
+                    "ok": False,
+                    "error": f"body not JSON: {je}; raw (len={len(body_bytes)}): {preview!r}",
+                })
+                return
             slug = (payload.get("slug") or "").strip()
             if not slug:
                 self._respond(400, {"ok": False, "error": "slug required"})
@@ -122,7 +138,7 @@ class handler(BaseHTTPRequestHandler):
             status, result = _demote(slug)
             self._respond(status, result)
         except Exception as e:
-            self._respond(500, {"ok": False, "error": str(e)[:300]})
+            self._respond(500, {"ok": False, "error": f"{type(e).__name__}: {str(e)[:300]}"})
 
     def do_OPTIONS(self):
         self.send_response(204)
