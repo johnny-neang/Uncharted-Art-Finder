@@ -2992,6 +2992,35 @@
         "via": "dashboard",
         "at": "2026-05-28T22:29:45+00:00"
       }
+    },
+    {
+      "slug": "grigio",
+      "name": "Grigio Art Consulting",
+      "url": "https://www.grigioart.com/portfolio",
+      "source_name": "demoted from directory",
+      "image": {
+        "svg": "grigio_curated",
+        "label": "Curated wall"
+      },
+      "thumbs": [
+        {
+          "svg": "grigio_curated",
+          "label": "Curated wall"
+        },
+        {
+          "svg": "grigio_healthcare",
+          "label": "Healthcare"
+        }
+      ],
+      "first_seen": "2026-05-28",
+      "status": "pending",
+      "manual_override": "watch",
+      "demoted_from_directory": {
+        "n_original": 7,
+        "tier_original": 1,
+        "via": "dashboard",
+        "at": "2026-05-28T22:29:59+00:00"
+      }
     }
   ],
   "rejected_slugs": [],
