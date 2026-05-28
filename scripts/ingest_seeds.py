@@ -30,8 +30,9 @@ from datetime import date
 from urllib.parse import urlparse
 
 from .common import (
-    DATA, fetch_image, get, extract_og_meta, load_json, logger,
-    polite_delay, rendered_session, save_json, setup_logging, slugify,
+    DATA, extract_image_candidates, extract_og_meta, fetch_image, get,
+    load_json, logger, polite_delay, rendered_session, save_json,
+    setup_logging, slugify,
 )
 
 
@@ -135,11 +136,23 @@ def ingest_one(seed: dict, rf) -> dict | None:
 
     slug = slugify(name)
     img_obj = None
+    # 1) Prefer og:image if present and non-empty
     if og.get("og_image"):
         res = fetch_image(og["og_image"])
         if res:
             uri, kb = res
             img_obj = {"data_uri": uri, "source_url": og["og_image"], "kb": kb}
+    # 2) Fall back to body-image extraction (hero images, srcset, etc.).
+    # Many sites either omit og:image entirely or leave it empty (common
+    # WordPress oversight), but expose perfectly good hero images in the body.
+    if img_obj is None:
+        for img_url in extract_image_candidates(r.text, url, max_count=6):
+            res = fetch_image(img_url)
+            if res:
+                uri, kb = res
+                img_obj = {"data_uri": uri, "source_url": img_url, "kb": kb}
+                break
+            polite_delay(0.2)
 
     desc = (og.get("og_description") or "")[:280]
 
