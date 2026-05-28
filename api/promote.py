@@ -66,8 +66,16 @@ def _get_file(path):
     # Step 2: read the actual bytes. Contents API caps content at 1MB and returns
     # an empty `content` field above that, so we always go through raw.* for the
     # body. The repo is public, so no auth header is needed for raw.*.
-    raw_url = f"{RAW_BASE}/{path}"
-    headers = {"User-Agent": "uncharted-art-finder", "Accept-Encoding": "identity"}
+    # Cache-bust by appending the latest sha as a query string so raw's CDN
+    # serves the freshest content (we just got the sha from the Contents API,
+    # which is uncached). Also explicitly disable caching at the HTTP layer.
+    raw_url = f"{RAW_BASE}/{path}?_sha={sha}"
+    headers = {
+        "User-Agent": "uncharted-art-finder",
+        "Accept-Encoding": "identity",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+    }
     req = urllib.request.Request(raw_url, headers=headers)
     try:
         with urllib.request.urlopen(req) as resp:

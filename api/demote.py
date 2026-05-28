@@ -58,8 +58,14 @@ def _get_file(path):
     # Contents API gives us the sha; raw.* gives us the full body (no 1MB cap).
     meta = _gh_request("GET", f"{API_BASE}/contents/{path}?ref={BRANCH}")
     sha = meta["sha"]
-    raw_url = f"{RAW_BASE}/{path}"
-    headers = {"User-Agent": "uncharted-art-finder", "Accept-Encoding": "identity"}
+    # Cache-bust raw.* with the sha we just got from the (uncached) Contents API.
+    raw_url = f"{RAW_BASE}/{path}?_sha={sha}"
+    headers = {
+        "User-Agent": "uncharted-art-finder",
+        "Accept-Encoding": "identity",
+        "Cache-Control": "no-cache",
+        "Pragma": "no-cache",
+    }
     req = urllib.request.Request(raw_url, headers=headers)
     try:
         with urllib.request.urlopen(req) as resp:
