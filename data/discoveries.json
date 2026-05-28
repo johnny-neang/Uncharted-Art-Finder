@@ -2963,6 +2963,35 @@
           "label": "secondary"
         }
       ]
+    },
+    {
+      "slug": "delgado",
+      "name": "Raphael Delgado",
+      "url": "https://artbyraphael.com",
+      "source_name": "demoted from directory",
+      "image": {
+        "svg": "delgado_bear",
+        "label": "California Bear"
+      },
+      "thumbs": [
+        {
+          "svg": "delgado_bear",
+          "label": "California Bear"
+        },
+        {
+          "svg": "delgado_cubist",
+          "label": "Cubist abstract"
+        }
+      ],
+      "first_seen": "2026-05-28",
+      "status": "pending",
+      "manual_override": "watch",
+      "demoted_from_directory": {
+        "n_original": 4,
+        "tier_original": 1,
+        "via": "dashboard",
+        "at": "2026-05-28T22:29:45+00:00"
+      }
     }
   ],
   "rejected_slugs": [],
