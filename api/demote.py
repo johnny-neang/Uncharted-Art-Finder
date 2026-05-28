@@ -25,6 +25,7 @@ def _gh_request(method, url, body=None):
         "Accept": "application/vnd.github+json",
         "User-Agent": "uncharted-art-finder",
         "X-GitHub-Api-Version": "2022-11-28",
+        "Accept-Encoding": "identity",
     }
     data = None
     if body is not None:
@@ -33,10 +34,21 @@ def _gh_request(method, url, body=None):
     req = urllib.request.Request(url, data=data, headers=headers, method=method)
     try:
         with urllib.request.urlopen(req) as resp:
-            return json.loads(resp.read())
+            raw = resp.read()
+            status = resp.status
     except urllib.error.HTTPError as e:
         body_text = e.read().decode("utf-8", errors="replace")
-        raise RuntimeError(f"GitHub {method} {url} -> {e.code}: {body_text[:300]}")
+        raise RuntimeError(f"GitHub {method} {url[:80]} -> HTTP {e.code}: {body_text[:300]}")
+    if not raw:
+        raise RuntimeError(f"GitHub {method} {url[:80]} -> HTTP {status} but empty body")
+    try:
+        return json.loads(raw)
+    except json.JSONDecodeError:
+        preview = raw[:300].decode("utf-8", errors="replace")
+        raise RuntimeError(
+            f"GitHub {method} {url[:80]} -> HTTP {status}, non-JSON body "
+            f"(len={len(raw)}): {preview}"
+        )
 
 
 def _get_file(path):
