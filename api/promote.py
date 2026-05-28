@@ -56,35 +56,16 @@ def _gh_request(method, url, body=None):
         )
 
 
-RAW_BASE = f"https://raw.githubusercontent.com/{REPO_OWNER}/{REPO_NAME}/{BRANCH}"
-
-
 def _get_file(path):
-    # Step 1: Contents API for the sha (metadata is small even when the file isn't).
+    # Step 1: Contents API for the sha — metadata is always small and uncached.
     meta = _gh_request("GET", f"{API_BASE}/contents/{path}?ref={BRANCH}")
     sha = meta["sha"]
-    # Step 2: read the actual bytes. Contents API caps content at 1MB and returns
-    # an empty `content` field above that, so we always go through raw.* for the
-    # body. The repo is public, so no auth header is needed for raw.*.
-    # Cache-bust by appending the latest sha as a query string so raw's CDN
-    # serves the freshest content (we just got the sha from the Contents API,
-    # which is uncached). Also explicitly disable caching at the HTTP layer.
-    raw_url = f"{RAW_BASE}/{path}?_sha={sha}"
-    headers = {
-        "User-Agent": "uncharted-art-finder",
-        "Accept-Encoding": "identity",
-        "Cache-Control": "no-cache",
-        "Pragma": "no-cache",
-    }
-    req = urllib.request.Request(raw_url, headers=headers)
-    try:
-        with urllib.request.urlopen(req) as resp:
-            raw = resp.read()
-    except urllib.error.HTTPError as e:
-        raise RuntimeError(f"raw GET {path} -> HTTP {e.code}")
-    if not raw:
-        raise RuntimeError(f"raw GET {path} returned empty body")
-    return json.loads(raw.decode("utf-8")), sha
+    # Step 2: Git Blobs API for the body — uncached, supports up to 100MB.
+    # (Contents API content field caps at 1MB; raw.githubusercontent.com
+    # has a ~5-min CDN cache that broke back-to-back promote/demote calls.)
+    blob = _gh_request("GET", f"{API_BASE}/git/blobs/{sha}")
+    content = base64.b64decode(blob["content"]).decode("utf-8")
+    return json.loads(content), sha
 
 
 def _put_file(path, data, sha, message):
