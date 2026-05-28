@@ -154,36 +154,6 @@
     "status": "active"
   },
   {
-    "n": 7,
-    "slug": "grigio",
-    "name": "Grigio Art Consulting",
-    "tier": 1,
-    "kind": "Agency · Sacramento",
-    "medium": "Curation · Procurement · Installation",
-    "tags": [
-      "agency",
-      "curation",
-      "studio"
-    ],
-    "summary": "Art-consulting agency with a Sacramento footprint (Kaiser DOCO, KPSSAC). Best fit if Arden Fair wants a managed multi-artist rollout instead of single commissions.",
-    "fit": 4,
-    "suitability": "Right partner if program needs end-to-end curation rather than artist-by-artist.",
-    "primaryUrl": "https://www.grigioart.com/portfolio",
-    "primaryHost": "grigioart.com",
-    "thumbs": [
-      {
-        "svg": "grigio_curated",
-        "label": "Curated wall"
-      },
-      {
-        "svg": "grigio_healthcare",
-        "label": "Healthcare"
-      }
-    ],
-    "addedAt": "2026-05-07",
-    "status": "active"
-  },
-  {
     "n": 8,
     "slug": "di_gregorio",
     "name": "Jose Di Gregorio",
