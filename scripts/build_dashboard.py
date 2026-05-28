@@ -36,10 +36,19 @@ def merge_artist_images(artists: list[dict], images: dict) -> list[dict]:
         cached = images.get(a["slug"], {}).get("images", [])
         new_thumbs = []
         for i, t in enumerate(a.get("thumbs", [])):
-            if i < len(cached) and cached[i].get("data_uri"):
-                new_thumbs.append({"label": t["label"], "img": cached[i]["data_uri"]})
+            label = t.get("label") or ("primary" if i == 0 else "secondary")
+            # Newly-promoted artists may carry thumbs already as data URIs
+            # (from the Vercel promote function copying discovery thumbs).
+            # Preserve those directly; fall back to cached photos / SVG only
+            # for entries that still use the legacy svg-key shape.
+            if t.get("data_uri"):
+                new_thumbs.append({"label": label, "img": t["data_uri"]})
+            elif t.get("img"):
+                new_thumbs.append({"label": label, "img": t["img"]})
+            elif i < len(cached) and cached[i].get("data_uri"):
+                new_thumbs.append({"label": label, "img": cached[i]["data_uri"]})
             else:
-                new_thumbs.append({"label": t["label"], "svg": t.get("svg")})
+                new_thumbs.append({"label": label, "svg": t.get("svg")})
         a["thumbs"] = new_thumbs
         out.append(a)
     return out
