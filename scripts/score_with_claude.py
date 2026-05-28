@@ -69,10 +69,21 @@ def _strip_fences(text: str) -> str:
 
 
 def score_candidate(c: dict) -> CandidateScore | None:
+    # Include any context we already harvested (OG description from manual
+    # seeds, or seed notes the user added). These often resolve Claude's
+    # "sacramento: unclear" guess into a confirmed yes.
+    extra_lines = []
+    if c.get("seed_description"):
+        extra_lines.append(f"Page description: {c['seed_description']}")
+    if c.get("seed_note"):
+        extra_lines.append(f"Submitter note: {c['seed_note']}")
+    extras = ("\n" + "\n".join(extra_lines)) if extra_lines else ""
+
     user_prompt = (
         f"Artist: {c['name']}\n"
         f"URL: {c['url']}\n"
-        f"Source roster: {c['source_name']}\n\n"
+        f"Source roster: {c['source_name']}"
+        f"{extras}\n\n"
         f"Score this candidate for the Arden Fair UnchARTed program."
     )
     try:
