@@ -35,12 +35,12 @@ def merge_artist_images(artists: list[dict], images: dict) -> list[dict]:
         a = dict(a)
         cached = images.get(a["slug"], {}).get("images", [])
         new_thumbs = []
+        # Build thumbs from real photographic sources only. Hand-drawn
+        # SVG illustrations from the legacy svg_library are no longer
+        # rendered — we compile, we don't depict. Empty entries pass
+        # through and the template renders "No photo on file".
         for i, t in enumerate(a.get("thumbs", [])):
             label = t.get("label") or ("primary" if i == 0 else "secondary")
-            # Newly-promoted artists may carry thumbs already as data URIs
-            # (from the Vercel promote function copying discovery thumbs).
-            # Preserve those directly; fall back to cached photos / SVG only
-            # for entries that still use the legacy svg-key shape.
             if t.get("data_uri"):
                 new_thumbs.append({"label": label, "img": t["data_uri"]})
             elif t.get("img"):
@@ -48,7 +48,9 @@ def merge_artist_images(artists: list[dict], images: dict) -> list[dict]:
             elif i < len(cached) and cached[i].get("data_uri"):
                 new_thumbs.append({"label": label, "img": cached[i]["data_uri"]})
             else:
-                new_thumbs.append({"label": label, "svg": t.get("svg")})
+                # No photo for this slot — drop it. The card will render
+                # with however many real photos exist (0, 1, or 2).
+                continue
         a["thumbs"] = new_thumbs
         out.append(a)
     return out
@@ -113,7 +115,9 @@ def main():
     setup_logging(args.log)
 
     template = (TEMPLATES / "dashboard.html.tmpl").read_text()
-    svg_lib = (TEMPLATES / "svg_library.js").read_text()
+    # svg_library.js is intentionally not loaded — the dashboard renders
+    # photographs only, no interpretive illustrations.
+    svg_lib = "const SVG = {};"
 
     artists_raw = load_json(DATA / "artists.json", []) or []
     images = load_json(DATA / "artist_images.json", {}) or {}

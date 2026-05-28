@@ -137,6 +137,62 @@ def fetch_image(url: str, target_w: int = 480) -> tuple[str, int] | None:
     return to_data_uri(raw, mime), len(raw) // 1024
 
 
+def fetch_thumbs(
+    response,
+    base_url: str,
+    want: int = 2,
+    existing: list[dict] | None = None,
+) -> list[dict]:
+    """Gather up to `want` unique image thumbs from a page response.
+
+    Walks og:image first, then body image candidates. Dedups by:
+      - source URL (skips re-fetching the same URL)
+      - data URI content (skips the same image hosted at different URLs,
+        e.g. /image.jpg vs /image.jpg?w=600 that resolve to identical bytes)
+
+    `existing` (e.g. thumbs already on a candidate) is used to seed both
+    dedup sets — that's the bug fix that prevented the QC step from
+    storing the same image twice.
+
+    Returns a list of *new* thumbs (length ≤ want). Each dict has shape
+    {data_uri, source_url, kb, label}.
+    """
+    if not response:
+        return []
+    existing = existing or []
+    seen_urls: set[str] = {t.get("source_url", "") for t in existing if t.get("source_url")}
+    seen_data: set[str] = {t.get("data_uri", "")[:200] for t in existing if t.get("data_uri")}
+    out: list[dict] = []
+
+    def _try(img_url: str) -> None:
+        if len(out) >= want:
+            return
+        if not img_url or img_url in seen_urls:
+            return
+        seen_urls.add(img_url)
+        res = fetch_image(img_url)
+        if not res:
+            return
+        uri, kb = res
+        prefix = uri[:200]
+        if prefix in seen_data:
+            return  # same content under a different URL
+        seen_data.add(prefix)
+        label = "primary" if (not existing and not out) else "secondary"
+        out.append({"data_uri": uri, "source_url": img_url, "kb": kb, "label": label})
+
+    og = extract_og_meta(response.text, base_url)
+    if og.get("og_image"):
+        _try(og["og_image"])
+    if len(out) < want:
+        for img_url in extract_image_candidates(response.text, base_url, max_count=12):
+            if len(out) >= want:
+                break
+            _try(img_url)
+            polite_delay(0.2)
+    return out
+
+
 SKIP_PATTERNS = [
     "logo", "favicon", "icon", "avatar", "profile-pic",
     "loading", "spinner", "placeholder", "blank", "spacer",

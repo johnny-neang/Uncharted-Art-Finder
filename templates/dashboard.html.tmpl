@@ -326,10 +326,11 @@ body {
 /* ---------- Thumb grid ---------- */
 .thumb-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: var(--s2);
   margin: var(--s1) 0 var(--s4);
 }
+.thumb-grid:empty { display: none; margin: 0; }
 .thumb {
   position: relative;
   aspect-ratio: 4 / 3;
@@ -339,6 +340,15 @@ body {
 }
 .thumb svg, .thumb img { width: 100%; height: 100%; display: block; }
 .thumb img { object-fit: cover; object-position: center; }
+.thumb-empty {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--paper-2);
+  color: var(--ink-3);
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+  font-style: normal;
+}
 .thumb-label {
   position: absolute;
   left: var(--s2); bottom: var(--s2);
@@ -783,18 +793,18 @@ const REPO = "johnny-neang/Uncharted-Art-Finder";
 // ----- Unified card renderer (used for both Directory and Recent Candidates) -----
 
 function renderThumb(t) {
-  // Three thumb shapes in the wild:
-  //   - candidate thumbs (from qc_images / ingest_seeds): {data_uri, source_url, kb, label}
-  //   - cached directory photos (from build_dashboard.merge_artist_images): {img, label}
-  //   - SVG-illustration fallbacks (from data/artists.json): {svg, label}
+  // Only real fetched photographs render. Three field names supported
+  // for backward compatibility:
+  //   - candidate thumbs (from qc_images / ingest_seeds): {data_uri, ...}
+  //   - cached directory photos (build_dashboard.merge_artist_images): {img, ...}
+  // SVG-key thumbs (the old hand-drawn illustrations) intentionally do NOT
+  // render here — we compile information about each artist, we don't
+  // interpret or depict their work. Empty slots get a "no photo" treatment.
   const src = (t && (t.data_uri || t.img)) || null;
   if (src) {
     return `<img src="${src}" alt="${(t.label || '').replace(/"/g, '&quot;')}" loading="lazy">`;
   }
-  if (t && t.svg) {
-    return SVG[t.svg] || `<svg viewBox="0 0 400 300"><rect width="400" height="300" fill="#EAE3D2"/></svg>`;
-  }
-  return `<svg viewBox="0 0 400 300"><rect width="400" height="300" fill="#EAE3D2"/></svg>`;
+  return `<div class="thumb-empty">No photo on file</div>`;
 }
 
 function actionButton(item) {

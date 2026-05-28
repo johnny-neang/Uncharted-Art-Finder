@@ -30,9 +30,8 @@ from datetime import date
 from urllib.parse import urlparse
 
 from .common import (
-    DATA, extract_image_candidates, extract_og_meta, fetch_image, get,
-    load_json, logger, polite_delay, rendered_session, save_json,
-    setup_logging, slugify,
+    DATA, extract_og_meta, fetch_thumbs, get, load_json, logger,
+    polite_delay, rendered_session, save_json, setup_logging, slugify,
 )
 
 
@@ -135,29 +134,8 @@ def ingest_one(seed: dict, rf) -> dict | None:
         return None
 
     slug = slugify(name)
-    # Gather up to 2 thumbs: try og:image first, then body images.
-    # The directory cards display 2 side-by-side, so candidate cards should too.
-    thumbs: list[dict] = []
-    seen_sources: set[str] = set()
-
-    def _try(img_url: str) -> None:
-        if img_url in seen_sources or len(thumbs) >= 2:
-            return
-        seen_sources.add(img_url)
-        res = fetch_image(img_url)
-        if res:
-            uri, kb = res
-            label = "primary" if not thumbs else "secondary"
-            thumbs.append({"data_uri": uri, "source_url": img_url, "kb": kb, "label": label})
-
-    if og.get("og_image"):
-        _try(og["og_image"])
-    if len(thumbs) < 2:
-        for img_url in extract_image_candidates(r.text, url, max_count=8):
-            if len(thumbs) >= 2:
-                break
-            _try(img_url)
-            polite_delay(0.2)
+    # Gather up to 2 unique thumbs from the response (URL + content dedup).
+    thumbs = fetch_thumbs(r, url, want=2, existing=[])
     img_obj = thumbs[0] if thumbs else None
 
     desc = (og.get("og_description") or "")[:280]

@@ -23,7 +23,7 @@ from urllib.parse import urljoin, urlparse
 from bs4 import BeautifulSoup
 
 from .common import (
-    DATA, fetch_image, extract_image_candidates, extract_og_meta, get,
+    DATA, extract_og_meta, fetch_image, fetch_thumbs, get,
     load_json, logger, polite_delay, rendered_session, save_json,
     setup_logging, slugify,
 )
@@ -198,35 +198,10 @@ def fetch_candidate_image(url: str) -> dict | None:
     return thumbs[0] if thumbs else None
 
 
-def fetch_candidate_thumbs(url: str, want: int = 2) -> list[dict]:
-    """Fetch up to `want` usable images from a candidate URL.
-    Walks og:image first, then body images, stopping after `want` successes."""
-    r = get(url)
-    if not r:
-        return []
-    out: list[dict] = []
-    seen: set[str] = set()
-
-    def _try(img_url: str) -> None:
-        if img_url in seen or len(out) >= want:
-            return
-        seen.add(img_url)
-        res = fetch_image(img_url)
-        if res:
-            uri, kb = res
-            label = "primary" if not out else "secondary"
-            out.append({"data_uri": uri, "source_url": img_url, "kb": kb, "label": label})
-
-    og = extract_og_meta(r.text, url)
-    if og.get("og_image"):
-        _try(og["og_image"])
-    if len(out) < want:
-        for img_url in extract_image_candidates(r.text, url, max_count=8):
-            if len(out) >= want:
-                break
-            _try(img_url)
-            polite_delay(0.2)
-    return out
+def fetch_candidate_thumbs(url: str, want: int = 2, existing: list[dict] | None = None) -> list[dict]:
+    """Fetch up to `want` unique thumbs from a candidate URL. Thin wrapper
+    around common.fetch_thumbs that handles the page GET."""
+    return fetch_thumbs(get(url), url, want=want, existing=existing or [])
 
 
 def main():
@@ -292,10 +267,10 @@ def main():
 
     logger.info("[discover] %d unique fresh links across all sources", len(fresh_links))
 
-    # Embed up to 2 thumbnails per new candidate (directory cards show 2 side by side).
+    # Embed up to 2 unique thumbnails per new candidate.
     for link in fresh_links[: args.max_new]:
         logger.info("embed image(s) for %s", link["name"])
-        # Studio kind may carry pre-extracted OG meta — seed it as the first thumb.
+        # Studio kind may carry pre-extracted OG meta — seed the first thumb.
         og = link.get("_og") or {}
         thumbs: list[dict] = []
         if og.get("og_image"):
@@ -303,9 +278,11 @@ def main():
             if res:
                 uri, kb = res
                 thumbs.append({"data_uri": uri, "source_url": og["og_image"], "kb": kb, "label": "primary"})
-        # Top up to 2 by walking the page's image candidates.
+        # Top up to 2 by walking the page's image candidates. Pass `existing`
+        # so the helper dedups against the og:image we just stored — that's
+        # how we used to end up storing the same image twice.
         if len(thumbs) < 2:
-            extra = fetch_candidate_thumbs(link["url"], want=2 - len(thumbs))
+            extra = fetch_candidate_thumbs(link["url"], want=2 - len(thumbs), existing=thumbs)
             for t in extra:
                 t["label"] = "primary" if not thumbs else "secondary"
                 thumbs.append(t)
