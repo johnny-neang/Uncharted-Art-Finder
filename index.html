@@ -439,6 +439,46 @@ body {
 }
 
 
+/* ---------- Directory state filter (in-directory / returned / archived) ---------- */
+.directory-filter-row {
+  display: flex; align-items: center; flex-wrap: wrap; gap: var(--s2);
+  margin: var(--s3) 0 var(--s5);
+}
+.directory-filter-chip {
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 6px var(--s3);
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.directory-filter-chip:hover { border-color: var(--ink); color: var(--ink); }
+.directory-filter-chip[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.directory-filter-chip[data-state="returned"][aria-pressed="true"] { background: var(--marigold); border-color: var(--marigold); color: #fff; }
+.directory-filter-chip[data-state="archive"][aria-pressed="true"]  { background: var(--ink-3); border-color: var(--ink-3); color: var(--paper); }
+.directory-filter-chip .count { color: inherit; opacity: 0.55; margin-left: 6px; }
+
+/* Per-card state dropdown (mirrors .discovery-rec-select but slightly smaller/right-aligned) */
+.card-state-select {
+  appearance: none; -webkit-appearance: none; -moz-appearance: none;
+  border: 1px solid var(--rule); background: transparent;
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-2);
+  padding: 4px 18px 4px var(--s2); margin-left: auto;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 5'><path d='M0 0L4 5L8 0Z' fill='currentColor'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+  background-size: 7px 4px;
+}
+.card-state-select[data-state="returned"] { color: var(--marigold); border-color: var(--marigold); }
+.card-state-select[data-state="archive"]  { color: var(--ink-3); border-color: var(--ink-3); }
+.card-state-select:focus { outline: 1px dashed var(--ink); outline-offset: 2px; }
+.card-state-select option { font-family: var(--font-body); letter-spacing: 0; text-transform: none; color: var(--ink); }
+
 /* ---------- Promoted from discoveries (sits between directory + discoveries) ---------- */
 .promoted-section { padding: var(--s7) 0 0; }
 .promoted-section[hidden] { display: none; }
@@ -711,8 +751,20 @@ body {
     <h2 class="section-title">The <em>directory</em>.</h2>
   </div>
 
+  <!-- State filter chips: parallel to discoveries section's filter row -->
+  <div class="directory-filter-row" role="toolbar" aria-label="Filter directory by state">
+    <span class="discovery-filter-label">View</span>
+    <button class="directory-filter-chip" data-state="directory" aria-pressed="true">In directory <span class="count" data-dir-count="directory">0</span></button>
+    <button class="directory-filter-chip" data-state="returned" aria-pressed="false">Returned <span class="count" data-dir-count="returned">0</span></button>
+    <button class="directory-filter-chip" data-state="archive" aria-pressed="false">Archived <span class="count" data-dir-count="archive">0</span></button>
+  </div>
+
   <!-- Cards grid -->
   <main class="grid" id="cardGrid"></main>
+  <!-- Returned from directory (cards demoted back to discoveries via dropdown) -->
+  <main class="grid" id="returnedGrid" hidden></main>
+  <!-- Archived directory cards -->
+  <main class="grid" id="archivedGrid" hidden></main>
 
   <div class="empty" id="empty">Nothing matches that filter.</div>
 
@@ -5164,19 +5216,47 @@ function renderCard(a) {
       <div class="card-foot">
         <a class="card-link" href="${a.primaryUrl}" target="_blank" rel="noopener">${a.primaryHost}</a>
         <div class="card-tags">${tags}</div>
+        <select class="card-state-select" data-slug="${a.slug}" data-state="${directoryState(a)}" aria-label="Move ${a.name} between directory / returned / archive">
+          <option value="directory"${directoryState(a) === "directory" ? " selected" : ""}>in directory</option>
+          <option value="returned"${directoryState(a) === "returned" ? " selected" : ""}>returned to discoveries</option>
+          <option value="archive"${directoryState(a) === "archive" ? " selected" : ""}>archived</option>
+        </select>
       </div>
     </article>
   `;
 }
 
-grid.innerHTML = ARTISTS.map(renderCard).join("");
+// ----- Directory state (per-card override stored in localStorage) -----
+function directoryState(a) {
+  let v = null;
+  try { v = localStorage.getItem("dir-state:" + a.slug); } catch (_) { /* private mode */ }
+  return (v === "returned" || v === "archive") ? v : "directory";
+}
+
+function partitionArtists() {
+  const buckets = { directory: [], returned: [], archive: [] };
+  ARTISTS.forEach(a => buckets[directoryState(a)].push(a));
+  return buckets;
+}
+
+function renderDirectoryBuckets() {
+  const buckets = partitionArtists();
+  document.getElementById("cardGrid").innerHTML     = buckets.directory.map(renderCard).join("");
+  document.getElementById("returnedGrid").innerHTML = buckets.returned.map(renderCard).join("");
+  document.getElementById("archivedGrid").innerHTML = buckets.archive.map(renderCard).join("");
+  Object.keys(buckets).forEach(k => {
+    const el = document.querySelector(`[data-dir-count="${k}"]`);
+    if (el) el.textContent = buckets[k].length;
+  });
+}
+
+renderDirectoryBuckets();
 
 /* ============================================================
    FILTERS + SEARCH
    ============================================================ */
 
 const chips = document.querySelectorAll(".chip");
-const cards = document.querySelectorAll(".card");
 const empty = document.getElementById("empty");
 const searchInput = document.getElementById("searchInput");
 
@@ -5184,6 +5264,9 @@ let activeFilter = "all";
 let searchTerm = "";
 
 function applyFilters() {
+  // Re-query each call: cards are rebuilt by renderDirectoryBuckets() on state changes,
+  // so a cached NodeList would point at orphaned DOM nodes.
+  const cards = document.querySelectorAll(".card");
   let visible = 0;
   cards.forEach(c => {
     const tier = c.dataset.tier;
@@ -5218,6 +5301,55 @@ searchInput.addEventListener("input", e => {
   searchTerm = e.target.value.trim().toLowerCase();
   applyFilters();
 });
+
+/* ============================================================
+   DIRECTORY STATE (per-card dropdown + state filter chips)
+   ============================================================ */
+
+let directoryViewState = "directory"; // "directory" | "returned" | "archive"
+
+function applyDirectoryStateFilter() {
+  document.getElementById("cardGrid").hidden     = (directoryViewState !== "directory");
+  document.getElementById("returnedGrid").hidden = (directoryViewState !== "returned");
+  document.getElementById("archivedGrid").hidden = (directoryViewState !== "archive");
+  // Tier/medium filter visibility — only relevant when in the directory view.
+  // Other views show whatever's in their bucket regardless.
+  const toolbar = document.querySelector(".toolbar");
+  if (toolbar) toolbar.style.opacity = (directoryViewState === "directory") ? "1" : "0.5";
+}
+
+function wireDirectoryStateChips() {
+  document.querySelectorAll(".directory-filter-chip").forEach(chip => {
+    chip.addEventListener("click", () => {
+      document.querySelectorAll(".directory-filter-chip").forEach(c => c.setAttribute("aria-pressed", "false"));
+      chip.setAttribute("aria-pressed", "true");
+      directoryViewState = chip.dataset.state;
+      applyDirectoryStateFilter();
+    });
+  });
+}
+
+function wireDirectoryStateSelects() {
+  document.querySelectorAll(".card-state-select").forEach(sel => {
+    sel.addEventListener("change", e => {
+      const slug = e.target.dataset.slug;
+      const value = e.target.value;
+      try {
+        if (value === "directory") localStorage.removeItem("dir-state:" + slug);
+        else localStorage.setItem("dir-state:" + slug, value);
+      } catch (_) { /* private mode */ }
+      // Re-render all three buckets so the moved card lands in the right container
+      // and counts update. Then re-wire (the new card has new event listeners).
+      renderDirectoryBuckets();
+      wireDirectoryStateSelects();
+      applyDirectoryStateFilter();
+    });
+  });
+}
+
+wireDirectoryStateChips();
+wireDirectoryStateSelects();
+applyDirectoryStateFilter();
 
 /* ============================================================
    DISCOVERIES + EVENTS (data-driven sections)
