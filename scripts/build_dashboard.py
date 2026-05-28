@@ -100,7 +100,7 @@ def filter_discoveries_for_display(discoveries: list[dict]) -> list[dict]:
         -((c.get("score") or {}).get("family_fit", 0) or 0),
         c.get("first_seen", ""),
     ))
-    return keepers[:24]
+    return keepers
 
 
 def main():
