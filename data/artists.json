@@ -92,37 +92,6 @@
     "status": "active"
   },
   {
-    "n": 4,
-    "slug": "delgado",
-    "name": "Raphael Delgado",
-    "tier": 1,
-    "kind": "Artist · Sacramento",
-    "medium": "Mural · Painting · Cubist figurative",
-    "tags": [
-      "mural",
-      "studio",
-      "figurative",
-      "cubist"
-    ],
-    "summary": "Geometric figurative painter; California Bear at 1413 21st Street is the most recognizable single image in his catalog. Fast turn-around, clear visual identity.",
-    "fit": 4,
-    "suitability": "Iconic shapes translate well to wayfinding-adjacent murals.",
-    "primaryUrl": "https://artbyraphael.com",
-    "primaryHost": "artbyraphael.com",
-    "thumbs": [
-      {
-        "svg": "delgado_bear",
-        "label": "California Bear"
-      },
-      {
-        "svg": "delgado_cubist",
-        "label": "Cubist abstract"
-      }
-    ],
-    "addedAt": "2026-05-07",
-    "status": "active"
-  },
-  {
     "n": 5,
     "slug": "garibaldi",
     "name": "David Garibaldi",
