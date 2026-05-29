@@ -1,36 +1,5 @@
 [
   {
-    "n": 1,
-    "slug": "valenzuela",
-    "name": "Bryan Valenzuela",
-    "tier": 1,
-    "kind": "Artist · Sacramento",
-    "medium": "Mural · Mixed-media on canvas · Glass installation",
-    "tags": [
-      "mural",
-      "studio",
-      "figurative",
-      "editorial"
-    ],
-    "summary": "Figurative-text artist whose work weaves dense passages of handwritten language into the contours of a human figure. Created the Arden Fair UnchARTed flagship piece in 2021.",
-    "fit": 5,
-    "suitability": "Native to the program. Returning artist would anchor any 2026 cycle.",
-    "primaryUrl": "http://www.bryanvalenzuela.com/murals",
-    "primaryHost": "bryanvalenzuela.com",
-    "thumbs": [
-      {
-        "svg": "valenzuela_text",
-        "label": "Text-figure"
-      },
-      {
-        "svg": "valenzuela_orbs",
-        "label": "G1C glass"
-      }
-    ],
-    "addedAt": "2026-05-07",
-    "status": "active"
-  },
-  {
     "n": 2,
     "slug": "conrad",
     "name": "Maren Conrad",
