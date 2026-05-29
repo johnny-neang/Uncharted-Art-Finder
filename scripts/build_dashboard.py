@@ -124,14 +124,15 @@ def main():
     discoveries_blob = load_json(DATA / "discoveries.json", {"candidates": []}) or {}
     events_blob = load_json(DATA / "events.json", {"events": []}) or {}
 
-    artists_with_imgs = merge_artist_images(artists_raw, images)
-    discoveries_sorted = sort_discoveries_for_display(discoveries_blob.get("candidates", []))
+    artists = merge_artist_images(artists_raw, images)
+    discoveries = sort_discoveries_for_display(discoveries_blob.get("candidates", []))
     events = filter_and_sort_events(events_blob.get("events", []))
 
-    # Exclusion rule: only entries with 2+ real photo thumbs are rendered.
-    # Hiding is preferred over showing a card with missing/placeholder photos
-    # — better to leave an artist invisible until both photos exist than to
-    # present them incompletely. Underlying JSON is untouched.
+    # No exclusion: every artist + candidate renders. Cards with fewer than
+    # 2 real photo thumbs show a typographic "researching second photo"
+    # treatment in the empty slots (handled by the template's renderThumb).
+    # The hidden-counter tokens show the "still researching" count, not a
+    # hidden-from-view count — they're forward-looking.
     def _real_thumb_count(entry):
         return sum(
             1 for t in (entry.get("thumbs") or [])
@@ -140,10 +141,8 @@ def main():
             and not t.get("svg")
         )
 
-    artists = [a for a in artists_with_imgs if _real_thumb_count(a) >= 2]
-    discoveries = [c for c in discoveries_sorted if _real_thumb_count(c) >= 2]
-    hidden_artists = [a["slug"] for a in artists_with_imgs if _real_thumb_count(a) < 2]
-    hidden_candidates = [c["slug"] for c in discoveries_sorted if _real_thumb_count(c) < 2]
+    needs_research_dir = [a["slug"] for a in artists if _real_thumb_count(a) < 2]
+    needs_research_cand = [c["slug"] for c in discoveries if _real_thumb_count(c) < 2]
 
     # Render the JS data blocks
     artists_js = f"const ARTISTS = {json.dumps(artists, indent=2, ensure_ascii=False)};"
@@ -157,19 +156,19 @@ def main():
     out = out.replace("/* {{DISCOVERIES_DATA}} */", discoveries_js)
     out = out.replace("/* {{EVENTS_DATA}} */", events_js)
     out = out.replace("{{LAST_REVIEWED}}", str(date.today()).replace("-", "·"))
-    out = out.replace("{{HIDDEN_DIRECTORY}}", str(len(hidden_artists)))
-    out = out.replace("{{HIDDEN_CANDIDATES}}", str(len(hidden_candidates)))
+    out = out.replace("{{HIDDEN_DIRECTORY}}", str(len(needs_research_dir)))
+    out = out.replace("{{HIDDEN_CANDIDATES}}", str(len(needs_research_cand)))
 
     # Write
     out_path = ROOT / args.out if not args.out.startswith("/") else type(ROOT)(args.out)
     out_path.write_text(out)
     logger.info("[done] wrote %s (%d KB)", out_path, len(out) // 1024)
-    logger.info("       directory: shown=%d hidden=%d  | candidates: shown=%d hidden=%d  | events=%d",
-                len(artists), len(hidden_artists), len(discoveries), len(hidden_candidates), len(events))
-    if hidden_artists:
-        logger.info("       hidden directory: %s", ", ".join(hidden_artists))
-    if hidden_candidates:
-        logger.info("       hidden candidates (first 10): %s", ", ".join(hidden_candidates[:10]))
+    logger.info("       directory: rendered=%d researching=%d  | candidates: rendered=%d researching=%d  | events=%d",
+                len(artists), len(needs_research_dir), len(discoveries), len(needs_research_cand), len(events))
+    if needs_research_dir:
+        logger.info("       researching directory: %s", ", ".join(needs_research_dir))
+    if needs_research_cand:
+        logger.info("       researching candidates (first 10): %s", ", ".join(needs_research_cand[:10]))
 
 
 if __name__ == "__main__":
