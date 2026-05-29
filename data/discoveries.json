@@ -3064,6 +3064,35 @@
         "via": "dashboard",
         "at": "2026-05-29T17:43:27+00:00"
       }
+    },
+    {
+      "slug": "di_gregorio",
+      "name": "Jose Di Gregorio",
+      "url": "https://www.josedigregorio.com",
+      "source_name": "demoted from directory",
+      "image": {
+        "svg": "digregorio_kaleido",
+        "label": "Kaleidoscope"
+      },
+      "thumbs": [
+        {
+          "svg": "digregorio_kaleido",
+          "label": "Kaleidoscope"
+        },
+        {
+          "svg": "digregorio_celestial",
+          "label": "Geometric"
+        }
+      ],
+      "first_seen": "2026-05-29",
+      "status": "pending",
+      "manual_override": "watch",
+      "demoted_from_directory": {
+        "n_original": 8,
+        "tier_original": 2,
+        "via": "dashboard",
+        "at": "2026-05-29T17:43:37+00:00"
+      }
     }
   ],
   "rejected_slugs": [
