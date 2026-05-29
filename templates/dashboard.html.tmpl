@@ -567,6 +567,55 @@ body {
   color: var(--paper);
 }
 
+/* ---------- Card notes (per-card freeform note, saved to data/notes.json) ---------- */
+.card-notes {
+  display: flex; flex-direction: column; gap: var(--s2);
+  margin-top: var(--s2);
+  padding-top: var(--s3);
+  border-top: 1px dotted var(--rule);
+}
+.card-notes-label {
+  display: flex; align-items: center; justify-content: space-between;
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+.card-notes-label .note-dot {
+  display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--marigold); margin-left: var(--s2); vertical-align: middle;
+}
+.card-note-input {
+  width: 100%; box-sizing: border-box;
+  min-height: 50px; resize: vertical;
+  font-family: var(--font-body); font-size: 12px; line-height: 1.45;
+  color: var(--ink); background: var(--paper-3);
+  border: 1px solid var(--rule);
+  padding: var(--s2) var(--s3);
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+.card-note-input::placeholder { color: var(--ink-3); }
+.card-note-input:focus { outline: none; border-color: var(--jade); background: #fff; }
+.card-note-row { display: flex; align-items: center; gap: var(--s3); }
+.card-note-save {
+  flex: 0 0 auto;
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  padding: 6px var(--s3); min-height: 30px;
+  border: 1px solid var(--ink); background: var(--paper); color: var(--ink);
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, opacity 0.15s ease;
+}
+.card-note-save:hover { background: var(--ink); color: var(--paper); }
+.card-note-save:focus-visible { outline: 2px solid var(--marigold); outline-offset: 2px; }
+.card-note-save:disabled { opacity: 0.5; cursor: default; }
+.card-note-status {
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+.card-note-status.ok { color: var(--jade); }
+.card-note-status.err { color: #B3261E; }
+
 /* ---------- Claude rec badge (candidate cards only) ---------- */
 .rec-badge {
   display: inline-block;
@@ -809,6 +858,7 @@ body {
 
 /* {{DISCOVERIES_DATA}} */
 /* {{EVENTS_DATA}} */
+/* {{NOTES_DATA}} */
 
 /* ============================================================
    RENDER
@@ -817,6 +867,41 @@ body {
 const grid = document.getElementById("cardGrid");
 
 const REPO = "johnny-neang/Uncharted-Art-Finder";
+
+// ----- Card notes state -----
+// window.NOTES is baked in at build time from data/notes.json (the shared,
+// durable source of truth). A localStorage cache holds this browser's recent
+// edits so a saved note survives a reload before the next rebuild bakes it in.
+const NOTES = (typeof window.NOTES !== "undefined" && window.NOTES) ? window.NOTES : {};
+const NOTES_LS_KEY = "uaf_notes_cache_v1";
+
+function loadNotesCache() {
+  try { return JSON.parse(localStorage.getItem(NOTES_LS_KEY) || "{}") || {}; }
+  catch (_) { return {}; }
+}
+function saveNotesCache() {
+  try { localStorage.setItem(NOTES_LS_KEY, JSON.stringify(notesCache)); } catch (_) { /* quota/full */ }
+}
+// Effective note = whichever of the local cache and the baked note is newer.
+function effectiveNote(slug) {
+  const cached = notesCache[slug];
+  const baked = NOTES[slug];
+  if (cached && baked) return (cached.updated_at || "") >= (baked.updated_at || "") ? cached : baked;
+  return cached || baked || null;
+}
+let notesCache = loadNotesCache();
+// Drop any cached entry the committed build has already caught up to, so the
+// cache can't indefinitely shadow a teammate's newer note.
+(function reconcileNotesCache() {
+  let changed = false;
+  for (const slug of Object.keys(notesCache)) {
+    const baked = NOTES[slug];
+    if (baked && (baked.updated_at || "") >= (notesCache[slug].updated_at || "")) {
+      delete notesCache[slug]; changed = true;
+    }
+  }
+  if (changed) saveNotesCache();
+})();
 
 // ----- Unified card renderer (used for both Directory and Recent Candidates) -----
 
@@ -860,6 +945,25 @@ function recBadge(item) {
   if (item.mode !== "candidate") return "";
   const rec = item.rec || "pending";
   return `<span class="rec-badge rec-${rec}">${rec}</span>`;
+}
+
+function notesBlock(item) {
+  const note = effectiveNote(item.slug);
+  const text = (note && note.text) ? note.text : "";
+  const hasNote = !!text.trim();
+  const esc = text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const slugAttr = String(item.slug).replace(/"/g, "&quot;");
+  return `
+      <div class="card-notes" data-note-slug="${slugAttr}">
+        <div class="card-notes-label">
+          <span>Notes${hasNote ? '<span class="note-dot" title="Has a note"></span>' : ''}</span>
+          <span class="card-note-status" data-note-status></span>
+        </div>
+        <textarea class="card-note-input" data-note-input rows="2" placeholder="Add a note…">${esc}</textarea>
+        <div class="card-note-row">
+          <button type="button" class="card-note-save" data-note-save>Save note</button>
+        </div>
+      </div>`;
 }
 
 function renderArtCard(item) {
@@ -919,6 +1023,7 @@ function renderArtCard(item) {
           <a class="card-link" href="${item.primaryUrl}" target="_blank" rel="noopener">${item.primaryHost || item.primaryUrl}</a>
         </div>
         <div class="card-tags">${tagsHtml}</div>
+        ${notesBlock(item)}
       </div>
     </article>
   `;
@@ -1171,6 +1276,101 @@ function renderEventItem(e) {
       btn.style.pointerEvents = "";
       btn.style.opacity = "";
     }
+  });
+})();
+
+/* ============================================================
+   CARD NOTES
+   Save a per-card note to /api/comment (persisted to data/notes.json).
+   Optimistically cached in localStorage so it survives reload before the
+   next rebuild bakes it into window.NOTES. Works on Directory + Candidate
+   cards alike; same delegated pattern as Promote/Demote.
+   ============================================================ */
+
+(function wireNotes() {
+  function setStatus(el, text, cls) {
+    if (!el) return;
+    el.textContent = text;
+    el.className = "card-note-status" + (cls ? " " + cls : "");
+    if (text.indexOf("Saved") === 0) {
+      setTimeout(() => { if (el.textContent === text) el.textContent = ""; }, 4000);
+    }
+  }
+
+  function updateNoteDot(notesEl, hasNote) {
+    const labelSpan = notesEl.querySelector(".card-notes-label > span:first-child");
+    if (!labelSpan) return;
+    const existing = labelSpan.querySelector(".note-dot");
+    if (hasNote && !existing) {
+      const dot = document.createElement("span");
+      dot.className = "note-dot";
+      dot.title = "Has a note";
+      labelSpan.appendChild(dot);
+    } else if (!hasNote && existing) {
+      existing.remove();
+    }
+  }
+
+  async function saveNote(notesEl) {
+    const slug = notesEl.dataset.noteSlug;
+    const input = notesEl.querySelector("[data-note-input]");
+    const statusEl = notesEl.querySelector("[data-note-status]");
+    const btn = notesEl.querySelector("[data-note-save]");
+    if (!slug || !input) return;
+
+    const text = input.value.trim();
+    const now = new Date().toISOString().replace(/\.\d{3}Z$/, "Z");
+
+    // Optimistic local cache first, so the note survives an immediate reload.
+    if (text) notesCache[slug] = { text, updated_at: now };
+    else delete notesCache[slug];
+    saveNotesCache();
+    updateNoteDot(notesEl, !!text);
+
+    setStatus(statusEl, "Saving…", "");
+    if (btn) btn.disabled = true;
+    try {
+      const resp = await fetch("/api/comment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slug, text }),
+      });
+      let data = {};
+      try { data = await resp.json(); } catch (_) { /* non-JSON body */ }
+      if (resp.ok && data.ok) {
+        if (data.updated_at && notesCache[slug]) {
+          notesCache[slug].updated_at = data.updated_at;
+          saveNotesCache();
+        }
+        setStatus(statusEl, "Saved ✓", "ok");
+      } else {
+        const why = (data && data.error) ? data.error : `HTTP ${resp.status}`;
+        console.warn(`[note] save failed: ${why}`);
+        setStatus(statusEl, "Saved locally · sync failed", "err");
+      }
+    } catch (err) {
+      console.warn(`[note] network error: ${err.message}`);
+      setStatus(statusEl, "Saved locally · offline", "err");
+    } finally {
+      if (btn) btn.disabled = false;
+    }
+  }
+
+  // Click the Save button.
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest("[data-note-save]");
+    if (!btn) return;
+    const notesEl = btn.closest(".card-notes");
+    if (notesEl) saveNote(notesEl);
+  });
+
+  // Cmd/Ctrl+Enter inside a note textarea also saves.
+  document.addEventListener("keydown", (e) => {
+    if (!((e.metaKey || e.ctrlKey) && e.key === "Enter")) return;
+    const input = e.target.closest("[data-note-input]");
+    if (!input) return;
+    const notesEl = input.closest(".card-notes");
+    if (notesEl) { e.preventDefault(); saveNote(notesEl); }
   });
 })();
 

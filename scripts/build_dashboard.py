@@ -123,6 +123,7 @@ def main():
     images = load_json(DATA / "artist_images.json", {}) or {}
     discoveries_blob = load_json(DATA / "discoveries.json", {"candidates": []}) or {}
     events_blob = load_json(DATA / "events.json", {"events": []}) or {}
+    notes_blob = load_json(DATA / "notes.json", {"by_slug": {}}) or {}
 
     artists = merge_artist_images(artists_raw, images)
     discoveries = sort_discoveries_for_display(discoveries_blob.get("candidates", []))
@@ -148,6 +149,7 @@ def main():
     artists_js = f"const ARTISTS = {json.dumps(artists, indent=2, ensure_ascii=False)};"
     discoveries_js = f"window.DISCOVERIES = {json.dumps(discoveries, indent=2, ensure_ascii=False)};"
     events_js = f"window.EVENTS = {json.dumps(events, indent=2, ensure_ascii=False)};"
+    notes_js = f"window.NOTES = {json.dumps(notes_blob.get('by_slug', {}), ensure_ascii=False)};"
 
     # Substitute placeholders
     out = template
@@ -155,6 +157,7 @@ def main():
     out = out.replace("/* {{ARTISTS_DATA}} */", artists_js)
     out = out.replace("/* {{DISCOVERIES_DATA}} */", discoveries_js)
     out = out.replace("/* {{EVENTS_DATA}} */", events_js)
+    out = out.replace("/* {{NOTES_DATA}} */", notes_js)
     out = out.replace("{{LAST_REVIEWED}}", str(date.today()).replace("-", "·"))
     out = out.replace("{{HIDDEN_DIRECTORY}}", str(len(needs_research_dir)))
     out = out.replace("{{HIDDEN_CANDIDATES}}", str(len(needs_research_cand)))
