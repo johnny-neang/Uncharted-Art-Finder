@@ -2955,6 +2955,35 @@
         "via": "dashboard",
         "at": "2026-05-29T17:44:03+00:00"
       }
+    },
+    {
+      "slug": "valenzuela",
+      "name": "Bryan Valenzuela",
+      "url": "http://www.bryanvalenzuela.com/murals",
+      "source_name": "demoted from directory",
+      "image": {
+        "svg": "valenzuela_text",
+        "label": "Text-figure"
+      },
+      "thumbs": [
+        {
+          "svg": "valenzuela_text",
+          "label": "Text-figure"
+        },
+        {
+          "svg": "valenzuela_orbs",
+          "label": "G1C glass"
+        }
+      ],
+      "first_seen": "2026-05-29",
+      "status": "pending",
+      "manual_override": "watch",
+      "demoted_from_directory": {
+        "n_original": 1,
+        "tier_original": 1,
+        "via": "dashboard",
+        "at": "2026-05-29T19:07:58+00:00"
+      }
     }
   ],
   "rejected_slugs": [
