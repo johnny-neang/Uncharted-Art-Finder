@@ -1,0 +1,17 @@
+{
+  "_doc": "Explicit photo URLs for slugs where auto-crawl can't find 2 unique photos. The pipeline tries these first per slug and skips auto-crawl when 2+ URLs successfully fetch. URLs must point at real photographs of the artist's work — no AI-generated, no interpretive renderings.",
+  "by_slug": {
+    "king": [
+      "https://www.wideopenwalls.com/wp-content/uploads/fly-images/151/finished-mural-400x260-c.jpg",
+      "https://www.wideopenwalls.com/wp-content/uploads/fly-images/512/WOW-2018-Jaya-PS-W-Web-Ready-1-400x260-c.jpg"
+    ],
+    "padilla": [
+      "https://www.wideopenwalls.com/wp-content/uploads/fly-images/501/WOW-2018-Anthony-Padilla-aka-Kinetik-Ideas-PS-W-Web-Ready-400x260-c.jpg",
+      "https://brandedarts.com/wp-content/uploads/2018/10/40428685_330966014146260_2608906089281880064_n.jpg"
+    ],
+    "hart": [
+      "https://media.managedartwork.com/SculptureSite/site/images/hart-3.jpg",
+      "https://vossgallery.art/cdn/shop/files/Gale-Hart-Blockhead-2025-Paper-Mounted-on-Panel-with-Varnish-12x9in-250USD-Framed-Voss-Gallery-San-Francisco.jpg"
+    ]
+  }
+}

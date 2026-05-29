@@ -124,9 +124,26 @@ def main():
     discoveries_blob = load_json(DATA / "discoveries.json", {"candidates": []}) or {}
     events_blob = load_json(DATA / "events.json", {"events": []}) or {}
 
-    artists = merge_artist_images(artists_raw, images)
-    discoveries = sort_discoveries_for_display(discoveries_blob.get("candidates", []))
+    artists_with_imgs = merge_artist_images(artists_raw, images)
+    discoveries_sorted = sort_discoveries_for_display(discoveries_blob.get("candidates", []))
     events = filter_and_sort_events(events_blob.get("events", []))
+
+    # Exclusion rule: only entries with 2+ real photo thumbs are rendered.
+    # Hiding is preferred over showing a card with missing/placeholder photos
+    # — better to leave an artist invisible until both photos exist than to
+    # present them incompletely. Underlying JSON is untouched.
+    def _real_thumb_count(entry):
+        return sum(
+            1 for t in (entry.get("thumbs") or [])
+            if (t.get("data_uri") or t.get("img"))
+            and not t.get("placeholder")
+            and not t.get("svg")
+        )
+
+    artists = [a for a in artists_with_imgs if _real_thumb_count(a) >= 2]
+    discoveries = [c for c in discoveries_sorted if _real_thumb_count(c) >= 2]
+    hidden_artists = [a["slug"] for a in artists_with_imgs if _real_thumb_count(a) < 2]
+    hidden_candidates = [c["slug"] for c in discoveries_sorted if _real_thumb_count(c) < 2]
 
     # Render the JS data blocks
     artists_js = f"const ARTISTS = {json.dumps(artists, indent=2, ensure_ascii=False)};"
@@ -140,13 +157,19 @@ def main():
     out = out.replace("/* {{DISCOVERIES_DATA}} */", discoveries_js)
     out = out.replace("/* {{EVENTS_DATA}} */", events_js)
     out = out.replace("{{LAST_REVIEWED}}", str(date.today()).replace("-", "·"))
+    out = out.replace("{{HIDDEN_DIRECTORY}}", str(len(hidden_artists)))
+    out = out.replace("{{HIDDEN_CANDIDATES}}", str(len(hidden_candidates)))
 
     # Write
     out_path = ROOT / args.out if not args.out.startswith("/") else type(ROOT)(args.out)
     out_path.write_text(out)
     logger.info("[done] wrote %s (%d KB)", out_path, len(out) // 1024)
-    logger.info("       artists=%d  discoveries=%d  events=%d",
-                len(artists), len(discoveries), len(events))
+    logger.info("       directory: shown=%d hidden=%d  | candidates: shown=%d hidden=%d  | events=%d",
+                len(artists), len(hidden_artists), len(discoveries), len(hidden_candidates), len(events))
+    if hidden_artists:
+        logger.info("       hidden directory: %s", ", ".join(hidden_artists))
+    if hidden_candidates:
+        logger.info("       hidden candidates (first 10): %s", ", ".join(hidden_candidates[:10]))
 
 
 if __name__ == "__main__":

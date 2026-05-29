@@ -137,11 +137,63 @@ def fetch_image(url: str, target_w: int = 480) -> tuple[str, int] | None:
     return to_data_uri(raw, mime), len(raw) // 1024
 
 
+_SUBPAGE_HINTS = (
+    "/work", "/works", "/portfolio", "/gallery", "/projects",
+    "/press", "/news", "/exhibitions", "/murals", "/installations",
+    "/portfolio_page/", "/artwork", "/pieces", "/series",
+)
+# Anchor link text we treat as nav (don't follow into for image-hunting).
+_SUBPAGE_TEXT_BLOCKLIST = (
+    "home", "about", "contact", "subscribe", "donate", "shop",
+    "cart", "checkout", "login", "sign in", "search",
+)
+
+
+def _find_subpage_links(html: str, base_url: str, max_links: int = 5) -> list[str]:
+    """Find same-host anchors whose path looks like a richer-image page
+    (gallery / portfolio / individual work). Returns up to `max_links` URLs.
+    """
+    from bs4 import BeautifulSoup
+    from urllib.parse import urljoin, urlparse
+    soup = BeautifulSoup(html, "html.parser")
+    base_host = urlparse(base_url).netloc
+    base_path = urlparse(base_url).path.rstrip("/")
+
+    out: list[str] = []
+    seen: set[str] = set()
+    for a in soup.find_all("a", href=True):
+        if len(out) >= max_links:
+            break
+        href = a["href"]
+        if not href or href.startswith("#") or href.startswith("mailto:") or href.startswith("tel:"):
+            continue
+        full = urljoin(base_url, href)
+        full_no_q = full.split("#")[0]
+        if full_no_q in seen:
+            continue
+        seen.add(full_no_q)
+        parts = urlparse(full)
+        if parts.netloc != base_host:
+            continue
+        if parts.path.rstrip("/") == base_path:
+            continue  # link back to current page
+        path_low = parts.path.lower()
+        if not any(h in path_low for h in _SUBPAGE_HINTS):
+            continue
+        text_low = (a.get_text() or "").strip().lower()
+        if text_low in _SUBPAGE_TEXT_BLOCKLIST:
+            continue
+        out.append(full)
+    return out
+
+
 def fetch_thumbs(
     response,
     base_url: str,
     want: int = 2,
     existing: list[dict] | None = None,
+    follow_links: bool = False,
+    max_subpages: int = 5,
 ) -> list[dict]:
     """Gather up to `want` unique image thumbs from a page response.
 
@@ -151,8 +203,14 @@ def fetch_thumbs(
         e.g. /image.jpg vs /image.jpg?w=600 that resolve to identical bytes)
 
     `existing` (e.g. thumbs already on a candidate) is used to seed both
-    dedup sets — that's the bug fix that prevented the QC step from
-    storing the same image twice.
+    dedup sets — bugfix that prevented storing the same image twice.
+
+    If `follow_links=True` and we still need more thumbs after the primary
+    page, walks up to `max_subpages` same-host sub-pages whose path hints
+    they have richer image content (`/work`, `/portfolio`, `/gallery`,
+    `/projects`, `/press`, individual-work URLs). Each sub-page is fetched
+    once and its og:image + body images are folded into the same dedup
+    sets. Depth is capped at 1 — no recursion into sub-sub-pages.
 
     Returns a list of *new* thumbs (length ≤ want). Each dict has shape
     {data_uri, source_url, kb, label}.
@@ -181,15 +239,32 @@ def fetch_thumbs(
         label = "primary" if (not existing and not out) else "secondary"
         out.append({"data_uri": uri, "source_url": img_url, "kb": kb, "label": label})
 
-    og = extract_og_meta(response.text, base_url)
-    if og.get("og_image"):
-        _try(og["og_image"])
-    if len(out) < want:
-        for img_url in extract_image_candidates(response.text, base_url, max_count=12):
+    def _harvest_page(html: str, page_url: str) -> None:
+        og = extract_og_meta(html, page_url)
+        if og.get("og_image"):
+            _try(og["og_image"])
+        if len(out) >= want:
+            return
+        for img_url in extract_image_candidates(html, page_url, max_count=12):
             if len(out) >= want:
                 break
             _try(img_url)
             polite_delay(0.2)
+
+    _harvest_page(response.text, base_url)
+
+    if follow_links and len(out) < want:
+        sublinks = _find_subpage_links(response.text, base_url, max_links=max_subpages)
+        for sub in sublinks:
+            if len(out) >= want:
+                break
+            logger.info("  follow %s", sub[:90])
+            sub_resp = get(sub)
+            if not sub_resp:
+                continue
+            _harvest_page(sub_resp.text, sub)
+            polite_delay(0.5)
+
     return out
 
 

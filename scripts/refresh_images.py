@@ -1,13 +1,25 @@
-"""Refresh roster images: try a series of pages per artist, embed first 2 valid images."""
+"""Refresh roster images: try a series of pages per artist, embed first 2 valid images.
+
+Two stages per artist:
+  1. If data/manual_artist_photos.json has 2+ URLs for this slug, fetch
+     those directly (skipping the auto-crawl). Used for artists with
+     unreachable primaryUrls.
+  2. Otherwise walk the configured PAGES_BY_SLUG list, using
+     common.fetch_thumbs with follow_links=True (multi-page crawl) so
+     each page contributes unique thumbs. URL + content dedup catches
+     the same image being served from og:image and a body <img> tag.
+"""
 from __future__ import annotations
 
 import argparse
 from datetime import date
 
 from .common import (
-    DATA, extract_image_candidates, fetch_image, get, load_json, logger,
+    DATA, fetch_image, fetch_thumbs, get, load_json, logger,
     polite_delay, save_json, setup_logging,
 )
+
+MANUAL_PHOTOS_PATH = "manual_artist_photos.json"
 
 # Per-artist scrape pages. For each canonical roster artist,
 # try these in order. Built from the Field Brief 014 source notes.
@@ -104,8 +116,35 @@ PAGES_BY_SLUG: dict[str, list[str]] = {
 }
 
 
+def _fetch_manual_photos(slug: str, urls: list[str], target: int = 2) -> list[dict]:
+    """Fetch + embed each URL listed under this slug in manual_artist_photos.
+    Returns up to `target` successfully-fetched image dicts. No dedup needed
+    — the user curated the list."""
+    out: list[dict] = []
+    for u in urls:
+        if len(out) >= target:
+            break
+        logger.info("  manual: %s", u[:90])
+        res = fetch_image(u)
+        if not res:
+            logger.info("    fetch failed")
+            continue
+        uri, kb = res
+        out.append({"data_uri": uri, "source_url": u, "source_page": "manual",
+                    "kb": kb, "label": "primary" if not out else "secondary"})
+        logger.info("    ok (%dKB)", kb)
+        polite_delay(0.2)
+    return out
+
+
 def refresh_one(slug: str, pages: list[str], target: int = 2) -> list[dict]:
-    """Try each page in order, embed the first `target` quality images."""
+    """Walk the configured pages, gathering up to `target` *unique* thumbs.
+
+    Uses common.fetch_thumbs with follow_links=True so each page contributes
+    new images via sub-page crawling, while URL + content dedup catches the
+    same image being served from multiple paths (the bug that put the same
+    image at both [0] and [1] for 6 directory artists).
+    """
     embedded: list[dict] = []
     for page in pages:
         if len(embedded) >= target:
@@ -114,21 +153,13 @@ def refresh_one(slug: str, pages: list[str], target: int = 2) -> list[dict]:
         r = get(page)
         if not r:
             continue
-        for img_url in extract_image_candidates(r.text, page):
-            if len(embedded) >= target:
-                break
-            logger.info("  try %s", img_url[:90])
-            res = fetch_image(img_url)
-            if not res:
-                continue
-            uri, kb = res
-            embedded.append({
-                "data_uri": uri,
-                "source_url": img_url,
-                "source_page": page,
-                "kb": kb,
-            })
-            logger.info("  ok (%dKB)", kb)
+        fresh = fetch_thumbs(
+            r, page, want=target - len(embedded),
+            existing=embedded, follow_links=True, max_subpages=3,
+        )
+        for t in fresh:
+            t["source_page"] = page
+        embedded.extend(fresh)
         polite_delay()
     return embedded
 
@@ -144,24 +175,42 @@ def main():
 
     artists = load_json(DATA / "artists.json", []) or []
     cache = load_json(DATA / "artist_images.json", {}) or {}
+    manual = (load_json(DATA / MANUAL_PHOTOS_PATH, {}) or {}).get("by_slug", {})
 
     targets = [a for a in artists if not args.only or a["slug"] in args.only]
 
-    report = {"refreshed": [], "kept": [], "missed": []}
+    report = {"refreshed": [], "kept": [], "missed": [], "manual": []}
     for a in targets:
         slug = a["slug"]
-        pages = PAGES_BY_SLUG.get(slug, [])
-        if not pages:
-            logger.warning("no pages configured for %s", slug)
-            continue
         cached = cache.get(slug, {}).get("images", [])
-        if cached and len(cached) >= 2 and not args.force:
-            logger.info("=== %s (cached %d) ===", a["name"], len(cached))
+        # Determine whether existing cache is good enough to skip
+        has_2_unique = (
+            len(cached) >= 2
+            and len({c.get("data_uri", "")[:200] for c in cached}) >= 2
+        )
+        if has_2_unique and not args.force:
+            logger.info("=== %s (cached %d unique) ===", a["name"], len(cached))
             report["kept"].append(slug)
             continue
 
         logger.info("=== %s ===", a["name"])
-        images = refresh_one(slug, pages)
+
+        # Stage 1: manual override
+        manual_urls = manual.get(slug) or []
+        images: list[dict] = []
+        if len(manual_urls) >= 2:
+            images = _fetch_manual_photos(slug, manual_urls, target=2)
+            if len(images) >= 2:
+                report["manual"].append(slug)
+
+        # Stage 2: configured pages auto-crawl (if manual didn't yield 2)
+        if len(images) < 2:
+            pages = PAGES_BY_SLUG.get(slug, [])
+            if pages:
+                images.extend(refresh_one(slug, pages, target=2 - len(images)))
+            elif not manual_urls:
+                logger.warning("no pages or manual URLs configured for %s", slug)
+
         if images:
             cache[slug] = {"name": a["name"], "images": images, "refreshed": str(date.today())}
             save_json(DATA / "artist_images.json", cache)
@@ -169,8 +218,9 @@ def main():
         else:
             report["missed"].append(slug)
 
-    logger.info("[done] refreshed=%d kept=%d missed=%d",
-                len(report["refreshed"]), len(report["kept"]), len(report["missed"]))
+    logger.info("[done] refreshed=%d kept=%d missed=%d manual=%d",
+                len(report["refreshed"]), len(report["kept"]),
+                len(report["missed"]), len(report["manual"]))
     save_json(DATA / "_refresh_report.json", report)
     return report
 

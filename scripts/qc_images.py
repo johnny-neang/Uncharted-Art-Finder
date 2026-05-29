@@ -25,22 +25,46 @@ from __future__ import annotations
 import argparse
 
 from .common import (
-    DATA, fetch_thumbs, get, load_json, logger, save_json, setup_logging,
+    DATA, fetch_image, fetch_thumbs, get, load_json, logger, polite_delay,
+    save_json, setup_logging,
 )
+
+MANUAL_PHOTOS_PATH = "manual_artist_photos.json"
 
 
 def try_refetch_thumbs(candidate: dict, want: int = 2, existing: list[dict] | None = None) -> list[dict]:
     """Refetch the candidate URL and gather up to `want` *unique* images.
 
-    Uses the shared fetch_thumbs helper. Pass `existing` so the dedup
-    catches images already on the candidate (the bug that caused 58/65
-    candidates to have the same image twice — local dedup didn't know
-    about the og:image we'd already stored at ingest time).
+    Uses the shared fetch_thumbs helper with follow_links=True so sub-pages
+    (e.g. /work, /portfolio, individual artwork URLs linked from the bio
+    page) contribute additional unique images. Pass `existing` so the dedup
+    catches images already on the candidate.
     """
     url = candidate.get("url")
     if not url:
         return []
-    return fetch_thumbs(get(url), url, want=want, existing=existing or [])
+    return fetch_thumbs(
+        get(url), url, want=want,
+        existing=existing or [], follow_links=True, max_subpages=5,
+    )
+
+
+def fetch_manual_thumbs(urls: list[str], target: int = 2) -> list[dict]:
+    """Fetch the user-curated URLs in order. No dedup — the user chose them."""
+    out: list[dict] = []
+    for u in urls:
+        if len(out) >= target:
+            break
+        logger.info("  manual: %s", u[:90])
+        res = fetch_image(u)
+        if not res:
+            logger.info("    fetch failed")
+            continue
+        uri, kb = res
+        out.append({"data_uri": uri, "source_url": u, "kb": kb,
+                    "label": "primary" if not out else "secondary"})
+        polite_delay(0.2)
+    return out
 
 
 def candidate_thumbs(c: dict) -> list[dict]:
@@ -81,8 +105,10 @@ def main():
     if not candidates:
         logger.info("[qc] no candidates")
         return
+    manual = (load_json(DATA / MANUAL_PHOTOS_PATH, {}) or {}).get("by_slug", {})
 
-    refetched_thumbs_added = 0
+    refetched = 0
+    manual_used = 0
     cleared_dupes = 0
     skipped = 0
     for c in candidates:
@@ -90,6 +116,7 @@ def main():
             skipped += 1
             continue
 
+        logger.info("=== %s ===", c["name"])
         existing = candidate_thumbs(c)
         existing_real = [t for t in existing if not t.get("placeholder")]
 
@@ -98,30 +125,42 @@ def main():
             urls = {t.get("source_url", "") for t in existing_real if t.get("source_url")}
             uris = {(t.get("data_uri") or t.get("img") or "")[:200] for t in existing_real}
             if len(urls) < len(existing_real) or len(uris) < len(existing_real):
-                logger.info("[qc-dedupe] %s had duplicate thumbs; clearing for refetch", c["name"])
+                logger.info("[qc-dedupe] %s had duplicate thumbs; clearing", c["name"])
                 existing_real = existing_real[:1]
                 cleared_dupes += 1
 
-        # Refetch up to 2 unique thumbs (the helper dedups against existing).
         new_thumbs: list[dict] = list(existing_real)
+
+        # Stage 1: manual override (per-slug user-curated URLs)
+        manual_urls = manual.get(c.get("slug")) or []
+        if manual_urls and len(new_thumbs) < 2:
+            fresh_manual = fetch_manual_thumbs(manual_urls, target=2 - len(new_thumbs))
+            new_thumbs.extend(fresh_manual)
+            if fresh_manual:
+                manual_used += 1
+
+        # Stage 2: auto-crawl with multi-page link following
         if not args.no_refetch and len(new_thumbs) < 2:
             fresh = try_refetch_thumbs(c, want=2 - len(new_thumbs), existing=new_thumbs)
             new_thumbs.extend(fresh)
             if fresh:
-                refetched_thumbs_added += len(fresh)
-                logger.info("[qc-refetched] %s (+%d real thumb(s))", c["name"], len(fresh))
+                refetched += len(fresh)
+                logger.info("  +%d unique thumb(s)", len(fresh))
 
-        # No interpretive placeholders. Empty list = "no photo on file"
-        # treatment. Reassign labels based on final position.
         for i, t in enumerate(new_thumbs):
             t["label"] = "primary" if i == 0 else "secondary"
         c["thumbs"] = new_thumbs
         c["image"] = new_thumbs[0] if new_thumbs else None
 
     save_json(DATA / "discoveries.json", discoveries)
-    real = sum(1 for c in candidates if c.get("thumbs"))
-    logger.info("[qc-done] refetched=%d cleared_dupes=%d skipped=%d  coverage=%d/%d",
-                refetched_thumbs_added, cleared_dupes, skipped, real, len(candidates))
+    counts = {0: 0, 1: 0, 2: 0}
+    for c in candidates:
+        n = len(c.get("thumbs") or [])
+        counts[min(n, 2)] = counts.get(min(n, 2), 0) + 1
+    logger.info("[qc-done] refetched=%d manual=%d cleared_dupes=%d skipped=%d",
+                refetched, manual_used, cleared_dupes, skipped)
+    logger.info("[qc-coverage] 0-thumb=%d 1-thumb=%d 2-thumb=%d (of %d)",
+                counts[0], counts[1], counts[2], len(candidates))
 
 
 if __name__ == "__main__":

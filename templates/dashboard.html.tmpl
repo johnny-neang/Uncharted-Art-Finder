@@ -326,11 +326,10 @@ body {
 /* ---------- Thumb grid ---------- */
 .thumb-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: var(--s2);
   margin: var(--s1) 0 var(--s4);
 }
-.thumb-grid:empty { display: none; margin: 0; }
 .thumb {
   position: relative;
   aspect-ratio: 4 / 3;
@@ -340,15 +339,6 @@ body {
 }
 .thumb svg, .thumb img { width: 100%; height: 100%; display: block; }
 .thumb img { object-fit: cover; object-position: center; }
-.thumb-empty {
-  width: 100%; height: 100%;
-  display: flex; align-items: center; justify-content: center;
-  background: var(--paper-2);
-  color: var(--ink-3);
-  font-family: var(--font-label); font-weight: 500;
-  font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
-  font-style: normal;
-}
 .thumb-label {
   position: absolute;
   left: var(--s2); bottom: var(--s2);
@@ -459,6 +449,28 @@ body {
   letter-spacing: 0; text-transform: none; color: var(--ink);
 }
 
+
+/* ---------- Hidden-counter footer (entries excluded for lacking 2 real photos) ---------- */
+.hidden-counter {
+  margin: var(--s4) 0 var(--s5);
+  padding: var(--s3) var(--s4);
+  border: 1px dashed var(--rule);
+  background: var(--paper-2);
+  font-family: var(--font-label); font-weight: 500;
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-3);
+  text-align: center;
+}
+.hidden-counter code {
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink-2);
+  background: var(--paper);
+  padding: 1px 6px;
+  border: 1px solid var(--rule-soft);
+}
 
 /* ---------- Recent Candidates (rendered with unified .card style) ---------- */
 .discoveries-section { padding: var(--s8) 0 0; }
@@ -697,6 +709,8 @@ body {
 
   <div class="empty" id="empty">Nothing matches that filter.</div>
 
+  <p class="hidden-counter" id="directory-hidden-counter">{{HIDDEN_DIRECTORY}} entries hidden — pending a second real photograph (add URLs to <code>data/manual_artist_photos.json</code>)</p>
+
   <!-- Recent Candidates section (everything not yet promoted to the Directory) -->
   <section id="discoveries-section" class="discoveries-section" hidden>
     <div class="section-head">
@@ -725,6 +739,7 @@ body {
     </div>
     <div class="grid" id="discoveryGrid"></div>
     <div class="discovery-empty-state" id="discoveryEmpty">No candidates match this filter.</div>
+    <p class="hidden-counter" id="candidates-hidden-counter">{{HIDDEN_CANDIDATES}} candidates hidden — pending a second real photograph (add URLs to <code>data/manual_artist_photos.json</code>)</p>
   </section>
 
   <!-- Events section -->
@@ -793,18 +808,11 @@ const REPO = "johnny-neang/Uncharted-Art-Finder";
 // ----- Unified card renderer (used for both Directory and Recent Candidates) -----
 
 function renderThumb(t) {
-  // Only real fetched photographs render. Three field names supported
-  // for backward compatibility:
-  //   - candidate thumbs (from qc_images / ingest_seeds): {data_uri, ...}
-  //   - cached directory photos (build_dashboard.merge_artist_images): {img, ...}
-  // SVG-key thumbs (the old hand-drawn illustrations) intentionally do NOT
-  // render here — we compile information about each artist, we don't
-  // interpret or depict their work. Empty slots get a "no photo" treatment.
-  const src = (t && (t.data_uri || t.img)) || null;
-  if (src) {
-    return `<img src="${src}" alt="${(t.label || '').replace(/"/g, '&quot;')}" loading="lazy">`;
-  }
-  return `<div class="thumb-empty">No photo on file</div>`;
+  // Build-time exclusion guarantees every rendered card has 2 real photos,
+  // so this function always returns an <img>. data_uri (candidate path) or
+  // img (cached directory path).
+  const src = (t && (t.data_uri || t.img)) || "";
+  return `<img src="${src}" alt="${(t.label || '').replace(/"/g, '&quot;')}" loading="lazy">`;
 }
 
 function actionButton(item) {
