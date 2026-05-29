@@ -17,13 +17,14 @@ from datetime import date
 from contextlib import nullcontext
 
 from .common import (
-    DATA, fetch_image, fetch_instagram_thumbs, fetch_thumbs,
-    find_wayback_snapshot, get, load_json, logger, polite_delay,
+    DATA, fetch_image, fetch_instagram_apify_backup, fetch_instagram_thumbs,
+    fetch_thumbs, find_wayback_snapshot, get, load_json, logger, polite_delay,
     rendered_session, save_json, setup_logging,
 )
 
 MANUAL_PHOTOS_PATH = "manual_artist_photos.json"
 INSTAGRAM_HANDLES_PATH = "instagram_handles.json"
+APIFY_ATTEMPTS_PATH = "apify_attempts.json"
 
 # Per-artist scrape pages. For each canonical roster artist,
 # try these in order. Built from the Field Brief 014 source notes.
@@ -179,6 +180,9 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("--only", nargs="*", help="restrict to specific slugs")
     p.add_argument("--force", action="store_true", help="ignore cache and refetch")
+    p.add_argument("--apify-retry", action="store_true",
+                   help="let the paid Apify backup re-attempt artists it has already "
+                        "tried (default: each artist is tried at most once)")
     p.add_argument("--log", default="INFO")
     args = p.parse_args()
 
@@ -188,6 +192,10 @@ def main():
     cache = load_json(DATA / "artist_images.json", {}) or {}
     manual = (load_json(DATA / MANUAL_PHOTOS_PATH, {}) or {}).get("by_slug", {})
     ig_handles = (load_json(DATA / INSTAGRAM_HANDLES_PATH, {}) or {}).get("by_slug", {})
+    # Ledger of slugs we've already spent a paid Apify call on, so the backup
+    # fires at most once per artist. {"by_slug": {slug: "YYYY-MM-DD"}}.
+    apify_attempts = (load_json(DATA / APIFY_ATTEMPTS_PATH, {}) or {}).get("by_slug", {})
+    apify_attempts_dirty = False
 
     targets = [a for a in artists if not args.only or a["slug"] in args.only]
 
@@ -198,7 +206,7 @@ def main():
     browser_ctx = rendered_session() if needs_render else nullcontext(None)
 
     with browser_ctx as rf:
-        report = {"refreshed": [], "kept": [], "missed": [], "manual": []}
+        report = {"refreshed": [], "kept": [], "missed": [], "manual": [], "apify": []}
         for a in targets:
             slug = a["slug"]
             cached = cache.get(slug, {}).get("images", [])
@@ -221,11 +229,13 @@ def main():
                 if len(images) >= 2:
                     report["manual"].append(slug)
 
-            # Stage 2: Instagram (if a handle is configured for this slug)
+            # Stage 2: Instagram, free tier only (Playwright render). The paid
+            # Apify tier is deferred to Stage 4 so it never runs while a free
+            # source below might still find the photo.
             ig_handle = ig_handles.get(slug)
             if ig_handle and len(images) < 2:
-                ig_thumbs = fetch_instagram_thumbs(ig_handle, rf, want=2 - len(images), existing=images)
-                images.extend(ig_thumbs)
+                images.extend(fetch_instagram_thumbs(
+                    ig_handle, rf, want=2 - len(images), existing=images, allow_apify=False))
 
             # Stage 3: configured pages auto-crawl (with Playwright fallback).
             # Falls back to the artist's primaryUrl when no per-slug pages
@@ -238,6 +248,25 @@ def main():
                 elif not manual_urls and not ig_handle:
                     logger.warning("no pages, manual URLs, or IG handle for %s", slug)
 
+            # Stage 4: Apify IG scraper (paid) — true last resort, reached only
+            # after every free source above came up short. Kept deliberately
+            # sparing: it fires at most ONCE per artist (tracked in
+            # data/apify_attempts.json) and never for an artist whose cache is
+            # already complete — so it never re-runs on existing artists. Pass
+            # --apify-retry to deliberately re-attempt stuck artists. No-ops
+            # silently when the APIFY env var is unset.
+            already_tried_apify = slug in apify_attempts
+            if (ig_handle and len(images) < 2 and not has_2_unique
+                    and (args.apify_retry or not already_tried_apify)):
+                images.extend(fetch_instagram_apify_backup(
+                    ig_handle, want=2 - len(images), existing=images))
+                apify_attempts[slug] = str(date.today())  # record regardless of outcome
+                apify_attempts_dirty = True
+                report["apify"].append(slug)
+            elif ig_handle and len(images) < 2 and already_tried_apify:
+                logger.info("  apify: %s tried %s already — skipping paid retry "
+                            "(use --apify-retry to force)", slug, apify_attempts.get(slug))
+
             if images:
                 cache[slug] = {"name": a["name"], "images": images, "refreshed": str(date.today())}
                 save_json(DATA / "artist_images.json", cache)
@@ -245,9 +274,14 @@ def main():
             else:
                 report["missed"].append(slug)
 
-    logger.info("[done] refreshed=%d kept=%d missed=%d manual=%d",
+    if apify_attempts_dirty:
+        save_json(DATA / APIFY_ATTEMPTS_PATH, {"by_slug": apify_attempts})
+
+    logger.info("[done] refreshed=%d kept=%d missed=%d manual=%d apify_paid=%d",
                 len(report["refreshed"]), len(report["kept"]),
-                len(report["missed"]), len(report["manual"]))
+                len(report["missed"]), len(report["manual"]), len(report["apify"]))
+    if report["apify"]:
+        logger.info("[apify] paid backup fired for: %s", ", ".join(report["apify"]))
     save_json(DATA / "_refresh_report.json", report)
     return report
 

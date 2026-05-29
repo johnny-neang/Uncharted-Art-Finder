@@ -10,6 +10,10 @@ venv/
 fetch.log
 data/_*.json
 .DS_Store
+.playwright-mcp/
+
+# Secrets / API tokens (e.g. APIFY for the Instagram backup tier)
+.env
 
 # Local Claude Code settings (user-specific permissions, etc.)
 # but DO commit project-level slash commands

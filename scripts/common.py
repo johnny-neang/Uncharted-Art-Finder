@@ -17,6 +17,33 @@ DATA = ROOT / "data"
 TEMPLATES = ROOT / "templates"
 DIGESTS = DATA / "digests"
 
+
+def _load_dotenv() -> None:
+    """Load KEY=VALUE pairs from a gitignored repo-root .env into os.environ
+    (without overwriting vars already present). Lets secrets like APIFY work
+    no matter how the pipeline is launched — interactive shell, cron, or a
+    tool that doesn't inherit the user's exported environment.
+    """
+    import os
+    env_path = ROOT / ".env"
+    if not env_path.exists():
+        return
+    try:
+        for line in env_path.read_text().splitlines():
+            line = line.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, _, val = line.partition("=")
+            key = key.strip()
+            val = val.strip().strip('"').strip("'")
+            if key and key not in os.environ:
+                os.environ[key] = val
+    except Exception:
+        pass  # never let a malformed .env break the pipeline
+
+
+_load_dotenv()
+
 USER_AGENT = (
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
     "(KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36"
@@ -142,64 +169,172 @@ def fetch_image(url: str, target_w: int = 480, timeout: int = 60) -> tuple[str, 
     return to_data_uri(raw, mime), len(raw) // 1024
 
 
-def fetch_instagram_thumbs(handle: str, rf, want: int = 2, existing: list[dict] | None = None) -> list[dict]:
-    """Render an artist's public IG profile via Playwright and harvest
-    up to `want` unique post-grid images.
+def _ig_hash(s):
+    """Stable content hash for an IG image data URI (dedup key)."""
+    import hashlib
+    return hashlib.md5(s.encode("utf-8", errors="ignore")).hexdigest() if s else ""
 
-    Confirmed working as of 2026-05-28 with Playwright + the existing
-    rendered_session anti-detection (UA spoof + webdriver mask + viewport).
-    IG serves the visible grid for logged-out users — the modal login
-    prompt overlays the page but the underlying HTML is fully rendered.
 
-    Filters out the small profile-pic thumbnail (t51.2885-19 endpoint,
-    ~110x110) by relying on fetch_image's existing min-size check.
-    """
-    if rf is None or not handle:
-        return []
-    handle = handle.lstrip("@").strip()
-    if not handle:
-        return []
+def _ig_seen(existing):
+    """Build the (seen_urls, seen_data) dedup sets from already-collected
+    thumbs so a later tier never re-adds a photo an earlier tier found."""
+    existing = existing or []
+    seen_urls = {t.get("source_url", "") for t in existing if t.get("source_url")}
+    seen_data = {_ig_hash(t.get("data_uri", "")) for t in existing if t.get("data_uri")}
+    return seen_urls, seen_data
+
+
+def _ig_collect(candidate_urls, want, existing, out, seen_urls, seen_data, hashfn):
+    """Shared: fetch each candidate IG image URL, dedup, append to `out`."""
+    for src in candidate_urls:
+        if len(out) >= want:
+            break
+        if not src or src in seen_urls:
+            continue
+        seen_urls.add(src)
+        res = fetch_image(src)
+        if not res:
+            continue
+        uri, kb = res
+        h = hashfn(uri)
+        if h in seen_data:
+            continue
+        seen_data.add(h)
+        out.append({
+            "data_uri": uri, "source_url": src, "kb": kb,
+            "label": "primary" if (not existing and len(out) == 0) else "secondary",
+        })
+
+
+def _fetch_instagram_playwright(handle, rf, want, existing, seen_urls, seen_data, out, hashfn):
+    """Tier 1 (free): render the public IG profile via Playwright and harvest
+    grid images from the post-JS DOM. IG serves the logged-out grid even
+    behind the modal login prompt."""
+    if rf is None:
+        return
     url = f"https://www.instagram.com/{handle}/"
     response = rf.fetch(url, wait_until="domcontentloaded", settle_ms=4000)
     if not response:
         logger.info("[ig] %s: render failed", handle)
-        return []
-
-    existing = existing or []
-    import hashlib
-    def _h(s): return hashlib.md5(s.encode("utf-8", errors="ignore")).hexdigest() if s else ""
-    seen_urls = {t.get("source_url", "") for t in existing if t.get("source_url")}
-    seen_data = {_h(t.get("data_uri", "")) for t in existing if t.get("data_uri")}
-    out: list[dict] = []
-
+        return
     from bs4 import BeautifulSoup
     soup = BeautifulSoup(response.text, "html.parser")
     candidate_urls = []
     for img in soup.find_all("img"):
         src = img.get("src", "")
-        # Only the grid images come from cdninstagram/fbcdn
         if not src or ("cdninstagram" not in src and "fbcdn" not in src):
             continue
-        # Skip profile pic endpoint (avatar)
-        if "/t51.2885-19/" in src:
-            continue
-        if src in seen_urls:
+        if "/t51.2885-19/" in src:   # profile-pic avatar endpoint
             continue
         candidate_urls.append(src)
+    logger.info("[ig-playwright] %s: %d candidate URL(s)", handle, len(candidate_urls))
+    _ig_collect(candidate_urls, want, existing, out, seen_urls, seen_data, hashfn)
 
-    logger.info("[ig] %s: %d candidate image URL(s)", handle, len(candidate_urls))
-    for src in candidate_urls:
-        if len(out) >= want:
-            break
-        res = fetch_image(src)
-        if not res:
-            continue
-        uri, kb = res
-        h = _h(uri)
-        if h in seen_data:
-            continue
-        seen_data.add(h)
-        out.append({"data_uri": uri, "source_url": src, "kb": kb, "label": "primary" if (not existing and not out) else "secondary"})
+
+def _fetch_instagram_apify(handle, want, existing, seen_urls, seen_data, out, hashfn):
+    """Tier 2 (paid, backup): use the Apify Instagram scraper actor to pull
+    recent post image URLs. Only runs when the APIFY env var is set AND the
+    free Playwright tier came up short. ~$0.20/profile.
+
+    Actor: apify/instagram-scraper, run-sync endpoint returns dataset items
+    directly so we don't have to poll.
+    """
+    import os
+    token = os.environ.get("APIFY")
+    if not token:
+        logger.info("[ig-apify] %s: APIFY env not set — skipping backup tier", handle)
+        return
+    need = want - len(out)
+    body = {
+        "directUrls": [f"https://www.instagram.com/{handle}/"],
+        "resultsType": "posts",
+        "resultsLimit": max(need + 4, 6),  # over-fetch; many may dedup/fail
+        "addParentData": False,
+    }
+    url = (
+        "https://api.apify.com/v2/acts/apify~instagram-scraper/"
+        f"run-sync-get-dataset-items?token={token}"
+    )
+    try:
+        data = json.dumps(body).encode("utf-8")
+        headers = {"Content-Type": "application/json", "User-Agent": USER_AGENT}
+        req = requests.post(url, data=data, headers=headers, timeout=120)
+        if req.status_code not in (200, 201):
+            logger.warning("[ig-apify] %s: actor HTTP %d: %s", handle, req.status_code, req.text[:200])
+            return
+        items = req.json()
+    except Exception as e:
+        logger.warning("[ig-apify] %s: %s", handle, str(e)[:160])
+        return
+    # Each post item exposes displayUrl (main image) and sometimes images[].
+    candidate_urls = []
+    for it in (items or []):
+        if it.get("displayUrl"):
+            candidate_urls.append(it["displayUrl"])
+        for extra in (it.get("images") or []):
+            if extra:
+                candidate_urls.append(extra)
+    logger.info("[ig-apify] %s: %d candidate URL(s) from actor", handle, len(candidate_urls))
+    _ig_collect(candidate_urls, want, existing, out, seen_urls, seen_data, hashfn)
+
+
+def fetch_instagram_thumbs(handle: str, rf, want: int = 2, existing: list[dict] | None = None,
+                           allow_apify: bool = True) -> list[dict]:
+    """Harvest up to `want` unique post images from an artist's IG profile.
+
+    Tiers, in order:
+      1. Playwright render of the public profile grid (free, default).
+      2. Apify Instagram scraper actor (paid BACKUP) — only invoked when
+         `allow_apify` is True, the free tier came up short, AND the APIFY
+         env var is set.
+
+    Pass `allow_apify=False` to run only the free tier. The /refresh
+    orchestrator does exactly that, then defers the paid actor to a final
+    stage (see `fetch_instagram_apify_backup`) so Apify never runs until
+    every *free* source — free IG render, page crawl, Wayback — has been
+    exhausted. The Apify tier exists because IG periodically breaks the
+    logged-out Playwright grid; the actor is a maintained last resort that
+    keeps recurring runs producing photos without hand-fixing the scraper.
+    """
+    if not handle:
+        return []
+    handle = handle.lstrip("@").strip()
+    if not handle:
+        return []
+
+    existing = existing or []
+    seen_urls, seen_data = _ig_seen(existing)
+    out: list[dict] = []
+
+    # Tier 1: free Playwright render.
+    _fetch_instagram_playwright(handle, rf, want, existing, seen_urls, seen_data, out, _ig_hash)
+
+    # Tier 2: Apify backup — only if opted in AND still short of `want`.
+    if allow_apify and len(out) < want:
+        _fetch_instagram_apify(handle, want, existing, seen_urls, seen_data, out, _ig_hash)
+
+    return out
+
+
+def fetch_instagram_apify_backup(handle: str, want: int = 2,
+                                 existing: list[dict] | None = None) -> list[dict]:
+    """Paid last-resort IG fetch: run ONLY the Apify scraper tier.
+
+    Call this after every free source (manual, free IG render, page crawl,
+    Wayback) has come up short, so the pipeline never spends ~$0.20/profile
+    on Apify when a free method would have found the photo. Silently no-ops
+    (returns []) when the APIFY env var is unset.
+    """
+    if not handle:
+        return []
+    handle = handle.lstrip("@").strip()
+    if not handle:
+        return []
+
+    existing = existing or []
+    seen_urls, seen_data = _ig_seen(existing)
+    out: list[dict] = []
+    _fetch_instagram_apify(handle, want, existing, seen_urls, seen_data, out, _ig_hash)
     return out
 
 

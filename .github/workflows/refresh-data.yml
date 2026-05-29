@@ -42,7 +42,18 @@ jobs:
           pip install -r requirements.txt
 
       - name: Refresh artist images
-        run: python -m scripts.refresh_images --force --log INFO
+        # No --force: artists with 2 cached photos are skipped, so the daily
+        # run only touches incomplete artists and never re-scrapes existing
+        # ones. Paired with the once-per-artist Apify ledger
+        # (data/apify_attempts.json), the paid backup stays minimal.
+        run: python -m scripts.refresh_images --log INFO
+        env:
+          # Paid Apify IG-scraper backup (last resort, ~$0.20/profile). Fires
+          # only after the free tiers — free IG render, page crawl, Wayback —
+          # come up short, and at most once per artist. Unset/empty secret →
+          # the tier silently no-ops, so this line is harmless until you add it:
+          #   gh secret set APIFY      (or repo Settings ▸ Secrets ▸ Actions)
+          APIFY: ${{ secrets.APIFY }}
         continue-on-error: true
 
       - name: Discover new candidates
