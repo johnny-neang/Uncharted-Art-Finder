@@ -123,37 +123,6 @@
     "status": "active"
   },
   {
-    "n": 8,
-    "slug": "di_gregorio",
-    "name": "Jose Di Gregorio",
-    "tier": 2,
-    "kind": "Artist · Sacramento",
-    "medium": "Mural · Painting on panel",
-    "tags": [
-      "mural",
-      "studio",
-      "abstract",
-      "geometric"
-    ],
-    "summary": "Geometric & celestial abstraction; kaleidoscopic patterns and night-sky motifs. Refined edge-on-edge color work.",
-    "fit": 4,
-    "suitability": "Strong for ceilings, columns, or wayfinding accents.",
-    "primaryUrl": "https://www.josedigregorio.com",
-    "primaryHost": "josedigregorio.com",
-    "thumbs": [
-      {
-        "svg": "digregorio_kaleido",
-        "label": "Kaleidoscope"
-      },
-      {
-        "svg": "digregorio_celestial",
-        "label": "Geometric"
-      }
-    ],
-    "addedAt": "2026-05-07",
-    "status": "active"
-  },
-  {
     "n": 9,
     "slug": "crandall_bear",
     "name": "Micah Crandall-Bear",
