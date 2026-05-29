@@ -17,12 +17,13 @@ from datetime import date
 from contextlib import nullcontext
 
 from .common import (
-    DATA, fetch_image, fetch_thumbs, find_wayback_snapshot, get,
-    load_json, logger, polite_delay, rendered_session, save_json,
-    setup_logging,
+    DATA, fetch_image, fetch_instagram_thumbs, fetch_thumbs,
+    find_wayback_snapshot, get, load_json, logger, polite_delay,
+    rendered_session, save_json, setup_logging,
 )
 
 MANUAL_PHOTOS_PATH = "manual_artist_photos.json"
+INSTAGRAM_HANDLES_PATH = "instagram_handles.json"
 
 # Per-artist scrape pages. For each canonical roster artist,
 # try these in order. Built from the Field Brief 014 source notes.
@@ -186,6 +187,7 @@ def main():
     artists = load_json(DATA / "artists.json", []) or []
     cache = load_json(DATA / "artist_images.json", {}) or {}
     manual = (load_json(DATA / MANUAL_PHOTOS_PATH, {}) or {}).get("by_slug", {})
+    ig_handles = (load_json(DATA / INSTAGRAM_HANDLES_PATH, {}) or {}).get("by_slug", {})
 
     targets = [a for a in artists if not args.only or a["slug"] in args.only]
 
@@ -219,13 +221,19 @@ def main():
                 if len(images) >= 2:
                     report["manual"].append(slug)
 
-            # Stage 2: configured pages auto-crawl (with Playwright fallback)
+            # Stage 2: Instagram (if a handle is configured for this slug)
+            ig_handle = ig_handles.get(slug)
+            if ig_handle and len(images) < 2:
+                ig_thumbs = fetch_instagram_thumbs(ig_handle, rf, want=2 - len(images), existing=images)
+                images.extend(ig_thumbs)
+
+            # Stage 3: configured pages auto-crawl (with Playwright fallback)
             if len(images) < 2:
                 pages = PAGES_BY_SLUG.get(slug, [])
                 if pages:
                     images.extend(refresh_one(slug, pages, target=2 - len(images), rf=rf))
-                elif not manual_urls:
-                    logger.warning("no pages or manual URLs configured for %s", slug)
+                elif not manual_urls and not ig_handle:
+                    logger.warning("no pages, manual URLs, or IG handle for %s", slug)
 
             if images:
                 cache[slug] = {"name": a["name"], "images": images, "refreshed": str(date.today())}

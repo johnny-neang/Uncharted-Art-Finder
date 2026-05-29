@@ -27,8 +27,9 @@ import argparse
 from contextlib import nullcontext
 
 from .common import (
-    DATA, fetch_image, fetch_thumbs, get, load_json, logger, polite_delay,
-    rendered_session, save_json, setup_logging,
+    DATA, fetch_image, fetch_instagram_thumbs, fetch_thumbs, get,
+    load_json, logger, polite_delay, rendered_session, save_json,
+    setup_logging,
 )
 
 MANUAL_PHOTOS_PATH = "manual_artist_photos.json"
@@ -108,6 +109,7 @@ def main():
         logger.info("[qc] no candidates")
         return
     manual = (load_json(DATA / MANUAL_PHOTOS_PATH, {}) or {}).get("by_slug", {})
+    ig_handles = (load_json(DATA / "instagram_handles.json", {}) or {}).get("by_slug", {})
 
     # Open one Playwright session for lazy-load fallbacks. Yields None
     # if Playwright isn't installed; fetch_thumbs silently skips render.
@@ -146,7 +148,13 @@ def main():
                 if fresh_manual:
                     manual_used += 1
 
-            # Stage 2: auto-crawl with multi-page + Playwright fallback
+            # Stage 2: Instagram (if a handle is configured for this slug)
+            ig_handle = ig_handles.get(c.get("slug"))
+            if ig_handle and len(new_thumbs) < 2:
+                ig_thumbs = fetch_instagram_thumbs(ig_handle, rf, want=2 - len(new_thumbs), existing=new_thumbs)
+                new_thumbs.extend(ig_thumbs)
+
+            # Stage 3: auto-crawl with multi-page + Playwright fallback
             fresh: list[dict] = []
             if not args.no_refetch and len(new_thumbs) < 2:
                 fresh = try_refetch_thumbs(c, want=2 - len(new_thumbs), existing=new_thumbs, rf=rf)

@@ -125,9 +125,14 @@ def to_data_uri(content: bytes, mime: str) -> str:
     return f"data:{mime};base64,{base64.b64encode(content).decode('ascii')}"
 
 
-def fetch_image(url: str, target_w: int = 480) -> tuple[str, int] | None:
-    """Fetch + process an image. Returns (data_uri, kb) or None."""
-    r = get(url)
+def fetch_image(url: str, target_w: int = 480, timeout: int = 60) -> tuple[str, int] | None:
+    """Fetch + process an image. Returns (data_uri, kb) or None.
+
+    Default timeout bumped to 60s (was 20s in the page-fetch path) because
+    Instagram CDN URLs in particular are slow to first-byte and often
+    timed out at 20s. Page-text fetches via get() retain their 20s default.
+    """
+    r = get(url, timeout=timeout)
     if not r:
         return None
     out = process_image(r.content, target_w=target_w)
@@ -135,6 +140,64 @@ def fetch_image(url: str, target_w: int = 480) -> tuple[str, int] | None:
         return None
     raw, mime = out
     return to_data_uri(raw, mime), len(raw) // 1024
+
+
+def fetch_instagram_thumbs(handle: str, rf, want: int = 2, existing: list[dict] | None = None) -> list[dict]:
+    """Render an artist's public IG profile via Playwright and harvest
+    up to `want` unique post-grid images.
+
+    Confirmed working as of 2026-05-28 with Playwright + the existing
+    rendered_session anti-detection (UA spoof + webdriver mask + viewport).
+    IG serves the visible grid for logged-out users — the modal login
+    prompt overlays the page but the underlying HTML is fully rendered.
+
+    Filters out the small profile-pic thumbnail (t51.2885-19 endpoint,
+    ~110x110) by relying on fetch_image's existing min-size check.
+    """
+    if rf is None or not handle:
+        return []
+    handle = handle.lstrip("@").strip()
+    if not handle:
+        return []
+    url = f"https://www.instagram.com/{handle}/"
+    response = rf.fetch(url, wait_until="domcontentloaded", settle_ms=4000)
+    if not response:
+        logger.info("[ig] %s: render failed", handle)
+        return []
+
+    existing = existing or []
+    seen_urls = {t.get("source_url", "") for t in existing if t.get("source_url")}
+    seen_data = {(t.get("data_uri") or "")[:200] for t in existing if t.get("data_uri")}
+    out: list[dict] = []
+
+    from bs4 import BeautifulSoup
+    soup = BeautifulSoup(response.text, "html.parser")
+    candidate_urls = []
+    for img in soup.find_all("img"):
+        src = img.get("src", "")
+        # Only the grid images come from cdninstagram/fbcdn
+        if not src or ("cdninstagram" not in src and "fbcdn" not in src):
+            continue
+        # Skip profile pic endpoint (avatar)
+        if "/t51.2885-19/" in src:
+            continue
+        if src in seen_urls:
+            continue
+        candidate_urls.append(src)
+
+    logger.info("[ig] %s: %d candidate image URL(s)", handle, len(candidate_urls))
+    for src in candidate_urls:
+        if len(out) >= want:
+            break
+        res = fetch_image(src)
+        if not res:
+            continue
+        uri, kb = res
+        if uri[:200] in seen_data:
+            continue
+        seen_data.add(uri[:200])
+        out.append({"data_uri": uri, "source_url": src, "kb": kb, "label": "primary" if (not existing and not out) else "secondary"})
+    return out
 
 
 def find_wayback_snapshot(url: str) -> str | None:
