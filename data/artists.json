@@ -246,36 +246,6 @@
     "status": "active"
   },
   {
-    "n": 14,
-    "slug": "kille",
-    "name": "Jeremiah Kille",
-    "tier": 2,
-    "kind": "Artist · Santa Cruz / Groundswell roster",
-    "medium": "Painting on panel",
-    "tags": [
-      "studio",
-      "figurative",
-      "surreal"
-    ],
-    "summary": "Surreal painter — elephants, hot-air-balloon landscapes — represented through Groundswell's Fort Sutter gallery.",
-    "fit": 4,
-    "suitability": "Whimsical surrealism — works well as conversation pieces in interior wayfinding.",
-    "primaryUrl": "https://www.groundswellart.com/groundswell-gallery-at-fort-sutter-hotel-jeremiah-kille",
-    "primaryHost": "groundswellart.com",
-    "thumbs": [
-      {
-        "svg": "kille_elephant",
-        "label": "Elephant"
-      },
-      {
-        "svg": "kille_balloons",
-        "label": "Balloons"
-      }
-    ],
-    "addedAt": "2026-05-07",
-    "status": "active"
-  },
-  {
     "n": 15,
     "slug": "padilla",
     "name": "Anthony Padilla",
