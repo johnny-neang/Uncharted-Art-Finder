@@ -3035,6 +3035,35 @@
           "label": "secondary"
         }
       ]
+    },
+    {
+      "slug": "garibaldi",
+      "name": "David Garibaldi",
+      "url": "https://garibaldiarts.com",
+      "source_name": "demoted from directory",
+      "image": {
+        "svg": "garibaldi_live",
+        "label": "Live paint"
+      },
+      "thumbs": [
+        {
+          "svg": "garibaldi_live",
+          "label": "Live paint"
+        },
+        {
+          "svg": "garibaldi_pop",
+          "label": "Pop portrait"
+        }
+      ],
+      "first_seen": "2026-05-29",
+      "status": "pending",
+      "manual_override": "watch",
+      "demoted_from_directory": {
+        "n_original": 5,
+        "tier_original": 1,
+        "via": "dashboard",
+        "at": "2026-05-29T17:43:27+00:00"
+      }
     }
   ],
   "rejected_slugs": [
