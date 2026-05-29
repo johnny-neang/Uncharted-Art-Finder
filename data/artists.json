@@ -92,37 +92,6 @@
     "status": "active"
   },
   {
-    "n": 5,
-    "slug": "garibaldi",
-    "name": "David Garibaldi",
-    "tier": 1,
-    "kind": "Artist · Sacramento",
-    "medium": "Live-performance painting · Pop portraiture",
-    "tags": [
-      "live",
-      "studio",
-      "performance",
-      "portrait"
-    ],
-    "summary": "Internationally known performance painter — the kind of name that draws crowds. Pop-portrait canvases (KISS, Mick Jagger, etc.) carry his commercial brand.",
-    "fit": 4,
-    "suitability": "Live activation potential is a major asset for retail programming.",
-    "primaryUrl": "https://garibaldiarts.com",
-    "primaryHost": "garibaldiarts.com",
-    "thumbs": [
-      {
-        "svg": "garibaldi_live",
-        "label": "Live paint"
-      },
-      {
-        "svg": "garibaldi_pop",
-        "label": "Pop portrait"
-      }
-    ],
-    "addedAt": "2026-05-07",
-    "status": "active"
-  },
-  {
     "n": 6,
     "slug": "king",
     "name": "Jaya King",
