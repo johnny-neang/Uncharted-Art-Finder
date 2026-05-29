@@ -3093,6 +3093,35 @@
         "via": "dashboard",
         "at": "2026-05-29T17:43:37+00:00"
       }
+    },
+    {
+      "slug": "burner",
+      "name": "Shaun Burner",
+      "url": "https://brandedarts.com/art/shaun-burner/",
+      "source_name": "demoted from directory",
+      "image": {
+        "svg": "burner_jazz",
+        "label": "Jazz portrait"
+      },
+      "thumbs": [
+        {
+          "svg": "burner_jazz",
+          "label": "Jazz portrait"
+        },
+        {
+          "svg": "burner_symbolist",
+          "label": "Symbolist"
+        }
+      ],
+      "first_seen": "2026-05-29",
+      "status": "pending",
+      "manual_override": "watch",
+      "demoted_from_directory": {
+        "n_original": 13,
+        "tier_original": 2,
+        "via": "dashboard",
+        "at": "2026-05-29T17:43:53+00:00"
+      }
     }
   ],
   "rejected_slugs": [
