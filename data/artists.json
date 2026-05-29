@@ -246,37 +246,6 @@
     "status": "active"
   },
   {
-    "n": 13,
-    "slug": "burner",
-    "name": "Shaun Burner",
-    "tier": 2,
-    "kind": "Artist · Sacramento",
-    "medium": "Mural · Symbolist painting",
-    "tags": [
-      "mural",
-      "studio",
-      "figurative",
-      "symbolist"
-    ],
-    "summary": "Surrealist / symbolist painter; Betty Inada jazz mural is the public landmark. Branded Arts rep.",
-    "fit": 3,
-    "suitability": "Strong portraiture but darker symbolist work needs careful curation for a mall context.",
-    "primaryUrl": "https://brandedarts.com/art/shaun-burner/",
-    "primaryHost": "brandedarts.com",
-    "thumbs": [
-      {
-        "svg": "burner_jazz",
-        "label": "Jazz portrait"
-      },
-      {
-        "svg": "burner_symbolist",
-        "label": "Symbolist"
-      }
-    ],
-    "addedAt": "2026-05-07",
-    "status": "active"
-  },
-  {
     "n": 14,
     "slug": "kille",
     "name": "Jeremiah Kille",
