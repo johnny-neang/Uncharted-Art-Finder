@@ -166,8 +166,10 @@ def fetch_instagram_thumbs(handle: str, rf, want: int = 2, existing: list[dict] 
         return []
 
     existing = existing or []
+    import hashlib
+    def _h(s): return hashlib.md5(s.encode("utf-8", errors="ignore")).hexdigest() if s else ""
     seen_urls = {t.get("source_url", "") for t in existing if t.get("source_url")}
-    seen_data = {(t.get("data_uri") or "")[:200] for t in existing if t.get("data_uri")}
+    seen_data = {_h(t.get("data_uri", "")) for t in existing if t.get("data_uri")}
     out: list[dict] = []
 
     from bs4 import BeautifulSoup
@@ -193,9 +195,10 @@ def fetch_instagram_thumbs(handle: str, rf, want: int = 2, existing: list[dict] 
         if not res:
             continue
         uri, kb = res
-        if uri[:200] in seen_data:
+        h = _h(uri)
+        if h in seen_data:
             continue
-        seen_data.add(uri[:200])
+        seen_data.add(h)
         out.append({"data_uri": uri, "source_url": src, "kb": kb, "label": "primary" if (not existing and not out) else "secondary"})
     return out
 
@@ -308,8 +311,13 @@ def fetch_thumbs(
     if not response:
         return []
     existing = existing or []
+    import hashlib
+    def _content_hash(s: str) -> str:
+        # Full-content hash beats short-prefix dedup: two different JPEGs
+        # share the same first ~50 base64 chars (JPEG header / metadata).
+        return hashlib.md5(s.encode("utf-8", errors="ignore")).hexdigest() if s else ""
     seen_urls: set[str] = {t.get("source_url", "") for t in existing if t.get("source_url")}
-    seen_data: set[str] = {t.get("data_uri", "")[:200] for t in existing if t.get("data_uri")}
+    seen_data: set[str] = {_content_hash(t.get("data_uri", "")) for t in existing if t.get("data_uri")}
     out: list[dict] = []
 
     def _try(img_url: str) -> None:
@@ -322,10 +330,10 @@ def fetch_thumbs(
         if not res:
             return
         uri, kb = res
-        prefix = uri[:200]
-        if prefix in seen_data:
+        h = _content_hash(uri)
+        if h in seen_data:
             return  # same content under a different URL
-        seen_data.add(prefix)
+        seen_data.add(h)
         label = "primary" if (not existing and not out) else "secondary"
         out.append({"data_uri": uri, "source_url": img_url, "kb": kb, "label": label})
 

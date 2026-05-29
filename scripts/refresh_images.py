@@ -227,9 +227,12 @@ def main():
                 ig_thumbs = fetch_instagram_thumbs(ig_handle, rf, want=2 - len(images), existing=images)
                 images.extend(ig_thumbs)
 
-            # Stage 3: configured pages auto-crawl (with Playwright fallback)
+            # Stage 3: configured pages auto-crawl (with Playwright fallback).
+            # Falls back to the artist's primaryUrl when no per-slug pages
+            # are hand-configured — useful for promoted entries whose pages
+            # haven't been added to PAGES_BY_SLUG yet.
             if len(images) < 2:
-                pages = PAGES_BY_SLUG.get(slug, [])
+                pages = PAGES_BY_SLUG.get(slug, []) or ([a["primaryUrl"]] if a.get("primaryUrl") else [])
                 if pages:
                     images.extend(refresh_one(slug, pages, target=2 - len(images), rf=rf))
                 elif not manual_urls and not ig_handle:
