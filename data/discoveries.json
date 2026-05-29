@@ -3122,6 +3122,35 @@
         "via": "dashboard",
         "at": "2026-05-29T17:43:53+00:00"
       }
+    },
+    {
+      "slug": "kille",
+      "name": "Jeremiah Kille",
+      "url": "https://www.groundswellart.com/groundswell-gallery-at-fort-sutter-hotel-jeremiah-kille",
+      "source_name": "demoted from directory",
+      "image": {
+        "svg": "kille_elephant",
+        "label": "Elephant"
+      },
+      "thumbs": [
+        {
+          "svg": "kille_elephant",
+          "label": "Elephant"
+        },
+        {
+          "svg": "kille_balloons",
+          "label": "Balloons"
+        }
+      ],
+      "first_seen": "2026-05-29",
+      "status": "pending",
+      "manual_override": "watch",
+      "demoted_from_directory": {
+        "n_original": 14,
+        "tier_original": 2,
+        "via": "dashboard",
+        "at": "2026-05-29T17:44:03+00:00"
+      }
     }
   ],
   "rejected_slugs": [
