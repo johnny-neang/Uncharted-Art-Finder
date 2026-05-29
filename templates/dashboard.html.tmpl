@@ -352,6 +352,13 @@ body {
   border: 1px dashed var(--rule);
 }
 .thumb-researching span { display: block; }
+/* "Second image not available" — a settled state, not still-researching */
+.thumb-unavailable {
+  background: var(--paper-3);
+  border-style: solid;
+  border-color: var(--rule-soft);
+  color: var(--ink-3);
+}
 .thumb-label {
   position: absolute;
   left: var(--s2); bottom: var(--s2);
@@ -912,6 +919,12 @@ function renderThumb(t) {
   const src = (t && (t.data_uri || t.img)) || "";
   if (src) {
     return `<img src="${src}" alt="${(t.label || '').replace(/"/g, '&quot;')}" loading="lazy">`;
+  }
+  // Explicit placeholder (e.g. a removed duplicate) renders its note —
+  // distinct from the optimistic "researching" treatment for a blank slot.
+  if (t && t.placeholder && t.note) {
+    const note = String(t.note).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+    return `<div class="thumb-researching thumb-unavailable"><span>${note}</span></div>`;
   }
   return `<div class="thumb-researching"><span>Researching<br>second photo</span></div>`;
 }

@@ -169,6 +169,21 @@ def fetch_image(url: str, target_w: int = 480, timeout: int = 60) -> tuple[str, 
     return to_data_uri(raw, mime), len(raw) // 1024
 
 
+def _load_image_denylist() -> set:
+    """md5s of known non-portfolio junk images (Instagram promo graphics,
+    group-show event photos) that the fetch pipeline must never store —
+    these are what produced the same image showing up on many cards. See
+    data/image_denylist.json."""
+    try:
+        blob = load_json(DATA / "image_denylist.json", {}) or {}
+        return set((blob.get("by_md5") or {}).keys())
+    except Exception:
+        return set()
+
+
+_IMAGE_DENYLIST = _load_image_denylist()
+
+
 def _ig_hash(s):
     """Stable content hash for an IG image data URI (dedup key)."""
     import hashlib
@@ -197,6 +212,9 @@ def _ig_collect(candidate_urls, want, existing, out, seen_urls, seen_data, hashf
             continue
         uri, kb = res
         h = hashfn(uri)
+        if h in _IMAGE_DENYLIST:
+            logger.info("[denylist] skipped known-junk image %s", h[:12])
+            continue
         if h in seen_data:
             continue
         seen_data.add(h)
@@ -466,6 +484,9 @@ def fetch_thumbs(
             return
         uri, kb = res
         h = _content_hash(uri)
+        if h in _IMAGE_DENYLIST:
+            logger.info("[denylist] skipped known-junk image %s", h[:12])
+            return
         if h in seen_data:
             return  # same content under a different URL
         seen_data.add(h)

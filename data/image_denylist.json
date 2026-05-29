@@ -1,0 +1,12 @@
+{
+  "_note": "md5 of the stored data_uri for known non-portfolio junk images (IG promo graphics, group-show event photos). The image pipeline rejects any fetched image whose data_uri md5 matches, so they never reappear.",
+  "by_md5": {
+    "7d685f23073d61d5ce6ffdf66da60afa": "Instagram promo/marketing graphic (phone mockups, reactions)",
+    "a27b56067f903c805967c5c29051cc56": "Instagram promo/marketing graphic (phone mockups, people)",
+    "1bbb7f20ea6bf7151a71f3ba871a3593": "Instagram promo/marketing graphic (phone mockups, night)",
+    "3665c119f4c100f545cef21a21937a1b": "Boys & Girls Club of Santa Monica group-show floor photo",
+    "15eb4faa2f55d094ce44e822759154c5": "Boys & Girls Club of Santa Monica group-show floor photo (dup)",
+    "a2ccf6a7c5e1c2521a94d18a4369b421": "Generic gallery wall group-show photo (people viewing)",
+    "5cd39d0558eb372cfd7463bc5823c794": "Generic gallery wall group-show photo (white room)"
+  }
+}

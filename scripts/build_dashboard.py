@@ -34,19 +34,28 @@ def merge_artist_images(artists: list[dict], images: dict) -> list[dict]:
     for a in artists:
         a = dict(a)
         cached = images.get(a["slug"], {}).get("images", [])
+        src = a.get("thumbs", []) or []
         new_thumbs = []
         # Build thumbs from real photographic sources only. Hand-drawn
         # SVG illustrations from the legacy svg_library are no longer
-        # rendered — we compile, we don't depict. Empty entries pass
-        # through and the template renders "No photo on file".
-        for i, t in enumerate(a.get("thumbs", [])):
-            label = t.get("label") or ("primary" if i == 0 else "secondary")
-            if t.get("data_uri"):
-                new_thumbs.append({"label": label, "img": t["data_uri"]})
-            elif t.get("img"):
-                new_thumbs.append({"label": label, "img": t["img"]})
-            elif i < len(cached) and cached[i].get("data_uri"):
-                new_thumbs.append({"label": label, "img": cached[i]["data_uri"]})
+        # rendered — we compile, we don't depict. An explicit
+        # {placeholder, note} entry (e.g. a removed duplicate) passes
+        # through so the template can render "Second image not available";
+        # otherwise empty slots drop and render the "researching" treatment.
+        for i in range(min(2, max(len(src), len(cached)))):
+            label = "primary" if i == 0 else "secondary"
+            t = src[i] if i < len(src) and isinstance(src[i], dict) else {}
+            ci = cached[i] if i < len(cached) and isinstance(cached[i], dict) else {}
+            if t.get("label"):
+                label = t["label"]
+            if t.get("placeholder"):
+                new_thumbs.append({"label": label, "placeholder": True, "note": t.get("note")})
+            elif t.get("data_uri") or t.get("img"):
+                new_thumbs.append({"label": label, "img": t.get("data_uri") or t.get("img")})
+            elif ci.get("data_uri"):
+                new_thumbs.append({"label": label, "img": ci["data_uri"]})
+            elif ci.get("placeholder"):
+                new_thumbs.append({"label": label, "placeholder": True, "note": ci.get("note")})
             else:
                 # No photo for this slot — drop it. The card will render
                 # with however many real photos exist (0, 1, or 2).
