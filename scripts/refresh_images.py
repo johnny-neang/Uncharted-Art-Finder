@@ -14,9 +14,12 @@ from __future__ import annotations
 import argparse
 from datetime import date
 
+from contextlib import nullcontext
+
 from .common import (
-    DATA, fetch_image, fetch_thumbs, get, load_json, logger,
-    polite_delay, save_json, setup_logging,
+    DATA, fetch_image, fetch_thumbs, find_wayback_snapshot, get,
+    load_json, logger, polite_delay, rendered_session, save_json,
+    setup_logging,
 )
 
 MANUAL_PHOTOS_PATH = "manual_artist_photos.json"
@@ -137,13 +140,13 @@ def _fetch_manual_photos(slug: str, urls: list[str], target: int = 2) -> list[di
     return out
 
 
-def refresh_one(slug: str, pages: list[str], target: int = 2) -> list[dict]:
+def refresh_one(slug: str, pages: list[str], target: int = 2, rf=None) -> list[dict]:
     """Walk the configured pages, gathering up to `target` *unique* thumbs.
 
-    Uses common.fetch_thumbs with follow_links=True so each page contributes
-    new images via sub-page crawling, while URL + content dedup catches the
-    same image being served from multiple paths (the bug that put the same
-    image at both [0] and [1] for 6 directory artists).
+    For each page: try direct HTTP. If it fails, fall back to Wayback
+    Machine. Then fetch_thumbs follows internal links and (if `rf` is
+    provided) re-renders via Playwright as a final fallback for lazy-loaded
+    pages.
     """
     embedded: list[dict] = []
     for page in pages:
@@ -152,10 +155,17 @@ def refresh_one(slug: str, pages: list[str], target: int = 2) -> list[dict]:
         logger.info("scrape %s", page)
         r = get(page)
         if not r:
+            wayback = find_wayback_snapshot(page)
+            if wayback:
+                logger.info("  wayback %s", wayback[:90])
+                r = get(wayback)
+                if r:
+                    page = wayback
+        if not r:
             continue
         fresh = fetch_thumbs(
             r, page, want=target - len(embedded),
-            existing=embedded, follow_links=True, max_subpages=3,
+            existing=embedded, follow_links=True, max_subpages=3, rf=rf,
         )
         for t in fresh:
             t["source_page"] = page
@@ -179,44 +189,50 @@ def main():
 
     targets = [a for a in artists if not args.only or a["slug"] in args.only]
 
-    report = {"refreshed": [], "kept": [], "missed": [], "manual": []}
-    for a in targets:
-        slug = a["slug"]
-        cached = cache.get(slug, {}).get("images", [])
-        # Determine whether existing cache is good enough to skip
-        has_2_unique = (
-            len(cached) >= 2
-            and len({c.get("data_uri", "")[:200] for c in cached}) >= 2
-        )
-        if has_2_unique and not args.force:
-            logger.info("=== %s (cached %d unique) ===", a["name"], len(cached))
-            report["kept"].append(slug)
-            continue
+    # Open one Playwright session for all the lazy-load fallback fetches.
+    # If Playwright isn't installed, rendered_session yields None and
+    # fetch_thumbs silently skips the render fallback.
+    needs_render = bool(targets)
+    browser_ctx = rendered_session() if needs_render else nullcontext(None)
 
-        logger.info("=== %s ===", a["name"])
+    with browser_ctx as rf:
+        report = {"refreshed": [], "kept": [], "missed": [], "manual": []}
+        for a in targets:
+            slug = a["slug"]
+            cached = cache.get(slug, {}).get("images", [])
+            has_2_unique = (
+                len(cached) >= 2
+                and len({c.get("data_uri", "")[:200] for c in cached}) >= 2
+            )
+            if has_2_unique and not args.force:
+                logger.info("=== %s (cached %d unique) ===", a["name"], len(cached))
+                report["kept"].append(slug)
+                continue
 
-        # Stage 1: manual override
-        manual_urls = manual.get(slug) or []
-        images: list[dict] = []
-        if len(manual_urls) >= 2:
-            images = _fetch_manual_photos(slug, manual_urls, target=2)
-            if len(images) >= 2:
-                report["manual"].append(slug)
+            logger.info("=== %s ===", a["name"])
 
-        # Stage 2: configured pages auto-crawl (if manual didn't yield 2)
-        if len(images) < 2:
-            pages = PAGES_BY_SLUG.get(slug, [])
-            if pages:
-                images.extend(refresh_one(slug, pages, target=2 - len(images)))
-            elif not manual_urls:
-                logger.warning("no pages or manual URLs configured for %s", slug)
+            # Stage 1: manual override
+            manual_urls = manual.get(slug) or []
+            images: list[dict] = []
+            if len(manual_urls) >= 2:
+                images = _fetch_manual_photos(slug, manual_urls, target=2)
+                if len(images) >= 2:
+                    report["manual"].append(slug)
 
-        if images:
-            cache[slug] = {"name": a["name"], "images": images, "refreshed": str(date.today())}
-            save_json(DATA / "artist_images.json", cache)
-            report["refreshed"].append({"slug": slug, "count": len(images)})
-        else:
-            report["missed"].append(slug)
+            # Stage 2: configured pages auto-crawl (with Playwright fallback)
+            if len(images) < 2:
+                pages = PAGES_BY_SLUG.get(slug, [])
+                if pages:
+                    images.extend(refresh_one(slug, pages, target=2 - len(images), rf=rf))
+                elif not manual_urls:
+                    logger.warning("no pages or manual URLs configured for %s", slug)
+
+            if images:
+                cache[slug] = {"name": a["name"], "images": images, "refreshed": str(date.today())}
+                save_json(DATA / "artist_images.json", cache)
+                report["refreshed"].append({"slug": slug, "count": len(images)})
+            else:
+                report["missed"].append(slug)
 
     logger.info("[done] refreshed=%d kept=%d missed=%d manual=%d",
                 len(report["refreshed"]), len(report["kept"]),

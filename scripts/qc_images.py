@@ -24,28 +24,30 @@ from __future__ import annotations
 
 import argparse
 
+from contextlib import nullcontext
+
 from .common import (
     DATA, fetch_image, fetch_thumbs, get, load_json, logger, polite_delay,
-    save_json, setup_logging,
+    rendered_session, save_json, setup_logging,
 )
 
 MANUAL_PHOTOS_PATH = "manual_artist_photos.json"
 
 
-def try_refetch_thumbs(candidate: dict, want: int = 2, existing: list[dict] | None = None) -> list[dict]:
+def try_refetch_thumbs(candidate: dict, want: int = 2, existing: list[dict] | None = None, rf=None) -> list[dict]:
     """Refetch the candidate URL and gather up to `want` *unique* images.
 
-    Uses the shared fetch_thumbs helper with follow_links=True so sub-pages
-    (e.g. /work, /portfolio, individual artwork URLs linked from the bio
-    page) contribute additional unique images. Pass `existing` so the dedup
-    catches images already on the candidate.
+    Uses fetch_thumbs with follow_links=True (multi-page sub-page crawl)
+    and an optional Playwright `rf` for lazy-loaded sites. `existing` seeds
+    the URL + content dedup so we don't restore items already on the
+    candidate.
     """
     url = candidate.get("url")
     if not url:
         return []
     return fetch_thumbs(
         get(url), url, want=want,
-        existing=existing or [], follow_links=True, max_subpages=5,
+        existing=existing or [], follow_links=True, max_subpages=5, rf=rf,
     )
 
 
@@ -107,50 +109,56 @@ def main():
         return
     manual = (load_json(DATA / MANUAL_PHOTOS_PATH, {}) or {}).get("by_slug", {})
 
+    # Open one Playwright session for lazy-load fallbacks. Yields None
+    # if Playwright isn't installed; fetch_thumbs silently skips render.
+    browser_ctx = rendered_session() if candidates else nullcontext(None)
+
     refetched = 0
     manual_used = 0
     cleared_dupes = 0
     skipped = 0
-    for c in candidates:
-        if not args.force and _has_clean_unique_thumbs(c):
-            skipped += 1
-            continue
+    with browser_ctx as rf:
+        for c in candidates:
+            if not args.force and _has_clean_unique_thumbs(c):
+                skipped += 1
+                continue
 
-        logger.info("=== %s ===", c["name"])
-        existing = candidate_thumbs(c)
-        existing_real = [t for t in existing if not t.get("placeholder")]
+            logger.info("=== %s ===", c["name"])
+            existing = candidate_thumbs(c)
+            existing_real = [t for t in existing if not t.get("placeholder")]
 
-        # Detect existing duplicates and clear them down to one seed.
-        if len(existing_real) >= 2:
-            urls = {t.get("source_url", "") for t in existing_real if t.get("source_url")}
-            uris = {(t.get("data_uri") or t.get("img") or "")[:200] for t in existing_real}
-            if len(urls) < len(existing_real) or len(uris) < len(existing_real):
-                logger.info("[qc-dedupe] %s had duplicate thumbs; clearing", c["name"])
-                existing_real = existing_real[:1]
-                cleared_dupes += 1
+            # Detect existing duplicates and clear them down to one seed.
+            if len(existing_real) >= 2:
+                urls = {t.get("source_url", "") for t in existing_real if t.get("source_url")}
+                uris = {(t.get("data_uri") or t.get("img") or "")[:200] for t in existing_real}
+                if len(urls) < len(existing_real) or len(uris) < len(existing_real):
+                    logger.info("[qc-dedupe] %s had duplicate thumbs; clearing", c["name"])
+                    existing_real = existing_real[:1]
+                    cleared_dupes += 1
 
-        new_thumbs: list[dict] = list(existing_real)
+            new_thumbs: list[dict] = list(existing_real)
 
-        # Stage 1: manual override (per-slug user-curated URLs)
-        manual_urls = manual.get(c.get("slug")) or []
-        if manual_urls and len(new_thumbs) < 2:
-            fresh_manual = fetch_manual_thumbs(manual_urls, target=2 - len(new_thumbs))
-            new_thumbs.extend(fresh_manual)
-            if fresh_manual:
-                manual_used += 1
+            # Stage 1: manual override (per-slug user-curated URLs)
+            manual_urls = manual.get(c.get("slug")) or []
+            if manual_urls and len(new_thumbs) < 2:
+                fresh_manual = fetch_manual_thumbs(manual_urls, target=2 - len(new_thumbs))
+                new_thumbs.extend(fresh_manual)
+                if fresh_manual:
+                    manual_used += 1
 
-        # Stage 2: auto-crawl with multi-page link following
-        if not args.no_refetch and len(new_thumbs) < 2:
-            fresh = try_refetch_thumbs(c, want=2 - len(new_thumbs), existing=new_thumbs)
-            new_thumbs.extend(fresh)
-            if fresh:
-                refetched += len(fresh)
-                logger.info("  +%d unique thumb(s)", len(fresh))
+            # Stage 2: auto-crawl with multi-page + Playwright fallback
+            fresh: list[dict] = []
+            if not args.no_refetch and len(new_thumbs) < 2:
+                fresh = try_refetch_thumbs(c, want=2 - len(new_thumbs), existing=new_thumbs, rf=rf)
+                new_thumbs.extend(fresh)
+                if fresh:
+                    refetched += len(fresh)
+                    logger.info("  +%d unique thumb(s)", len(fresh))
 
-        for i, t in enumerate(new_thumbs):
-            t["label"] = "primary" if i == 0 else "secondary"
-        c["thumbs"] = new_thumbs
-        c["image"] = new_thumbs[0] if new_thumbs else None
+            for i, t in enumerate(new_thumbs):
+                t["label"] = "primary" if i == 0 else "secondary"
+            c["thumbs"] = new_thumbs
+            c["image"] = new_thumbs[0] if new_thumbs else None
 
     save_json(DATA / "discoveries.json", discoveries)
     counts = {0: 0, 1: 0, 2: 0}

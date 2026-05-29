@@ -137,6 +137,32 @@ def fetch_image(url: str, target_w: int = 480) -> tuple[str, int] | None:
     return to_data_uri(raw, mime), len(raw) // 1024
 
 
+def find_wayback_snapshot(url: str) -> str | None:
+    """Query the archive.org Wayback Machine for the most recent snapshot URL.
+    Returns a `web.archive.org/web/<ts>/<url>` URL or None.
+
+    Use to recover content from sites whose primary URL now 4xx/timeout.
+    """
+    try:
+        api = f"https://archive.org/wayback/available?url={url}"
+        r = get(api, timeout=10)
+        if not r:
+            return None
+        data = r.json() if hasattr(r, "json") else None
+        if data is None:
+            try:
+                import json as _json
+                data = _json.loads(r.text)
+            except Exception:
+                return None
+        snap = (data or {}).get("archived_snapshots", {}).get("closest", {})
+        if snap.get("available") and snap.get("url"):
+            return snap["url"]
+    except Exception as e:
+        logger.info("[wayback-err] %s: %s", url[:80], str(e)[:100])
+    return None
+
+
 _SUBPAGE_HINTS = (
     "/work", "/works", "/portfolio", "/gallery", "/projects",
     "/press", "/news", "/exhibitions", "/murals", "/installations",
@@ -194,6 +220,7 @@ def fetch_thumbs(
     existing: list[dict] | None = None,
     follow_links: bool = False,
     max_subpages: int = 5,
+    rf=None,
 ) -> list[dict]:
     """Gather up to `want` unique image thumbs from a page response.
 
@@ -264,6 +291,15 @@ def fetch_thumbs(
                 continue
             _harvest_page(sub_resp.text, sub)
             polite_delay(0.5)
+
+    # Playwright fallback: if we still don't have enough thumbs and a
+    # rendered_session is available, re-render the base URL and harvest
+    # the post-JS DOM. Catches lazy-loaded Squarespace/Wix/React sites.
+    if rf is not None and len(out) < want:
+        logger.info("  render %s", base_url[:90])
+        rendered = rf.fetch(base_url)
+        if rendered:
+            _harvest_page(rendered.text, base_url)
 
     return out
 
