@@ -119,7 +119,21 @@ def score_candidate(c: dict) -> CandidateScore | None:
         return None
 
     if result.returncode != 0:
-        logger.warning("[%s] claude exited %d: %s", c["name"], result.returncode, result.stderr[:300])
+        # `claude -p` reports API errors (e.g. a 401 auth failure) inside the
+        # stdout JSON envelope, not stderr — dig it out so the failure is
+        # actionable instead of an opaque "exited 1".
+        detail = (result.stderr or "").strip()
+        try:
+            env = json.loads(result.stdout)
+            if env.get("is_error") or env.get("api_error_status"):
+                detail = f"{env.get('result') or detail} (api_error_status={env.get('api_error_status')})"
+        except Exception:
+            if (result.stdout or "").strip():
+                detail = result.stdout.strip()
+        logger.warning("[%s] claude exited %d: %s", c["name"], result.returncode, (detail[:300] or "(no output)"))
+        if "401" in detail or "authenticate" in detail.lower():
+            logger.warning("  -> Claude CLI not authenticated for headless `-p`. Run `claude login` "
+                           "(or `claude setup-token` and export it) so scoring can run.")
         return None
 
     try:

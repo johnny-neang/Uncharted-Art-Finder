@@ -25,14 +25,16 @@ from __future__ import annotations
 import argparse
 
 from contextlib import nullcontext
+from datetime import date
 
 from .common import (
-    DATA, fetch_image, fetch_instagram_thumbs, fetch_thumbs, get,
-    load_json, logger, polite_delay, rendered_session, save_json,
-    setup_logging,
+    DATA, fetch_image, fetch_instagram_apify_backup, fetch_instagram_thumbs,
+    fetch_thumbs, get, load_json, logger, polite_delay, rendered_session,
+    save_json, setup_logging,
 )
 
 MANUAL_PHOTOS_PATH = "manual_artist_photos.json"
+APIFY_ATTEMPTS_PATH = "apify_attempts.json"
 
 
 def try_refetch_thumbs(candidate: dict, want: int = 2, existing: list[dict] | None = None, rf=None) -> list[dict]:
@@ -99,6 +101,8 @@ def main():
                    help="skip the network refetch step (mark missing/dupe slots empty)")
     p.add_argument("--force", action="store_true",
                    help="refetch all candidates, even ones with clean unique thumbs")
+    p.add_argument("--apify-retry", action="store_true",
+                   help="let the paid Apify backup re-attempt candidates already in the ledger")
     p.add_argument("--log", default="INFO")
     args = p.parse_args()
     setup_logging(args.log)
@@ -110,6 +114,11 @@ def main():
         return
     manual = (load_json(DATA / MANUAL_PHOTOS_PATH, {}) or {}).get("by_slug", {})
     ig_handles = (load_json(DATA / "instagram_handles.json", {}) or {}).get("by_slug", {})
+    # Shared once-per-artist Apify ledger (the same file refresh_images uses) so
+    # the paid backup fires at most once per slug across the whole pipeline.
+    apify_attempts = (load_json(DATA / APIFY_ATTEMPTS_PATH, {}) or {}).get("by_slug", {})
+    apify_attempts_dirty = False
+    apify_calls: list[str] = []
 
     # Open one Playwright session for lazy-load fallbacks. Yields None
     # if Playwright isn't installed; fetch_thumbs silently skips render.
@@ -148,13 +157,15 @@ def main():
                 if fresh_manual:
                     manual_used += 1
 
-            # Stage 2: Instagram (if a handle is configured for this slug)
+            # Stage 2: Instagram, FREE tier only. The paid Apify tier is
+            # deferred to Stage 4 so the free page crawl gets a turn first.
             ig_handle = ig_handles.get(c.get("slug"))
             if ig_handle and len(new_thumbs) < 2:
-                ig_thumbs = fetch_instagram_thumbs(ig_handle, rf, want=2 - len(new_thumbs), existing=new_thumbs)
+                ig_thumbs = fetch_instagram_thumbs(
+                    ig_handle, rf, want=2 - len(new_thumbs), existing=new_thumbs, allow_apify=False)
                 new_thumbs.extend(ig_thumbs)
 
-            # Stage 3: auto-crawl with multi-page + Playwright fallback
+            # Stage 3: auto-crawl with multi-page + Playwright fallback (free)
             fresh: list[dict] = []
             if not args.no_refetch and len(new_thumbs) < 2:
                 fresh = try_refetch_thumbs(c, want=2 - len(new_thumbs), existing=new_thumbs, rf=rf)
@@ -163,18 +174,41 @@ def main():
                     refetched += len(fresh)
                     logger.info("  +%d unique thumb(s)", len(fresh))
 
+            # Stage 4: Apify IG scraper (paid) — LAST RESORT. Only after every
+            # free source above came up short, and at most ONCE per artist
+            # (shared apify_attempts.json ledger). --apify-retry forces it.
+            slug = c.get("slug")
+            if (ig_handle and len(new_thumbs) < 2 and not args.no_refetch
+                    and (args.apify_retry or slug not in apify_attempts)):
+                apify_attempts[slug] = str(date.today())  # record the paid attempt
+                apify_attempts_dirty = True
+                apify_calls.append(slug)
+                ap_thumbs = fetch_instagram_apify_backup(ig_handle, want=2 - len(new_thumbs), existing=new_thumbs)
+                new_thumbs.extend(ap_thumbs)
+                if ap_thumbs:
+                    refetched += len(ap_thumbs)
+                    logger.info("  +%d unique thumb(s) via Apify (last resort)", len(ap_thumbs))
+            elif (ig_handle and len(new_thumbs) < 2 and not args.no_refetch
+                    and slug in apify_attempts and not args.apify_retry):
+                logger.info("  apify: %s tried %s already — skipping paid retry (use --apify-retry)",
+                            slug, apify_attempts.get(slug))
+
             for i, t in enumerate(new_thumbs):
                 t["label"] = "primary" if i == 0 else "secondary"
             c["thumbs"] = new_thumbs
             c["image"] = new_thumbs[0] if new_thumbs else None
 
     save_json(DATA / "discoveries.json", discoveries)
+    if apify_attempts_dirty:
+        save_json(DATA / APIFY_ATTEMPTS_PATH, {"by_slug": apify_attempts})
     counts = {0: 0, 1: 0, 2: 0}
     for c in candidates:
         n = len(c.get("thumbs") or [])
         counts[min(n, 2)] = counts.get(min(n, 2), 0) + 1
-    logger.info("[qc-done] refetched=%d manual=%d cleared_dupes=%d skipped=%d",
-                refetched, manual_used, cleared_dupes, skipped)
+    logger.info("[qc-done] refetched=%d manual=%d cleared_dupes=%d skipped=%d apify_paid=%d",
+                refetched, manual_used, cleared_dupes, skipped, len(apify_calls))
+    if apify_calls:
+        logger.info("[qc-apify] paid backup fired for: %s", ", ".join(apify_calls))
     logger.info("[qc-coverage] 0-thumb=%d 1-thumb=%d 2-thumb=%d (of %d)",
                 counts[0], counts[1], counts[2], len(candidates))
 
