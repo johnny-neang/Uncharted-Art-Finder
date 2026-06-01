@@ -81,19 +81,19 @@
       "source": "Sacramento365 — Arts events"
     },
     {
+      "title": "Spring Eco-Art & Sip: Paint and Sculpt with Clay",
+      "date_raw": "May 31",
+      "date_iso": "2027-05-31",
+      "snippet": "Featured May 31 @ 10:30 am - 5:00 pm Spring Eco-Art & Sip: Paint and Sculpt with Clay The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, \t\t\t\t\tSacramento Visit the Atrium to shop local art or create your own. Sculpt a clay magnet, paint a canvas or tote",
+      "url": "https://atrium916.com/event/spring-eco-art-sip-paint-and-sculpt-with-clay/2026-05-31/",
+      "source": "Atrium 916 — events"
+    },
+    {
       "title": "Community Clean Up Clowns",
       "date_raw": "May 30",
       "date_iso": "2027-05-30",
       "snippet": "Featured May 30 @ 11:00 am - 1:00 pm Community Clean Up Clowns The Atrium- Creative Innovation Center for Sustainability 1020 Front Street, \t\t\t\t\tSacramento Clown around and serve your community at this fun performance art litter pick-up event. Calling all clowns, jesters, harlequ",
       "url": "https://atrium916.com/event/community-clean-up-clowns/",
-      "source": "Atrium 916 — events"
-    },
-    {
-      "title": "Spring Eco-Art & Sip: Paint and Sculpt with Clay",
-      "date_raw": "May 30",
-      "date_iso": "2027-05-30",
-      "snippet": "Featured May 30 @ 10:30 am - 5:00 pm Spring Eco-Art & Sip: Paint and Sculpt with Clay The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, \t\t\t\t\tSacramento Visit the Atrium to shop local art or create your own. Sculpt a clay magnet, paint a canvas or tote",
-      "url": "https://atrium916.com/event/spring-eco-art-sip-paint-and-sculpt-with-clay/2026-05-30/",
       "source": "Atrium 916 — events"
     },
     {
@@ -209,10 +209,18 @@
       "source": "JAYJAY Gallery — exhibitions"
     },
     {
+      "title": "June 1, 2026|When cannabis burglaries go wrong",
+      "date_raw": "June 1, 2026",
+      "date_iso": "2026-06-01",
+      "snippet": "Hot Topics June 1, 2026 | When cannabis burglaries go wrong May 31, 2026 | California vs Hate conference addresses anti-Asian resentment May 31, 2026 | Top Democratic candidates agree on housing urgency, not the fix May 28, 2026 | The summer movies preview: A quick look-see at up",
+      "url": "https://sacramento.newsreview.com/2026/06/01/when-cannabis-burglaries-go-wrong/",
+      "source": "Sacramento News & Review — Arts events"
+    },
+    {
       "title": "May 31, 2026|California vs Hate conference addresses anti-Asian resentment",
       "date_raw": "May 31, 2026",
       "date_iso": "2026-05-31",
-      "snippet": "Hot Topics May 31, 2026 | California vs Hate conference addresses anti-Asian resentment May 31, 2026 | Top Democratic candidates agree on housing urgency, not the fix May 28, 2026 | The summer movies preview: A quick look-see at upcoming cinematic offerings May 27, 2026 | Sac Cou",
+      "snippet": "May 31, 2026 | California vs Hate conference addresses anti-Asian resentment",
       "url": "https://sacramento.newsreview.com/2026/05/31/california-vs-hate-conference-addresses-anti-asian-resentment/",
       "source": "Sacramento News & Review — Arts events"
     },
@@ -238,14 +246,6 @@
       "date_iso": "2026-05-27",
       "snippet": "May 27, 2026 | Sac County approves Sheriff’s alliance with DHS, ICE-linked task force",
       "url": "https://sacramento.newsreview.com/2026/05/27/sac-county-approves-sheriffs-alliance-with-dhs-ice-linked-task-force/",
-      "source": "Sacramento News & Review — Arts events"
-    },
-    {
-      "title": "May 27, 2026|In California Governor Race, Single-Payer Is a Litmus Test. There’s Still No Way To Pay for It.",
-      "date_raw": "May 27, 2026",
-      "date_iso": "2026-05-27",
-      "snippet": "May 27, 2026 | In California Governor Race, Single-Payer Is a Litmus Test. There’s Still No Way To Pay for It.",
-      "url": "https://sacramento.newsreview.com/2026/05/27/in-california-governor-race-single-payer-is-a-litmus-test-theres-still-no-way-to-pay-for-it-2/",
       "source": "Sacramento News & Review — Arts events"
     }
   ],
