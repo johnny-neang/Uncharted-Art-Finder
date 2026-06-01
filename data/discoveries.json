@@ -2940,7 +2940,27 @@
         }
       ],
       "first_seen": "2026-05-30",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "yes",
+        "family_fit": 5,
+        "mural_capacity": "proven",
+        "suggested_tier": 1,
+        "suggested_tags": [
+          "mural",
+          "figurative",
+          "text-based",
+          "mixed-media"
+        ],
+        "one_line_summary": "Sacramento text-figure artist who weaves handwritten language into human forms; created the Arden Fair UnchARTed flagship installation in 2021.",
+        "proceed_recommendation": "add",
+        "confidence": "high",
+        "kind": "Artist · Sacramento",
+        "medium": "Mural · Mixed-media on canvas · Glass installation",
+        "suitability": "Native to the program — created the Arden Fair UnchARTed flagship. Narrative, text-woven figuration reads warmly in a family-retail setting and would anchor any cycle."
+      },
+      "scored_at": "2026-06-01",
+      "scored_with": "claude-code-agent"
     },
     {
       "slug": "lc_studio",
