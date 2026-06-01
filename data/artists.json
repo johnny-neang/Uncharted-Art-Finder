@@ -31,36 +31,6 @@
     "status": "active"
   },
   {
-    "n": 3,
-    "slug": "lc_studio",
-    "name": "LC Studio Tutto",
-    "tier": 1,
-    "kind": "Studio · Sacramento + Yountville",
-    "medium": "Mural · Site-specific · Public art",
-    "tags": [
-      "mural",
-      "public",
-      "environmental"
-    ],
-    "summary": "Husband-and-wife studio (Lin-Fei Fei + Cody) producing painterly, place-attentive commissions. Bright Underbelly underpass and Memory of a Tree are signature wins.",
-    "fit": 5,
-    "suitability": "Place-conscious approach is a strong fit for a Sacramento-anchored mall identity.",
-    "primaryUrl": "https://www.studio-tutto.com",
-    "primaryHost": "studio-tutto.com",
-    "thumbs": [
-      {
-        "svg": "lc_underbelly",
-        "label": "Bright Underbelly"
-      },
-      {
-        "svg": "lc_treememory",
-        "label": "Memory of Tree"
-      }
-    ],
-    "addedAt": "2026-05-07",
-    "status": "active"
-  },
-  {
     "n": 6,
     "slug": "king",
     "name": "Jaya King",
