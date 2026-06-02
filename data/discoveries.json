@@ -3021,6 +3021,35 @@
         "via": "dashboard",
         "at": "2026-06-02T19:00:45+00:00"
       }
+    },
+    {
+      "slug": "wow",
+      "name": "Wide Open Walls",
+      "url": "https://www.wideopenwalls.com",
+      "source_name": "demoted from directory",
+      "image": {
+        "svg": "wow_muralcity",
+        "label": "Mural city"
+      },
+      "thumbs": [
+        {
+          "svg": "wow_muralcity",
+          "label": "Mural city"
+        },
+        {
+          "svg": "wow_festival",
+          "label": "Festival"
+        }
+      ],
+      "first_seen": "2026-06-02",
+      "status": "pending",
+      "manual_override": "watch",
+      "demoted_from_directory": {
+        "n_original": 20,
+        "tier_original": 3,
+        "via": "dashboard",
+        "at": "2026-06-02T19:01:03+00:00"
+      }
     }
   ],
   "rejected_slugs": [
