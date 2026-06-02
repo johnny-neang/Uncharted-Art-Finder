@@ -92,37 +92,6 @@
     "status": "active"
   },
   {
-    "n": 10,
-    "slug": "hart",
-    "name": "Gale Hart",
-    "tier": 2,
-    "kind": "Artist · Sacramento",
-    "medium": "Sculpture · Painting",
-    "tags": [
-      "studio",
-      "sculpture",
-      "pop",
-      "conceptual"
-    ],
-    "summary": "Multidisciplinary; Missing the Mark (Golden 1 Center darts) sets the tone — pop-conceptual with a sharp wit.",
-    "fit": 3,
-    "suitability": "Conceptual edge may be too sharp for a family mall — selective use only.",
-    "primaryUrl": "https://galehart.com",
-    "primaryHost": "galehart.com",
-    "thumbs": [
-      {
-        "svg": "hart_missingmark",
-        "label": "Missing Mark"
-      },
-      {
-        "svg": "hart_popsculpt",
-        "label": "Pop sculpt"
-      }
-    ],
-    "addedAt": "2026-05-07",
-    "status": "active"
-  },
-  {
     "n": 11,
     "slug": "taylor",
     "name": "Stephanie Taylor",
