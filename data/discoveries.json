@@ -2992,6 +2992,35 @@
         "reason": "",
         "issue": 5
       }
+    },
+    {
+      "slug": "skinner",
+      "name": "Skinner",
+      "url": "https://www.theartofskinner.com/murals",
+      "source_name": "demoted from directory",
+      "image": {
+        "svg": "skinner_creature",
+        "label": "Creature"
+      },
+      "thumbs": [
+        {
+          "svg": "skinner_creature",
+          "label": "Creature"
+        },
+        {
+          "svg": "skinner_pop",
+          "label": "Pop bright"
+        }
+      ],
+      "first_seen": "2026-06-02",
+      "status": "pending",
+      "manual_override": "watch",
+      "demoted_from_directory": {
+        "n_original": 18,
+        "tier_original": 2,
+        "via": "dashboard",
+        "at": "2026-06-02T19:00:45+00:00"
+      }
     }
   ],
   "rejected_slugs": [
