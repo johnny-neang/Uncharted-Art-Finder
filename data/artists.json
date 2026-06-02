@@ -451,35 +451,6 @@
     }
   },
   {
-    "n": 26,
-    "slug": "bigshot_robot",
-    "name": "Bigshot Robot",
-    "tier": 2,
-    "kind": "Artist · Location Unconfirmed",
-    "medium": "Mural · Spray Paint · Illustration",
-    "tags": [
-      "mural",
-      "street-art",
-      "pop",
-      "character",
-      "illustrative"
-    ],
-    "summary": "Branded Arts roster muralist with bold pop-illustrative character work; Sacramento ties not confirmed via this source.",
-    "fit": 4,
-    "suitability": "Bold character-driven pop muralism reads well in family-retail contexts and scales for mall walls. Sacramento connection unverified; would need regional confirmation before roster inclusion.",
-    "primaryUrl": "https://brandedarts.com/art/bigshot-robot/",
-    "primaryHost": "brandedarts.com",
-    "thumbs": [],
-    "addedAt": "2026-05-29",
-    "status": "active",
-    "promoted_from": {
-      "source_name": "Branded Arts roster",
-      "first_seen": "2026-05-08",
-      "via": "dashboard",
-      "at": "2026-05-29T19:05:27+00:00"
-    }
-  },
-  {
     "n": 27,
     "slug": "lisa_kokin",
     "name": "Lisa Kokin",
