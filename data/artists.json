@@ -297,36 +297,6 @@
     "status": "active"
   },
   {
-    "n": 20,
-    "slug": "wow",
-    "name": "Wide Open Walls",
-    "tier": 3,
-    "kind": "Festival / Agency · Sacramento",
-    "medium": "Festival production · Mural commissioning",
-    "tags": [
-      "agency",
-      "festival",
-      "mural"
-    ],
-    "summary": "Sacramento's annual mural festival; managed many of the best-known downtown murals. Strong artist pipeline and event-marketing engine.",
-    "fit": 4,
-    "suitability": "Excellent if program is event-led; can deliver multi-artist mural week tied to a festival cycle.",
-    "primaryUrl": "https://www.wideopenwalls.com",
-    "primaryHost": "wideopenwalls.com",
-    "thumbs": [
-      {
-        "svg": "wow_muralcity",
-        "label": "Mural city"
-      },
-      {
-        "svg": "wow_festival",
-        "label": "Festival"
-      }
-    ],
-    "addedAt": "2026-05-07",
-    "status": "active"
-  },
-  {
     "n": 21,
     "slug": "ninedot",
     "name": "NINE dot ARTS",
