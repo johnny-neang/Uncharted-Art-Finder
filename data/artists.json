@@ -267,37 +267,6 @@
     "status": "active"
   },
   {
-    "n": 18,
-    "slug": "skinner",
-    "name": "Skinner",
-    "tier": 2,
-    "kind": "Artist · Sacramento",
-    "medium": "Mural · Painting · Pop bright",
-    "tags": [
-      "mural",
-      "studio",
-      "pop",
-      "character"
-    ],
-    "summary": "Best known for dense mythological imagery; we curate to his lighter, pop-bright work for a family-mall audience. Avoid the heavier metal-adjacent pieces.",
-    "fit": 3,
-    "suitability": "Curate carefully — strong fit if focused on pop-creature pieces, weak if dark mythology surfaces.",
-    "primaryUrl": "https://www.theartofskinner.com/murals",
-    "primaryHost": "theartofskinner.com",
-    "thumbs": [
-      {
-        "svg": "skinner_creature",
-        "label": "Creature"
-      },
-      {
-        "svg": "skinner_pop",
-        "label": "Pop bright"
-      }
-    ],
-    "addedAt": "2026-05-07",
-    "status": "active"
-  },
-  {
     "n": 19,
     "slug": "groundswell",
     "name": "Groundswell Art",
