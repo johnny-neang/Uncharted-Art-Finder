@@ -3003,6 +3003,23 @@
         "via": "dashboard",
         "at": "2026-06-02T19:01:03+00:00"
       }
+    },
+    {
+      "slug": "bigshot_robot",
+      "name": "Bigshot Robot",
+      "url": "https://brandedarts.com/art/bigshot-robot/",
+      "source_name": "demoted from directory",
+      "image": null,
+      "thumbs": [],
+      "first_seen": "2026-06-02",
+      "status": "pending",
+      "manual_override": "watch",
+      "demoted_from_directory": {
+        "n_original": 26,
+        "tier_original": 2,
+        "via": "dashboard",
+        "at": "2026-06-02T19:31:07+00:00"
+      }
     }
   ],
   "rejected_slugs": [
