@@ -1,6 +1,110 @@
 {
   "events": [
     {
+      "title": "Mr. Gay Latino",
+      "date_raw": "May 12 - Jun 09, 2026",
+      "date_iso": "2027-05-12",
+      "snippet": "Mr. Gay Latino Presented by Faces Nightclub at Faces Nightclub May 12 - Jun 09, 2026",
+      "url": "https://sacramento365.com/event/mr-gay-latino/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Picnic in the Poppies Series",
+      "date_raw": "May 13 - Jun 10, 2026",
+      "date_iso": "2027-05-13",
+      "snippet": "Picnic in the Poppies Series Presented by Midtown Association and Kaiser Permanente at Fremont Park May 13 - Jun 10, 2026",
+      "url": "https://sacramento365.com/event/poppies-picnic-series/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Concerts in the Park: The Temper Trap",
+      "date_raw": "Jun 12, 2026",
+      "date_iso": "2026-06-12",
+      "snippet": "Concerts in the Park: The Temper Trap Presented by Downtown Sacramento Partnership at  910 I Street Jun 12, 2026",
+      "url": "https://sacramento365.com/event/concerts-in-the-park-the-temper-trap/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Midtown Second Saturday Car Show with Stylistics x Silent Disco with H.E.R.E.",
+      "date_raw": "Jun 13, 2026",
+      "date_iso": "2026-06-13",
+      "snippet": "Midtown Second Saturday Car Show with Stylistics x Silent Disco with H.E.R.E. Presented by Midtown Association and Sutter Health at Fremont Park Jun 13, 2026",
+      "url": "https://sacramento365.com/event/midtown-second-saturday-car-show-with-stylistics/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Animal House 2026",
+      "date_raw": "May 19 - Jun 13, 2026",
+      "date_iso": "2027-05-19",
+      "snippet": "Animal House 2026 Presented by Sacramento Fine Arts Center at Sacramento Fine Arts Center May 19 - Jun 13, 2026",
+      "url": "https://sacramento365.com/event/animal-house-2026/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Whose Live Anyway?",
+      "date_raw": "Jun 13, 2026",
+      "date_iso": "2026-06-13",
+      "snippet": "Whose Live Anyway? Presented by Color of Nine at SAFE Credit Union Performing Arts Center Jun 13, 2026",
+      "url": "https://sacramento365.com/event/whose-live-anwyay/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Sacramento Pride March and Festival",
+      "date_raw": "Jun 13 - Jun 14, 2026",
+      "date_iso": "2026-06-13",
+      "snippet": "Sacramento Pride March and Festival Presented by Sacramento LGBT Community Center at Capitol Mall Greens Jun 13 - Jun 14, 2026",
+      "url": "https://sacramento365.com/event/sacramento-pride-march-and-festival-2/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Concerts in the Park: Kid Ink",
+      "date_raw": "Jun 19, 2026",
+      "date_iso": "2026-06-19",
+      "snippet": "Concerts in the Park: Kid Ink Presented by Downtown Sacramento Partnership at  910 I Street Jun 19, 2026",
+      "url": "https://sacramento365.com/event/concerts-in-the-park-kid-ink/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Broadway Cruise: The Homecoming",
+      "date_raw": "Jun 20, 2026",
+      "date_iso": "2026-06-20",
+      "snippet": "Broadway Cruise: The Homecoming Presented by California Automobile Museum at California Automobile Museum Jun 20, 2026",
+      "url": "https://sacramento365.com/event/broadway-cruise-the-homecoming/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Moonpay X Games Sacramento",
+      "date_raw": "Jun 26 - Jun 28, 2026",
+      "date_iso": "2026-06-26",
+      "snippet": "Moonpay X Games Sacramento Presented by X Games and Moonpay at Cal Expo Jun 26 - Jun 28, 2026",
+      "url": "https://sacramento365.com/event/moonpay-x-games-sacramento/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Summer Eco-Art & Sip: Paint and Sculpt with Clay",
+      "date_raw": "June 11",
+      "date_iso": "2026-06-11",
+      "snippet": "Thu 11 Summer Eco-Art & Sip: Paint and Sculpt with Clay Featured June 11 @ 10:30 am - 5:00 pm The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Visit the Atrium to shop local art and create your own Peep. Sip kombucha as y",
+      "url": "https://atrium916.com/event/summer-eco-art-sip-paint-and-sculpt-with-clay-8/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "Sacramento Art Spaces Are Embracing the Power of the ‘Little Treat’",
+      "date_raw": "May 30, 2026",
+      "date_iso": "2026-05-30",
+      "snippet": "Sacramento Art Spaces Are Embracing the Power of the ‘Little Treat’ May 30, 2026 May 12, 2026 – Comstock’s Magazine – Enter the magic of the “little treat.” As it turns out, having a snack or drink by your side while you create can make art feel more approachable and less intimid",
+      "url": "https://atrium916.com/2026/05/30/the-great-escape-turning-back-the-clock-in-old-sacramento-2/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "May 12, 2026 – Comstock’s Magazine – Enter the magic of the “little treat.” As i",
+      "date_raw": "May 12, 2026",
+      "date_iso": "2026-05-12",
+      "snippet": "May 12, 2026 – Comstock’s Magazine – Enter the magic of the “little treat.” As it turns out, having a snack or drink by your side while you create can make art feel more approachable and less intimidating. It harkens back to the days of crayon-coloring with a cup of Goldfish at t",
+      "url": "https://atrium916.com/events",
+      "source": "Atrium 916 — events"
+    },
+    {
       "title": "California Time Traveler CampJune 22-26, 2026 & July 6-10, 2026 | SOLD OUTLearn More",
       "date_raw": "June 22-26, 2026",
       "date_iso": "2026-06-22",
@@ -39,6 +143,38 @@
       "snippet": "By Hand January 10th - February 21st, 2026 Lottery for the Arts - Fundraiser for Art Education February 28th - March 14th, 2026 Preview Night Reception: February 28th, 2026 Event Date: March 14th, 2026 Off Center // On the Rise // Robert Gideon // SCG Art Local March 21st - May 2",
       "url": "https://www.bluelinearts.org/the-lottery-for-the-arts",
       "source": "Blue Line Arts — exhibitions"
+    },
+    {
+      "title": "On View at Axis",
+      "date_raw": "June 5, 2026",
+      "date_iso": "2026-06-05",
+      "snippet": "On View at Axis After Nature – Fiona K. Lau June 5, 2026 through June 28, 2026 Second Saturday Reception: June 13, 5–8 PM Join us at Axis Gallery for Second Saturday, a monthly celebration of the newest gallery exhibition. Guests can enjoy light refreshments, lively conversation,",
+      "url": "https://axisgallery.org/home-3/exhibitions/by-fiona-lau/",
+      "source": "Axis Gallery — exhibitions"
+    },
+    {
+      "title": "June 5, 2026 through June 28, 2026 Second Saturday Reception: June 13, 5–8 PM",
+      "date_raw": "June 5, 2026",
+      "date_iso": "2026-06-05",
+      "snippet": "June 5, 2026 through June 28, 2026 Second Saturday Reception: June 13, 5–8 PM",
+      "url": "https://axisgallery.org/exhibitions/",
+      "source": "Axis Gallery — exhibitions"
+    },
+    {
+      "title": "Second Saturday Reception: June 13, 5–8 PM",
+      "date_raw": "June 13",
+      "date_iso": "2026-06-13",
+      "snippet": "Second Saturday Reception: June 13, 5–8 PM",
+      "url": "https://axisgallery.org/exhibitions/",
+      "source": "Axis Gallery — exhibitions"
+    },
+    {
+      "title": "In the East Room",
+      "date_raw": "June 5, 2026",
+      "date_iso": "2026-06-05",
+      "snippet": "In the East Room Immoral Until Profitable by Kenneth Jordan June 5, 2026 through June 28, 2026 Second Saturday Reception: June 13, 5–8 PM Join us at Axis Gallery for Second Saturday, a monthly celebration of the newest gallery exhibition. Guests can enjoy light refreshments, live",
+      "url": "https://axisgallery.org/home-3/exhibitions/immoral-until-profitable-by-kenneth-jordan/",
+      "source": "Axis Gallery — exhibitions"
     },
     {
       "title": "About Us",
@@ -105,5 +241,5 @@
       "source": "Sacramento News & Review — Arts events"
     }
   ],
-  "last_run": "2026-06-07"
+  "last_run": "2026-06-08"
 }
