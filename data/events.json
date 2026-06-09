@@ -1,14 +1,6 @@
 {
   "events": [
     {
-      "title": "Mr. Gay Latino",
-      "date_raw": "May 12 - Jun 09, 2026",
-      "date_iso": "2027-05-12",
-      "snippet": "Mr. Gay Latino Presented by Faces Nightclub at Faces Nightclub May 12 - Jun 09, 2026",
-      "url": "https://sacramento365.com/event/mr-gay-latino/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
       "title": "Picnic in the Poppies Series",
       "date_raw": "May 13 - Jun 10, 2026",
       "date_iso": "2027-05-13",
@@ -70,6 +62,14 @@
       "date_iso": "2026-06-20",
       "snippet": "Broadway Cruise: The Homecoming Presented by California Automobile Museum at California Automobile Museum Jun 20, 2026",
       "url": "https://sacramento365.com/event/broadway-cruise-the-homecoming/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Senior Health and Resources Fair",
+      "date_raw": "Jun 20, 2026",
+      "date_iso": "2026-06-20",
+      "snippet": "Senior Health and Resources Fair Presented by Recovery Enterprises at  Wyndham Sacramento Hotel Jun 20, 2026",
+      "url": "https://sacramento365.com/event/senior-health-and-resources-fair/",
       "source": "Sacramento365 — Arts events"
     },
     {
@@ -241,5 +241,5 @@
       "source": "Sacramento News & Review — Arts events"
     }
   ],
-  "last_run": "2026-06-08"
+  "last_run": "2026-06-09"
 }
