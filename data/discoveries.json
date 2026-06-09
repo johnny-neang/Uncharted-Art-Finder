@@ -3107,6 +3107,23 @@
         "via": "dashboard",
         "at": "2026-06-09T19:17:40+00:00"
       }
+    },
+    {
+      "slug": "horner",
+      "name": "Waylon Horner",
+      "url": "https://brandedarts.com/portfolio_page/waylon-horner/",
+      "source_name": "demoted from directory",
+      "image": null,
+      "thumbs": [],
+      "first_seen": "2026-06-09",
+      "status": "pending",
+      "manual_override": "watch",
+      "demoted_from_directory": {
+        "n_original": 17,
+        "tier_original": 2,
+        "via": "dashboard",
+        "at": "2026-06-09T19:17:51+00:00"
+      }
     }
   ],
   "rejected_slugs": [
