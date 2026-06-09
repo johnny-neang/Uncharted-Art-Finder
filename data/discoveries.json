@@ -3078,6 +3078,35 @@
       ],
       "first_seen": "2026-06-09",
       "status": "pending"
+    },
+    {
+      "slug": "huerta",
+      "name": "John S. Huerta",
+      "url": "https://viva-frida.com",
+      "source_name": "demoted from directory",
+      "image": {
+        "svg": "huerta_frida",
+        "label": "Frida"
+      },
+      "thumbs": [
+        {
+          "svg": "huerta_frida",
+          "label": "Frida"
+        },
+        {
+          "svg": "huerta_diamuertos",
+          "label": "Día Muertos"
+        }
+      ],
+      "first_seen": "2026-06-09",
+      "status": "pending",
+      "manual_override": "watch",
+      "demoted_from_directory": {
+        "n_original": 16,
+        "tier_original": 2,
+        "via": "dashboard",
+        "at": "2026-06-09T19:17:40+00:00"
+      }
     }
   ],
   "rejected_slugs": [
