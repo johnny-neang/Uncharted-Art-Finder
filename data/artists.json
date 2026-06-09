@@ -184,36 +184,6 @@
     "status": "active"
   },
   {
-    "n": 16,
-    "slug": "huerta",
-    "name": "John S. Huerta",
-    "tier": 2,
-    "kind": "Artist · Sacramento",
-    "medium": "Mural · Día de los Muertos imagery",
-    "tags": [
-      "mural",
-      "cultural",
-      "portrait"
-    ],
-    "summary": "Frida Kahlo mural at 24th & K is the calling-card piece; broad Día de los Muertos and Latin-cultural visual vocabulary.",
-    "fit": 4,
-    "suitability": "Strong cultural-moment programming — pair with a fall / Día de los Muertos activation.",
-    "primaryUrl": "https://viva-frida.com",
-    "primaryHost": "viva-frida.com",
-    "thumbs": [
-      {
-        "svg": "huerta_frida",
-        "label": "Frida"
-      },
-      {
-        "svg": "huerta_diamuertos",
-        "label": "Día Muertos"
-      }
-    ],
-    "addedAt": "2026-05-07",
-    "status": "active"
-  },
-  {
     "n": 17,
     "slug": "horner",
     "name": "Waylon Horner",
