@@ -3124,6 +3124,35 @@
         "via": "dashboard",
         "at": "2026-06-09T19:17:51+00:00"
       }
+    },
+    {
+      "slug": "conrad",
+      "name": "Maren Conrad",
+      "url": "https://www.marenconrad.com/marrs",
+      "source_name": "demoted from directory",
+      "image": {
+        "svg": "conrad_koi",
+        "label": "Koi (MARRS)"
+      },
+      "thumbs": [
+        {
+          "svg": "conrad_koi",
+          "label": "Koi (MARRS)"
+        },
+        {
+          "svg": "conrad_ladybird",
+          "label": "Lady Bird"
+        }
+      ],
+      "first_seen": "2026-06-09",
+      "status": "pending",
+      "manual_override": "watch",
+      "demoted_from_directory": {
+        "n_original": 2,
+        "tier_original": 1,
+        "via": "dashboard",
+        "at": "2026-06-09T19:50:15+00:00"
+      }
     }
   ],
   "rejected_slugs": [
