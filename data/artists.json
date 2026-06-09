@@ -1,36 +1,5 @@
 [
   {
-    "n": 2,
-    "slug": "conrad",
-    "name": "Maren Conrad",
-    "tier": 1,
-    "kind": "Artist · Sacramento",
-    "medium": "Mural · Resin · Encaustic",
-    "tags": [
-      "mural",
-      "studio",
-      "figurative",
-      "botanical"
-    ],
-    "summary": "Painterly muralist working at architectural scale; signature pieces include the MARRS koi mural and a Lady Bird portrait. Strong civic-minded brand visibility.",
-    "fit": 5,
-    "suitability": "Naturalistic motifs and warm palette read well in family-retail. Proven scale.",
-    "primaryUrl": "https://www.marenconrad.com/marrs",
-    "primaryHost": "marenconrad.com",
-    "thumbs": [
-      {
-        "svg": "conrad_koi",
-        "label": "Koi (MARRS)"
-      },
-      {
-        "svg": "conrad_ladybird",
-        "label": "Lady Bird"
-      }
-    ],
-    "addedAt": "2026-05-07",
-    "status": "active"
-  },
-  {
     "n": 6,
     "slug": "king",
     "name": "Jaya King",
