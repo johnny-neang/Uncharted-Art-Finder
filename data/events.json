@@ -1,14 +1,6 @@
 {
   "events": [
     {
-      "title": "Picnic in the Poppies Series",
-      "date_raw": "May 13 - Jun 10, 2026",
-      "date_iso": "2027-05-13",
-      "snippet": "Picnic in the Poppies Series Presented by Midtown Association and Kaiser Permanente at Fremont Park May 13 - Jun 10, 2026",
-      "url": "https://sacramento365.com/event/poppies-picnic-series/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
       "title": "Concerts in the Park: The Temper Trap",
       "date_raw": "Jun 12, 2026",
       "date_iso": "2026-06-12",
@@ -38,6 +30,14 @@
       "date_iso": "2026-06-13",
       "snippet": "Whose Live Anyway? Presented by Color of Nine at SAFE Credit Union Performing Arts Center Jun 13, 2026",
       "url": "https://sacramento365.com/event/whose-live-anwyay/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Flashback Fest - Bringing Back the 80's",
+      "date_raw": "Jun 13, 2026",
+      "date_iso": "2026-06-13",
+      "snippet": "Flashback Fest - Bringing Back the 80's Presented by FosterHope Sacramento at William Land Park Jun 13, 2026",
+      "url": "https://sacramento365.com/event/flashback-fest-bringing-back-the-80s/",
       "source": "Sacramento365 — Arts events"
     },
     {
@@ -201,10 +201,26 @@
       "source": "JAYJAY Gallery — exhibitions"
     },
     {
+      "title": "June 9, 2026|Can California afford to cover Ozempic for public employees?",
+      "date_raw": "June 9, 2026",
+      "date_iso": "2026-06-09",
+      "snippet": "Hot Topics June 9, 2026 | Can California afford to cover Ozempic for public employees? June 9, 2026 | In a vaccine-skeptical California county, a potential playbook to contain measles June 5, 2026 | The top-two primary was supposed to change California politics. Did it flop? June",
+      "url": "https://sacramento.newsreview.com/2026/06/09/can-california-afford-to-cover-ozempic-for-public-employees/",
+      "source": "Sacramento News & Review — Arts events"
+    },
+    {
+      "title": "June 9, 2026|In a vaccine-skeptical California county, a potential playbook to contain measles",
+      "date_raw": "June 9, 2026",
+      "date_iso": "2026-06-09",
+      "snippet": "June 9, 2026 | In a vaccine-skeptical California county, a potential playbook to contain measles",
+      "url": "https://sacramento.newsreview.com/2026/06/09/in-a-vaccine-skeptical-california-county-a-potential-playbook-to-contain-measles/",
+      "source": "Sacramento News & Review — Arts events"
+    },
+    {
       "title": "June 5, 2026|The top-two primary was supposed to change California politics. Did it flop?",
       "date_raw": "June 5, 2026",
       "date_iso": "2026-06-05",
-      "snippet": "Hot Topics June 5, 2026 | The top-two primary was supposed to change California politics. Did it flop? June 4, 2026 | Sacramento’s police budget soars as crime rates, staffing fall June 3, 2026 | More candidates are using their personal wealth to campaign than ever before. Should",
+      "snippet": "June 5, 2026 | The top-two primary was supposed to change California politics. Did it flop?",
       "url": "https://sacramento.newsreview.com/2026/06/05/the-top-two-primary-was-supposed-to-change-california-politics-did-it-flop/",
       "source": "Sacramento News & Review — Arts events"
     },
@@ -223,23 +239,7 @@
       "snippet": "June 3, 2026 | More candidates are using their personal wealth to campaign than ever before. Should voters care?",
       "url": "https://sacramento.newsreview.com/2026/06/03/more-candidates-are-using-their-personal-wealth-to-campaign-than-ever-before-should-voters-care/",
       "source": "Sacramento News & Review — Arts events"
-    },
-    {
-      "title": "June 3, 2026|Five takeaways from California’s election, from Congress to the governor’s race",
-      "date_raw": "June 3, 2026",
-      "date_iso": "2026-06-03",
-      "snippet": "June 3, 2026 | Five takeaways from California’s election, from Congress to the governor’s race",
-      "url": "https://sacramento.newsreview.com/2026/06/03/five-takeaways-from-californias-election-from-congress-to-the-governors-race/",
-      "source": "Sacramento News & Review — Arts events"
-    },
-    {
-      "title": "June 2, 2026|Sacramento City Senior Planner Greta Soos on affordable housing and what the City is doing differently",
-      "date_raw": "June 2, 2026",
-      "date_iso": "2026-06-02",
-      "snippet": "June 2, 2026 | Sacramento City Senior Planner Greta Soos on affordable housing and what the City is doing differently",
-      "url": "https://sacramento.newsreview.com/2026/06/02/sacramento-city-senior-planner-greta-soos-on-affordable-housing-and-what-the-city-is-doing-differently/",
-      "source": "Sacramento News & Review — Arts events"
     }
   ],
-  "last_run": "2026-06-09"
+  "last_run": "2026-06-10"
 }
