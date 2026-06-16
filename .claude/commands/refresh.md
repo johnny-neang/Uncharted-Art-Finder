@@ -37,11 +37,23 @@ The `APIFY` token is read from the process environment, with a gitignored repo-r
 
 Scoring is done by **you** (Claude, executing this skill) in-context — do **not** shell out to `claude -p` (it needs separate CLI auth and was failing with a 401). Run the pipeline, score the candidates yourself, then rebuild and push. Use the repo venv (`./.venv/bin/python`) so dependencies resolve.
 
-1. **Run the pipeline** — everything except scoring and the push:
+0. **Reconcile with `origin` FIRST — before running anything.** A daily GitHub Actions cron (`Daily data refresh · <date>`) and dashboard promote/demote commits push to `main` independently of you. If you run the local pipeline on a stale base and then rebase, you will (a) re-scrape artists the cron already completed today and (b) burn paid Apify calls if a transient local DNS blip makes the free image tiers look "empty" — exactly the spend the rules forbid. So always start by syncing:
+
+   ```bash
+   git fetch origin && git log --oneline HEAD..origin/main
+   ```
+
+   - **If `origin/main` already contains a `Daily data refresh · <today>` commit** (the cron beat you to it), the day's scraping is already done and authoritative. Do **NOT** re-run `run_daily`. Instead: `git reset --hard origin/main`, then go straight to **step 2** (score) → **step 3** (rebuild) → **step 4** (push). This is the common case for an afternoon/evening `/refresh`.
+   - **If `origin/main` has only dashboard commits (or nothing) since your last sync**, fast-forward first (`git reset --hard origin/main` if you have no local commits, else `git pull --rebase --autostash`), *then* run the full pipeline in step 1. Running on the current roster matters — discovery/QC must see the latest promotions/demotions.
+   - Never let the local pipeline's output overwrite the cron's same-day image/event data. When in doubt, the cron is authoritative for `artist_images.json` and `events.json`; you are authoritative only for the **scores** you add to `discoveries.json`.
+
+1. **Run the pipeline** — everything except scoring and the push (skip this step if step 0 told you the cron already refreshed today):
 
    ```bash
    ./.venv/bin/python -m scripts.run_daily --skip-scoring --skip-push
    ```
+
+   Watch the `apify_paid=` line in the `[done] refreshed=…` summary. If it's **non-zero**, confirm it was a genuinely photo-less artist and not a network/DNS failure faking out the free tiers — a burst of `[err] … Failed to resolve '…'` lines immediately before Apify fires means your local DNS dropped and the paid calls were wasted; abort, `git reset --hard origin/main`, and retry once the network is healthy rather than committing DNS-induced Apify spend.
 
 2. **Score new candidates yourself.** List the ones that need a score:
 
@@ -68,6 +80,12 @@ Scoring is done by **you** (Claude, executing this skill) in-context — do **no
    ```bash
    git add data/ index.html && git commit -m "Daily refresh · $(date -u +%Y-%m-%d)" && git pull --rebase --autostash && git push
    ```
+
+   **If the rebase hits a conflict, mind the inverted `--ours`/`--theirs` semantics.** During a rebase your commit is replayed *on top of* `origin/main`, so git's labels flip from what you'd expect: **`--ours` = the upstream cron/dashboard commit**, **`--theirs` = your local refresh work**. Getting this backwards silently drops your scores (and once did). Resolve per-file by intent, not by guessing the flag:
+   - `data/discoveries.json`, `data/artists.json` → keep **your** version (`git checkout --theirs <file>`) — it carries the scores you just applied; the cron only bumps `last_run` here.
+   - `data/artist_images.json`, `data/events.json` → keep the **cron's** version (`git checkout --ours <file>`) — it is authoritative for images/events.
+   - `index.html` → never trust either side of an auto-merge; after resolving the data files, **rebuild it** (`./.venv/bin/python -m scripts.build_dashboard`) so it reflects the merged data, then `git add` everything and `GIT_EDITOR=true git rebase --continue`.
+   - Then `git push`. If a *new* cron commit landed during resolution, repeat.
 
 Then read today's digest at `data/digests/$(date -u +%Y-%m-%d).md` and summarize for the user in 4–6 lines:
 - New candidates surfaced today (with names + recommendations)
