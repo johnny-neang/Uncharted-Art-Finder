@@ -2693,7 +2693,27 @@
         }
       ],
       "first_seen": "2026-06-09",
-      "status": "pending"
+      "status": "pending",
+      "score": {
+        "sacramento_connection": "unclear",
+        "family_fit": 4,
+        "mural_capacity": "studio_only",
+        "suggested_tier": 2,
+        "suggested_tags": [
+          "abstract",
+          "painting",
+          "textural",
+          "layered"
+        ],
+        "one_line_summary": "Abstract painter on a hospitality art advisory roster; studio-scale practice with no confirmed Sacramento connection.",
+        "proceed_recommendation": "watch",
+        "confidence": "low",
+        "kind": "Artist",
+        "medium": "Painting · Mixed Media on Canvas",
+        "suitability": "Hospitality-advisory placement suggests studio-scale work; warm abstract palette reads well in retail. Sacramento tie unconfirmed — worth monitoring if Sac connection surfaces."
+      },
+      "scored_at": "2026-06-16",
+      "scored_with": "claude-code-agent"
     },
     {
       "slug": "huerta",
