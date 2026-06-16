@@ -9,19 +9,19 @@
       "source": "Sacramento365 — Arts events"
     },
     {
-      "title": "Broadway Cruise: The Homecoming",
-      "date_raw": "Jun 20, 2026",
-      "date_iso": "2026-06-20",
-      "snippet": "Broadway Cruise: The Homecoming Presented by California Automobile Museum at California Automobile Museum Jun 20, 2026",
-      "url": "https://sacramento365.com/event/broadway-cruise-the-homecoming/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
       "title": "Sacramento Juneteenth",
       "date_raw": "Jun 19 - Jun 20, 2026",
       "date_iso": "2026-06-19",
       "snippet": "Sacramento Juneteenth Presented by Sacramento Juneteenth, Inc. at William Land Park Jun 19 - Jun 20, 2026",
       "url": "https://sacramento365.com/event/sacramento-juneteenth/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Broadway Cruise: The Homecoming",
+      "date_raw": "Jun 20, 2026",
+      "date_iso": "2026-06-20",
+      "snippet": "Broadway Cruise: The Homecoming Presented by California Automobile Museum at California Automobile Museum Jun 20, 2026",
+      "url": "https://sacramento365.com/event/broadway-cruise-the-homecoming/",
       "source": "Sacramento365 — Arts events"
     },
     {
@@ -249,5 +249,5 @@
       "source": "Sacramento News & Review — Arts events"
     }
   ],
-  "last_run": "2026-06-15"
+  "last_run": "2026-06-16"
 }
