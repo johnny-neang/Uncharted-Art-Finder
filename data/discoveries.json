@@ -2769,6 +2769,35 @@
         "via": "dashboard",
         "at": "2026-06-09T19:50:15+00:00"
       }
+    },
+    {
+      "slug": "gamez",
+      "name": "Franceska Gamez",
+      "url": "https://brandedarts.com/art/franceska-gamez/",
+      "source_name": "demoted from directory",
+      "image": {
+        "svg": "gamez_phoenix",
+        "label": "Phoenix"
+      },
+      "thumbs": [
+        {
+          "svg": "gamez_phoenix",
+          "label": "Phoenix"
+        },
+        {
+          "svg": "gamez_floral",
+          "label": "Floral portrait"
+        }
+      ],
+      "first_seen": "2026-06-16",
+      "status": "pending",
+      "manual_override": "watch",
+      "demoted_from_directory": {
+        "n_original": 12,
+        "tier_original": 2,
+        "via": "dashboard",
+        "at": "2026-06-16T19:09:44+00:00"
+      }
     }
   ],
   "rejected_slugs": [
