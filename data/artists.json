@@ -92,37 +92,6 @@
     "status": "active"
   },
   {
-    "n": 12,
-    "slug": "gamez",
-    "name": "Franceska Gamez",
-    "tier": 2,
-    "kind": "Artist · Sacramento",
-    "medium": "Mural · Painting",
-    "tags": [
-      "mural",
-      "studio",
-      "figurative",
-      "botanical"
-    ],
-    "summary": "Floral-portraiture and phoenix iconography; Wide Open Walls and Branded Arts roster artist.",
-    "fit": 4,
-    "suitability": "Lush palette translates well to high-traffic walls; Branded Arts rep simplifies booking.",
-    "primaryUrl": "https://brandedarts.com/art/franceska-gamez/",
-    "primaryHost": "brandedarts.com",
-    "thumbs": [
-      {
-        "svg": "gamez_phoenix",
-        "label": "Phoenix"
-      },
-      {
-        "svg": "gamez_floral",
-        "label": "Floral portrait"
-      }
-    ],
-    "addedAt": "2026-05-07",
-    "status": "active"
-  },
-  {
     "n": 15,
     "slug": "padilla",
     "name": "Anthony Padilla",
