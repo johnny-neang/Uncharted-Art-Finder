@@ -382,7 +382,7 @@ body {
 }
 .card-meta-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: var(--s3);
   font-size: 12px;
   margin-top: auto;
@@ -398,16 +398,6 @@ body {
 .card-meta-cell dd {
   font-family: var(--font-body); font-size: 12px; color: var(--ink); margin: 0;
 }
-
-.fit-bar {
-  display: flex; align-items: center; gap: var(--s2);
-}
-.fit-dots { display: flex; gap: 2px; }
-.fit-dot {
-  width: 6px; height: 6px; background: var(--rule);
-}
-.fit-dot.on { background: var(--marigold); }
-.fit-num { font-family: var(--font-label); font-weight: 500; font-size: 9px; letter-spacing: 0.18em; color: var(--ink-3); text-transform: uppercase; }
 
 .card-foot {
   margin-top: auto;
@@ -4668,10 +4658,6 @@ function renderArtCard(item) {
     return `<div class="thumb">${renderThumb(t)}${labelTxt ? `<div class="thumb-label">${labelTxt}</div>` : ''}</div>`;
   }).join("");
 
-  const fitDots = Array.from({length: 5}, (_, i) =>
-    `<span class="fit-dot${i < (item.fit || 0) ? ' on' : ''}"></span>`
-  ).join("");
-
   const tagsHtml = (item.tags || []).map(t => `<span class="tag">${t}</span>`).join("");
 
   const searchBlob = [
@@ -4697,13 +4683,6 @@ function renderArtCard(item) {
         <div class="card-meta-cell">
           <dt>Medium</dt>
           <dd>${item.medium || '—'}</dd>
-        </div>
-        <div class="card-meta-cell">
-          <dt>Arden Fair fit</dt>
-          <dd class="fit-bar">
-            <span class="fit-dots">${fitDots}</span>
-            <span class="fit-num">${item.fit || 0}/5</span>
-          </dd>
         </div>
       </dl>
       <p class="card-summary" style="font-size:12px;margin:10px 0 0;color:var(--ink-2);font-style:italic">${item.suitability || ''}</p>
