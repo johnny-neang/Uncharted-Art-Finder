@@ -1,11 +1,11 @@
 {
   "events": [
     {
-      "title": "Buenos Aires Grill World Cup Watch Parties",
-      "date_raw": "Jun 11 - Jun 25, 2026",
-      "date_iso": "2027-06-11",
-      "snippet": "Buenos Aires Grill World Cup Watch Parties Presented by Buenos Aires Grill at  Participating Locations Jun 11 - Jun 25, 2026",
-      "url": "https://sacramento365.com/event/buenos-aires-grill-world-cup-watch-parties/",
+      "title": "Concerts in the Park: Arden Park Roots",
+      "date_raw": "Jun 26, 2026",
+      "date_iso": "2026-06-26",
+      "snippet": "Concerts in the Park: Arden Park Roots Presented by Downtown Sacramento Partnership at  910 I Street Jun 26, 2026",
+      "url": "https://sacramento365.com/event/concerts-in-the-park-arden-park-roots/",
       "source": "Sacramento365 — Arts events"
     },
     {
@@ -49,19 +49,19 @@
       "source": "Sacramento365 — Arts events"
     },
     {
-      "title": "Old Sacramento Underground Tours",
-      "date_raw": "Jun 03 - Jun 30, 2026",
-      "date_iso": "2027-06-03",
-      "snippet": "Old Sacramento Underground Tours Presented by Sacramento History Museum at Sacramento History Museum Jun 03 - Jun 30, 2026",
-      "url": "https://sacramento365.com/event/old-sacramento-underground-tours-2/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
       "title": "Press Club June Calendar",
       "date_raw": "Jun 04 - Jun 30, 2026",
       "date_iso": "2027-06-04",
       "snippet": "Press Club June Calendar Presented by Press Club at Press Club Jun 04 - Jun 30, 2026",
       "url": "https://sacramento365.com/event/press-club-june-calendar/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Old Sacramento Underground Tours",
+      "date_raw": "Jun 03 - Jun 30, 2026",
+      "date_iso": "2027-06-03",
+      "snippet": "Old Sacramento Underground Tours Presented by Sacramento History Museum at Sacramento History Museum Jun 03 - Jun 30, 2026",
+      "url": "https://sacramento365.com/event/old-sacramento-underground-tours-2/",
       "source": "Sacramento365 — Arts events"
     },
     {
@@ -105,10 +105,10 @@
       "source": "Atrium 916 — events"
     },
     {
-      "title": "Ikeda’s: Peaches, Pies & Perseverance (Members-Only)Sunday, July 19, 2026Learn More",
+      "title": "Ikeda’s: Peaches, Pies & Perseverance (Members-Only)Sunday, July 19, 2026 | SOLD OUTLearn More",
       "date_raw": "July 19, 2026",
       "date_iso": "2026-07-19",
-      "snippet": "Ikeda’s: Peaches, Pies & Perseverance (Members-Only) Sunday, July 19, 2026 Learn More California Time Traveler Camp June 22-26, 2026 & July 6-10, 2026 | SOLD OUT Learn More Docent on Duty in “Uprooted” Ongoing Learn More Black History Self-Guided Tour February 1 – 28, 2026 Learn",
+      "snippet": "Ikeda’s: Peaches, Pies & Perseverance (Members-Only) Sunday, July 19, 2026 | SOLD OUT Learn More California Time Traveler Camp June 22-26, 2026 & July 6-10, 2026 | SOLD OUT Learn More Docent on Duty in “Uprooted” Ongoing Learn More Black History Self-Guided Tour February 1 – 28,",
       "url": "https://californiamuseum.org/visit/events-public-programs/ikedas-peaches-pies-perseverance-members-only/",
       "source": "California Museum"
     },
@@ -116,7 +116,7 @@
       "title": "Ikeda’s: Peaches, Pies & Perseverance (Members-Only)",
       "date_raw": "July 19, 2026",
       "date_iso": "2026-07-19",
-      "snippet": "Ikeda’s: Peaches, Pies & Perseverance (Members-Only) Sunday, July 19, 2026 Learn More",
+      "snippet": "Ikeda’s: Peaches, Pies & Perseverance (Members-Only) Sunday, July 19, 2026 | SOLD OUT Learn More",
       "url": "https://www.californiamuseum.org/events",
       "source": "California Museum"
     },
@@ -183,31 +183,7 @@
       "snippet": "In the East Room Immoral Until Profitable by Kenneth Jordan June 5, 2026 through June 28, 2026 Second Saturday Reception: June 13, 5–8 PM Join us at Axis Gallery for Second Saturday, a monthly celebration of the newest gallery exhibition. Guests can enjoy light refreshments, live",
       "url": "https://axisgallery.org/home-3/exhibitions/immoral-until-profitable-by-kenneth-jordan/",
       "source": "Axis Gallery — exhibitions"
-    },
-    {
-      "title": "About Us",
-      "date_raw": "June 19, 2017",
-      "date_iso": "2017-06-19",
-      "snippet": "Site navigation About Us Artists Contact Us Exhibitions Home News Recent News June 19, 2017 Art Review: She adopted a persona and unleashed her inner artist March 7, 2016 Art Review: Shifting gears at JayJay gallery Contact Us JAYJAY 5524 B Elvas Ave. Sacramento, CA 95819 phone:",
-      "url": "https://jayjayart.com/about-us/",
-      "source": "JAYJAY Gallery — exhibitions"
-    },
-    {
-      "title": "Art Review: She adopted a persona and unleashed her inner artist",
-      "date_raw": "June 19, 2017",
-      "date_iso": "2017-06-19",
-      "snippet": "June 19, 2017 Art Review: She adopted a persona and unleashed her inner artist",
-      "url": "https://jayjayart.com/art-review-she-adopted-a-persona-and-unleashed-her-inner-artist/",
-      "source": "JAYJAY Gallery — exhibitions"
-    },
-    {
-      "title": "Art Review: Shifting gears at JayJay gallery",
-      "date_raw": "March 7, 2016",
-      "date_iso": "2016-03-07",
-      "snippet": "March 7, 2016 Art Review: Shifting gears at JayJay gallery",
-      "url": "https://jayjayart.com/art-review-shifting-gears-at-jayjay-gallery/",
-      "source": "JAYJAY Gallery — exhibitions"
     }
   ],
-  "last_run": "2026-06-24"
+  "last_run": "2026-06-25"
 }
