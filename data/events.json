@@ -81,19 +81,11 @@
       "source": "Sacramento365 — Arts events"
     },
     {
-      "title": "Now Now - 2026-07-31 July 31 Select date.",
-      "date_raw": "2026-07-31",
-      "date_iso": "2026-07-31",
-      "snippet": "Now Now - 2026-07-31 July 31 Select date.",
-      "url": "https://atrium916.com/events",
-      "source": "Atrium 916 — events"
-    },
-    {
       "title": "Summer Eco-Art & Sip: Paint and Sculpt with Clay",
-      "date_raw": "July 9",
-      "date_iso": "2026-07-09",
-      "snippet": "Thu 9 Summer Eco-Art & Sip: Paint and Sculpt with Clay Featured July 9 @ 10:30 am - 5:00 pm The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Start your day at the Atrium Art Café and enjoy the warm summer morning making a",
-      "url": "https://atrium916.com/event/summer-eco-art-sip-paint-and-sculpt-with-clay-6/",
+      "date_raw": "July 10",
+      "date_iso": "2026-07-10",
+      "snippet": "Fri 10 Summer Eco-Art & Sip: Paint and Sculpt with Clay Featured July 10 @ 10:30 am - 5:00 pm The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Start your day at the Atrium Art Café and enjoy the warm summer morning making",
+      "url": "https://atrium916.com/event/summer-eco-art-sip-paint-and-sculpt-with-clay-24/",
       "source": "Atrium 916 — events"
     },
     {
@@ -102,6 +94,14 @@
       "date_iso": "2026-07-16",
       "snippet": "Thu 16 Third Thursday’s at Atrium 916 Featured July 16 @ 10:30 am - 5:00 pm The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Atrium 916 is happy to announce participation in Third Thursdays at Old Sacramento Waterfront, i",
       "url": "https://atrium916.com/event/third-thursday-at-atrium-916/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "Rose-Colored Glasses: Art Exhibit Opening Reception",
+      "date_raw": "August 15",
+      "date_iso": "2026-08-15",
+      "snippet": "Sat 15 Rose-Colored Glasses: Art Exhibit Opening Reception Featured August 15 @ 5:00 pm - 8:00 pm The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Meet the artist, Tami Cooper, with a welcoming opening reception, intervie",
+      "url": "https://atrium916.com/event/rose-colored-glasses-art-exhibit-opening-reception/",
       "source": "Atrium 916 — events"
     },
     {
@@ -199,7 +199,31 @@
       "snippet": "In the East Room Surface Tension by Roma Devanbu July 5, 2026 through August 2, 2026 Second Saturday Reception: July 11, 5–8 PM Join us at Axis Gallery for Second Saturday, a monthly celebration of the newest gallery exhibition. Guests can enjoy light refreshments, lively convers",
       "url": "https://axisgallery.org/home-3/exhibitions/by-roma-devanbu/",
       "source": "Axis Gallery — exhibitions"
+    },
+    {
+      "title": "About Us",
+      "date_raw": "June 19, 2017",
+      "date_iso": "2017-06-19",
+      "snippet": "Site navigation About Us Artists Contact Us Exhibitions Home News Recent News June 19, 2017 Art Review: She adopted a persona and unleashed her inner artist March 7, 2016 Art Review: Shifting gears at JayJay gallery Contact Us JAYJAY 5524 B Elvas Ave. Sacramento, CA 95819 phone:",
+      "url": "https://jayjayart.com/about-us/",
+      "source": "JAYJAY Gallery — exhibitions"
+    },
+    {
+      "title": "Art Review: She adopted a persona and unleashed her inner artist",
+      "date_raw": "June 19, 2017",
+      "date_iso": "2017-06-19",
+      "snippet": "June 19, 2017 Art Review: She adopted a persona and unleashed her inner artist",
+      "url": "https://jayjayart.com/art-review-she-adopted-a-persona-and-unleashed-her-inner-artist/",
+      "source": "JAYJAY Gallery — exhibitions"
+    },
+    {
+      "title": "Art Review: Shifting gears at JayJay gallery",
+      "date_raw": "March 7, 2016",
+      "date_iso": "2016-03-07",
+      "snippet": "March 7, 2016 Art Review: Shifting gears at JayJay gallery",
+      "url": "https://jayjayart.com/art-review-shifting-gears-at-jayjay-gallery/",
+      "source": "JAYJAY Gallery — exhibitions"
     }
   ],
-  "last_run": "2026-07-09"
+  "last_run": "2026-07-10"
 }
