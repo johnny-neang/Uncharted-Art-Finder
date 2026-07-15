@@ -124,7 +124,7 @@
       "title": "Ikeda’s: Peaches, Pies & Perseverance (Members-Only)Sunday, July 19, 2026 | SOLD OUTLearn More",
       "date_raw": "July 19, 2026",
       "date_iso": "2026-07-19",
-      "snippet": "Ikeda’s: Peaches, Pies & Perseverance (Members-Only) Sunday, July 19, 2026 | SOLD OUT Learn More Docent on Duty in “Uprooted” Ongoing Learn More Black History Self-Guided Tour February 1 – 28, 2026 Learn More",
+      "snippet": "Ikeda’s: Peaches, Pies & Perseverance (Members-Only) Sunday, July 19, 2026 | SOLD OUT Learn More Volunteer Orientation Friday, August 7, 2026 Learn More Docent on Duty in “Uprooted” Ongoing Learn More Black History Self-Guided Tour February 1 – 28, 2026 Learn More",
       "url": "https://californiamuseum.org/visit/events-public-programs/ikedas-peaches-pies-perseverance-members-only/",
       "source": "California Museum"
     },
@@ -133,6 +133,14 @@
       "date_raw": "July 19, 2026",
       "date_iso": "2026-07-19",
       "snippet": "Ikeda’s: Peaches, Pies & Perseverance (Members-Only) Sunday, July 19, 2026 | SOLD OUT Learn More",
+      "url": "https://www.californiamuseum.org/events",
+      "source": "California Museum"
+    },
+    {
+      "title": "Volunteer Orientation",
+      "date_raw": "August 7, 2026",
+      "date_iso": "2026-08-07",
+      "snippet": "Volunteer Orientation Friday, August 7, 2026 Learn More",
       "url": "https://www.californiamuseum.org/events",
       "source": "California Museum"
     },
@@ -217,5 +225,5 @@
       "source": "JAYJAY Gallery — exhibitions"
     }
   ],
-  "last_run": "2026-07-14"
+  "last_run": "2026-07-15"
 }
