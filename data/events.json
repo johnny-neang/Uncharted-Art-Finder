@@ -1,14 +1,6 @@
 {
   "events": [
     {
-      "title": "Jim Martinez and Friends Present The Music of Billy Joel",
-      "date_raw": "Jul 15, 2026",
-      "date_iso": "2026-07-15",
-      "snippet": "Jim Martinez and Friends Present The Music of Billy Joel Presented by Arts in River Park and Scottish Rite Masonic Center at Scottish Rite Center Jul 15, 2026",
-      "url": "https://sacramento365.com/event/jim-martinez-and-friends-present-the-music-of-billy-joel/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
       "title": "Summer Movie Nights with Folsom Parks and Recreation",
       "date_raw": "Jul 17, 2026",
       "date_iso": "2026-07-17",
@@ -30,6 +22,14 @@
       "date_iso": "2027-07-10",
       "snippet": "YOUNG FRANKENSTEIN Presented by Broadway Sacramento at UC Davis Health Pavilion Jul 10 - Jul 19, 2026",
       "url": "https://sacramento365.com/event/young-frankenstein-2/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "New Comedies Festival",
+      "date_raw": "Jul 12 - Jul 19, 2026",
+      "date_iso": "2027-07-12",
+      "snippet": "New Comedies Festival Presented by B Street Theatre at The Sofia Tsakopoulos Center for the Arts Jul 12 - Jul 19, 2026",
+      "url": "https://sacramento365.com/event/new-comedies-festival/",
       "source": "Sacramento365 — Arts events"
     },
     {
@@ -225,5 +225,5 @@
       "source": "JAYJAY Gallery — exhibitions"
     }
   ],
-  "last_run": "2026-07-15"
+  "last_run": "2026-07-16"
 }
