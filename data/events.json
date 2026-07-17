@@ -1,19 +1,11 @@
 {
   "events": [
     {
-      "title": "Summer Movie Nights with Folsom Parks and Recreation",
-      "date_raw": "Jul 17, 2026",
-      "date_iso": "2026-07-17",
-      "snippet": "Summer Movie Nights with Folsom Parks and Recreation Presented by Folsom Parks and Recreation at Folsom City Zoo Sanctuary Jul 17, 2026",
-      "url": "https://sacramento365.com/event/summer-movie-nights-with-folsom-parks-and-recreation-2/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
-      "title": "Fridays in the Grove: Christmas in July",
-      "date_raw": "Jul 17, 2026",
-      "date_iso": "2026-07-17",
-      "snippet": "Fridays in the Grove: Christmas in July Presented by City of Elk Grove at District 56 Jul 17, 2026",
-      "url": "https://sacramento365.com/event/fridays-in-the-grove-christmas-in-july/",
+      "title": "Sacramento Brazilian Carnaval and Festival",
+      "date_raw": "Jul 18, 2026",
+      "date_iso": "2026-07-18",
+      "snippet": "Sacramento Brazilian Carnaval and Festival Presented by Samba da Terra at CLARA (E. Claire Raley Studios for the Performing Arts) Jul 18, 2026",
+      "url": "https://sacramento365.com/event/sacramento-brazilian-carnaval-and-festival/",
       "source": "Sacramento365 — Arts events"
     },
     {
@@ -65,6 +57,14 @@
       "source": "Sacramento365 — Arts events"
     },
     {
+      "title": "Red, White and Vintage Fashion Show",
+      "date_raw": "Jul 26, 2026",
+      "date_iso": "2026-07-26",
+      "snippet": "Red, White and Vintage Fashion Show Presented by Sacramento History Museum at Sacramento History Museum Jul 26, 2026",
+      "url": "https://sacramento365.com/event/red-white-and-vintage-fashion-show/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
       "title": "California State Fair",
       "date_raw": "Jul 17 - Aug 02, 2026",
       "date_iso": "2026-07-17",
@@ -82,18 +82,10 @@
     },
     {
       "title": "Summer Eco-Art & Sip: Paint and Sculpt with Clay",
-      "date_raw": "July 16",
-      "date_iso": "2026-07-16",
-      "snippet": "Thu 16 Summer Eco-Art & Sip: Paint and Sculpt with Clay Featured July 16 @ 10:30 am - 5:00 pm The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Start your day at the Atrium Art Café and enjoy the warm summer morning making",
-      "url": "https://atrium916.com/event/summer-eco-art-sip-paint-and-sculpt-with-clay-19/",
-      "source": "Atrium 916 — events"
-    },
-    {
-      "title": "Third Thursday’s at Atrium 916",
-      "date_raw": "July 16",
-      "date_iso": "2026-07-16",
-      "snippet": "Thu 16 Third Thursday’s at Atrium 916 Featured July 16 @ 10:30 am - 5:00 pm The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Atrium 916 is happy to announce participation in Third Thursdays at Old Sacramento Waterfront, i",
-      "url": "https://atrium916.com/event/third-thursday-at-atrium-916/",
+      "date_raw": "July 17",
+      "date_iso": "2026-07-17",
+      "snippet": "Fri 17 Summer Eco-Art & Sip: Paint and Sculpt with Clay Featured July 17 @ 10:30 am - 5:00 pm The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Start your day at the Atrium Art Café and enjoy the warm summer morning making",
+      "url": "https://atrium916.com/event/summer-eco-art-sip-paint-and-sculpt-with-clay-23/",
       "source": "Atrium 916 — events"
     },
     {
@@ -169,38 +161,6 @@
       "source": "Blue Line Arts — exhibitions"
     },
     {
-      "title": "On View at Axis",
-      "date_raw": "July 5, 2026",
-      "date_iso": "2026-07-05",
-      "snippet": "On View at Axis Who are Orientals: Magenta Realism by Sharon Tsao July 5, 2026 through August 2, 2026 Second Saturday Reception: July 11, 5–8 PM Join us at Axis Gallery for Second Saturday, a monthly celebration of the newest gallery exhibition. Guests can enjoy light refreshment",
-      "url": "https://axisgallery.org/home-3/exhibitions/by-sharon-tsao/",
-      "source": "Axis Gallery — exhibitions"
-    },
-    {
-      "title": "July 5, 2026 through August 2, 2026 Second Saturday Reception: July 11, 5–8 PM",
-      "date_raw": "July 5, 2026",
-      "date_iso": "2026-07-05",
-      "snippet": "July 5, 2026 through August 2, 2026 Second Saturday Reception: July 11, 5–8 PM",
-      "url": "https://axisgallery.org/exhibitions/",
-      "source": "Axis Gallery — exhibitions"
-    },
-    {
-      "title": "Second Saturday Reception: July 11, 5–8 PM",
-      "date_raw": "July 11",
-      "date_iso": "2027-07-11",
-      "snippet": "Second Saturday Reception: July 11, 5–8 PM",
-      "url": "https://axisgallery.org/exhibitions/",
-      "source": "Axis Gallery — exhibitions"
-    },
-    {
-      "title": "In the East Room",
-      "date_raw": "July 5, 2026",
-      "date_iso": "2026-07-05",
-      "snippet": "In the East Room Surface Tension by Roma Devanbu July 5, 2026 through August 2, 2026 Second Saturday Reception: July 11, 5–8 PM Join us at Axis Gallery for Second Saturday, a monthly celebration of the newest gallery exhibition. Guests can enjoy light refreshments, lively convers",
-      "url": "https://axisgallery.org/home-3/exhibitions/by-roma-devanbu/",
-      "source": "Axis Gallery — exhibitions"
-    },
-    {
       "title": "About Us",
       "date_raw": "June 19, 2017",
       "date_iso": "2017-06-19",
@@ -225,5 +185,5 @@
       "source": "JAYJAY Gallery — exhibitions"
     }
   ],
-  "last_run": "2026-07-16"
+  "last_run": "2026-07-17"
 }
