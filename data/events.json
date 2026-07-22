@@ -25,19 +25,19 @@
       "source": "Sacramento365 — Arts events"
     },
     {
-      "title": "Fair Menu at Revolution",
-      "date_raw": "Jul 01 - Jul 26, 2026",
-      "date_iso": "2027-07-01",
-      "snippet": "Fair Menu at Revolution Presented by Revolution Winery and Kitchen at Revolution Winery and Kitchen Jul 01 - Jul 26, 2026",
-      "url": "https://sacramento365.com/event/fair-menu-at-revolution-2/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
       "title": "Strauss Festival of Elk Grove",
       "date_raw": "Jul 23 - Jul 26, 2026",
       "date_iso": "2026-07-23",
       "snippet": "Strauss Festival of Elk Grove Presented by Strauss Festival of Elk Grove at Elk Grove Regional Park Jul 23 - Jul 26, 2026",
       "url": "https://sacramento365.com/event/strauss-festival-of-elk-grove-4/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Fair Menu at Revolution",
+      "date_raw": "Jul 01 - Jul 26, 2026",
+      "date_iso": "2027-07-01",
+      "snippet": "Fair Menu at Revolution Presented by Revolution Winery and Kitchen at Revolution Winery and Kitchen Jul 01 - Jul 26, 2026",
+      "url": "https://sacramento365.com/event/fair-menu-at-revolution-2/",
       "source": "Sacramento365 — Arts events"
     },
     {
@@ -57,19 +57,19 @@
       "source": "Sacramento365 — Arts events"
     },
     {
-      "title": "Black and White Art Exhibit",
-      "date_raw": "Jul 14 - Aug 08, 2026",
-      "date_iso": "2027-07-14",
-      "snippet": "Black and White Art Exhibit Presented by Sacramento Fine Arts Center at Sacramento Fine Arts Center Jul 14 - Aug 08, 2026",
-      "url": "https://sacramento365.com/event/black-and-white-art-exhibit/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
       "title": "Japanese Food and Cultural Bazaar",
       "date_raw": "Aug 08, 2026",
       "date_iso": "2026-08-08",
       "snippet": "Japanese Food and Cultural Bazaar Presented by Buddhist Church of Sacramento at Buddhist Church of Sacramento Aug 08, 2026",
       "url": "https://sacramento365.com/event/japanese-food-and-cultural-bazaar-3/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Black and White Art Exhibit",
+      "date_raw": "Jul 14 - Aug 08, 2026",
+      "date_iso": "2027-07-14",
+      "snippet": "Black and White Art Exhibit Presented by Sacramento Fine Arts Center at Sacramento Fine Arts Center Jul 14 - Aug 08, 2026",
+      "url": "https://sacramento365.com/event/black-and-white-art-exhibit/",
       "source": "Sacramento365 — Arts events"
     },
     {
@@ -217,5 +217,5 @@
       "source": "JAYJAY Gallery — exhibitions"
     }
   ],
-  "last_run": "2026-07-21"
+  "last_run": "2026-07-22"
 }
