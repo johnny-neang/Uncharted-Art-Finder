@@ -1,134 +1,6 @@
 {
   "events": [
     {
-      "title": "California State Fair",
-      "date_raw": "Jul 17 - Aug 02, 2026",
-      "date_iso": "2027-07-17",
-      "snippet": "California State Fair Presented by Cal Expo at Cal Expo Jul 17 - Aug 02, 2026",
-      "url": "https://sacramento365.com/event/california-state-fair-3/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
-      "title": "An Evening with Dusty Baker",
-      "date_raw": "Aug 05, 2026",
-      "date_iso": "2026-08-05",
-      "snippet": "An Evening with Dusty Baker Presented by PBS KVIE at PBS KVIE Aug 05, 2026",
-      "url": "https://sacramento365.com/event/an-evening-with-dusty-baker/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
-      "title": "Black and White Art Exhibit",
-      "date_raw": "Jul 14 - Aug 08, 2026",
-      "date_iso": "2027-07-14",
-      "snippet": "Black and White Art Exhibit Presented by Sacramento Fine Arts Center at Sacramento Fine Arts Center Jul 14 - Aug 08, 2026",
-      "url": "https://sacramento365.com/event/black-and-white-art-exhibit/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
-      "title": "Japanese Food and Cultural Bazaar",
-      "date_raw": "Aug 08, 2026",
-      "date_iso": "2026-08-08",
-      "snippet": "Japanese Food and Cultural Bazaar Presented by Buddhist Church of Sacramento at Buddhist Church of Sacramento Aug 08, 2026",
-      "url": "https://sacramento365.com/event/japanese-food-and-cultural-bazaar-4/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
-      "title": "Hell's Kitchen",
-      "date_raw": "Jul 29 - Aug 09, 2026",
-      "date_iso": "2027-07-29",
-      "snippet": "Hell's Kitchen Presented by Broadway Sacramento at SAFE Credit Union Performing Arts Center Jul 29 - Aug 09, 2026",
-      "url": "https://sacramento365.com/event/hells-kitchen/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
-      "title": "George Lopez",
-      "date_raw": "Aug 15, 2026",
-      "date_iso": "2026-08-15",
-      "snippet": "George Lopez Presented by ICON Concerts at SAFE Credit Union Performing Arts Center Aug 15, 2026",
-      "url": "https://sacramento365.com/event/george-lopez/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
-      "title": "Sacramento Banana Festival",
-      "date_raw": "Aug 15 - Aug 16, 2026",
-      "date_iso": "2026-08-15",
-      "snippet": "Sacramento Banana Festival Presented by Sojourner Truth African Heritage Museum at William Land Park Aug 15 - Aug 16, 2026",
-      "url": "https://sacramento365.com/event/sacramento-banana-festival-3/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
-      "title": "Tales and Ales Brewfest Fundraiser",
-      "date_raw": "Aug 22, 2026",
-      "date_iso": "2026-08-22",
-      "snippet": "Tales and Ales Brewfest Fundraiser Presented by Fairytale Town at Fairytale Town Aug 22, 2026",
-      "url": "https://sacramento365.com/event/tales-and-ales-brewfest-fundraiser-2/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
-      "title": "Sacramento Summer Goddess Festival",
-      "date_raw": "Aug 29 - Aug 30, 2026",
-      "date_iso": "2026-08-29",
-      "snippet": "Sacramento Summer Goddess Festival Presented by Goddess Events at Scottish Rite Center Aug 29 - Aug 30, 2026",
-      "url": "https://sacramento365.com/event/sacramento-summer-goddess-festival/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
-      "title": "Now Now - 2026-08-27 August 27 Select date.",
-      "date_raw": "2026-08-27",
-      "date_iso": "2026-08-27",
-      "snippet": "Now Now - 2026-08-27 August 27 Select date.",
-      "url": "https://atrium916.com/events",
-      "source": "Atrium 916 — events"
-    },
-    {
-      "title": "Summer Eco-Art & Sip: Paint and Sculpt with Clay",
-      "date_raw": "August 2",
-      "date_iso": "2026-08-02",
-      "snippet": "Sun 2 Summer Eco-Art & Sip: Paint and Sculpt with Clay Featured August 2 @ 10:30 am - 5:00 pm The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Start your day at the Atrium Art Café and enjoy the warm summer morning making",
-      "url": "https://atrium916.com/event/summer-eco-art-sip-paint-and-sculpt-with-clay-44/",
-      "source": "Atrium 916 — events"
-    },
-    {
-      "title": "Rose-Colored Glasses: Art Exhibit Opening Reception",
-      "date_raw": "August 15",
-      "date_iso": "2026-08-15",
-      "snippet": "Sat 15 Rose-Colored Glasses: Art Exhibit Opening Reception Featured August 15 @ 5:00 pm - 8:00 pm The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Meet the artist, Tami Cooper, with a welcoming opening reception, intervie",
-      "url": "https://atrium916.com/event/rose-colored-glasses-art-exhibit-opening-reception/",
-      "source": "Atrium 916 — events"
-    },
-    {
-      "title": "HOURS We will be closing early 7/30 – 8/02 due to extreme heat. Please call if y",
-      "date_raw": "7/30",
-      "date_iso": "2027-07-30",
-      "snippet": "HOURS We will be closing early 7/30 – 8/02 due to extreme heat. Please call if you have questions! Open: Thursday thru Sunday 10am – 6pm Closed: Monday, Tuesday, and Wednesday We may need to change these hours due to weather, special events, or other elements. Like days over 100f",
-      "url": "https://atrium916.com/events",
-      "source": "Atrium 916 — events"
-    },
-    {
-      "title": "We will be closing early 7/30 – 8/02 due to extreme heat. Please call if you hav",
-      "date_raw": "7/30",
-      "date_iso": "2027-07-30",
-      "snippet": "We will be closing early 7/30 – 8/02 due to extreme heat. Please call if you have questions! Open: Thursday thru Sunday 10am – 6pm",
-      "url": "https://atrium916.com/events",
-      "source": "Atrium 916 — events"
-    },
-    {
-      "title": "Sacramento Art Spaces Are Embracing the Power of the ‘Little Treat’",
-      "date_raw": "May 30, 2026",
-      "date_iso": "2026-05-30",
-      "snippet": "Sacramento Art Spaces Are Embracing the Power of the ‘Little Treat’ May 30, 2026 May 12, 2026 – Comstock’s Magazine – Enter the magic of the “little treat.” As it turns out, having a snack or drink by your side while you create can make art feel more approachable and less intimid",
-      "url": "https://atrium916.com/2026/05/30/the-great-escape-turning-back-the-clock-in-old-sacramento-2/",
-      "source": "Atrium 916 — events"
-    },
-    {
-      "title": "May 12, 2026 – Comstock’s Magazine – Enter the magic of the “little treat.” As i",
-      "date_raw": "May 12, 2026",
-      "date_iso": "2026-05-12",
-      "snippet": "May 12, 2026 – Comstock’s Magazine – Enter the magic of the “little treat.” As it turns out, having a snack or drink by your side while you create can make art feel more approachable and less intimidating. It harkens back to the days of crayon-coloring with a cup of Goldfish at t",
-      "url": "https://atrium916.com/events",
-      "source": "Atrium 916 — events"
-    },
-    {
       "title": "Volunteer OrientationFriday, August 7, 2026Learn More",
       "date_raw": "August 7, 2026",
       "date_iso": "2026-08-07",
@@ -178,34 +50,34 @@
     },
     {
       "title": "On View at Axis",
-      "date_raw": "July 5, 2026",
-      "date_iso": "2026-07-05",
-      "snippet": "On View at Axis Who are Orientals: Magenta Realism by Sharon Tsao July 5, 2026 through August 2, 2026 Second Saturday Reception: July 11, 5–8 PM Join us at Axis Gallery for Second Saturday, a monthly celebration of the newest gallery exhibition. Guests can enjoy light refreshment",
-      "url": "https://axisgallery.org/home-3/exhibitions/by-sharon-tsao/",
+      "date_raw": "August 7",
+      "date_iso": "2026-08-07",
+      "snippet": "On View at Axis 21st National Juried Exhibition August 7th-August 30th, 2026 Second Saturday Reception: August 8th, 5-8 pm Join us at Axis Gallery for Second Saturday, a monthly celebration of the newest gallery exhibition. Guests can enjoy light refreshments, lively conversation",
+      "url": "https://axisgallery.org/home-3/exhibitions/21st-juried-exhibition/",
       "source": "Axis Gallery — exhibitions"
     },
     {
-      "title": "July 5, 2026 through August 2, 2026 Second Saturday Reception: July 11, 5–8 PM",
-      "date_raw": "July 5, 2026",
-      "date_iso": "2026-07-05",
-      "snippet": "July 5, 2026 through August 2, 2026 Second Saturday Reception: July 11, 5–8 PM",
+      "title": "August 7th-August 30th, 2026 Second Saturday Reception: August 8th, 5-8 pm",
+      "date_raw": "August 7",
+      "date_iso": "2026-08-07",
+      "snippet": "August 7th-August 30th, 2026 Second Saturday Reception: August 8th, 5-8 pm",
       "url": "https://axisgallery.org/exhibitions/",
       "source": "Axis Gallery — exhibitions"
     },
     {
-      "title": "Second Saturday Reception: July 11, 5–8 PM",
-      "date_raw": "July 11",
-      "date_iso": "2027-07-11",
-      "snippet": "Second Saturday Reception: July 11, 5–8 PM",
+      "title": "Second Saturday Reception: August 8th, 5-8 pm",
+      "date_raw": "August 8",
+      "date_iso": "2026-08-08",
+      "snippet": "Second Saturday Reception: August 8th, 5-8 pm",
       "url": "https://axisgallery.org/exhibitions/",
       "source": "Axis Gallery — exhibitions"
     },
     {
       "title": "In the East Room",
-      "date_raw": "July 5, 2026",
-      "date_iso": "2026-07-05",
-      "snippet": "In the East Room Surface Tension by Roma Devanbu July 5, 2026 through August 2, 2026 Second Saturday Reception: July 11, 5–8 PM Join us at Axis Gallery for Second Saturday, a monthly celebration of the newest gallery exhibition. Guests can enjoy light refreshments, lively convers",
-      "url": "https://axisgallery.org/home-3/exhibitions/by-roma-devanbu/",
+      "date_raw": "August 7",
+      "date_iso": "2026-08-07",
+      "snippet": "In the East Room 21st National Juried Exhibition August 7th-August 30th, 2026 Second Saturday Reception: August 8th, 5-8 pm Join us at Axis Gallery for Second Saturday, a monthly celebration of the newest gallery exhibition. Guests can enjoy light refreshments, lively conversatio",
+      "url": "https://axisgallery.org/home-3/exhibitions/21st-juried-exhibition/",
       "source": "Axis Gallery — exhibitions"
     },
     {
@@ -233,5 +105,5 @@
       "source": "JAYJAY Gallery — exhibitions"
     }
   ],
-  "last_run": "2026-08-02"
+  "last_run": "2026-08-03"
 }
