@@ -1,6 +1,134 @@
 {
   "events": [
     {
+      "title": "Black and White Art Exhibit",
+      "date_raw": "Jul 14 - Aug 08, 2026",
+      "date_iso": "2027-07-14",
+      "snippet": "Black and White Art Exhibit Presented by Sacramento Fine Arts Center at Sacramento Fine Arts Center Jul 14 - Aug 08, 2026",
+      "url": "https://sacramento365.com/event/black-and-white-art-exhibit/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Japanese Food and Cultural Bazaar",
+      "date_raw": "Aug 08, 2026",
+      "date_iso": "2026-08-08",
+      "snippet": "Japanese Food and Cultural Bazaar Presented by Buddhist Church of Sacramento at Buddhist Church of Sacramento Aug 08, 2026",
+      "url": "https://sacramento365.com/event/japanese-food-and-cultural-bazaar-4/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Hell's Kitchen",
+      "date_raw": "Jul 29 - Aug 09, 2026",
+      "date_iso": "2027-07-29",
+      "snippet": "Hell's Kitchen Presented by Broadway Sacramento at SAFE Credit Union Performing Arts Center Jul 29 - Aug 09, 2026",
+      "url": "https://sacramento365.com/event/hells-kitchen/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "High School Musical",
+      "date_raw": "Jul 31 - Aug 09, 2026",
+      "date_iso": "2027-07-31",
+      "snippet": "High School Musical Presented by Fair Oaks Performing Arts Center at Fair Oaks Performing Arts Center - Veterans Memorial Amphitheatre Jul 31 - Aug 09, 2026",
+      "url": "https://sacramento365.com/event/high-school-musical/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "George Lopez",
+      "date_raw": "Aug 15, 2026",
+      "date_iso": "2026-08-15",
+      "snippet": "George Lopez Presented by ICON Concerts at SAFE Credit Union Performing Arts Center Aug 15, 2026",
+      "url": "https://sacramento365.com/event/george-lopez/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Sacramento Banana Festival",
+      "date_raw": "Aug 15 - Aug 16, 2026",
+      "date_iso": "2026-08-15",
+      "snippet": "Sacramento Banana Festival Presented by Sojourner Truth African Heritage Museum at William Land Park Aug 15 - Aug 16, 2026",
+      "url": "https://sacramento365.com/event/sacramento-banana-festival-3/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Tales and Ales Brewfest Fundraiser",
+      "date_raw": "Aug 22, 2026",
+      "date_iso": "2026-08-22",
+      "snippet": "Tales and Ales Brewfest Fundraiser Presented by Fairytale Town at Fairytale Town Aug 22, 2026",
+      "url": "https://sacramento365.com/event/tales-and-ales-brewfest-fundraiser-2/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Sacramento Summer Goddess Festival",
+      "date_raw": "Aug 29 - Aug 30, 2026",
+      "date_iso": "2026-08-29",
+      "snippet": "Sacramento Summer Goddess Festival Presented by Goddess Events at Scottish Rite Center Aug 29 - Aug 30, 2026",
+      "url": "https://sacramento365.com/event/sacramento-summer-goddess-festival/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Global Feast Fest",
+      "date_raw": "Sep 12, 2026",
+      "date_iso": "2026-09-12",
+      "snippet": "Global Feast Fest Presented by City of Elk Grove at District 56 Sep 12, 2026",
+      "url": "https://sacramento365.com/event/global-feast-fest/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Now Now - 2026-08-28 August 28 Select date.",
+      "date_raw": "2026-08-28",
+      "date_iso": "2026-08-28",
+      "snippet": "Now Now - 2026-08-28 August 28 Select date.",
+      "url": "https://atrium916.com/events",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "Summer Eco-Art & Sip: Paint and Sculpt with Clay",
+      "date_raw": "August 6",
+      "date_iso": "2026-08-06",
+      "snippet": "Thu 6 Summer Eco-Art & Sip: Paint and Sculpt with Clay Featured August 6 @ 10:30 am - 5:00 pm The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Start your day at the Atrium Art Café and enjoy the warm summer morning making",
+      "url": "https://atrium916.com/event/summer-eco-art-sip-paint-and-sculpt-with-clay-39/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "Rose-Colored Glasses: Art Exhibit Opening Reception",
+      "date_raw": "August 15",
+      "date_iso": "2026-08-15",
+      "snippet": "Sat 15 Rose-Colored Glasses: Art Exhibit Opening Reception Featured August 15 @ 5:00 pm - 8:00 pm The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Meet the artist, Tami Cooper, with a welcoming opening reception, intervie",
+      "url": "https://atrium916.com/event/rose-colored-glasses-art-exhibit-opening-reception/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "HOURS We will be closing early 7/30 – 8/02 due to extreme heat. Please call if y",
+      "date_raw": "7/30",
+      "date_iso": "2027-07-30",
+      "snippet": "HOURS We will be closing early 7/30 – 8/02 due to extreme heat. Please call if you have questions! Open: Thursday thru Sunday 10am – 6pm Closed: Monday, Tuesday, and Wednesday We may need to change these hours due to weather, special events, or other elements. Like days over 100f",
+      "url": "https://atrium916.com/events",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "We will be closing early 7/30 – 8/02 due to extreme heat. Please call if you hav",
+      "date_raw": "7/30",
+      "date_iso": "2027-07-30",
+      "snippet": "We will be closing early 7/30 – 8/02 due to extreme heat. Please call if you have questions! Open: Thursday thru Sunday 10am – 6pm",
+      "url": "https://atrium916.com/events",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "Sacramento Art Spaces Are Embracing the Power of the ‘Little Treat’",
+      "date_raw": "May 30, 2026",
+      "date_iso": "2026-05-30",
+      "snippet": "Sacramento Art Spaces Are Embracing the Power of the ‘Little Treat’ May 30, 2026 May 12, 2026 – Comstock’s Magazine – Enter the magic of the “little treat.” As it turns out, having a snack or drink by your side while you create can make art feel more approachable and less intimid",
+      "url": "https://atrium916.com/2026/05/30/the-great-escape-turning-back-the-clock-in-old-sacramento-2/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "May 12, 2026 – Comstock’s Magazine – Enter the magic of the “little treat.” As i",
+      "date_raw": "May 12, 2026",
+      "date_iso": "2026-05-12",
+      "snippet": "May 12, 2026 – Comstock’s Magazine – Enter the magic of the “little treat.” As it turns out, having a snack or drink by your side while you create can make art feel more approachable and less intimidating. It harkens back to the days of crayon-coloring with a cup of Goldfish at t",
+      "url": "https://atrium916.com/events",
+      "source": "Atrium 916 — events"
+    },
+    {
       "title": "Día de Los Muertos Fiesta 2026Saturday, October 10Learn More",
       "date_raw": "October 10",
       "date_iso": "2026-10-10",
@@ -113,5 +241,5 @@
       "source": "JAYJAY Gallery — exhibitions"
     }
   ],
-  "last_run": "2026-08-05"
+  "last_run": "2026-08-06"
 }
