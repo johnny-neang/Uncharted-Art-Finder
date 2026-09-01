@@ -9,6 +9,14 @@
       "source": "Sacramento365 — Arts events"
     },
     {
+      "title": "Our Street NGT MKT",
+      "date_raw": "Sep 05, 2026",
+      "date_iso": "2026-09-05",
+      "snippet": "Our Street NGT MKT Presented by Yellow Brick Group at R Street Corridor (14th-15th Street) Sep 05, 2026",
+      "url": "https://sacramento365.com/event/our-street-night-market/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
       "title": "St. George Church Middle Eastern Food Festival",
       "date_raw": "Sep 05 - Sep 06, 2026",
       "date_iso": "2026-09-05",
@@ -54,14 +62,6 @@
       "date_iso": "2026-09-12",
       "snippet": "Royal Fitment Sacramento Presented by Royal Fitment at SAFE Credit Union Convention Center Sep 12, 2026",
       "url": "https://sacramento365.com/event/royal-fitment-sacramento/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
-      "title": "Sacramento National Dance Day",
-      "date_raw": "Sep 20, 2026",
-      "date_iso": "2026-09-20",
-      "snippet": "Sacramento National Dance Day Presented by Zumba By Corene at California State Capitol - West Steps Sep 20, 2026",
-      "url": "https://sacramento365.com/event/sacramento-national-dance-day/",
       "source": "Sacramento365 — Arts events"
     },
     {
@@ -121,19 +121,11 @@
       "source": "Atrium 916 — events"
     },
     {
-      "title": "Community Appreciation DaySaturday, August 30, 2026Learn More",
-      "date_raw": "August 30, 2026",
-      "date_iso": "2026-08-30",
-      "snippet": "Community Appreciation Day Saturday, August 30, 2026 Learn More Alebrije Painting Workshop Sunday, September 20 Learn More Día de Los Muertos Fiesta 2026 Saturday, October 10 Learn More Docent on Duty in “Uprooted” Ongoing Learn More Black History Self-Guided Tour February 1 – 28",
-      "url": "https://californiamuseum.org/visit/events-public-programs/community-appreciation-day/",
-      "source": "California Museum"
-    },
-    {
-      "title": "Community Appreciation Day",
-      "date_raw": "August 30, 2026",
-      "date_iso": "2026-08-30",
-      "snippet": "Community Appreciation Day Saturday, August 30, 2026 Learn More",
-      "url": "https://www.californiamuseum.org/events",
+      "title": "Alebrije Painting WorkshopSunday, September 20Learn More",
+      "date_raw": "September 20",
+      "date_iso": "2026-09-20",
+      "snippet": "Alebrije Painting Workshop Sunday, September 20 Learn More Día de Los Muertos Fiesta 2026 Saturday, October 10 Learn More Docent on Duty in “Uprooted” Ongoing Learn More Black History Self-Guided Tour February 1 – 28, 2026 Learn More",
+      "url": "https://californiamuseum.org/visit/events-public-programs/alebrije-painting-workshop/",
       "source": "California Museum"
     },
     {
@@ -178,34 +170,34 @@
     },
     {
       "title": "On View at Axis",
-      "date_raw": "October 2, 2026",
-      "date_iso": "2026-10-02",
-      "snippet": "On View at Axis Birds & Bikes October 2, 2026 through November 1, 2026 Second Saturday Reception: Saturday, Oct 10, 5-8pm Join us at Axis Gallery for Second Saturday, a monthly celebration of the newest gallery exhibition. Guests can enjoy light refreshments, lively conversation,",
-      "url": "https://axisgallery.org/home-3/exhibitions/birds-bikes/",
+      "date_raw": "September 4, 2026",
+      "date_iso": "2026-09-04",
+      "snippet": "On View at Axis by Raffa September 4, 2026 through September 27, 2026 Second Saturday Reception: September 12, 5–8 PM Join us at Axis Gallery for Second Saturday, a monthly celebration of the newest gallery exhibition. Guests can enjoy light refreshments, lively conversation, and",
+      "url": "https://axisgallery.org/home-3/exhibitions/raffa/",
       "source": "Axis Gallery — exhibitions"
     },
     {
-      "title": "October 2, 2026 through November 1, 2026 Second Saturday Reception: Saturday, Oc",
-      "date_raw": "October 2, 2026",
-      "date_iso": "2026-10-02",
-      "snippet": "October 2, 2026 through November 1, 2026 Second Saturday Reception: Saturday, Oct 10, 5-8pm",
+      "title": "September 4, 2026 through September 27, 2026 Second Saturday Reception: Septembe",
+      "date_raw": "September 4, 2026",
+      "date_iso": "2026-09-04",
+      "snippet": "September 4, 2026 through September 27, 2026 Second Saturday Reception: September 12, 5–8 PM",
       "url": "https://axisgallery.org/exhibitions/",
       "source": "Axis Gallery — exhibitions"
     },
     {
-      "title": "Second Saturday Reception: Saturday, Oct 10, 5-8pm",
-      "date_raw": "Oct 10",
-      "date_iso": "2026-10-10",
-      "snippet": "Second Saturday Reception: Saturday, Oct 10, 5-8pm",
+      "title": "Second Saturday Reception: September 12, 5–8 PM",
+      "date_raw": "September 12",
+      "date_iso": "2026-09-12",
+      "snippet": "Second Saturday Reception: September 12, 5–8 PM",
       "url": "https://axisgallery.org/exhibitions/",
       "source": "Axis Gallery — exhibitions"
     },
     {
       "title": "In the East Room",
-      "date_raw": "October 2, 2026",
-      "date_iso": "2026-10-02",
-      "snippet": "In the East Room Birds & Bikes October 2, 2026 through November 1, 2026 Second Saturday Reception: Saturday, Oct 10, 5-8pm Join us at Axis Gallery for Second Saturday, a monthly celebration of the newest gallery exhibition. Guests can enjoy light refreshments, lively conversation",
-      "url": "https://axisgallery.org/home-3/exhibitions/birds-bikes/",
+      "date_raw": "September 4, 2026",
+      "date_iso": "2026-09-04",
+      "snippet": "In the East Room by Kenna Doeringer September 4, 2026 through September 27, 2026 Second Saturday Reception: September 12, 5–8 PM Join us at Axis Gallery for Second Saturday, a monthly celebration of the newest gallery exhibition. Guests can enjoy light refreshments, lively conver",
+      "url": "https://axisgallery.org/home-3/exhibitions/kenna/",
       "source": "Axis Gallery — exhibitions"
     },
     {
@@ -233,5 +225,5 @@
       "source": "JAYJAY Gallery — exhibitions"
     }
   ],
-  "last_run": "2026-08-31"
+  "last_run": "2026-09-01"
 }
