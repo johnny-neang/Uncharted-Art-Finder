@@ -33,6 +33,14 @@
       "source": "Sacramento365 — Arts events"
     },
     {
+      "title": "Chalk It Up!",
+      "date_raw": "Sep 05 - Sep 07, 2026",
+      "date_iso": "2026-09-05",
+      "snippet": "Chalk It Up! Presented by Chalk It Up! Sacramento at Fremont Park Sep 05 - Sep 07, 2026",
+      "url": "https://sacramento365.com/event/chalk-it-up/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
       "title": "California Admission Day Celebration",
       "date_raw": "Sep 09, 2026",
       "date_iso": "2026-09-09",
@@ -65,27 +73,11 @@
       "source": "Sacramento365 — Arts events"
     },
     {
-      "title": "Royal Fitment Sacramento",
-      "date_raw": "Sep 12, 2026",
-      "date_iso": "2026-09-12",
-      "snippet": "Royal Fitment Sacramento Presented by Royal Fitment at SAFE Credit Union Convention Center Sep 12, 2026",
-      "url": "https://sacramento365.com/event/royal-fitment-sacramento/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
-      "title": "Now Now - 2026-09-26 September 26 Select date.",
-      "date_raw": "2026-09-26",
-      "date_iso": "2026-09-26",
-      "snippet": "Now Now - 2026-09-26 September 26 Select date.",
-      "url": "https://atrium916.com/events",
-      "source": "Atrium 916 — events"
-    },
-    {
       "title": "Fall Eco-Art & Sip: Paint and Sculpt with Clay",
-      "date_raw": "September 3",
-      "date_iso": "2026-09-03",
-      "snippet": "Thu 3 Fall Eco-Art & Sip: Paint and Sculpt with Clay Featured September 3 @ 10:30 am - 5:00 pm The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States As the trees start to shed off the year, the Atrium Art Café welcomes all to",
-      "url": "https://atrium916.com/event/fall-eco-art-sip-paint-and-sculpt-with-clay-8/",
+      "date_raw": "September 4",
+      "date_iso": "2026-09-04",
+      "snippet": "Fri 4 Fall Eco-Art & Sip: Paint and Sculpt with Clay Featured September 4 @ 10:30 am - 5:00 pm The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States As the trees start to shed off the year, the Atrium Art Café welcomes all to",
+      "url": "https://atrium916.com/event/fall-eco-art-sip-paint-and-sculpt-with-clay-4/",
       "source": "Atrium 916 — events"
     },
     {
@@ -121,10 +113,10 @@
       "source": "Atrium 916 — events"
     },
     {
-      "title": "Alebrije Painting WorkshopSunday, September 20Learn More",
+      "title": "Alebrije Painting WorkshopSunday, September 20 | WAITLIST ONLYLearn More",
       "date_raw": "September 20",
       "date_iso": "2026-09-20",
-      "snippet": "Alebrije Painting Workshop Sunday, September 20 Learn More Día de Los Muertos Fiesta 2026 Saturday, October 10 Learn More Docent on Duty in “Uprooted” Ongoing Learn More Black History Self-Guided Tour February 1 – 28, 2026 Learn More",
+      "snippet": "Alebrije Painting Workshop Sunday, September 20 | WAITLIST ONLY Learn More Día de Los Muertos Fiesta 2026 Saturday, October 10 Learn More Docent on Duty in “Uprooted” Ongoing Learn More Black History Self-Guided Tour ONGOING Learn More",
       "url": "https://californiamuseum.org/visit/events-public-programs/alebrije-painting-workshop/",
       "source": "California Museum"
     },
@@ -132,7 +124,7 @@
       "title": "Alebrije Painting Workshop",
       "date_raw": "September 20",
       "date_iso": "2026-09-20",
-      "snippet": "Alebrije Painting Workshop Sunday, September 20 Learn More",
+      "snippet": "Alebrije Painting Workshop Sunday, September 20 | WAITLIST ONLY Learn More",
       "url": "https://www.californiamuseum.org/events",
       "source": "California Museum"
     },
@@ -141,14 +133,6 @@
       "date_raw": "October 10",
       "date_iso": "2026-10-10",
       "snippet": "Día de Los Muertos Fiesta 2026 Saturday, October 10 Learn More",
-      "url": "https://www.californiamuseum.org/events",
-      "source": "California Museum"
-    },
-    {
-      "title": "Black History Self-Guided Tour",
-      "date_raw": "February 1 – 28, 2026",
-      "date_iso": "2027-02-01",
-      "snippet": "Black History Self-Guided Tour February 1 – 28, 2026 Learn More",
       "url": "https://www.californiamuseum.org/events",
       "source": "California Museum"
     },
@@ -225,5 +209,5 @@
       "source": "JAYJAY Gallery — exhibitions"
     }
   ],
-  "last_run": "2026-09-03"
+  "last_run": "2026-09-04"
 }
