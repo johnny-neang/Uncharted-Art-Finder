@@ -1,6 +1,14 @@
 {
   "events": [
     {
+      "title": "Fair Oaks Chicken Festival",
+      "date_raw": "Sep 19, 2026",
+      "date_iso": "2026-09-19",
+      "snippet": "Fair Oaks Chicken Festival Presented by Fair Oaks Recreation and Park District and Fair Oaks Chamber of Commerce at Fair Oaks Park Sep 19, 2026",
+      "url": "https://sacramento365.com/event/fair-oaks-chicken-festival-3/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
       "title": "COME FROM AWAY",
       "date_raw": "Sep 11 - Sep 20, 2026",
       "date_iso": "2027-09-11",
@@ -30,14 +38,6 @@
       "date_iso": "2026-09-26",
       "snippet": "Midtown Oktoberfest Presented by Der BierGarten at Der Biergarten Sep 26, 2026",
       "url": "https://sacramento365.com/event/midtown-oktoberfest-4/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
-      "title": "Holo Holo Music Festival",
-      "date_raw": "Sep 26 - Sep 27, 2026",
-      "date_iso": "2026-09-26",
-      "snippet": "Holo Holo Music Festival Presented by Good Vibez Presents at Heart Health Park Sep 26 - Sep 27, 2026",
-      "url": "https://sacramento365.com/event/holo-holo-music-festival-3/",
       "source": "Sacramento365 — Arts events"
     },
     {
@@ -73,27 +73,19 @@
       "source": "Sacramento365 — Arts events"
     },
     {
-      "title": "Now Now - 2026-10-01 October 1 Select date.",
-      "date_raw": "2026-10-01",
-      "date_iso": "2026-10-01",
-      "snippet": "Now Now - 2026-10-01 October 1 Select date.",
+      "title": "Now Now - 2026-10-02 October 2 Select date.",
+      "date_raw": "2026-10-02",
+      "date_iso": "2026-10-02",
+      "snippet": "Now Now - 2026-10-02 October 2 Select date.",
       "url": "https://atrium916.com/events",
       "source": "Atrium 916 — events"
     },
     {
-      "title": "What to Expect During an Audit Webinar",
-      "date_raw": "September 17",
-      "date_iso": "2026-09-17",
-      "snippet": "Thu 17 What to Expect During an Audit Webinar September 17 @ 9:30 am - 10:30 am Give yourself piece of mind should you be selected for audit. Learn what to expect from your first notification letter through the exit conference. Avoid common errors and hear what records to keep. D",
-      "url": "https://atrium916.com/event/what-to-expect-during-an-audit-webinar-2/",
-      "source": "Atrium 916 — events"
-    },
-    {
       "title": "Halloween Art Cafe: Sculpt & Paint Creepy Creations",
-      "date_raw": "September 17",
-      "date_iso": "2026-09-17",
-      "snippet": "Thu 17 Halloween Art Cafe: Sculpt & Paint Creepy Creations Featured September 17 @ 10:30 am - 5:00 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Halloween clay sculpting & art making in Historic Old Sacram",
-      "url": "https://atrium916.com/event/halloween-art-cafe-sculpt-paint-creepy-creations/2026-09-17/",
+      "date_raw": "September 18",
+      "date_iso": "2026-09-18",
+      "snippet": "Fri 18 Halloween Art Cafe: Sculpt & Paint Creepy Creations Featured September 18 @ 10:30 am - 5:00 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Halloween clay sculpting & art making in Historic Old Sacram",
+      "url": "https://atrium916.com/event/halloween-art-cafe-sculpt-paint-creepy-creations/2026-09-18/",
       "source": "Atrium 916 — events"
     },
     {
@@ -169,30 +161,6 @@
       "source": "Atrium 916 — events"
     },
     {
-      "title": "Alebrije Painting WorkshopSunday, September 20 | WAITLIST ONLYLearn More",
-      "date_raw": "September 20",
-      "date_iso": "2026-09-20",
-      "snippet": "Alebrije Painting Workshop Sunday, September 20 | WAITLIST ONLY Learn More Día de Los Muertos Fiesta 2026 Saturday, October 10 Learn More Docent on Duty in “Uprooted” Ongoing Learn More Black History Self-Guided Tour ONGOING Learn More",
-      "url": "https://californiamuseum.org/visit/events-public-programs/alebrije-painting-workshop/",
-      "source": "California Museum"
-    },
-    {
-      "title": "Alebrije Painting Workshop",
-      "date_raw": "September 20",
-      "date_iso": "2026-09-20",
-      "snippet": "Alebrije Painting Workshop Sunday, September 20 | WAITLIST ONLY Learn More",
-      "url": "https://www.californiamuseum.org/events",
-      "source": "California Museum"
-    },
-    {
-      "title": "Día de Los Muertos Fiesta 2026",
-      "date_raw": "October 10",
-      "date_iso": "2026-10-10",
-      "snippet": "Día de Los Muertos Fiesta 2026 Saturday, October 10 Learn More",
-      "url": "https://www.californiamuseum.org/events",
-      "source": "California Museum"
-    },
-    {
       "title": "On View in the Gallery",
       "date_raw": "August 15",
       "date_iso": "2027-08-15",
@@ -265,5 +233,5 @@
       "source": "JAYJAY Gallery — exhibitions"
     }
   ],
-  "last_run": "2026-09-17"
+  "last_run": "2026-09-18"
 }
