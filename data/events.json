@@ -73,19 +73,11 @@
       "source": "Sacramento365 — Arts events"
     },
     {
-      "title": "Now Now - 2026-10-09 October 9 Select date.",
-      "date_raw": "2026-10-09",
-      "date_iso": "2026-10-09",
-      "snippet": "Now Now - 2026-10-09 October 9 Select date.",
+      "title": "Now Now - 2026-10-10 October 10 Select date.",
+      "date_raw": "2026-10-10",
+      "date_iso": "2026-10-10",
+      "snippet": "Now Now - 2026-10-10 October 10 Select date.",
       "url": "https://atrium916.com/events",
-      "source": "Atrium 916 — events"
-    },
-    {
-      "title": "Internet and Home-Based Businesses Webinar",
-      "date_raw": "September 29",
-      "date_iso": "2026-09-29",
-      "snippet": "Tue 29 Internet and Home-Based Businesses Webinar September 29 @ 9:30 am - 10:30 am Many owners are surprised to find no blanket exemption for their Internet and home-based businesses. Learn how the recent Wayfair decision and marketplace facilitator rules have affected your onli",
-      "url": "https://atrium916.com/event/internet-and-home-based-businesses-webinar/",
       "source": "Atrium 916 — events"
     },
     {
@@ -169,6 +161,38 @@
       "source": "Blue Line Arts — exhibitions"
     },
     {
+      "title": "On View at Axis",
+      "date_raw": "October 2, 2026",
+      "date_iso": "2026-10-02",
+      "snippet": "On View at Axis Birds & Bikes October 2, 2026 through November 1, 2026 Second Saturday Reception: Saturday, Oct 10, 5-8pm Join us at Axis Gallery for Second Saturday, a monthly celebration of the newest gallery exhibition. Guests can enjoy light refreshments, lively conversation,",
+      "url": "https://axisgallery.org/home-3/exhibitions/birds-bikes/",
+      "source": "Axis Gallery — exhibitions"
+    },
+    {
+      "title": "October 2, 2026 through November 1, 2026 Second Saturday Reception: Saturday, Oc",
+      "date_raw": "October 2, 2026",
+      "date_iso": "2026-10-02",
+      "snippet": "October 2, 2026 through November 1, 2026 Second Saturday Reception: Saturday, Oct 10, 5-8pm",
+      "url": "https://axisgallery.org/exhibitions/",
+      "source": "Axis Gallery — exhibitions"
+    },
+    {
+      "title": "Second Saturday Reception: Saturday, Oct 10, 5-8pm",
+      "date_raw": "Oct 10",
+      "date_iso": "2026-10-10",
+      "snippet": "Second Saturday Reception: Saturday, Oct 10, 5-8pm",
+      "url": "https://axisgallery.org/exhibitions/",
+      "source": "Axis Gallery — exhibitions"
+    },
+    {
+      "title": "In the East Room",
+      "date_raw": "October 2, 2026",
+      "date_iso": "2026-10-02",
+      "snippet": "In the East Room Birds & Bikes October 2, 2026 through November 1, 2026 Second Saturday Reception: Saturday, Oct 10, 5-8pm Join us at Axis Gallery for Second Saturday, a monthly celebration of the newest gallery exhibition. Guests can enjoy light refreshments, lively conversation",
+      "url": "https://axisgallery.org/home-3/exhibitions/birds-bikes/",
+      "source": "Axis Gallery — exhibitions"
+    },
+    {
       "title": "About Us",
       "date_raw": "June 19, 2017",
       "date_iso": "2017-06-19",
@@ -193,5 +217,5 @@
       "source": "JAYJAY Gallery — exhibitions"
     }
   ],
-  "last_run": "2026-09-29"
+  "last_run": "2026-09-30"
 }
