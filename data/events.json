@@ -81,14 +81,6 @@
       "source": "Atrium 916 — events"
     },
     {
-      "title": "Sales Tax Return Preparation Webinar",
-      "date_raw": "September 30",
-      "date_iso": "2026-09-30",
-      "snippet": "Wed 30 Sales Tax Return Preparation Webinar September 30 @ 10:00 am - 11:00 am Get step-by-step instructions on how to file your Sales and Use Tax return electronically using our new online services system. Learn how to pay use tax, figure out deductions, and calculate district t",
-      "url": "https://atrium916.com/event/sales-tax-return-preparation-webinar-5/",
-      "source": "Atrium 916 — events"
-    },
-    {
       "title": "Halloween Art Cafe: Sculpt & Paint Creepy Creations",
       "date_raw": "October 1",
       "date_iso": "2026-10-01",
@@ -217,5 +209,5 @@
       "source": "JAYJAY Gallery — exhibitions"
     }
   ],
-  "last_run": "2026-09-30"
+  "last_run": "2026-10-01"
 }
