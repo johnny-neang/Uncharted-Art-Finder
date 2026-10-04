@@ -1,14 +1,6 @@
 {
   "events": [
     {
-      "title": "Sacramento Greek Festival",
-      "date_raw": "Oct 02 - Oct 04, 2026",
-      "date_iso": "2027-10-02",
-      "snippet": "Sacramento Greek Festival Presented by Sacramento Greek Festival at Annunciation Greek Orthodox Church Oct 02 - Oct 04, 2026",
-      "url": "https://sacramento365.com/event/sacramento-greek-festival-4/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
       "title": "Robert Plant with Saving Grace And Suzi Dian, Special Guest Rosie Flores",
       "date_raw": "Oct 05, 2026",
       "date_iso": "2026-10-05",
@@ -25,11 +17,27 @@
       "source": "Sacramento365 — Arts events"
     },
     {
+      "title": "Día de los Muertos Fiesta at the California Museum",
+      "date_raw": "Oct 10, 2026",
+      "date_iso": "2026-10-10",
+      "snippet": "Día de los Muertos Fiesta at the California Museum Presented by California Museum at California Museum Oct 10, 2026",
+      "url": "https://sacramento365.com/event/dia-de-los-muertos-fiesta-at-the-california-museum/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
       "title": "Handblown Glass Pumpkin Patch",
       "date_raw": "Oct 10 - Oct 11, 2026",
       "date_iso": "2026-10-10",
       "snippet": "Handblown Glass Pumpkin Patch Presented by 2BGlass at Gallery at 48 Natoma Oct 10 - Oct 11, 2026",
       "url": "https://sacramento365.com/event/handblown-glass-pumpkin-patch-4/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Wonderfully Weird Night Market",
+      "date_raw": "Oct 17, 2026",
+      "date_iso": "2026-10-17",
+      "snippet": "Wonderfully Weird Night Market Presented by Succulent Sirens at  Succulent Sirens Oct 17, 2026",
+      "url": "https://sacramento365.com/event/wonderfully-weird-night-market/",
       "source": "Sacramento365 — Arts events"
     },
     {
@@ -73,27 +81,27 @@
       "source": "Sacramento365 — Arts events"
     },
     {
-      "title": "Now Now - 2026-10-12 October 12 Select date.",
-      "date_raw": "2026-10-12",
-      "date_iso": "2026-10-12",
-      "snippet": "Now Now - 2026-10-12 October 12 Select date.",
+      "title": "Now Now - 2026-10-14 October 14 Select date.",
+      "date_raw": "2026-10-14",
+      "date_iso": "2026-10-14",
+      "snippet": "Now Now - 2026-10-14 October 14 Select date.",
       "url": "https://atrium916.com/events",
       "source": "Atrium 916 — events"
     },
     {
       "title": "Halloween Art Cafe: Sculpt & Paint Creepy Creations",
-      "date_raw": "October 3",
-      "date_iso": "2026-10-03",
-      "snippet": "Sat 3 Halloween Art Cafe: Sculpt & Paint Creepy Creations October 3 @ 10:30 am - 5:00 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Halloween clay sculpting & art making in Historic Old Sacramento. Sip tea",
-      "url": "https://atrium916.com/event/halloween-art-cafe-sculpt-paint-creepy-creations/2026-10-03/",
+      "date_raw": "October 4",
+      "date_iso": "2026-10-04",
+      "snippet": "Sun 4 Halloween Art Cafe: Sculpt & Paint Creepy Creations October 4 @ 10:30 am - 5:00 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Halloween clay sculpting & art making in Historic Old Sacramento. Sip tea",
+      "url": "https://atrium916.com/event/halloween-art-cafe-sculpt-paint-creepy-creations/2026-10-04/",
       "source": "Atrium 916 — events"
     },
     {
       "title": "Spirits of the Season: Ongoing Art Exhibition",
-      "date_raw": "October 3",
-      "date_iso": "2026-10-03",
-      "snippet": "Sat 3 Spirits of the Season: Ongoing Art Exhibition Featured October 3 @ 10:30 am - 5:30 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States A Halloween & Día de los Muertos Exhibition Spirits of the Season is a",
-      "url": "https://atrium916.com/event/spirits-of-the-season-ongoing-art-exhibition/2026-10-03/",
+      "date_raw": "October 4",
+      "date_iso": "2026-10-04",
+      "snippet": "Sun 4 Spirits of the Season: Ongoing Art Exhibition Featured October 4 @ 10:30 am - 5:30 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States A Halloween & Día de los Muertos Exhibition Spirits of the Season is a",
+      "url": "https://atrium916.com/event/spirits-of-the-season-ongoing-art-exhibition/2026-10-04/",
       "source": "Atrium 916 — events"
     },
     {
@@ -126,6 +134,22 @@
       "date_iso": "2026-10-12",
       "snippet": "Gain an understanding of Government Industrial Base (GIB) Readiness. WHEN: Monday, October 12th, 2025 9:00 - 10:00 AM WHERE: Online Webinar To register for this event, visit: https://cacapital.ecenterdirect.com/events/829038",
       "url": "https://atrium916.com/events",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "International E-Waste Day",
+      "date_raw": "October 14",
+      "date_iso": "2026-10-14",
+      "snippet": "Wed 14 International E-Waste Day October 14 Fast tech: don't bin it, bring it! Every year on 14 October, the world marks International E-Waste Day: a global initiative launched by the WEEE Forum to raise awareness about the growing challenge of electronic waste and to inspire act",
+      "url": "https://atrium916.com/event/international-e-waste-day/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "Sales and Use Tax for Nonprofit Organizations Webinar",
+      "date_raw": "October 14",
+      "date_iso": "2026-10-14",
+      "snippet": "Wed 14 Sales and Use Tax for Nonprofit Organizations Webinar October 14 @ 10:00 am - 11:00 am Many are surprised to learn that there is no blanket exemption and that a sellers' permit is required for most nonprofits. Get the rules that apply to your particular 501(c)(3), religiou",
+      "url": "https://atrium916.com/event/sales-and-use-tax-for-nonprofit-organizations-webinar-7/",
       "source": "Atrium 916 — events"
     },
     {
@@ -233,5 +257,5 @@
       "source": "JAYJAY Gallery — exhibitions"
     }
   ],
-  "last_run": "2026-10-03"
+  "last_run": "2026-10-04"
 }
