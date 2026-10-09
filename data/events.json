@@ -81,35 +81,27 @@
       "source": "Sacramento365 — Arts events"
     },
     {
-      "title": "Now Now - 2026-10-15 October 15 Select date.",
-      "date_raw": "2026-10-15",
-      "date_iso": "2026-10-15",
-      "snippet": "Now Now - 2026-10-15 October 15 Select date.",
+      "title": "Now Now - 2026-10-16 October 16 Select date.",
+      "date_raw": "2026-10-16",
+      "date_iso": "2026-10-16",
+      "snippet": "Now Now - 2026-10-16 October 16 Select date.",
       "url": "https://atrium916.com/events",
       "source": "Atrium 916 — events"
     },
     {
-      "title": "Basic Sales & Use Tax Webinar",
-      "date_raw": "October 8",
-      "date_iso": "2026-10-08",
-      "snippet": "Thu 8 Basic Sales & Use Tax Webinar October 8 @ 9:30 am - 10:30 am Gain an understanding of sales and use tax, district tax, taxable and nontaxable labor, as well as foreign and interstate taxability. Learn if you need a seller’s permit and how to use a resale certificate. Discov",
-      "url": "https://atrium916.com/event/basic-sales-use-tax-webinar-4/",
-      "source": "Atrium 916 — events"
-    },
-    {
       "title": "Halloween Art Cafe: Sculpt & Paint Creepy Creations",
-      "date_raw": "October 8",
-      "date_iso": "2026-10-08",
-      "snippet": "Thu 8 Halloween Art Cafe: Sculpt & Paint Creepy Creations October 8 @ 10:30 am - 5:00 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Halloween clay sculpting & art making in Historic Old Sacramento. Sip tea",
-      "url": "https://atrium916.com/event/halloween-art-cafe-sculpt-paint-creepy-creations/2026-10-08/",
+      "date_raw": "October 9",
+      "date_iso": "2026-10-09",
+      "snippet": "Fri 9 Halloween Art Cafe: Sculpt & Paint Creepy Creations October 9 @ 10:30 am - 5:00 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Halloween clay sculpting & art making in Historic Old Sacramento. Sip tea",
+      "url": "https://atrium916.com/event/halloween-art-cafe-sculpt-paint-creepy-creations/2026-10-09/",
       "source": "Atrium 916 — events"
     },
     {
       "title": "Spirits of the Season: Ongoing Art Exhibition",
-      "date_raw": "October 8",
-      "date_iso": "2026-10-08",
-      "snippet": "Thu 8 Spirits of the Season: Ongoing Art Exhibition Featured October 8 @ 10:30 am - 5:30 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States A Halloween & Día de los Muertos Exhibition Spirits of the Season is a",
-      "url": "https://atrium916.com/event/spirits-of-the-season-ongoing-art-exhibition/2026-10-08/",
+      "date_raw": "October 9",
+      "date_iso": "2026-10-09",
+      "snippet": "Fri 9 Spirits of the Season: Ongoing Art Exhibition Featured October 9 @ 10:30 am - 5:30 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States A Halloween & Día de los Muertos Exhibition Spirits of the Season is a",
+      "url": "https://atrium916.com/event/spirits-of-the-season-ongoing-art-exhibition/2026-10-09/",
       "source": "Atrium 916 — events"
     },
     {
@@ -150,6 +142,14 @@
       "date_iso": "2026-10-14",
       "snippet": "Wed 14 Sales and Use Tax for Nonprofit Organizations Webinar October 14 @ 10:00 am - 11:00 am Many are surprised to learn that there is no blanket exemption and that a sellers' permit is required for most nonprofits. Get the rules that apply to your particular 501(c)(3), religiou",
       "url": "https://atrium916.com/event/sales-and-use-tax-for-nonprofit-organizations-webinar-7/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "Spirits of the Season Art Reception",
+      "date_raw": "October 15",
+      "date_iso": "2026-10-15",
+      "snippet": "Thu 15 Spirits of the Season Art Reception Featured October 15 @ 4:00 pm - 8:00 pm The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Celebrate the season with a participatory community Ofrenda. Meet the artists with compli",
+      "url": "https://atrium916.com/event/spirits-of-the-season-art-reception/",
       "source": "Atrium 916 — events"
     },
     {
@@ -257,5 +257,5 @@
       "source": "JAYJAY Gallery — exhibitions"
     }
   ],
-  "last_run": "2026-10-08"
+  "last_run": "2026-10-09"
 }
