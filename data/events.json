@@ -1,22 +1,6 @@
 {
   "events": [
     {
-      "title": "Handblown Glass Pumpkin Patch",
-      "date_raw": "Oct 10 - Oct 11, 2026",
-      "date_iso": "2026-10-10",
-      "snippet": "Handblown Glass Pumpkin Patch Presented by 2BGlass at Gallery at 48 Natoma Oct 10 - Oct 11, 2026",
-      "url": "https://sacramento365.com/event/handblown-glass-pumpkin-patch-4/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
-      "title": "Quilt Show - Sacramento",
-      "date_raw": "Oct 09 - Oct 11, 2026",
-      "date_iso": "2027-10-09",
-      "snippet": "Quilt Show - Sacramento Presented by River City Quilters' Guild at Scottish Rite Center Oct 09 - Oct 11, 2026",
-      "url": "https://sacramento365.com/event/sacramento-quilt-show/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
       "title": "Wonderfully Weird Night Market",
       "date_raw": "Oct 17, 2026",
       "date_iso": "2026-10-17",
@@ -65,6 +49,14 @@
       "source": "Sacramento365 — Arts events"
     },
     {
+      "title": "Golden Harvest Parade and Music/Dance Festival",
+      "date_raw": "Oct 24, 2026",
+      "date_iso": "2026-10-24",
+      "snippet": "Golden Harvest Parade and Music/Dance Festival Presented by Golden Harvest Parade at Capitol Mall Greens Oct 24, 2026",
+      "url": "https://sacramento365.com/event/golden-harvest-parade-and-music-dance-festival/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
       "title": "Movies Under the Stars",
       "date_raw": "Oct 01 - Oct 30, 2026",
       "date_iso": "2027-10-01",
@@ -81,35 +73,35 @@
       "source": "Sacramento365 — Arts events"
     },
     {
-      "title": "Now Now - 2026-10-17 October 17 Select date.",
-      "date_raw": "2026-10-17",
-      "date_iso": "2026-10-17",
-      "snippet": "Now Now - 2026-10-17 October 17 Select date.",
+      "title": "Sacramento Spooky River Cruise",
+      "date_raw": "Oct 03 - Oct 31, 2026",
+      "date_iso": "2027-10-03",
+      "snippet": "Sacramento Spooky River Cruise Presented by City Cruises at  Sacramento City cruises Oct 03 - Oct 31, 2026",
+      "url": "https://sacramento365.com/event/sacramento-spooky-river-cruise-2/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Now Now - 2026-10-18 October 18 Select date.",
+      "date_raw": "2026-10-18",
+      "date_iso": "2026-10-18",
+      "snippet": "Now Now - 2026-10-18 October 18 Select date.",
       "url": "https://atrium916.com/events",
       "source": "Atrium 916 — events"
     },
     {
       "title": "Halloween Art Cafe: Sculpt & Paint Creepy Creations",
-      "date_raw": "October 10",
-      "date_iso": "2026-10-10",
-      "snippet": "Sat 10 Halloween Art Cafe: Sculpt & Paint Creepy Creations October 10 @ 10:30 am - 5:00 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Halloween clay sculpting & art making in Historic Old Sacramento. Sip t",
-      "url": "https://atrium916.com/event/halloween-art-cafe-sculpt-paint-creepy-creations/2026-10-10/",
+      "date_raw": "October 11",
+      "date_iso": "2026-10-11",
+      "snippet": "Sun 11 Halloween Art Cafe: Sculpt & Paint Creepy Creations October 11 @ 10:30 am - 5:00 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Halloween clay sculpting & art making in Historic Old Sacramento. Sip t",
+      "url": "https://atrium916.com/event/halloween-art-cafe-sculpt-paint-creepy-creations/2026-10-11/",
       "source": "Atrium 916 — events"
     },
     {
       "title": "Spirits of the Season: Ongoing Art Exhibition",
-      "date_raw": "October 10",
-      "date_iso": "2026-10-10",
-      "snippet": "Sat 10 Spirits of the Season: Ongoing Art Exhibition Featured October 10 @ 10:30 am - 5:30 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States A Halloween & Día de los Muertos Exhibition Spirits of the Season is",
-      "url": "https://atrium916.com/event/spirits-of-the-season-ongoing-art-exhibition/2026-10-10/",
-      "source": "Atrium 916 — events"
-    },
-    {
-      "title": "ZMAC at CADA Annual Movie Night",
-      "date_raw": "October 10",
-      "date_iso": "2026-10-10",
-      "snippet": "Sat 10 ZMAC at CADA Annual Movie Night Featured October 10 @ 5:30 pm - 8:00 pm Fremont Park 1515 Q St, Sacramento, CA, United States CADA’s annual Movie in Fremont Park will be a whimsical evening under the stars with a screening of Beetlejuice, Beetlejuice (2024) on the big scre",
-      "url": "https://atrium916.com/event/zmac-at-cada-annual-movie-night/",
+      "date_raw": "October 11",
+      "date_iso": "2026-10-11",
+      "snippet": "Sun 11 Spirits of the Season: Ongoing Art Exhibition Featured October 11 @ 10:30 am - 5:30 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States A Halloween & Día de los Muertos Exhibition Spirits of the Season is",
+      "url": "https://atrium916.com/event/spirits-of-the-season-ongoing-art-exhibition/2026-10-11/",
       "source": "Atrium 916 — events"
     },
     {
@@ -227,7 +219,7 @@
     {
       "title": "Second Saturday Reception: Saturday, Oct 10, 5-8pm",
       "date_raw": "Oct 10",
-      "date_iso": "2026-10-10",
+      "date_iso": "2027-10-10",
       "snippet": "Second Saturday Reception: Saturday, Oct 10, 5-8pm",
       "url": "https://axisgallery.org/exhibitions/",
       "source": "Axis Gallery — exhibitions"
@@ -265,5 +257,5 @@
       "source": "JAYJAY Gallery — exhibitions"
     }
   ],
-  "last_run": "2026-10-10"
+  "last_run": "2026-10-11"
 }
