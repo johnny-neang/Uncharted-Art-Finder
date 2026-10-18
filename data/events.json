@@ -1,14 +1,6 @@
 {
   "events": [
     {
-      "title": "Water for Elephants",
-      "date_raw": "Oct 13 - Oct 18, 2026",
-      "date_iso": "2027-10-13",
-      "snippet": "Water for Elephants Presented by Broadway Sacramento at SAFE Credit Union Performing Arts Center Oct 13 - Oct 18, 2026",
-      "url": "https://sacramento365.com/event/water-for-elephants/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
       "title": "Bluey's Big Play",
       "date_raw": "Oct 20, 2026",
       "date_iso": "2026-10-20",
@@ -49,6 +41,14 @@
       "source": "Sacramento365 — Arts events"
     },
     {
+      "title": "2026 Journey of Hope",
+      "date_raw": "Oct 01 - Oct 24, 2026",
+      "date_iso": "2027-10-01",
+      "snippet": "2026 Journey of Hope Presented by The Mills Station Arts and Culture Center (MACC) at Mills Station Arts and Cultural Center (The MACC) Oct 01 - Oct 24, 2026",
+      "url": "https://sacramento365.com/event/2026-journey-of-hope/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
       "title": "Movies Under the Stars",
       "date_raw": "Oct 01 - Oct 30, 2026",
       "date_iso": "2027-10-01",
@@ -81,35 +81,27 @@
       "source": "Sacramento365 — Arts events"
     },
     {
-      "title": "Now Now - 2026-10-23 October 23 Select date.",
-      "date_raw": "2026-10-23",
-      "date_iso": "2026-10-23",
-      "snippet": "Now Now - 2026-10-23 October 23 Select date.",
+      "title": "Now Now - 2026-10-24 October 24 Select date.",
+      "date_raw": "2026-10-24",
+      "date_iso": "2026-10-24",
+      "snippet": "Now Now - 2026-10-24 October 24 Select date.",
       "url": "https://atrium916.com/events",
       "source": "Atrium 916 — events"
     },
     {
-      "title": "ZMAC at SMUD Electricity Fair",
-      "date_raw": "October 17",
-      "date_iso": "2026-10-17",
-      "snippet": "Sat 17 ZMAC at SMUD Electricity Fair Featured October 17 @ 10:00 am - 3:00 pm Areospace Museum 3200 Freedom Park Dr, McClellan Park, Sacramento, United States SMUD and the Aerospace Museum of California will welcome members of the community on Saturday for a family fun-filled day",
-      "url": "https://atrium916.com/event/smud-electricity-fair/",
-      "source": "Atrium 916 — events"
-    },
-    {
       "title": "Halloween Art Cafe: Sculpt & Paint Creepy Creations",
-      "date_raw": "October 17",
-      "date_iso": "2026-10-17",
-      "snippet": "Sat 17 Halloween Art Cafe: Sculpt & Paint Creepy Creations October 17 @ 10:30 am - 5:00 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Halloween clay sculpting & art making in Historic Old Sacramento. Sip t",
-      "url": "https://atrium916.com/event/halloween-art-cafe-sculpt-paint-creepy-creations/2026-10-17/",
+      "date_raw": "October 18",
+      "date_iso": "2026-10-18",
+      "snippet": "Sun 18 Halloween Art Cafe: Sculpt & Paint Creepy Creations October 18 @ 10:30 am - 5:00 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Halloween clay sculpting & art making in Historic Old Sacramento. Sip t",
+      "url": "https://atrium916.com/event/halloween-art-cafe-sculpt-paint-creepy-creations/2026-10-18/",
       "source": "Atrium 916 — events"
     },
     {
       "title": "Spirits of the Season: Ongoing Art Exhibition",
-      "date_raw": "October 17",
-      "date_iso": "2026-10-17",
-      "snippet": "Sat 17 Spirits of the Season: Ongoing Art Exhibition Featured October 17 @ 10:30 am - 5:30 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States A Halloween & Día de los Muertos Exhibition Spirits of the Season is",
-      "url": "https://atrium916.com/event/spirits-of-the-season-ongoing-art-exhibition/2026-10-17/",
+      "date_raw": "October 18",
+      "date_iso": "2026-10-18",
+      "snippet": "Sun 18 Spirits of the Season: Ongoing Art Exhibition Featured October 18 @ 10:30 am - 5:30 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States A Halloween & Día de los Muertos Exhibition Spirits of the Season is",
+      "url": "https://atrium916.com/event/spirits-of-the-season-ongoing-art-exhibition/2026-10-18/",
       "source": "Atrium 916 — events"
     },
     {
@@ -171,7 +163,7 @@
     {
       "title": "On View in the Gallery",
       "date_raw": "October 17",
-      "date_iso": "2026-10-17",
+      "date_iso": "2027-10-17",
       "snippet": "On View in the Gallery Placer Artists Tour | Taste of the Tour Preview Show October 17th - November 15th, 2026 Reception: October 24th from 5 to 7pm",
       "url": "https://bluelinearts.org/exhibitions/",
       "source": "Blue Line Arts — exhibitions"
@@ -241,5 +233,5 @@
       "source": "JAYJAY Gallery — exhibitions"
     }
   ],
-  "last_run": "2026-10-17"
+  "last_run": "2026-10-18"
 }
