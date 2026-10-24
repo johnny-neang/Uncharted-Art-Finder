@@ -1,6 +1,190 @@
 {
   "events": [
     {
+      "title": "Golden Harvest Parade and Festival",
+      "date_raw": "Oct 24, 2026",
+      "date_iso": "2026-10-24",
+      "snippet": "Golden Harvest Parade and Festival Presented by Golden Harvest Parade at Capitol Mall Greens Oct 24, 2026",
+      "url": "https://sacramento365.com/event/golden-harvest-parade-and-music-dance-festival/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Harry Potter and the Goblet of Fire in Concert",
+      "date_raw": "Oct 23 - Oct 24, 2026",
+      "date_iso": "2027-10-23",
+      "snippet": "Harry Potter and the Goblet of Fire in Concert Presented by Innovation Entertainment at SAFE Credit Union Performing Arts Center Oct 23 - Oct 24, 2026",
+      "url": "https://sacramento365.com/event/harry-potter-and-the-goblet-of-fire-in-concert/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Rocky Horror with Amber's Sweets (SOLD OUT)",
+      "date_raw": "Oct 24, 2026",
+      "date_iso": "2026-10-24",
+      "snippet": "Rocky Horror with Amber's Sweets (SOLD OUT) Presented by Love Horror Events at Colonial Theatre Oct 24, 2026",
+      "url": "https://sacramento365.com/event/rocky-horror-with-ambers-sweets/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Halloween Fly-in",
+      "date_raw": "Oct 24, 2026",
+      "date_iso": "2026-10-24",
+      "snippet": "Halloween Fly-in Presented by EAA Chapter 1714 at Sacramento Executive Airport Oct 24, 2026",
+      "url": "https://sacramento365.com/event/halloween-fly-in/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Trunk or Treat at the California Automobile Museum",
+      "date_raw": "Oct 24, 2026",
+      "date_iso": "2026-10-24",
+      "snippet": "Trunk or Treat at the California Automobile Museum Presented by California Automobile Museum at California Automobile Museum Oct 24, 2026",
+      "url": "https://sacramento365.com/event/trunk-or-treat-at-the-california-automobile-museum/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Movies Under the Stars",
+      "date_raw": "Oct 01 - Oct 30, 2026",
+      "date_iso": "2027-10-01",
+      "snippet": "Movies Under the Stars Presented by Downtown Sacramento Partnership at Old Sacramento State Historic Park Oct 01 - Oct 30, 2026",
+      "url": "https://sacramento365.com/event/movies-under-the-stars-2/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Ghost Tours",
+      "date_raw": "Oct 16 - Oct 30, 2026",
+      "date_iso": "2027-10-16",
+      "snippet": "Ghost Tours Presented by Sacramento History Museum at Sacramento History Museum Oct 16 - Oct 30, 2026",
+      "url": "https://sacramento365.com/event/ghost-tours/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "El Panteón de Sacramento",
+      "date_raw": "Oct 30 - Oct 31, 2026",
+      "date_iso": "2026-10-30",
+      "snippet": "El Panteón de Sacramento Presented by Latino Center of Art and Culture at Latino Center of Art and Culture Oct 30 - Oct 31, 2026",
+      "url": "https://sacramento365.com/event/el-panteon-de-sacramento-4/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Dave's Haunted Corn Maze",
+      "date_raw": "Oct 16 - Nov 01, 2026",
+      "date_iso": "2027-10-16",
+      "snippet": "Dave's Haunted Corn Maze Presented by Vierra Farms/Dave's Pumpkin Patch at  Vierra Farms/Dave's Pumpkin Patch Oct 16 - Nov 01, 2026",
+      "url": "https://sacramento365.com/event/daves-haunted-corn-maze/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "The Glenn Miller Orchestra",
+      "date_raw": "Dec 14, 2026",
+      "date_iso": "2026-12-14",
+      "snippet": "The Glenn Miller Orchestra Presented by DDA Productions at Memorial Auditorium Dec 14, 2026",
+      "url": "https://sacramento365.com/event/the-glenn-miller-orchestra/",
+      "source": "Sacramento365 — Arts events"
+    },
+    {
+      "title": "Now Now - 2026-11-04 November 4 Select date.",
+      "date_raw": "2026-11-04",
+      "date_iso": "2026-11-04",
+      "snippet": "Now Now - 2026-11-04 November 4 Select date.",
+      "url": "https://atrium916.com/events",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "Sac Tech Week 2026",
+      "date_raw": "October 24",
+      "date_iso": "2026-10-24",
+      "snippet": "Sat 24 Sac Tech Week 2026 Featured October 24 Recurring For six days, Sacramento runs on tech. You’re invited to all of it. One week. One city. Infinite possibilities. Sac Tech Week is a decentralized, citywide celebration of innovation — founders, startups, technologists, creati",
+      "url": "https://atrium916.com/event/sac-tech-week-2026/2026-10-24/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "Halloween Art Cafe: Sculpt & Paint Creepy Creations",
+      "date_raw": "October 24",
+      "date_iso": "2026-10-24",
+      "snippet": "Sat 24 Halloween Art Cafe: Sculpt & Paint Creepy Creations October 24 @ 10:30 am - 5:00 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States Halloween clay sculpting & art making in Historic Old Sacramento. Sip t",
+      "url": "https://atrium916.com/event/halloween-art-cafe-sculpt-paint-creepy-creations/2026-10-24/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "Spirits of the Season: Ongoing Art Exhibition",
+      "date_raw": "October 24",
+      "date_iso": "2026-10-24",
+      "snippet": "Sat 24 Spirits of the Season: Ongoing Art Exhibition Featured October 24 @ 10:30 am - 5:30 pm Recurring The Atrium - Creative Innovation Center for Sustainability 1020 Front Street, Sacramento, CA, United States A Halloween & Día de los Muertos Exhibition Spirits of the Season is",
+      "url": "https://atrium916.com/event/spirits-of-the-season-ongoing-art-exhibition/2026-10-24/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "Basic Recordkeeping Webinar",
+      "date_raw": "October 28",
+      "date_iso": "2026-10-28",
+      "snippet": "Wed 28 Basic Recordkeeping Webinar October 28 @ 9:30 am - 10:30 am Gain a solid foundation on what records should be kept, how long to keep them, and what details are most important. Find out what should be reflected on your receipts? You’ll discover how good recordkeeping will r",
+      "url": "https://atrium916.com/event/basic-recordkeeping-webinar-2/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "Sales Tax Return Preparation Webinar",
+      "date_raw": "October 28",
+      "date_iso": "2026-10-28",
+      "snippet": "Wed 28 Sales Tax Return Preparation Webinar October 28 @ 10:00 am - 11:00 am Get step-by-step instructions on how to file your Sales and Use Tax return electronically using our new online services system. Learn how to pay use tax, figure out deductions, and calculate district tax",
+      "url": "https://atrium916.com/event/sales-tax-return-preparation-webinar-7/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "Basic Sales & Use Tax AND Tax Return Preparation Webinar",
+      "date_raw": "November 3",
+      "date_iso": "2026-11-03",
+      "snippet": "Tue 3 Basic Sales & Use Tax AND Tax Return Preparation Webinar November 3 @ 1:30 pm - 2:30 pm Privacy Notice on Collection Gain an understanding of sales and use tax, district tax, taxable and nontaxable labor, as well as foreign and interstate taxability. Discover exemptions and",
+      "url": "https://atrium916.com/event/basic-sales-use-tax-and-tax-return-preparation-webinar/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "How to do Business with Sacramento County",
+      "date_raw": "November 4",
+      "date_iso": "2026-11-04",
+      "snippet": "Wed 4 How to do Business with Sacramento County November 4 @ 5:00 pm - 6:00 pm Gain a solid foundation on Government Industrial Base (GIB) readiness WHEN: Wednesday, November 4th, 2025 5:00PM - 6:00 PM WHERE: Online Webinar To register for this event, visit: https://cacapital.ece",
+      "url": "https://atrium916.com/event/how-to-do-business-with-sacramento-county/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "Gain a solid foundation on Government Industrial Base (GIB) readiness WHEN: Wedn",
+      "date_raw": "November 4",
+      "date_iso": "2026-11-04",
+      "snippet": "Gain a solid foundation on Government Industrial Base (GIB) readiness WHEN: Wednesday, November 4th, 2025 5:00PM - 6:00 PM WHERE: Online Webinar To register for this event, visit: https://cacapital.ecenterdirect.com/events/828986",
+      "url": "https://atrium916.com/events",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "HOURS We will be closing early 7/30 – 8/02 due to extreme heat. Please call if y",
+      "date_raw": "7/30",
+      "date_iso": "2027-07-30",
+      "snippet": "HOURS We will be closing early 7/30 – 8/02 due to extreme heat. Please call if you have questions! Open: Thursday thru Sunday 10am – 6pm Closed: Monday, Tuesday, and Wednesday We may need to change these hours due to weather, special events, or other elements. Like days over 100f",
+      "url": "https://atrium916.com/events",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "We will be closing early 7/30 – 8/02 due to extreme heat. Please call if you hav",
+      "date_raw": "7/30",
+      "date_iso": "2027-07-30",
+      "snippet": "We will be closing early 7/30 – 8/02 due to extreme heat. Please call if you have questions! Open: Thursday thru Sunday 10am – 6pm",
+      "url": "https://atrium916.com/events",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "How Wormie World will turn Sacramento into a citywide treasure hunt this weekend",
+      "date_raw": "October 16, 2026",
+      "date_iso": "2026-10-16",
+      "snippet": "How Wormie World will turn Sacramento into a citywide treasure hunt this weekend October 16, 2026 October 16, 2026 – Abridged – In a world full of mass-produced trinkets, Wormie World invites Sacramento to embrace something a little more unique: handmade ceramic worms. The free a",
+      "url": "https://atrium916.com/2026/10/16/how-wormie-world-will-turn-sacramento-into-a-citywide-treasure-hunt-this-weekend/",
+      "source": "Atrium 916 — events"
+    },
+    {
+      "title": "October 16, 2026 – Abridged – In a world full of mass-produced trinkets, Wormie",
+      "date_raw": "October 16, 2026",
+      "date_iso": "2026-10-16",
+      "snippet": "October 16, 2026 – Abridged – In a world full of mass-produced trinkets, Wormie World invites Sacramento to embrace something a little more unique: handmade ceramic worms. The free annual scavenger hunt for the squiggly creatures returns for its third year this Saturday, encourag",
+      "url": "https://atrium916.com/events",
+      "source": "Atrium 916 — events"
+    },
+    {
       "title": "Racist by Design: A Conversation with Kelly Lytle HernándezSaturday, November 7, 2026 | SOLD OUTLearn More",
       "date_raw": "November 7, 2026",
       "date_iso": "2026-11-07",
@@ -89,5 +273,5 @@
       "source": "JAYJAY Gallery — exhibitions"
     }
   ],
-  "last_run": "2026-10-23"
+  "last_run": "2026-10-24"
 }
