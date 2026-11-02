@@ -2,26 +2,18 @@
   "events": [
     {
       "title": "SUBMIT AN EVENT",
-      "date_raw": "Oct 16 - Nov 01, 2026",
-      "date_iso": "2027-10-16",
-      "snippet": "SUBMIT AN EVENT CREATIVE ARTIST RESOURCE BLOG VISIT SACRAMENTO PODCAST NEWSLETTERS ADVERTISE Trending Events Dave's Haunted Corn Maze Presented by Vierra Farms/Dave's Pumpkin Patch at  Vierra Farms/Dave's Pumpkin Patch Oct 16 - Nov 01, 2026 The Glenn Miller Orchestra Presented by",
+      "date_raw": "Dec 14, 2026",
+      "date_iso": "2026-12-14",
+      "snippet": "SUBMIT AN EVENT CREATIVE ARTIST RESOURCE BLOG VISIT SACRAMENTO PODCAST NEWSLETTERS ADVERTISE Trending Events The Glenn Miller Orchestra Presented by DDA Productions at Memorial Auditorium Dec 14, 2026 Sacramento Ballet Presents Nutcracker Presented by Sacramento Ballet at SAFE Cr",
       "url": "https://www.sacramento365.com/login/",
       "source": "Sacramento365 — Arts events"
     },
     {
       "title": "Trending Events",
-      "date_raw": "Oct 16 - Nov 01, 2026",
-      "date_iso": "2027-10-16",
-      "snippet": "Trending Events Dave's Haunted Corn Maze Presented by Vierra Farms/Dave's Pumpkin Patch at  Vierra Farms/Dave's Pumpkin Patch Oct 16 - Nov 01, 2026 The Glenn Miller Orchestra Presented by DDA Productions at Memorial Auditorium Dec 14, 2026 Sacramento Ballet Presents Nutcracker Pr",
-      "url": "https://sacramento365.com/event/daves-haunted-corn-maze/",
-      "source": "Sacramento365 — Arts events"
-    },
-    {
-      "title": "Dave's Haunted Corn Maze",
-      "date_raw": "Oct 16 - Nov 01, 2026",
-      "date_iso": "2027-10-16",
-      "snippet": "Dave's Haunted Corn Maze Presented by Vierra Farms/Dave's Pumpkin Patch at  Vierra Farms/Dave's Pumpkin Patch Oct 16 - Nov 01, 2026",
-      "url": "https://sacramento365.com/event/daves-haunted-corn-maze/",
+      "date_raw": "Dec 14, 2026",
+      "date_iso": "2026-12-14",
+      "snippet": "Trending Events The Glenn Miller Orchestra Presented by DDA Productions at Memorial Auditorium Dec 14, 2026 Sacramento Ballet Presents Nutcracker Presented by Sacramento Ballet at SAFE Credit Union Performing Arts Center Dec 12 - Dec 24, 2026",
+      "url": "https://sacramento365.com/event/the-glenn-miller-orchestra/",
       "source": "Sacramento365 — Arts events"
     },
     {
@@ -74,34 +66,34 @@
     },
     {
       "title": "On View at Axis",
-      "date_raw": "October 2, 2026",
-      "date_iso": "2026-10-02",
-      "snippet": "On View at Axis Birds & Bikes October 2, 2026 through November 1, 2026 Second Saturday Reception: Saturday, Oct 10, 5-8pm Join us at Axis Gallery for Second Saturday, a monthly celebration of the newest gallery exhibition. Guests can enjoy light refreshments, lively conversation,",
-      "url": "https://axisgallery.org/home-3/exhibitions/birds-bikes/",
+      "date_raw": "November 6, 2026",
+      "date_iso": "2026-11-06",
+      "snippet": "On View at Axis Adero Willard – Above Bone November 6, 2026 through November 29, 2026 Reception: Saturday, November 7, 5-8pm Join us at Axis Gallery for Second Saturday, a monthly celebration of the newest gallery exhibition. Guests can enjoy light refreshments, lively conversati",
+      "url": "https://axisgallery.org/home-3/exhibitions/adero/",
       "source": "Axis Gallery — exhibitions"
     },
     {
-      "title": "October 2, 2026 through November 1, 2026 Second Saturday Reception: Saturday, Oc",
-      "date_raw": "October 2, 2026",
-      "date_iso": "2026-10-02",
-      "snippet": "October 2, 2026 through November 1, 2026 Second Saturday Reception: Saturday, Oct 10, 5-8pm",
+      "title": "November 6, 2026 through November 29, 2026 Reception: Saturday, November 7, 5-8p",
+      "date_raw": "November 6, 2026",
+      "date_iso": "2026-11-06",
+      "snippet": "November 6, 2026 through November 29, 2026 Reception: Saturday, November 7, 5-8pm",
       "url": "https://axisgallery.org/exhibitions/",
       "source": "Axis Gallery — exhibitions"
     },
     {
-      "title": "Second Saturday Reception: Saturday, Oct 10, 5-8pm",
-      "date_raw": "Oct 10",
-      "date_iso": "2027-10-10",
-      "snippet": "Second Saturday Reception: Saturday, Oct 10, 5-8pm",
+      "title": "Reception: Saturday, November 7, 5-8pm",
+      "date_raw": "November 7",
+      "date_iso": "2026-11-07",
+      "snippet": "Reception: Saturday, November 7, 5-8pm",
       "url": "https://axisgallery.org/exhibitions/",
       "source": "Axis Gallery — exhibitions"
     },
     {
       "title": "In the East Room",
-      "date_raw": "October 2, 2026",
-      "date_iso": "2026-10-02",
-      "snippet": "In the East Room Birds & Bikes October 2, 2026 through November 1, 2026 Second Saturday Reception: Saturday, Oct 10, 5-8pm Join us at Axis Gallery for Second Saturday, a monthly celebration of the newest gallery exhibition. Guests can enjoy light refreshments, lively conversation",
-      "url": "https://axisgallery.org/home-3/exhibitions/birds-bikes/",
+      "date_raw": "November 6, 2026",
+      "date_iso": "2026-11-06",
+      "snippet": "In the East Room Capturing Memories of Grief/Capturando memorias del duelo November 6, 2026 through November 29, 2026 Reception: Saturday, November 7, 5-8pm Join us at Axis Gallery for Second Saturday, a monthly celebration of the newest gallery exhibition. Guests can enjoy light",
+      "url": "https://axisgallery.org/home-3/exhibitions/capturing-memories/",
       "source": "Axis Gallery — exhibitions"
     },
     {
@@ -129,5 +121,5 @@
       "source": "JAYJAY Gallery — exhibitions"
     }
   ],
-  "last_run": "2026-11-01"
+  "last_run": "2026-11-02"
 }
